@@ -4,6 +4,20 @@ greenhouse:
     company_name: Bozzuto
   - slug: cortland
     company_name: Cortland
+  - slug: lpc
+    company_name: Lincoln Property Company
+  - slug: assetliving
+    company_name: Asset Living
+  - slug: olympusproperty
+    company_name: Olympus Property
+  - slug: weinsteinproperties
+    company_name: Weinstein Properties
+  - slug: mgproperties
+    company_name: MG Properties
+  - slug: vacasa
+    company_name: Vacasa
+  - slug: roofstock
+    company_name: Roofstock
 
 # Verified slugs: https://api.lever.co/v0/postings/{slug}?mode=json
 lever:
