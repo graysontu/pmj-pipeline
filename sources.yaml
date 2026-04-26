@@ -25,7 +25,7 @@ greenhouse:
   - slug: prometheusrealestategroup
     company_name: Prometheus Real Estate Group
   - slug: hrpliving
-    company_name: HRP Living
+    company_name: Hawthorne Residential Partners
   - slug: johnmcorcorancompany
     company_name: John M. Corcoran & Company
   - slug: paragonpropertiesco
@@ -71,9 +71,7 @@ ashby: []
 workable: []
 
 # Verified slugs: https://{slug}.recruitee.com/api/offers/
-recruitee:
-  - slug: urbanest
-    company_name: Urbanest
+recruitee: []
 
 # SmartRecruiters public boards: https://api.smartrecruiters.com/v1/companies/{slug}/postings
 # Most companies set their SR boards to private. Add slugs only after confirming public access.
