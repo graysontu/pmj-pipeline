@@ -18,6 +18,38 @@ greenhouse:
     company_name: Vacasa
   - slug: roofstock
     company_name: Roofstock
+  - slug: thesciongroupllc
+    company_name: The Scion Group
+  - slug: midpenhousing
+    company_name: MidPen Housing
+  - slug: prometheusrealestategroup
+    company_name: Prometheus Real Estate Group
+  - slug: hrpliving
+    company_name: HRP Living
+  - slug: johnmcorcorancompany
+    company_name: John M. Corcoran & Company
+  - slug: paragonpropertiesco
+    company_name: Paragon Properties
+  - slug: hillpointe
+    company_name: Hillpointe
+  - slug: ackermanngroup
+    company_name: Ackermann Group
+  - slug: vanmetre
+    company_name: Van Metre
+  - slug: resideliving
+    company_name: Reside Living
+  - slug: cottonwoodresidential
+    company_name: Cottonwood Residential
+  - slug: birgo
+    company_name: Birgo
+  - slug: wms
+    company_name: WMS
+  - slug: comstock
+    company_name: Comstock
+  - slug: bamfam
+    company_name: BAM Companies
+  - slug: propertymanagementassociates
+    company_name: Property Management Associates
 
 # Verified slugs: https://api.lever.co/v0/postings/{slug}?mode=json
 lever:
