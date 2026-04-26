@@ -1,8 +1,40 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<source>
+<jobs>
   <publisher>PropertyManagementJobs.us</publisher>
   <publisherurl>https://propertymanagementjobs.us</publisherurl>
-  <lastBuildDate>Sun, 26 Apr 2026 17:33:12 GMT</lastBuildDate>
+  <lastBuildDate>Sun, 26 Apr 2026 19:14:51 GMT</lastBuildDate>
+  <job>
+    <referencenumber><![CDATA[lever_ecbbf23d-c5a1-42a0-b218-541e0b7445ec]]></referencenumber>
+    <title><![CDATA[Experienced Field Maintenance Technician (3+ Years Required)]]></title>
+    <company><![CDATA[Lessen]]></company>
+    <city><![CDATA[Orlando]]></city>
+    <state><![CDATA[FL]]></state>
+    <country>US</country>
+    <jobtype>fulltime</jobtype>
+    <category><![CDATA[Maintenance Technician Jobs]]></category>
+    <description><![CDATA[<p>Most property maintenance operations run on reactive chaos: calls pile up, vendors get dispatched blind, and nobody really owns the outcome. Lessen is built differently. As a tech-enabled, nationwide property services platform handling over 3.5 million work orders a year across more than a million properties, they've structured maintenance around data and accountability rather than guesswork. That structure means their field technicians actually own their work, from the first inspection to the closed-out work order.</p>
+<h2>What the Work Actually Looks Like</h2>
+<p>This is a field-based maintenance role covering properties in the Orlando portfolio. You're not floating between a hundred units waiting for a radio call. You carry your own work orders, manage your own materials budget, and you're accountable for the quality of every completed job. Lessen explicitly prioritizes quality over volume, which is a meaningful distinction in field maintenance. It means your performance isn't measured purely by tickets closed per day.</p>
+<p>Day to day, you're diagnosing and resolving issues across a range of property types, working independently with the support of Lessen's technology platform, which routes work orders and tracks job history. You'll have a company fleet vehicle and fuel card, a tool and equipment allowance, and a cell phone allowance. No on-call rotation. Weekday schedule.</p>
+<p>The pay range starts at $23 to $27 per hour depending on experience, skill level, and competencies. There's also a quarterly discretionary bonus of up to 5% of quarterly earnings, plus corporate-level benefits and OSHA training provided.</p>
+<h2>What They're Looking For</h2>
+<ul>
+<li>Minimum 3 years of verifiable, hands-on experience in property maintenance or a related trade</li>
+<li>Ability to independently diagnose and resolve a broad range of maintenance issues</li>
+<li>Comfortable managing work order documentation and materials budgets</li>
+<li>Solution-oriented approach: you troubleshoot first rather than immediately escalating</li>
+<li>Strong communication with clients and property contacts</li>
+<li>Valid driver's license (fleet vehicle is provided)</li>
+</ul>
+<p>What separates strong candidates here isn't just technical range, though that matters. It's ownership mentality. Lessen's model gives technicians real autonomy, and that works best with people who close out a job the way they'd want it done on their own property. Technicians who need close supervision or who treat work orders as boxes to check tend to struggle in this kind of structure.</p>
+<p>Orlando's rental market has expanded significantly over the past several years, with a large single-family rental and build-to-rent footprint that demands exactly the kind of field-based, independently managed maintenance this role is built around. If you've been working in that space locally, you already understand the geography and pace this job requires.</p>
+<p>There's a clear path forward here, too. Lessen is growing nationally, and they've identified Lead Technician and Field Maintenance Manager roles as the next steps for strong performers. If you want field work now but have your eye on managing a team or a region eventually, this is a reasonable place to build toward that.</p>]]></description>
+    <url><![CDATA[https://jobs.lever.co/lessen/ecbbf23d-c5a1-42a0-b218-541e0b7445ec]]></url>
+    <date>Thu, 09 Apr 2026 18:11:08 GMT</date>
+    <expiration_date>Thu, 25 Jun 2026 15:26:20 GMT</expiration_date>
+    <remotetype>onsite</remotetype>
+    <companyurl><![CDATA[https://jobs.lever.co/lessen]]></companyurl>
+  </job>
   <job>
     <referencenumber><![CDATA[greenhouse_5197937008]]></referencenumber>
     <title><![CDATA[Maintenance Technician ]]></title>
@@ -6889,4 +6921,4 @@ HTML
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/bozzuto]]></companyurl>
   </job>
-</source>
+</jobs>

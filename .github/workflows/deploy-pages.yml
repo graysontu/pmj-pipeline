@@ -6,6 +6,7 @@ on:
       - main
     paths:
       - "output/feed.xml"
+      - "output/feed_test.xml"
 
 permissions:
   contents: read
