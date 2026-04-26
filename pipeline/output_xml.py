@@ -17,7 +17,7 @@ def _rfc822(dt: datetime) -> str:
     return format_datetime(dt.astimezone(timezone.utc), usegmt=True)
 
 
-def generate_feed_xml(active_jobs: list[dict]) -> None:
+def generate_feed_xml(active_jobs: list[dict], path: Path = FEED_PATH) -> None:
     now = datetime.now(tz=timezone.utc)
 
     root = etree.Element("source")
@@ -53,7 +53,7 @@ def generate_feed_xml(active_jobs: list[dict]) -> None:
         etree.SubElement(job_el, "remotetype").text = job.get("remote_type") or "onsite"
         etree.SubElement(job_el, "companyurl").text = etree.CDATA(job.get("company_url") or "")
 
-    FEED_PATH.parent.mkdir(exist_ok=True)
+    path.parent.mkdir(exist_ok=True)
     tree = etree.ElementTree(root)
-    tree.write(str(FEED_PATH), xml_declaration=True, encoding="UTF-8", pretty_print=True)
-    logger.info("Feed written to %s (%d jobs)", FEED_PATH, len(sorted_jobs))
+    tree.write(str(path), xml_declaration=True, encoding="UTF-8", pretty_print=True)
+    logger.info("Feed written to %s (%d jobs)", path, len(sorted_jobs))

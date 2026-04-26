@@ -1,7 +1,16 @@
 {
   "permissions": {
     "allow": [
-      "Bash(python *)"
+      "Bash(python *)",
+      "Bash(git add *)",
+      "Bash(git commit *)",
+      "Bash(git push *)",
+      "Bash(.venv/Scripts/python.exe -c \"from lxml import etree; t = etree.parse\\('output/feed_test.xml'\\); print\\(len\\(t.findall\\('job'\\)\\), 'jobs'\\)\")",
+      "Bash(git pull *)",
+      "Bash(git stash *)",
+      "Bash(git rebase *)",
+      "Bash(GIT_EDITOR=true git rebase --continue)",
+      "Bash(EDITOR=true git rebase --continue)"
     ]
   }
 }
