@@ -7,9 +7,10 @@ from pipeline.state import State
 TEST_FEED_PATH = Path(__file__).parent.parent / "output" / "feed_test.xml"
 
 CATEGORIES = [
+    "Property Manager Jobs",
+    "Real Estate Admin & Coordinator Jobs",
     "Leasing Consultant Jobs",
     "Maintenance Technician Jobs",
-    "Groundskeeper & Porter Jobs",
 ]
 
 state = State()
