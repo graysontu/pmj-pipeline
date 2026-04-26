@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<jobs>
+<source>
   <publisher>PropertyManagementJobs.us</publisher>
   <publisherurl>https://propertymanagementjobs.us</publisherurl>
-  <lastBuildDate>Sun, 26 Apr 2026 19:09:11 GMT</lastBuildDate>
+  <lastBuildDate>Sun, 26 Apr 2026 19:22:44 GMT</lastBuildDate>
   <job>
     <referencenumber><![CDATA[greenhouse_5194176008]]></referencenumber>
     <title><![CDATA[Assistant General Manager]]></title>
@@ -99,4 +99,4 @@
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/bozzuto]]></companyurl>
   </job>
-</jobs>
+</source>

@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<jobs>
+<source>
   <publisher>PropertyManagementJobs.us</publisher>
   <publisherurl>https://propertymanagementjobs.us</publisherurl>
-  <lastBuildDate>Sun, 26 Apr 2026 19:14:51 GMT</lastBuildDate>
+  <lastBuildDate>Sun, 26 Apr 2026 19:22:44 GMT</lastBuildDate>
   <job>
     <referencenumber><![CDATA[lever_ecbbf23d-c5a1-42a0-b218-541e0b7445ec]]></referencenumber>
     <title><![CDATA[Experienced Field Maintenance Technician (3+ Years Required)]]></title>
@@ -6921,4 +6921,4 @@ HTML
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/bozzuto]]></companyurl>
   </job>
-</jobs>
+</source>
