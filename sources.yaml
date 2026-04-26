@@ -1,0 +1,32 @@
+# Greystar does not use Greenhouse. Their ATS will be added in a future milestone.
+greenhouse:
+  - slug: bozzuto
+    company_name: Bozzuto
+  - slug: cortland
+    company_name: Cortland
+
+# Verified slugs: https://api.lever.co/v0/postings/{slug}?mode=json
+lever:
+  - slug: lessen
+    company_name: Lessen
+  - slug: belong
+    company_name: Belong Home
+  - slug: entrata
+    company_name: Entrata
+
+# Verified slugs: https://api.ashbyhq.com/posting-api/job-board/{slug}
+# Add companies here once you confirm their Ashby board is public.
+ashby: []
+
+# Verified slugs: https://apply.workable.com/api/v3/accounts/{slug}/jobs
+# Add companies here once you confirm their Workable account slug.
+workable: []
+
+# Verified slugs: https://{slug}.recruitee.com/api/offers/
+recruitee:
+  - slug: urbanest
+    company_name: Urbanest
+
+# SmartRecruiters public boards: https://api.smartrecruiters.com/v1/companies/{slug}/postings
+# Most companies set their SR boards to private. Add slugs only after confirming public access.
+smartrecruiters: []

@@ -1,0 +1,19 @@
+.env
+__pycache__/
+*.pyc
+.venv/
+
+# large AI response caches - persisted via GitHub Actions cache, not git
+data/classification_cache.json
+data/rewrite_cache.json
+
+# per-run timestamped snapshots - not needed in git history
+data/raw_jobs_*.json
+data/classified_jobs_*.json
+data/rewritten_jobs_*.json
+
+# per-run CSV exports - uploaded as workflow artifacts instead
+output/jobs_*.csv
+
+# local quality preview - not published
+output/quality_samples.html

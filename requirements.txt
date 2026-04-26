@@ -1,0 +1,11 @@
+anthropic
+httpx
+beautifulsoup4
+pyyaml
+python-dotenv
+pydantic
+lxml
+tenacity
+pytest
+google-api-python-client
+google-auth
