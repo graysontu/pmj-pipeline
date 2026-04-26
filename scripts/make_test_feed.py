@@ -6,18 +6,20 @@ from pipeline.state import State
 
 TEST_FEED_PATH = Path(__file__).parent.parent / "output" / "feed_test.xml"
 
+CATEGORIES = [
+    "Leasing Consultant Jobs",
+    "Maintenance Technician Jobs",
+    "Groundskeeper & Porter Jobs",
+]
+
 state = State()
 all_jobs = state.get_active_jobs()
 
-# Pick one job from each of the first 3 distinct categories for better category mapping coverage
-seen_categories: set[str] = set()
 jobs = []
-for job in all_jobs:
-    cat = job.get("category", "")
-    if cat not in seen_categories:
-        seen_categories.add(cat)
-        jobs.append(job)
-    if len(jobs) == 3:
-        break
+for target_cat in CATEGORIES:
+    for job in all_jobs:
+        if job.get("category") == target_cat:
+            jobs.append(job)
+            break
 
 generate_feed_xml(jobs, path=TEST_FEED_PATH)
