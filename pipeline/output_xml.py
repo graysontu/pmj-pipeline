@@ -1,6 +1,5 @@
 import logging
 from datetime import datetime, timedelta, timezone
-from email.utils import format_datetime
 from pathlib import Path
 
 from lxml import etree
@@ -13,8 +12,8 @@ logger = logging.getLogger(__name__)
 FEED_PATH = Path(__file__).parent.parent / "output" / "feed.xml"
 
 
-def _rfc822(dt: datetime) -> str:
-    return format_datetime(dt.astimezone(timezone.utc), usegmt=True)
+def _iso_date(dt: datetime) -> str:
+    return dt.astimezone(timezone.utc).strftime("%Y-%m-%d")
 
 
 def generate_feed_xml(active_jobs: list[dict], path: Path = FEED_PATH) -> None:
@@ -23,7 +22,7 @@ def generate_feed_xml(active_jobs: list[dict], path: Path = FEED_PATH) -> None:
     root = etree.Element("source")
     etree.SubElement(root, "publisher").text = "PropertyManagementJobs.us"
     etree.SubElement(root, "publisherurl").text = SITE_BASE_URL
-    etree.SubElement(root, "lastBuildDate").text = _rfc822(now)
+    etree.SubElement(root, "lastBuildDate").text = now.strftime("%Y-%m-%d")
 
     sorted_jobs = sorted(active_jobs, key=lambda j: j["published_at"], reverse=True)
 
@@ -48,8 +47,8 @@ def generate_feed_xml(active_jobs: list[dict], path: Path = FEED_PATH) -> None:
         etree.SubElement(job_el, "category").text = etree.CDATA(job["category"])
         etree.SubElement(job_el, "description").text = etree.CDATA(job["rewritten_description"])
         etree.SubElement(job_el, "url").text = etree.CDATA(job["apply_url"])
-        etree.SubElement(job_el, "date").text = _rfc822(date_posted_dt)
-        etree.SubElement(job_el, "expiration_date").text = _rfc822(expiry)
+        etree.SubElement(job_el, "date").text = _iso_date(date_posted_dt)
+        etree.SubElement(job_el, "expiration_date").text = _iso_date(expiry)
         etree.SubElement(job_el, "remotetype").text = job.get("remote_type") or "onsite"
         etree.SubElement(job_el, "companyurl").text = etree.CDATA(job.get("company_url") or "")
 
