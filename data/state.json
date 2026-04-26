@@ -4534,5 +4534,23 @@
     "salary_max": 27,
     "salary_currency": "USD",
     "salary_schedule": "hourly"
+  },
+  "lever_ecbbf23d-c5a1-42a0-b218-541e0b7445ec": {
+    "published_at": "2026-04-26T15:26:20.674142+00:00",
+    "source_id": "lever_ecbbf23d-c5a1-42a0-b218-541e0b7445ec",
+    "title": "Experienced Field Maintenance Technician (3+ Years Required)",
+    "company": "Lessen",
+    "location": "Orlando, FL",
+    "category": "Maintenance Technician Jobs",
+    "apply_url": "https://jobs.lever.co/lessen/ecbbf23d-c5a1-42a0-b218-541e0b7445ec",
+    "rewritten_description": "<p>Most property maintenance operations run on reactive chaos: calls pile up, vendors get dispatched blind, and nobody really owns the outcome. Lessen is built differently. As a tech-enabled, nationwide property services platform handling over 3.5 million work orders a year across more than a million properties, they've structured maintenance around data and accountability rather than guesswork. That structure means their field technicians actually own their work, from the first inspection to the closed-out work order.</p>\n<h2>What the Work Actually Looks Like</h2>\n<p>This is a field-based maintenance role covering properties in the Orlando portfolio. You're not floating between a hundred units waiting for a radio call. You carry your own work orders, manage your own materials budget, and you're accountable for the quality of every completed job. Lessen explicitly prioritizes quality over volume, which is a meaningful distinction in field maintenance. It means your performance isn't measured purely by tickets closed per day.</p>\n<p>Day to day, you're diagnosing and resolving issues across a range of property types, working independently with the support of Lessen's technology platform, which routes work orders and tracks job history. You'll have a company fleet vehicle and fuel card, a tool and equipment allowance, and a cell phone allowance. No on-call rotation. Weekday schedule.</p>\n<p>The pay range starts at $23 to $27 per hour depending on experience, skill level, and competencies. There's also a quarterly discretionary bonus of up to 5% of quarterly earnings, plus corporate-level benefits and OSHA training provided.</p>\n<h2>What They're Looking For</h2>\n<ul>\n<li>Minimum 3 years of verifiable, hands-on experience in property maintenance or a related trade</li>\n<li>Ability to independently diagnose and resolve a broad range of maintenance issues</li>\n<li>Comfortable managing work order documentation and materials budgets</li>\n<li>Solution-oriented approach: you troubleshoot first rather than immediately escalating</li>\n<li>Strong communication with clients and property contacts</li>\n<li>Valid driver's license (fleet vehicle is provided)</li>\n</ul>\n<p>What separates strong candidates here isn't just technical range, though that matters. It's ownership mentality. Lessen's model gives technicians real autonomy, and that works best with people who close out a job the way they'd want it done on their own property. Technicians who need close supervision or who treat work orders as boxes to check tend to struggle in this kind of structure.</p>\n<p>Orlando's rental market has expanded significantly over the past several years, with a large single-family rental and build-to-rent footprint that demands exactly the kind of field-based, independently managed maintenance this role is built around. If you've been working in that space locally, you already understand the geography and pace this job requires.</p>\n<p>There's a clear path forward here, too. Lessen is growing nationally, and they've identified Lead Technician and Field Maintenance Manager roles as the next steps for strong performers. If you want field work now but have your eye on managing a team or a region eventually, this is a reasonable place to build toward that.</p>",
+    "date_posted": "2026-04-09T18:11:08.547000+00:00",
+    "job_type": "fulltime",
+    "remote_type": "onsite",
+    "company_url": "https://jobs.lever.co/lessen",
+    "salary_min": null,
+    "salary_max": null,
+    "salary_currency": "USD",
+    "salary_schedule": "yearly"
   }
 }
