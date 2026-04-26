@@ -13,8 +13,15 @@ CATEGORIES = [
     "Maintenance Technician Jobs",
 ]
 
+# Additional specific jobs to include (e.g. to cover hourly pay)
+EXTRA_IDS = [
+    "greenhouse_5194285008",  # Assistant Maintenance Manager $28-$30/hr
+    "greenhouse_5135865008",  # Maintenance Technician $20-$32/hr
+]
+
 state = State()
 all_jobs = state.get_active_jobs()
+all_jobs_by_id = {job["source_id"]: job for job in all_jobs}
 
 jobs = []
 for target_cat in CATEGORIES:
@@ -22,5 +29,9 @@ for target_cat in CATEGORIES:
         if job.get("category") == target_cat:
             jobs.append(job)
             break
+
+for sid in EXTRA_IDS:
+    if sid in all_jobs_by_id:
+        jobs.append(all_jobs_by_id[sid])
 
 generate_feed_xml(jobs, path=TEST_FEED_PATH)
