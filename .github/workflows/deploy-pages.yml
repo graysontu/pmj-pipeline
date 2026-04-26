@@ -8,6 +8,7 @@ on:
       - "output/feed.xml"
       - "output/feed_test.xml"
       - "output/feed_minimal.xml"
+      - "output/feed_diagnostic.xml"
 
 permissions:
   contents: read

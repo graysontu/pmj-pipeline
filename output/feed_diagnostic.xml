@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<source>
+  <publisher>PropertyManagementJobs.us</publisher>
+  <publisherurl>https://propertymanagementjobs.us</publisherurl>
+  <lastBuildDate>2026-04-26</lastBuildDate>
+
+  <!-- Job A: our current format exactly (control) -->
+  <job>
+    <referencenumber><![CDATA[test_job_a]]></referencenumber>
+    <title><![CDATA[Test Job A - Current Format]]></title>
+    <company><![CDATA[Bozzuto]]></company>
+    <city><![CDATA[Denver]]></city>
+    <state><![CDATA[CO]]></state>
+    <country>US</country>
+    <jobtype>fulltime</jobtype>
+    <category><![CDATA[Maintenance Technician Jobs]]></category>
+    <description><![CDATA[<p>Test job A using our current XML format with CDATA and HTML description.</p>]]></description>
+    <url><![CDATA[https://www.bozzuto.com/careers/job-search/5197937008/?gh_jid=5197937008&test=a]]></url>
+    <date>2026-04-23</date>
+    <expiration_date>2026-06-25</expiration_date>
+    <remotetype>onsite</remotetype>
+    <companyurl><![CDATA[https://boards.greenhouse.io/bozzuto]]></companyurl>
+  </job>
+
+  <!-- Job B: JobBoardly standard field names from their docs -->
+  <job>
+    <job_title>Test Job B - Standard Field Names</job_title>
+    <company_name>Bozzuto</company_name>
+    <city>Denver</city>
+    <state>CO</state>
+    <country>US</country>
+    <job_type>fulltime</job_type>
+    <category>Maintenance Technician Jobs</category>
+    <html_job_description>Test job B using field names from JobBoardly docs: job_title, company_name, apply_url, html_job_description.</html_job_description>
+    <apply_url>https://www.bozzuto.com/careers/job-search/5197937008/?gh_jid=5197937008&amp;test=b</apply_url>
+    <post_date>2026-04-23</post_date>
+    <is_remote>false</is_remote>
+  </job>
+
+  <!-- Job C: no CDATA anywhere, plain text description only -->
+  <job>
+    <title>Test Job C - No CDATA</title>
+    <company>Bozzuto</company>
+    <city>Denver</city>
+    <state>CO</state>
+    <country>US</country>
+    <jobtype>fulltime</jobtype>
+    <category>Maintenance Technician Jobs</category>
+    <description>Test job C with no CDATA wrappers and plain text description only.</description>
+    <url>https://www.bozzuto.com/careers/job-search/5197937008/?gh_jid=5197937008&amp;test=c</url>
+    <date>2026-04-23</date>
+    <remotetype>onsite</remotetype>
+  </job>
+
+  <!-- Job D: no dates at all -->
+  <job>
+    <title>Test Job D - No Dates</title>
+    <company>Bozzuto</company>
+    <city>Denver</city>
+    <state>CO</state>
+    <country>US</country>
+    <jobtype>fulltime</jobtype>
+    <category>Maintenance Technician Jobs</category>
+    <description>Test job D with no date or expiration_date fields at all.</description>
+    <url>https://www.bozzuto.com/careers/job-search/5197937008/?gh_jid=5197937008&amp;test=d</url>
+    <remotetype>onsite</remotetype>
+  </job>
+
+  <!-- Job E: combined location string instead of separate city/state -->
+  <job>
+    <title>Test Job E - Combined Location</title>
+    <company>Bozzuto</company>
+    <location>Denver, CO</location>
+    <country>US</country>
+    <jobtype>fulltime</jobtype>
+    <category>Maintenance Technician Jobs</category>
+    <description>Test job E using a combined location field instead of separate city and state.</description>
+    <url>https://www.bozzuto.com/careers/job-search/5197937008/?gh_jid=5197937008&amp;test=e</url>
+    <date>2026-04-23</date>
+    <remotetype>onsite</remotetype>
+  </job>
+
+  <!-- Job F: absolute bare minimum fields only -->
+  <job>
+    <title>Test Job F - Bare Minimum</title>
+    <company>Bozzuto</company>
+    <description>Test job F with only the four most essential fields: title, company, description, url.</description>
+    <url>https://www.bozzuto.com/careers/job-search/5197937008/?gh_jid=5197937008&amp;test=f</url>
+  </job>
+
+</source>
