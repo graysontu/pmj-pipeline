@@ -17,3 +17,4 @@ class RawJob(BaseModel):
     job_type: str = "fulltime"
     remote_type: str  # "onsite", "remote", or "hybrid"
     company_url: Optional[str] = None
+    company_logo_url: Optional[str] = None

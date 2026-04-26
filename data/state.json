@@ -15,7 +15,8 @@
     "salary_min": 72600,
     "salary_max": 75000,
     "salary_currency": "USD",
-    "salary_schedule": "yearly"
+    "salary_schedule": "yearly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/bozzuto.png"
   },
   "greenhouse_5191067008": {
     "published_at": "2026-04-26T01:49:50.037178+00:00",
@@ -33,7 +34,8 @@
     "salary_min": 68000,
     "salary_max": 70000,
     "salary_currency": "USD",
-    "salary_schedule": "yearly"
+    "salary_schedule": "yearly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/bozzuto.png"
   },
   "greenhouse_5162715008": {
     "published_at": "2026-04-26T01:49:50.037178+00:00",
@@ -51,7 +53,8 @@
     "salary_min": 27,
     "salary_max": 29,
     "salary_currency": "USD",
-    "salary_schedule": "hourly"
+    "salary_schedule": "hourly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/bozzuto.png"
   },
   "greenhouse_5181089008": {
     "published_at": "2026-04-26T01:49:50.037178+00:00",
@@ -69,7 +72,8 @@
     "salary_min": 60000,
     "salary_max": 67000,
     "salary_currency": "USD",
-    "salary_schedule": "yearly"
+    "salary_schedule": "yearly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/bozzuto.png"
   },
   "greenhouse_5169124008": {
     "published_at": "2026-04-26T01:49:50.037178+00:00",
@@ -87,7 +91,8 @@
     "salary_min": 80000,
     "salary_max": 87000,
     "salary_currency": "USD",
-    "salary_schedule": "yearly"
+    "salary_schedule": "yearly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/bozzuto.png"
   },
   "greenhouse_5186710008": {
     "published_at": "2026-04-26T01:49:50.037178+00:00",
@@ -105,7 +110,8 @@
     "salary_min": 65000,
     "salary_max": 70000,
     "salary_currency": "USD",
-    "salary_schedule": "yearly"
+    "salary_schedule": "yearly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/bozzuto.png"
   },
   "greenhouse_5193940008": {
     "published_at": "2026-04-26T01:49:50.037178+00:00",
@@ -123,7 +129,8 @@
     "salary_min": 65000,
     "salary_max": 70000,
     "salary_currency": "USD",
-    "salary_schedule": "yearly"
+    "salary_schedule": "yearly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/bozzuto.png"
   },
   "greenhouse_5195786008": {
     "published_at": "2026-04-26T01:49:50.037178+00:00",
@@ -141,7 +148,8 @@
     "salary_min": 67000,
     "salary_max": 69000,
     "salary_currency": "USD",
-    "salary_schedule": "yearly"
+    "salary_schedule": "yearly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/bozzuto.png"
   },
   "greenhouse_5181291008": {
     "published_at": "2026-04-26T01:49:50.037178+00:00",
@@ -159,7 +167,8 @@
     "salary_min": 67000,
     "salary_max": 72000,
     "salary_currency": "USD",
-    "salary_schedule": "yearly"
+    "salary_schedule": "yearly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/bozzuto.png"
   },
   "greenhouse_5194285008": {
     "published_at": "2026-04-26T01:49:50.037178+00:00",
@@ -177,7 +186,8 @@
     "salary_min": 28,
     "salary_max": 30,
     "salary_currency": "USD",
-    "salary_schedule": "hourly"
+    "salary_schedule": "hourly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/bozzuto.png"
   },
   "greenhouse_5187848008": {
     "published_at": "2026-04-26T03:40:50.947093+00:00",
@@ -195,7 +205,8 @@
     "salary_min": 55000,
     "salary_max": 90000,
     "salary_currency": "USD",
-    "salary_schedule": "yearly"
+    "salary_schedule": "yearly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/bozzuto.png"
   },
   "greenhouse_5174551008": {
     "published_at": "2026-04-26T03:40:50.947093+00:00",
@@ -213,7 +224,8 @@
     "salary_min": 42000,
     "salary_max": 65000,
     "salary_currency": "USD",
-    "salary_schedule": "yearly"
+    "salary_schedule": "yearly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/bozzuto.png"
   },
   "greenhouse_5195970008": {
     "published_at": "2026-04-26T03:40:50.947093+00:00",
@@ -231,7 +243,8 @@
     "salary_min": 50400,
     "salary_max": 78000,
     "salary_currency": "USD",
-    "salary_schedule": "yearly"
+    "salary_schedule": "yearly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/bozzuto.png"
   },
   "greenhouse_5197331008": {
     "published_at": "2026-04-26T03:40:50.947093+00:00",
@@ -249,7 +262,8 @@
     "salary_min": 42000,
     "salary_max": 65000,
     "salary_currency": "USD",
-    "salary_schedule": "yearly"
+    "salary_schedule": "yearly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/bozzuto.png"
   },
   "greenhouse_5197383008": {
     "published_at": "2026-04-26T03:40:50.947093+00:00",
@@ -267,7 +281,8 @@
     "salary_min": 50400,
     "salary_max": 78000,
     "salary_currency": "USD",
-    "salary_schedule": "yearly"
+    "salary_schedule": "yearly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/bozzuto.png"
   },
   "greenhouse_5188156008": {
     "published_at": "2026-04-26T03:40:50.947093+00:00",
@@ -285,7 +300,8 @@
     "salary_min": 42000,
     "salary_max": 65000,
     "salary_currency": "USD",
-    "salary_schedule": "yearly"
+    "salary_schedule": "yearly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/bozzuto.png"
   },
   "greenhouse_5192108008": {
     "published_at": "2026-04-26T03:40:50.947093+00:00",
@@ -303,7 +319,8 @@
     "salary_min": 42000,
     "salary_max": 68000,
     "salary_currency": "USD",
-    "salary_schedule": "yearly"
+    "salary_schedule": "yearly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/bozzuto.png"
   },
   "greenhouse_5188043008": {
     "published_at": "2026-04-26T03:40:50.947093+00:00",
@@ -321,7 +338,8 @@
     "salary_min": 50000,
     "salary_max": 80000,
     "salary_currency": "USD",
-    "salary_schedule": "yearly"
+    "salary_schedule": "yearly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/bozzuto.png"
   },
   "greenhouse_5173290008": {
     "published_at": "2026-04-26T03:40:50.947093+00:00",
@@ -339,7 +357,8 @@
     "salary_min": 50000,
     "salary_max": 80000,
     "salary_currency": "USD",
-    "salary_schedule": "yearly"
+    "salary_schedule": "yearly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/bozzuto.png"
   },
   "greenhouse_5178302008": {
     "published_at": "2026-04-26T03:40:50.947093+00:00",
@@ -357,7 +376,8 @@
     "salary_min": 50000,
     "salary_max": 96000,
     "salary_currency": "USD",
-    "salary_schedule": "yearly"
+    "salary_schedule": "yearly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/bozzuto.png"
   },
   "greenhouse_5161922008": {
     "published_at": "2026-04-26T03:40:50.947093+00:00",
@@ -375,7 +395,8 @@
     "salary_min": 50000,
     "salary_max": 80000,
     "salary_currency": "USD",
-    "salary_schedule": "yearly"
+    "salary_schedule": "yearly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/bozzuto.png"
   },
   "greenhouse_5165298008": {
     "published_at": "2026-04-26T03:40:50.947093+00:00",
@@ -393,7 +414,8 @@
     "salary_min": 43200,
     "salary_max": 66000,
     "salary_currency": "USD",
-    "salary_schedule": "yearly"
+    "salary_schedule": "yearly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/bozzuto.png"
   },
   "greenhouse_5179241008": {
     "published_at": "2026-04-26T03:40:50.947093+00:00",
@@ -411,7 +433,8 @@
     "salary_min": 43200,
     "salary_max": 66000,
     "salary_currency": "USD",
-    "salary_schedule": "yearly"
+    "salary_schedule": "yearly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/bozzuto.png"
   },
   "greenhouse_5196785008": {
     "published_at": "2026-04-26T03:40:50.947093+00:00",
@@ -429,7 +452,8 @@
     "salary_min": 36000,
     "salary_max": 55000,
     "salary_currency": "USD",
-    "salary_schedule": "yearly"
+    "salary_schedule": "yearly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/bozzuto.png"
   },
   "greenhouse_5181738008": {
     "published_at": "2026-04-26T03:40:50.947093+00:00",
@@ -447,7 +471,8 @@
     "salary_min": 43200,
     "salary_max": 66000,
     "salary_currency": "USD",
-    "salary_schedule": "yearly"
+    "salary_schedule": "yearly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/bozzuto.png"
   },
   "greenhouse_5195296008": {
     "published_at": "2026-04-26T03:40:50.947093+00:00",
@@ -465,7 +490,8 @@
     "salary_min": 36000,
     "salary_max": 55000,
     "salary_currency": "USD",
-    "salary_schedule": "yearly"
+    "salary_schedule": "yearly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/bozzuto.png"
   },
   "greenhouse_5194569008": {
     "published_at": "2026-04-26T03:40:50.947093+00:00",
@@ -483,7 +509,8 @@
     "salary_min": 40000,
     "salary_max": 62000,
     "salary_currency": "USD",
-    "salary_schedule": "yearly"
+    "salary_schedule": "yearly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/bozzuto.png"
   },
   "greenhouse_5155094008": {
     "published_at": "2026-04-26T03:40:50.947093+00:00",
@@ -501,7 +528,8 @@
     "salary_min": 43200,
     "salary_max": 66000,
     "salary_currency": "USD",
-    "salary_schedule": "yearly"
+    "salary_schedule": "yearly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/bozzuto.png"
   },
   "greenhouse_5161850008": {
     "published_at": "2026-04-26T03:40:50.947093+00:00",
@@ -519,7 +547,8 @@
     "salary_min": 43200,
     "salary_max": 66000,
     "salary_currency": "USD",
-    "salary_schedule": "yearly"
+    "salary_schedule": "yearly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/bozzuto.png"
   },
   "greenhouse_5163277008": {
     "published_at": "2026-04-26T03:40:50.947093+00:00",
@@ -537,7 +566,8 @@
     "salary_min": 36000,
     "salary_max": 55000,
     "salary_currency": "USD",
-    "salary_schedule": "yearly"
+    "salary_schedule": "yearly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/bozzuto.png"
   },
   "greenhouse_5193907008": {
     "published_at": "2026-04-26T03:40:50.947093+00:00",
@@ -555,7 +585,8 @@
     "salary_min": 36000,
     "salary_max": 55000,
     "salary_currency": "USD",
-    "salary_schedule": "yearly"
+    "salary_schedule": "yearly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/bozzuto.png"
   },
   "greenhouse_5165406008": {
     "published_at": "2026-04-26T03:40:50.947093+00:00",
@@ -573,7 +604,8 @@
     "salary_min": 43200,
     "salary_max": 66000,
     "salary_currency": "USD",
-    "salary_schedule": "yearly"
+    "salary_schedule": "yearly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/bozzuto.png"
   },
   "greenhouse_5194449008": {
     "published_at": "2026-04-26T03:40:50.947093+00:00",
@@ -591,7 +623,8 @@
     "salary_min": 36000,
     "salary_max": 55000,
     "salary_currency": "USD",
-    "salary_schedule": "yearly"
+    "salary_schedule": "yearly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/bozzuto.png"
   },
   "greenhouse_5163386008": {
     "published_at": "2026-04-26T03:40:50.947093+00:00",
@@ -609,7 +642,8 @@
     "salary_min": 43200,
     "salary_max": 66000,
     "salary_currency": "USD",
-    "salary_schedule": "yearly"
+    "salary_schedule": "yearly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/bozzuto.png"
   },
   "greenhouse_5170732008": {
     "published_at": "2026-04-26T03:40:50.947093+00:00",
@@ -627,7 +661,8 @@
     "salary_min": 36000,
     "salary_max": 55000,
     "salary_currency": "USD",
-    "salary_schedule": "yearly"
+    "salary_schedule": "yearly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/bozzuto.png"
   },
   "greenhouse_5170356008": {
     "published_at": "2026-04-26T03:40:50.947093+00:00",
@@ -645,7 +680,8 @@
     "salary_min": 43200,
     "salary_max": 66000,
     "salary_currency": "USD",
-    "salary_schedule": "yearly"
+    "salary_schedule": "yearly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/bozzuto.png"
   },
   "greenhouse_5192863008": {
     "published_at": "2026-04-26T03:40:50.947093+00:00",
@@ -663,7 +699,8 @@
     "salary_min": 36000,
     "salary_max": 55000,
     "salary_currency": "USD",
-    "salary_schedule": "yearly"
+    "salary_schedule": "yearly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/bozzuto.png"
   },
   "greenhouse_5174517008": {
     "published_at": "2026-04-26T03:40:50.947093+00:00",
@@ -681,7 +718,8 @@
     "salary_min": 36000,
     "salary_max": 55000,
     "salary_currency": "USD",
-    "salary_schedule": "yearly"
+    "salary_schedule": "yearly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/bozzuto.png"
   },
   "greenhouse_5174979008": {
     "published_at": "2026-04-26T03:40:50.947093+00:00",
@@ -699,7 +737,8 @@
     "salary_min": 36000,
     "salary_max": 55000,
     "salary_currency": "USD",
-    "salary_schedule": "yearly"
+    "salary_schedule": "yearly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/bozzuto.png"
   },
   "greenhouse_5173854008": {
     "published_at": "2026-04-26T03:40:50.947093+00:00",
@@ -717,7 +756,8 @@
     "salary_min": 43200,
     "salary_max": 66000,
     "salary_currency": "USD",
-    "salary_schedule": "yearly"
+    "salary_schedule": "yearly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/bozzuto.png"
   },
   "greenhouse_5147644008": {
     "published_at": "2026-04-26T03:40:50.947093+00:00",
@@ -735,7 +775,8 @@
     "salary_min": 36000,
     "salary_max": 55000,
     "salary_currency": "USD",
-    "salary_schedule": "yearly"
+    "salary_schedule": "yearly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/bozzuto.png"
   },
   "greenhouse_5198717008": {
     "published_at": "2026-04-26T03:40:50.947093+00:00",
@@ -753,7 +794,8 @@
     "salary_min": 43200,
     "salary_max": 66000,
     "salary_currency": "USD",
-    "salary_schedule": "yearly"
+    "salary_schedule": "yearly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/bozzuto.png"
   },
   "greenhouse_5141063008": {
     "published_at": "2026-04-26T03:40:50.947093+00:00",
@@ -771,7 +813,8 @@
     "salary_min": 36000,
     "salary_max": 55000,
     "salary_currency": "USD",
-    "salary_schedule": "yearly"
+    "salary_schedule": "yearly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/bozzuto.png"
   },
   "greenhouse_5169267008": {
     "published_at": "2026-04-26T03:40:50.947093+00:00",
@@ -789,7 +832,8 @@
     "salary_min": 36000,
     "salary_max": 55000,
     "salary_currency": "USD",
-    "salary_schedule": "yearly"
+    "salary_schedule": "yearly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/bozzuto.png"
   },
   "greenhouse_5162698008": {
     "published_at": "2026-04-26T03:40:50.947093+00:00",
@@ -807,7 +851,8 @@
     "salary_min": 36000,
     "salary_max": 55000,
     "salary_currency": "USD",
-    "salary_schedule": "yearly"
+    "salary_schedule": "yearly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/bozzuto.png"
   },
   "greenhouse_5146560008": {
     "published_at": "2026-04-26T03:40:50.947093+00:00",
@@ -825,7 +870,8 @@
     "salary_min": 36000,
     "salary_max": 55000,
     "salary_currency": "USD",
-    "salary_schedule": "yearly"
+    "salary_schedule": "yearly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/bozzuto.png"
   },
   "greenhouse_5189588008": {
     "published_at": "2026-04-26T03:40:50.947093+00:00",
@@ -843,7 +889,8 @@
     "salary_min": 43200,
     "salary_max": 66000,
     "salary_currency": "USD",
-    "salary_schedule": "yearly"
+    "salary_schedule": "yearly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/bozzuto.png"
   },
   "greenhouse_5189888008": {
     "published_at": "2026-04-26T03:40:50.947093+00:00",
@@ -861,7 +908,8 @@
     "salary_min": 43200,
     "salary_max": 66000,
     "salary_currency": "USD",
-    "salary_schedule": "yearly"
+    "salary_schedule": "yearly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/bozzuto.png"
   },
   "greenhouse_5187101008": {
     "published_at": "2026-04-26T03:40:50.947093+00:00",
@@ -879,7 +927,8 @@
     "salary_min": 43200,
     "salary_max": 66000,
     "salary_currency": "USD",
-    "salary_schedule": "yearly"
+    "salary_schedule": "yearly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/bozzuto.png"
   },
   "greenhouse_5169121008": {
     "published_at": "2026-04-26T03:40:50.947093+00:00",
@@ -897,7 +946,8 @@
     "salary_min": 66000,
     "salary_max": 108000,
     "salary_currency": "USD",
-    "salary_schedule": "yearly"
+    "salary_schedule": "yearly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/bozzuto.png"
   },
   "greenhouse_5167525008": {
     "published_at": "2026-04-26T03:40:50.947093+00:00",
@@ -915,7 +965,8 @@
     "salary_min": 55000,
     "salary_max": 90000,
     "salary_currency": "USD",
-    "salary_schedule": "yearly"
+    "salary_schedule": "yearly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/bozzuto.png"
   },
   "greenhouse_5184282008": {
     "published_at": "2026-04-26T03:40:50.947093+00:00",
@@ -933,7 +984,8 @@
     "salary_min": 66000,
     "salary_max": 108000,
     "salary_currency": "USD",
-    "salary_schedule": "yearly"
+    "salary_schedule": "yearly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/bozzuto.png"
   },
   "greenhouse_5196696008": {
     "published_at": "2026-04-26T03:40:50.947093+00:00",
@@ -951,7 +1003,8 @@
     "salary_min": 66000,
     "salary_max": 108000,
     "salary_currency": "USD",
-    "salary_schedule": "yearly"
+    "salary_schedule": "yearly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/bozzuto.png"
   },
   "greenhouse_5112624008": {
     "published_at": "2026-04-26T03:40:50.947093+00:00",
@@ -969,7 +1022,8 @@
     "salary_min": 55000,
     "salary_max": 90000,
     "salary_currency": "USD",
-    "salary_schedule": "yearly"
+    "salary_schedule": "yearly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/bozzuto.png"
   },
   "greenhouse_5179951008": {
     "published_at": "2026-04-26T03:40:50.947093+00:00",
@@ -987,7 +1041,8 @@
     "salary_min": 66000,
     "salary_max": 108000,
     "salary_currency": "USD",
-    "salary_schedule": "yearly"
+    "salary_schedule": "yearly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/bozzuto.png"
   },
   "greenhouse_5173594008": {
     "published_at": "2026-04-26T03:40:50.947093+00:00",
@@ -1005,7 +1060,8 @@
     "salary_min": 66000,
     "salary_max": 108000,
     "salary_currency": "USD",
-    "salary_schedule": "yearly"
+    "salary_schedule": "yearly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/bozzuto.png"
   },
   "greenhouse_5081486008": {
     "published_at": "2026-04-26T03:40:50.947093+00:00",
@@ -1023,7 +1079,8 @@
     "salary_min": 55000,
     "salary_max": 90000,
     "salary_currency": "USD",
-    "salary_schedule": "yearly"
+    "salary_schedule": "yearly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/bozzuto.png"
   },
   "greenhouse_5189676008": {
     "published_at": "2026-04-26T03:40:50.947093+00:00",
@@ -1041,7 +1098,8 @@
     "salary_min": 66000,
     "salary_max": 108000,
     "salary_currency": "USD",
-    "salary_schedule": "yearly"
+    "salary_schedule": "yearly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/bozzuto.png"
   },
   "greenhouse_5173464008": {
     "published_at": "2026-04-26T03:40:50.947093+00:00",
@@ -1059,7 +1117,8 @@
     "salary_min": 24,
     "salary_max": 38,
     "salary_currency": "USD",
-    "salary_schedule": "hourly"
+    "salary_schedule": "hourly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/bozzuto.png"
   },
   "greenhouse_5135865008": {
     "published_at": "2026-04-26T03:40:50.947093+00:00",
@@ -1077,7 +1136,8 @@
     "salary_min": 20,
     "salary_max": 32,
     "salary_currency": "USD",
-    "salary_schedule": "hourly"
+    "salary_schedule": "hourly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/bozzuto.png"
   },
   "greenhouse_5135881008": {
     "published_at": "2026-04-26T03:40:50.947093+00:00",
@@ -1095,7 +1155,8 @@
     "salary_min": 20,
     "salary_max": 32,
     "salary_currency": "USD",
-    "salary_schedule": "hourly"
+    "salary_schedule": "hourly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/bozzuto.png"
   },
   "greenhouse_5147772008": {
     "published_at": "2026-04-26T03:40:50.947093+00:00",
@@ -1113,7 +1174,8 @@
     "salary_min": 20,
     "salary_max": 32,
     "salary_currency": "USD",
-    "salary_schedule": "hourly"
+    "salary_schedule": "hourly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/bozzuto.png"
   },
   "greenhouse_5153818008": {
     "published_at": "2026-04-26T03:40:50.947093+00:00",
@@ -1131,7 +1193,8 @@
     "salary_min": 24,
     "salary_max": 38,
     "salary_currency": "USD",
-    "salary_schedule": "hourly"
+    "salary_schedule": "hourly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/bozzuto.png"
   },
   "greenhouse_5154557008": {
     "published_at": "2026-04-26T03:40:50.947093+00:00",
@@ -1149,7 +1212,8 @@
     "salary_min": 20,
     "salary_max": 32,
     "salary_currency": "USD",
-    "salary_schedule": "hourly"
+    "salary_schedule": "hourly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/bozzuto.png"
   },
   "greenhouse_5131226008": {
     "published_at": "2026-04-26T03:40:50.947093+00:00",
@@ -1167,7 +1231,8 @@
     "salary_min": 24,
     "salary_max": 38,
     "salary_currency": "USD",
-    "salary_schedule": "hourly"
+    "salary_schedule": "hourly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/bozzuto.png"
   },
   "greenhouse_5163544008": {
     "published_at": "2026-04-26T03:40:50.947093+00:00",
@@ -1185,7 +1250,8 @@
     "salary_min": 24,
     "salary_max": 38,
     "salary_currency": "USD",
-    "salary_schedule": "hourly"
+    "salary_schedule": "hourly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/bozzuto.png"
   },
   "greenhouse_5165351008": {
     "published_at": "2026-04-26T03:40:50.947093+00:00",
@@ -1203,7 +1269,8 @@
     "salary_min": 24,
     "salary_max": 35,
     "salary_currency": "USD",
-    "salary_schedule": "hourly"
+    "salary_schedule": "hourly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/bozzuto.png"
   },
   "greenhouse_5168961008": {
     "published_at": "2026-04-26T03:40:50.947093+00:00",
@@ -1221,7 +1288,8 @@
     "salary_min": 20,
     "salary_max": 32,
     "salary_currency": "USD",
-    "salary_schedule": "hourly"
+    "salary_schedule": "hourly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/bozzuto.png"
   },
   "greenhouse_5169687008": {
     "published_at": "2026-04-26T03:40:50.947093+00:00",
@@ -1239,7 +1307,8 @@
     "salary_min": 26,
     "salary_max": 38,
     "salary_currency": "USD",
-    "salary_schedule": "hourly"
+    "salary_schedule": "hourly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/bozzuto.png"
   },
   "greenhouse_5169128008": {
     "published_at": "2026-04-26T03:40:50.947093+00:00",
@@ -1257,7 +1326,8 @@
     "salary_min": 24,
     "salary_max": 38,
     "salary_currency": "USD",
-    "salary_schedule": "hourly"
+    "salary_schedule": "hourly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/bozzuto.png"
   },
   "greenhouse_5170609008": {
     "published_at": "2026-04-26T03:40:50.947093+00:00",
@@ -1275,7 +1345,8 @@
     "salary_min": 20,
     "salary_max": 32,
     "salary_currency": "USD",
-    "salary_schedule": "hourly"
+    "salary_schedule": "hourly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/bozzuto.png"
   },
   "greenhouse_5173213008": {
     "published_at": "2026-04-26T03:40:50.947093+00:00",
@@ -1293,7 +1364,8 @@
     "salary_min": 24,
     "salary_max": 38,
     "salary_currency": "USD",
-    "salary_schedule": "hourly"
+    "salary_schedule": "hourly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/bozzuto.png"
   },
   "greenhouse_5126975008": {
     "published_at": "2026-04-26T03:40:50.947093+00:00",
@@ -1311,7 +1383,8 @@
     "salary_min": 20,
     "salary_max": 32,
     "salary_currency": "USD",
-    "salary_schedule": "hourly"
+    "salary_schedule": "hourly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/bozzuto.png"
   },
   "greenhouse_5180039008": {
     "published_at": "2026-04-26T03:40:50.947093+00:00",
@@ -1329,7 +1402,8 @@
     "salary_min": 26000,
     "salary_max": 41600,
     "salary_currency": "USD",
-    "salary_schedule": "hourly"
+    "salary_schedule": "hourly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/bozzuto.png"
   },
   "greenhouse_5180264008": {
     "published_at": "2026-04-26T03:40:50.947093+00:00",
@@ -1347,7 +1421,8 @@
     "salary_min": 24,
     "salary_max": 38,
     "salary_currency": "USD",
-    "salary_schedule": "hourly"
+    "salary_schedule": "hourly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/bozzuto.png"
   },
   "greenhouse_5179994008": {
     "published_at": "2026-04-26T03:40:50.947093+00:00",
@@ -1365,7 +1440,8 @@
     "salary_min": 20,
     "salary_max": 32,
     "salary_currency": "USD",
-    "salary_schedule": "hourly"
+    "salary_schedule": "hourly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/bozzuto.png"
   },
   "greenhouse_5181772008": {
     "published_at": "2026-04-26T03:40:50.947093+00:00",
@@ -1383,7 +1459,8 @@
     "salary_min": 26000,
     "salary_max": 41600,
     "salary_currency": "USD",
-    "salary_schedule": "hourly"
+    "salary_schedule": "hourly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/bozzuto.png"
   },
   "greenhouse_5186474008": {
     "published_at": "2026-04-26T03:40:50.947093+00:00",
@@ -1401,7 +1478,8 @@
     "salary_min": 20,
     "salary_max": 32,
     "salary_currency": "USD",
-    "salary_schedule": "hourly"
+    "salary_schedule": "hourly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/bozzuto.png"
   },
   "greenhouse_5188599008": {
     "published_at": "2026-04-26T03:40:50.947093+00:00",
@@ -1419,7 +1497,8 @@
     "salary_min": 24,
     "salary_max": 38,
     "salary_currency": "USD",
-    "salary_schedule": "hourly"
+    "salary_schedule": "hourly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/bozzuto.png"
   },
   "greenhouse_5193944008": {
     "published_at": "2026-04-26T03:40:50.947093+00:00",
@@ -1437,7 +1516,8 @@
     "salary_min": 24000,
     "salary_max": 38400,
     "salary_currency": "USD",
-    "salary_schedule": "hourly"
+    "salary_schedule": "hourly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/bozzuto.png"
   },
   "greenhouse_5193360008": {
     "published_at": "2026-04-26T03:40:50.947093+00:00",
@@ -1455,7 +1535,8 @@
     "salary_min": 24,
     "salary_max": 38,
     "salary_currency": "USD",
-    "salary_schedule": "hourly"
+    "salary_schedule": "hourly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/bozzuto.png"
   },
   "greenhouse_5191392008": {
     "published_at": "2026-04-26T03:40:50.947093+00:00",
@@ -1473,7 +1554,8 @@
     "salary_min": 24000,
     "salary_max": 38400,
     "salary_currency": "USD",
-    "salary_schedule": "hourly"
+    "salary_schedule": "hourly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/bozzuto.png"
   },
   "greenhouse_5195458008": {
     "published_at": "2026-04-26T03:40:50.947093+00:00",
@@ -1491,7 +1573,8 @@
     "salary_min": 20,
     "salary_max": 32,
     "salary_currency": "USD",
-    "salary_schedule": "hourly"
+    "salary_schedule": "hourly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/bozzuto.png"
   },
   "greenhouse_5174635008": {
     "published_at": "2026-04-26T03:40:50.947093+00:00",
@@ -1509,7 +1592,8 @@
     "salary_min": 20,
     "salary_max": 32,
     "salary_currency": "USD",
-    "salary_schedule": "hourly"
+    "salary_schedule": "hourly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/bozzuto.png"
   },
   "greenhouse_5197937008": {
     "published_at": "2026-04-26T03:51:28.606293+00:00",
@@ -1527,7 +1611,8 @@
     "salary_min": 45176,
     "salary_max": 52000,
     "salary_currency": "USD",
-    "salary_schedule": "yearly"
+    "salary_schedule": "yearly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/bozzuto.png"
   },
   "greenhouse_5139812008": {
     "published_at": "2026-04-26T03:51:28.606293+00:00",
@@ -1545,7 +1630,8 @@
     "salary_min": 47000,
     "salary_max": 50000,
     "salary_currency": "USD",
-    "salary_schedule": "yearly"
+    "salary_schedule": "yearly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/bozzuto.png"
   },
   "greenhouse_5125524008": {
     "published_at": "2026-04-26T03:51:28.606293+00:00",
@@ -1563,7 +1649,8 @@
     "salary_min": 50000,
     "salary_max": 64000,
     "salary_currency": "USD",
-    "salary_schedule": "yearly"
+    "salary_schedule": "yearly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/bozzuto.png"
   },
   "greenhouse_5188664008": {
     "published_at": "2026-04-26T03:51:28.606293+00:00",
@@ -1581,7 +1668,8 @@
     "salary_min": 52000,
     "salary_max": 53000,
     "salary_currency": "USD",
-    "salary_schedule": "yearly"
+    "salary_schedule": "yearly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/bozzuto.png"
   },
   "greenhouse_5188598008": {
     "published_at": "2026-04-26T03:51:28.606293+00:00",
@@ -1599,7 +1687,8 @@
     "salary_min": 55000,
     "salary_max": 60000,
     "salary_currency": "USD",
-    "salary_schedule": "yearly"
+    "salary_schedule": "yearly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/bozzuto.png"
   },
   "greenhouse_5179217008": {
     "published_at": "2026-04-26T03:51:28.606293+00:00",
@@ -1617,7 +1706,8 @@
     "salary_min": 54000,
     "salary_max": 57000,
     "salary_currency": "USD",
-    "salary_schedule": "yearly"
+    "salary_schedule": "yearly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/bozzuto.png"
   },
   "greenhouse_5171621008": {
     "published_at": "2026-04-26T03:51:28.606293+00:00",
@@ -1635,7 +1725,8 @@
     "salary_min": 52530,
     "salary_max": 55000,
     "salary_currency": "USD",
-    "salary_schedule": "yearly"
+    "salary_schedule": "yearly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/bozzuto.png"
   },
   "greenhouse_5155524008": {
     "published_at": "2026-04-26T03:51:28.606293+00:00",
@@ -1653,7 +1744,8 @@
     "salary_min": 52000,
     "salary_max": 58240,
     "salary_currency": "USD",
-    "salary_schedule": "yearly"
+    "salary_schedule": "yearly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/bozzuto.png"
   },
   "greenhouse_5188542008": {
     "published_at": "2026-04-26T03:51:28.606293+00:00",
@@ -1671,7 +1763,8 @@
     "salary_min": 60000,
     "salary_max": 66000,
     "salary_currency": "USD",
-    "salary_schedule": "yearly"
+    "salary_schedule": "yearly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/bozzuto.png"
   },
   "greenhouse_5169269008": {
     "published_at": "2026-04-26T03:51:28.606293+00:00",
@@ -1689,7 +1782,8 @@
     "salary_min": 53000,
     "salary_max": 55000,
     "salary_currency": "USD",
-    "salary_schedule": "yearly"
+    "salary_schedule": "yearly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/bozzuto.png"
   },
   "greenhouse_5170375008": {
     "published_at": "2026-04-26T03:51:28.606293+00:00",
@@ -1707,7 +1801,8 @@
     "salary_min": 54110,
     "salary_max": 56000,
     "salary_currency": "USD",
-    "salary_schedule": "yearly"
+    "salary_schedule": "yearly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/bozzuto.png"
   },
   "greenhouse_5198150008": {
     "published_at": "2026-04-26T03:51:28.606293+00:00",
@@ -1725,7 +1820,8 @@
     "salary_min": 50300,
     "salary_max": 52700,
     "salary_currency": "USD",
-    "salary_schedule": "yearly"
+    "salary_schedule": "yearly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/bozzuto.png"
   },
   "greenhouse_5193967008": {
     "published_at": "2026-04-26T03:51:28.606293+00:00",
@@ -1743,7 +1839,8 @@
     "salary_min": 70000,
     "salary_max": 72000,
     "salary_currency": "USD",
-    "salary_schedule": "yearly"
+    "salary_schedule": "yearly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/bozzuto.png"
   },
   "greenhouse_5183069008": {
     "published_at": "2026-04-26T03:51:28.606293+00:00",
@@ -1761,7 +1858,8 @@
     "salary_min": 51500,
     "salary_max": 55000,
     "salary_currency": "USD",
-    "salary_schedule": "yearly"
+    "salary_schedule": "yearly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/bozzuto.png"
   },
   "greenhouse_5170383008": {
     "published_at": "2026-04-26T03:51:28.606293+00:00",
@@ -1779,7 +1877,8 @@
     "salary_min": 98400,
     "salary_max": 120000,
     "salary_currency": "USD",
-    "salary_schedule": "yearly"
+    "salary_schedule": "yearly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/bozzuto.png"
   },
   "greenhouse_5188583008": {
     "published_at": "2026-04-26T03:51:28.606293+00:00",
@@ -1797,7 +1896,8 @@
     "salary_min": 47000,
     "salary_max": 50000,
     "salary_currency": "USD",
-    "salary_schedule": "yearly"
+    "salary_schedule": "yearly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/bozzuto.png"
   },
   "greenhouse_5198850008": {
     "published_at": "2026-04-26T03:51:28.606293+00:00",
@@ -1815,7 +1915,8 @@
     "salary_min": 48000,
     "salary_max": 48000,
     "salary_currency": "USD",
-    "salary_schedule": "yearly"
+    "salary_schedule": "yearly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/bozzuto.png"
   },
   "greenhouse_5191065008": {
     "published_at": "2026-04-26T03:51:28.606293+00:00",
@@ -1833,7 +1934,8 @@
     "salary_min": 50000,
     "salary_max": 53000,
     "salary_currency": "USD",
-    "salary_schedule": "yearly"
+    "salary_schedule": "yearly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/bozzuto.png"
   },
   "greenhouse_5182481008": {
     "published_at": "2026-04-26T03:51:28.606293+00:00",
@@ -1851,7 +1953,8 @@
     "salary_min": 24,
     "salary_max": 26,
     "salary_currency": "USD",
-    "salary_schedule": "hourly"
+    "salary_schedule": "hourly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/bozzuto.png"
   },
   "greenhouse_5196899008": {
     "published_at": "2026-04-26T03:51:28.606293+00:00",
@@ -1869,7 +1972,8 @@
     "salary_min": 42024,
     "salary_max": 43000,
     "salary_currency": "USD",
-    "salary_schedule": "yearly"
+    "salary_schedule": "yearly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/bozzuto.png"
   },
   "greenhouse_5147616008": {
     "published_at": "2026-04-26T03:51:28.606293+00:00",
@@ -1887,7 +1991,8 @@
     "salary_min": 97000,
     "salary_max": 107000,
     "salary_currency": "USD",
-    "salary_schedule": "yearly"
+    "salary_schedule": "yearly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/bozzuto.png"
   },
   "greenhouse_5188377008": {
     "published_at": "2026-04-26T03:51:28.606293+00:00",
@@ -1905,7 +2010,8 @@
     "salary_min": 82000,
     "salary_max": 88000,
     "salary_currency": "USD",
-    "salary_schedule": "yearly"
+    "salary_schedule": "yearly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/bozzuto.png"
   },
   "greenhouse_5195743008": {
     "published_at": "2026-04-26T03:51:28.606293+00:00",
@@ -1923,7 +2029,8 @@
     "salary_min": 82000,
     "salary_max": 90000,
     "salary_currency": "USD",
-    "salary_schedule": "yearly"
+    "salary_schedule": "yearly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/bozzuto.png"
   },
   "greenhouse_5145811008": {
     "published_at": "2026-04-26T03:51:28.606293+00:00",
@@ -1941,7 +2048,8 @@
     "salary_min": 43000,
     "salary_max": 46000,
     "salary_currency": "USD",
-    "salary_schedule": "yearly"
+    "salary_schedule": "yearly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/bozzuto.png"
   },
   "greenhouse_5188601008": {
     "published_at": "2026-04-26T03:51:28.606293+00:00",
@@ -1959,7 +2067,8 @@
     "salary_min": 45000,
     "salary_max": 45000,
     "salary_currency": "USD",
-    "salary_schedule": "yearly"
+    "salary_schedule": "yearly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/bozzuto.png"
   },
   "greenhouse_5188592008": {
     "published_at": "2026-04-26T03:51:28.606293+00:00",
@@ -1977,7 +2086,8 @@
     "salary_min": 43200,
     "salary_max": 66000,
     "salary_currency": "USD",
-    "salary_schedule": "yearly"
+    "salary_schedule": "yearly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/bozzuto.png"
   },
   "greenhouse_5165951008": {
     "published_at": "2026-04-26T03:51:28.606293+00:00",
@@ -1995,7 +2105,8 @@
     "salary_min": 51500,
     "salary_max": 53000,
     "salary_currency": "USD",
-    "salary_schedule": "yearly"
+    "salary_schedule": "yearly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/bozzuto.png"
   },
   "greenhouse_5181466008": {
     "published_at": "2026-04-26T03:51:28.606293+00:00",
@@ -2013,7 +2124,8 @@
     "salary_min": 50000,
     "salary_max": 51000,
     "salary_currency": "USD",
-    "salary_schedule": "yearly"
+    "salary_schedule": "yearly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/bozzuto.png"
   },
   "greenhouse_5164259008": {
     "published_at": "2026-04-26T03:51:28.606293+00:00",
@@ -2031,7 +2143,8 @@
     "salary_min": 46000,
     "salary_max": 48000,
     "salary_currency": "USD",
-    "salary_schedule": "yearly"
+    "salary_schedule": "yearly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/bozzuto.png"
   },
   "greenhouse_5188579008": {
     "published_at": "2026-04-26T03:51:28.606293+00:00",
@@ -2049,7 +2162,8 @@
     "salary_min": 53000,
     "salary_max": 57000,
     "salary_currency": "USD",
-    "salary_schedule": "yearly"
+    "salary_schedule": "yearly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/bozzuto.png"
   },
   "greenhouse_5194401008": {
     "published_at": "2026-04-26T03:51:28.606293+00:00",
@@ -2067,7 +2181,8 @@
     "salary_min": 50000,
     "salary_max": 52000,
     "salary_currency": "USD",
-    "salary_schedule": "yearly"
+    "salary_schedule": "yearly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/bozzuto.png"
   },
   "greenhouse_5192005008": {
     "published_at": "2026-04-26T03:51:28.606293+00:00",
@@ -2085,7 +2200,8 @@
     "salary_min": 46000,
     "salary_max": 50000,
     "salary_currency": "USD",
-    "salary_schedule": "yearly"
+    "salary_schedule": "yearly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/bozzuto.png"
   },
   "greenhouse_5194388008": {
     "published_at": "2026-04-26T03:51:28.606293+00:00",
@@ -2103,7 +2219,8 @@
     "salary_min": 50000,
     "salary_max": 51000,
     "salary_currency": "USD",
-    "salary_schedule": "yearly"
+    "salary_schedule": "yearly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/bozzuto.png"
   },
   "greenhouse_5121017008": {
     "published_at": "2026-04-26T03:51:28.606293+00:00",
@@ -2121,7 +2238,8 @@
     "salary_min": 52000,
     "salary_max": 55000,
     "salary_currency": "USD",
-    "salary_schedule": "yearly"
+    "salary_schedule": "yearly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/bozzuto.png"
   },
   "greenhouse_5165574008": {
     "published_at": "2026-04-26T03:51:28.606293+00:00",
@@ -2139,7 +2257,8 @@
     "salary_min": 43000,
     "salary_max": 44720,
     "salary_currency": "USD",
-    "salary_schedule": "yearly"
+    "salary_schedule": "yearly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/bozzuto.png"
   },
   "greenhouse_5177249008": {
     "published_at": "2026-04-26T03:51:28.606293+00:00",
@@ -2157,7 +2276,8 @@
     "salary_min": 54000,
     "salary_max": 59500,
     "salary_currency": "USD",
-    "salary_schedule": "yearly"
+    "salary_schedule": "yearly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/bozzuto.png"
   },
   "greenhouse_5031999008": {
     "published_at": "2026-04-26T03:51:28.606293+00:00",
@@ -2175,7 +2295,8 @@
     "salary_min": 48000,
     "salary_max": 52000,
     "salary_currency": "USD",
-    "salary_schedule": "yearly"
+    "salary_schedule": "yearly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/bozzuto.png"
   },
   "greenhouse_5181002008": {
     "published_at": "2026-04-26T03:51:28.606293+00:00",
@@ -2193,7 +2314,8 @@
     "salary_min": 48000,
     "salary_max": 54500,
     "salary_currency": "USD",
-    "salary_schedule": "yearly"
+    "salary_schedule": "yearly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/bozzuto.png"
   },
   "greenhouse_5188139008": {
     "published_at": "2026-04-26T03:51:28.606293+00:00",
@@ -2211,7 +2333,8 @@
     "salary_min": 45000,
     "salary_max": 50000,
     "salary_currency": "USD",
-    "salary_schedule": "yearly"
+    "salary_schedule": "yearly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/bozzuto.png"
   },
   "greenhouse_5031966008": {
     "published_at": "2026-04-26T03:51:28.606293+00:00",
@@ -2229,7 +2352,8 @@
     "salary_min": 48000,
     "salary_max": 52000,
     "salary_currency": "USD",
-    "salary_schedule": "yearly"
+    "salary_schedule": "yearly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/bozzuto.png"
   },
   "greenhouse_5032021008": {
     "published_at": "2026-04-26T03:51:28.606293+00:00",
@@ -2247,7 +2371,8 @@
     "salary_min": 48000,
     "salary_max": 52000,
     "salary_currency": "USD",
-    "salary_schedule": "yearly"
+    "salary_schedule": "yearly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/bozzuto.png"
   },
   "greenhouse_5126461008": {
     "published_at": "2026-04-26T03:51:28.606293+00:00",
@@ -2265,7 +2390,8 @@
     "salary_min": 45760,
     "salary_max": 49920,
     "salary_currency": "USD",
-    "salary_schedule": "yearly"
+    "salary_schedule": "yearly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/bozzuto.png"
   },
   "greenhouse_5188155008": {
     "published_at": "2026-04-26T03:51:28.606293+00:00",
@@ -2283,7 +2409,8 @@
     "salary_min": 45000,
     "salary_max": 50000,
     "salary_currency": "USD",
-    "salary_schedule": "yearly"
+    "salary_schedule": "yearly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/bozzuto.png"
   },
   "greenhouse_5193935008": {
     "published_at": "2026-04-26T03:51:28.606293+00:00",
@@ -2301,7 +2428,8 @@
     "salary_min": 65000,
     "salary_max": 70000,
     "salary_currency": "USD",
-    "salary_schedule": "yearly"
+    "salary_schedule": "yearly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/bozzuto.png"
   },
   "greenhouse_5175964008": {
     "published_at": "2026-04-26T03:51:28.606293+00:00",
@@ -2319,7 +2447,8 @@
     "salary_min": 54000,
     "salary_max": 59000,
     "salary_currency": "USD",
-    "salary_schedule": "yearly"
+    "salary_schedule": "yearly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/bozzuto.png"
   },
   "greenhouse_5195801008": {
     "published_at": "2026-04-26T03:51:28.606293+00:00",
@@ -2337,7 +2466,8 @@
     "salary_min": 54000,
     "salary_max": 60000,
     "salary_currency": "USD",
-    "salary_schedule": "yearly"
+    "salary_schedule": "yearly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/bozzuto.png"
   },
   "greenhouse_5176768008": {
     "published_at": "2026-04-26T03:51:28.606293+00:00",
@@ -2355,7 +2485,8 @@
     "salary_min": 54500,
     "salary_max": 59000,
     "salary_currency": "USD",
-    "salary_schedule": "yearly"
+    "salary_schedule": "yearly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/bozzuto.png"
   },
   "greenhouse_5136915008": {
     "published_at": "2026-04-26T03:51:28.606293+00:00",
@@ -2373,7 +2504,8 @@
     "salary_min": 53560,
     "salary_max": 55000,
     "salary_currency": "USD",
-    "salary_schedule": "yearly"
+    "salary_schedule": "yearly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/bozzuto.png"
   },
   "greenhouse_5168812008": {
     "published_at": "2026-04-26T03:51:28.606293+00:00",
@@ -2391,7 +2523,8 @@
     "salary_min": 58240,
     "salary_max": 64480,
     "salary_currency": "USD",
-    "salary_schedule": "yearly"
+    "salary_schedule": "yearly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/bozzuto.png"
   },
   "greenhouse_5197428008": {
     "published_at": "2026-04-26T03:51:28.606293+00:00",
@@ -2409,7 +2542,8 @@
     "salary_min": 67200,
     "salary_max": 72000,
     "salary_currency": "USD",
-    "salary_schedule": "yearly"
+    "salary_schedule": "yearly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/bozzuto.png"
   },
   "greenhouse_5169130008": {
     "published_at": "2026-04-26T03:51:28.606293+00:00",
@@ -2427,7 +2561,8 @@
     "salary_min": 56000,
     "salary_max": 65000,
     "salary_currency": "USD",
-    "salary_schedule": "yearly"
+    "salary_schedule": "yearly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/bozzuto.png"
   },
   "greenhouse_5198602008": {
     "published_at": "2026-04-26T03:51:28.606293+00:00",
@@ -2445,7 +2580,8 @@
     "salary_min": 90000,
     "salary_max": 103000,
     "salary_currency": "USD",
-    "salary_schedule": "yearly"
+    "salary_schedule": "yearly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/bozzuto.png"
   },
   "greenhouse_5180022008": {
     "published_at": "2026-04-26T03:51:28.606293+00:00",
@@ -2463,7 +2599,8 @@
     "salary_min": 130000,
     "salary_max": 147500,
     "salary_currency": "USD",
-    "salary_schedule": "yearly"
+    "salary_schedule": "yearly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/bozzuto.png"
   },
   "greenhouse_5149840008": {
     "published_at": "2026-04-26T03:51:28.606293+00:00",
@@ -2481,7 +2618,8 @@
     "salary_min": 101908,
     "salary_max": 105000,
     "salary_currency": "USD",
-    "salary_schedule": "yearly"
+    "salary_schedule": "yearly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/bozzuto.png"
   },
   "greenhouse_5182595008": {
     "published_at": "2026-04-26T03:51:28.606293+00:00",
@@ -2499,7 +2637,8 @@
     "salary_min": 55000,
     "salary_max": 57000,
     "salary_currency": "USD",
-    "salary_schedule": "yearly"
+    "salary_schedule": "yearly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/bozzuto.png"
   },
   "greenhouse_5190690008": {
     "published_at": "2026-04-26T03:51:28.606293+00:00",
@@ -2517,7 +2656,8 @@
     "salary_min": 60000,
     "salary_max": 60000,
     "salary_currency": "USD",
-    "salary_schedule": "yearly"
+    "salary_schedule": "yearly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/bozzuto.png"
   },
   "greenhouse_5194139008": {
     "published_at": "2026-04-26T03:51:28.606293+00:00",
@@ -2535,7 +2675,8 @@
     "salary_min": 26,
     "salary_max": 30,
     "salary_currency": "USD",
-    "salary_schedule": "hourly"
+    "salary_schedule": "hourly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/bozzuto.png"
   },
   "greenhouse_5186442008": {
     "published_at": "2026-04-26T03:51:28.606293+00:00",
@@ -2553,7 +2694,8 @@
     "salary_min": 21,
     "salary_max": 23,
     "salary_currency": "USD",
-    "salary_schedule": "hourly"
+    "salary_schedule": "hourly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/bozzuto.png"
   },
   "greenhouse_4203729009": {
     "published_at": "2026-04-26T03:51:28.606293+00:00",
@@ -2571,7 +2713,8 @@
     "salary_min": 36000,
     "salary_max": 55000,
     "salary_currency": "USD",
-    "salary_schedule": "yearly"
+    "salary_schedule": "yearly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/cortland.png"
   },
   "greenhouse_4194354009": {
     "published_at": "2026-04-26T03:51:28.606293+00:00",
@@ -2589,7 +2732,8 @@
     "salary_min": 36000,
     "salary_max": 55000,
     "salary_currency": "USD",
-    "salary_schedule": "yearly"
+    "salary_schedule": "yearly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/cortland.png"
   },
   "greenhouse_4203010009": {
     "published_at": "2026-04-26T03:51:28.606293+00:00",
@@ -2607,7 +2751,8 @@
     "salary_min": 24000,
     "salary_max": 38400,
     "salary_currency": "USD",
-    "salary_schedule": "hourly"
+    "salary_schedule": "hourly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/cortland.png"
   },
   "greenhouse_4192566009": {
     "published_at": "2026-04-26T03:51:28.606293+00:00",
@@ -2625,7 +2770,8 @@
     "salary_min": 20,
     "salary_max": 32,
     "salary_currency": "USD",
-    "salary_schedule": "hourly"
+    "salary_schedule": "hourly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/cortland.png"
   },
   "greenhouse_4192575009": {
     "published_at": "2026-04-26T03:51:28.606293+00:00",
@@ -2643,7 +2789,8 @@
     "salary_min": 20,
     "salary_max": 32,
     "salary_currency": "USD",
-    "salary_schedule": "hourly"
+    "salary_schedule": "hourly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/cortland.png"
   },
   "greenhouse_4184781009": {
     "published_at": "2026-04-26T03:51:28.606293+00:00",
@@ -2661,7 +2808,8 @@
     "salary_min": 19,
     "salary_max": 21,
     "salary_currency": "USD",
-    "salary_schedule": "hourly"
+    "salary_schedule": "hourly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/cortland.png"
   },
   "greenhouse_4184543009": {
     "published_at": "2026-04-26T03:51:28.606293+00:00",
@@ -2679,7 +2827,8 @@
     "salary_min": 22,
     "salary_max": 32,
     "salary_currency": "USD",
-    "salary_schedule": "hourly"
+    "salary_schedule": "hourly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/cortland.png"
   },
   "greenhouse_4184575009": {
     "published_at": "2026-04-26T03:51:28.606293+00:00",
@@ -2697,7 +2846,8 @@
     "salary_min": 24000,
     "salary_max": 38400,
     "salary_currency": "USD",
-    "salary_schedule": "hourly"
+    "salary_schedule": "hourly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/cortland.png"
   },
   "greenhouse_4184785009": {
     "published_at": "2026-04-26T03:51:28.606293+00:00",
@@ -2715,7 +2865,8 @@
     "salary_min": 24,
     "salary_max": 38,
     "salary_currency": "USD",
-    "salary_schedule": "hourly"
+    "salary_schedule": "hourly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/cortland.png"
   },
   "greenhouse_4203003009": {
     "published_at": "2026-04-26T03:51:28.606293+00:00",
@@ -2733,7 +2884,8 @@
     "salary_min": 24,
     "salary_max": 32,
     "salary_currency": "USD",
-    "salary_schedule": "hourly"
+    "salary_schedule": "hourly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/cortland.png"
   },
   "greenhouse_4187863009": {
     "published_at": "2026-04-26T03:51:28.606293+00:00",
@@ -2751,7 +2903,8 @@
     "salary_min": 50000,
     "salary_max": 80000,
     "salary_currency": "USD",
-    "salary_schedule": "yearly"
+    "salary_schedule": "yearly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/cortland.png"
   },
   "greenhouse_4184247009": {
     "published_at": "2026-04-26T03:51:28.606293+00:00",
@@ -2769,7 +2922,8 @@
     "salary_min": 50000,
     "salary_max": 75000,
     "salary_currency": "USD",
-    "salary_schedule": "yearly"
+    "salary_schedule": "yearly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/cortland.png"
   },
   "greenhouse_4184261009": {
     "published_at": "2026-04-26T03:51:28.606293+00:00",
@@ -2787,7 +2941,8 @@
     "salary_min": 50000,
     "salary_max": 80000,
     "salary_currency": "USD",
-    "salary_schedule": "yearly"
+    "salary_schedule": "yearly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/cortland.png"
   },
   "greenhouse_4219228009": {
     "published_at": "2026-04-26T03:51:28.606293+00:00",
@@ -2805,7 +2960,8 @@
     "salary_min": 26,
     "salary_max": 30,
     "salary_currency": "USD",
-    "salary_schedule": "hourly"
+    "salary_schedule": "hourly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/cortland.png"
   },
   "greenhouse_4193094009": {
     "published_at": "2026-04-26T03:51:28.606293+00:00",
@@ -2823,7 +2979,8 @@
     "salary_min": 50000,
     "salary_max": 80000,
     "salary_currency": "USD",
-    "salary_schedule": "yearly"
+    "salary_schedule": "yearly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/cortland.png"
   },
   "greenhouse_4222280009": {
     "published_at": "2026-04-26T03:51:28.606293+00:00",
@@ -2841,7 +2998,8 @@
     "salary_min": 26,
     "salary_max": 30,
     "salary_currency": "USD",
-    "salary_schedule": "hourly"
+    "salary_schedule": "hourly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/cortland.png"
   },
   "greenhouse_4218633009": {
     "published_at": "2026-04-26T03:51:28.606293+00:00",
@@ -2859,7 +3017,8 @@
     "salary_min": 50000,
     "salary_max": 80000,
     "salary_currency": "USD",
-    "salary_schedule": "yearly"
+    "salary_schedule": "yearly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/cortland.png"
   },
   "greenhouse_4225124009": {
     "published_at": "2026-04-26T03:51:28.606293+00:00",
@@ -2877,7 +3036,8 @@
     "salary_min": 60000,
     "salary_max": 95000,
     "salary_currency": "USD",
-    "salary_schedule": "yearly"
+    "salary_schedule": "yearly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/cortland.png"
   },
   "greenhouse_4194253009": {
     "published_at": "2026-04-26T03:51:28.606293+00:00",
@@ -2895,7 +3055,8 @@
     "salary_min": 24,
     "salary_max": 26,
     "salary_currency": "USD",
-    "salary_schedule": "hourly"
+    "salary_schedule": "hourly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/cortland.png"
   },
   "greenhouse_4210366009": {
     "published_at": "2026-04-26T03:51:28.606293+00:00",
@@ -2913,7 +3074,8 @@
     "salary_min": 19,
     "salary_max": 20,
     "salary_currency": "USD",
-    "salary_schedule": "hourly"
+    "salary_schedule": "hourly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/cortland.png"
   },
   "greenhouse_4187598009": {
     "published_at": "2026-04-26T03:51:28.606293+00:00",
@@ -2931,7 +3093,8 @@
     "salary_min": 16,
     "salary_max": 22,
     "salary_currency": "USD",
-    "salary_schedule": "hourly"
+    "salary_schedule": "hourly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/cortland.png"
   },
   "greenhouse_4187686009": {
     "published_at": "2026-04-26T03:51:28.606293+00:00",
@@ -2949,7 +3112,8 @@
     "salary_min": 15,
     "salary_max": 22,
     "salary_currency": "USD",
-    "salary_schedule": "hourly"
+    "salary_schedule": "hourly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/cortland.png"
   },
   "greenhouse_4224353009": {
     "published_at": "2026-04-26T03:51:28.606293+00:00",
@@ -2967,7 +3131,8 @@
     "salary_min": 15,
     "salary_max": 22,
     "salary_currency": "USD",
-    "salary_schedule": "hourly"
+    "salary_schedule": "hourly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/cortland.png"
   },
   "greenhouse_4209257009": {
     "published_at": "2026-04-26T03:51:28.606293+00:00",
@@ -2985,7 +3150,8 @@
     "salary_min": 15,
     "salary_max": 22,
     "salary_currency": "USD",
-    "salary_schedule": "hourly"
+    "salary_schedule": "hourly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/cortland.png"
   },
   "greenhouse_4195519009": {
     "published_at": "2026-04-26T03:51:28.606293+00:00",
@@ -3003,7 +3169,8 @@
     "salary_min": 15,
     "salary_max": 22,
     "salary_currency": "USD",
-    "salary_schedule": "hourly"
+    "salary_schedule": "hourly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/cortland.png"
   },
   "greenhouse_4184528009": {
     "published_at": "2026-04-26T03:51:28.606293+00:00",
@@ -3021,7 +3188,8 @@
     "salary_min": 15,
     "salary_max": 22,
     "salary_currency": "USD",
-    "salary_schedule": "hourly"
+    "salary_schedule": "hourly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/cortland.png"
   },
   "greenhouse_4206073009": {
     "published_at": "2026-04-26T03:51:28.606293+00:00",
@@ -3039,7 +3207,8 @@
     "salary_min": 36000,
     "salary_max": 55000,
     "salary_currency": "USD",
-    "salary_schedule": "yearly"
+    "salary_schedule": "yearly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/cortland.png"
   },
   "greenhouse_4193704009": {
     "published_at": "2026-04-26T03:51:28.606293+00:00",
@@ -3057,7 +3226,8 @@
     "salary_min": 36000,
     "salary_max": 55000,
     "salary_currency": "USD",
-    "salary_schedule": "yearly"
+    "salary_schedule": "yearly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/cortland.png"
   },
   "greenhouse_4193690009": {
     "published_at": "2026-04-26T03:51:28.606293+00:00",
@@ -3075,7 +3245,8 @@
     "salary_min": 36000,
     "salary_max": 55000,
     "salary_currency": "USD",
-    "salary_schedule": "yearly"
+    "salary_schedule": "yearly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/cortland.png"
   },
   "greenhouse_4209872009": {
     "published_at": "2026-04-26T03:51:28.606293+00:00",
@@ -3093,7 +3264,8 @@
     "salary_min": 36000,
     "salary_max": 55000,
     "salary_currency": "USD",
-    "salary_schedule": "yearly"
+    "salary_schedule": "yearly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/cortland.png"
   },
   "greenhouse_4231638009": {
     "published_at": "2026-04-26T03:51:28.606293+00:00",
@@ -3111,7 +3283,8 @@
     "salary_min": 36000,
     "salary_max": 55000,
     "salary_currency": "USD",
-    "salary_schedule": "yearly"
+    "salary_schedule": "yearly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/cortland.png"
   },
   "greenhouse_4219224009": {
     "published_at": "2026-04-26T03:51:28.606293+00:00",
@@ -3129,7 +3302,8 @@
     "salary_min": 36000,
     "salary_max": 55000,
     "salary_currency": "USD",
-    "salary_schedule": "yearly"
+    "salary_schedule": "yearly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/cortland.png"
   },
   "greenhouse_4194988009": {
     "published_at": "2026-04-26T03:51:28.606293+00:00",
@@ -3147,7 +3321,8 @@
     "salary_min": 36000,
     "salary_max": 55000,
     "salary_currency": "USD",
-    "salary_schedule": "yearly"
+    "salary_schedule": "yearly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/cortland.png"
   },
   "greenhouse_4218056009": {
     "published_at": "2026-04-26T03:51:28.606293+00:00",
@@ -3165,7 +3340,8 @@
     "salary_min": 36000,
     "salary_max": 55000,
     "salary_currency": "USD",
-    "salary_schedule": "yearly"
+    "salary_schedule": "yearly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/cortland.png"
   },
   "greenhouse_4226661009": {
     "published_at": "2026-04-26T03:51:28.606293+00:00",
@@ -3183,7 +3359,8 @@
     "salary_min": 20,
     "salary_max": 22,
     "salary_currency": "USD",
-    "salary_schedule": "hourly"
+    "salary_schedule": "hourly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/cortland.png"
   },
   "greenhouse_4184228009": {
     "published_at": "2026-04-26T03:51:28.606293+00:00",
@@ -3201,7 +3378,8 @@
     "salary_min": 43200,
     "salary_max": 66000,
     "salary_currency": "USD",
-    "salary_schedule": "yearly"
+    "salary_schedule": "yearly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/cortland.png"
   },
   "greenhouse_4218065009": {
     "published_at": "2026-04-26T03:51:28.606293+00:00",
@@ -3219,7 +3397,8 @@
     "salary_min": 36000,
     "salary_max": 55000,
     "salary_currency": "USD",
-    "salary_schedule": "yearly"
+    "salary_schedule": "yearly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/cortland.png"
   },
   "greenhouse_4184287009": {
     "published_at": "2026-04-26T03:51:28.606293+00:00",
@@ -3237,7 +3416,8 @@
     "salary_min": 43000,
     "salary_max": 66000,
     "salary_currency": "USD",
-    "salary_schedule": "yearly"
+    "salary_schedule": "yearly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/cortland.png"
   },
   "greenhouse_4217751009": {
     "published_at": "2026-04-26T03:51:28.606293+00:00",
@@ -3255,7 +3435,8 @@
     "salary_min": 36000,
     "salary_max": 55000,
     "salary_currency": "USD",
-    "salary_schedule": "yearly"
+    "salary_schedule": "yearly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/cortland.png"
   },
   "greenhouse_4225206009": {
     "published_at": "2026-04-26T03:51:28.606293+00:00",
@@ -3273,7 +3454,8 @@
     "salary_min": 36000,
     "salary_max": 55000,
     "salary_currency": "USD",
-    "salary_schedule": "yearly"
+    "salary_schedule": "yearly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/cortland.png"
   },
   "greenhouse_4214973009": {
     "published_at": "2026-04-26T03:51:28.606293+00:00",
@@ -3291,7 +3473,8 @@
     "salary_min": 36000,
     "salary_max": 55000,
     "salary_currency": "USD",
-    "salary_schedule": "yearly"
+    "salary_schedule": "yearly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/cortland.png"
   },
   "greenhouse_4184296009": {
     "published_at": "2026-04-26T03:51:28.606293+00:00",
@@ -3309,7 +3492,8 @@
     "salary_min": 43200,
     "salary_max": 66000,
     "salary_currency": "USD",
-    "salary_schedule": "yearly"
+    "salary_schedule": "yearly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/cortland.png"
   },
   "greenhouse_4223584009": {
     "published_at": "2026-04-26T03:51:28.606293+00:00",
@@ -3327,7 +3511,8 @@
     "salary_min": 36000,
     "salary_max": 55000,
     "salary_currency": "USD",
-    "salary_schedule": "yearly"
+    "salary_schedule": "yearly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/cortland.png"
   },
   "greenhouse_4184302009": {
     "published_at": "2026-04-26T03:51:28.606293+00:00",
@@ -3345,7 +3530,8 @@
     "salary_min": 43200,
     "salary_max": 66000,
     "salary_currency": "USD",
-    "salary_schedule": "yearly"
+    "salary_schedule": "yearly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/cortland.png"
   },
   "greenhouse_4187879009": {
     "published_at": "2026-04-26T03:51:28.606293+00:00",
@@ -3363,7 +3549,8 @@
     "salary_min": 36000,
     "salary_max": 55000,
     "salary_currency": "USD",
-    "salary_schedule": "yearly"
+    "salary_schedule": "yearly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/cortland.png"
   },
   "greenhouse_4184275009": {
     "published_at": "2026-04-26T03:51:28.606293+00:00",
@@ -3381,7 +3568,8 @@
     "salary_min": 43200,
     "salary_max": 66000,
     "salary_currency": "USD",
-    "salary_schedule": "yearly"
+    "salary_schedule": "yearly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/cortland.png"
   },
   "greenhouse_4184406009": {
     "published_at": "2026-04-26T03:51:28.606293+00:00",
@@ -3399,7 +3587,8 @@
     "salary_min": 36000,
     "salary_max": 55000,
     "salary_currency": "USD",
-    "salary_schedule": "yearly"
+    "salary_schedule": "yearly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/cortland.png"
   },
   "greenhouse_4193102009": {
     "published_at": "2026-04-26T03:51:28.606293+00:00",
@@ -3417,7 +3606,8 @@
     "salary_min": 36000,
     "salary_max": 55000,
     "salary_currency": "USD",
-    "salary_schedule": "yearly"
+    "salary_schedule": "yearly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/cortland.png"
   },
   "greenhouse_4192743009": {
     "published_at": "2026-04-26T03:51:28.606293+00:00",
@@ -3435,7 +3625,8 @@
     "salary_min": 36000,
     "salary_max": 55000,
     "salary_currency": "USD",
-    "salary_schedule": "yearly"
+    "salary_schedule": "yearly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/cortland.png"
   },
   "greenhouse_4224586009": {
     "published_at": "2026-04-26T03:51:28.606293+00:00",
@@ -3453,7 +3644,8 @@
     "salary_min": 36000,
     "salary_max": 55000,
     "salary_currency": "USD",
-    "salary_schedule": "yearly"
+    "salary_schedule": "yearly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/cortland.png"
   },
   "greenhouse_4184763009": {
     "published_at": "2026-04-26T03:51:28.606293+00:00",
@@ -3471,7 +3663,8 @@
     "salary_min": 36000,
     "salary_max": 55000,
     "salary_currency": "USD",
-    "salary_schedule": "yearly"
+    "salary_schedule": "yearly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/cortland.png"
   },
   "greenhouse_4203326009": {
     "published_at": "2026-04-26T03:51:28.606293+00:00",
@@ -3489,7 +3682,8 @@
     "salary_min": 20,
     "salary_max": 32,
     "salary_currency": "USD",
-    "salary_schedule": "hourly"
+    "salary_schedule": "hourly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/cortland.png"
   },
   "greenhouse_4194530009": {
     "published_at": "2026-04-26T03:51:28.606293+00:00",
@@ -3507,7 +3701,8 @@
     "salary_min": 20,
     "salary_max": 32,
     "salary_currency": "USD",
-    "salary_schedule": "hourly"
+    "salary_schedule": "hourly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/cortland.png"
   },
   "greenhouse_4184744009": {
     "published_at": "2026-04-26T03:51:28.606293+00:00",
@@ -3525,7 +3720,8 @@
     "salary_min": 24000,
     "salary_max": 38400,
     "salary_currency": "USD",
-    "salary_schedule": "yearly"
+    "salary_schedule": "yearly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/cortland.png"
   },
   "greenhouse_4226705009": {
     "published_at": "2026-04-26T03:51:28.606293+00:00",
@@ -3543,7 +3739,8 @@
     "salary_min": 20,
     "salary_max": 32,
     "salary_currency": "USD",
-    "salary_schedule": "hourly"
+    "salary_schedule": "hourly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/cortland.png"
   },
   "greenhouse_4184192009": {
     "published_at": "2026-04-26T03:51:28.606293+00:00",
@@ -3561,7 +3758,8 @@
     "salary_min": 24000,
     "salary_max": 38400,
     "salary_currency": "USD",
-    "salary_schedule": "hourly"
+    "salary_schedule": "hourly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/cortland.png"
   },
   "greenhouse_4214627009": {
     "published_at": "2026-04-26T03:51:28.606293+00:00",
@@ -3579,7 +3777,8 @@
     "salary_min": 24000,
     "salary_max": 38400,
     "salary_currency": "USD",
-    "salary_schedule": "hourly"
+    "salary_schedule": "hourly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/cortland.png"
   },
   "greenhouse_4217747009": {
     "published_at": "2026-04-26T03:51:28.606293+00:00",
@@ -3597,7 +3796,8 @@
     "salary_min": 24000,
     "salary_max": 38400,
     "salary_currency": "USD",
-    "salary_schedule": "hourly"
+    "salary_schedule": "hourly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/cortland.png"
   },
   "greenhouse_4184351009": {
     "published_at": "2026-04-26T03:51:28.606293+00:00",
@@ -3615,7 +3815,8 @@
     "salary_min": 26000,
     "salary_max": 41600,
     "salary_currency": "USD",
-    "salary_schedule": "yearly"
+    "salary_schedule": "yearly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/cortland.png"
   },
   "greenhouse_4187928009": {
     "published_at": "2026-04-26T03:51:28.606293+00:00",
@@ -3633,7 +3834,8 @@
     "salary_min": 20,
     "salary_max": 32,
     "salary_currency": "USD",
-    "salary_schedule": "hourly"
+    "salary_schedule": "hourly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/cortland.png"
   },
   "greenhouse_4215751009": {
     "published_at": "2026-04-26T03:51:28.606293+00:00",
@@ -3651,7 +3853,8 @@
     "salary_min": 25,
     "salary_max": 26,
     "salary_currency": "USD",
-    "salary_schedule": "hourly"
+    "salary_schedule": "hourly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/cortland.png"
   },
   "greenhouse_4218032009": {
     "published_at": "2026-04-26T03:51:28.606293+00:00",
@@ -3669,7 +3872,8 @@
     "salary_min": 20,
     "salary_max": 32,
     "salary_currency": "USD",
-    "salary_schedule": "hourly"
+    "salary_schedule": "hourly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/cortland.png"
   },
   "greenhouse_4214967009": {
     "published_at": "2026-04-26T03:51:28.606293+00:00",
@@ -3687,7 +3891,8 @@
     "salary_min": 24,
     "salary_max": 32,
     "salary_currency": "USD",
-    "salary_schedule": "hourly"
+    "salary_schedule": "hourly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/cortland.png"
   },
   "greenhouse_4187486009": {
     "published_at": "2026-04-26T03:51:28.606293+00:00",
@@ -3705,7 +3910,8 @@
     "salary_min": 20,
     "salary_max": 32,
     "salary_currency": "USD",
-    "salary_schedule": "hourly"
+    "salary_schedule": "hourly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/cortland.png"
   },
   "greenhouse_4184225009": {
     "published_at": "2026-04-26T03:51:28.606293+00:00",
@@ -3723,7 +3929,8 @@
     "salary_min": 20,
     "salary_max": 32,
     "salary_currency": "USD",
-    "salary_schedule": "hourly"
+    "salary_schedule": "hourly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/cortland.png"
   },
   "greenhouse_4218323009": {
     "published_at": "2026-04-26T03:51:28.606293+00:00",
@@ -3741,7 +3948,8 @@
     "salary_min": 24000,
     "salary_max": 38400,
     "salary_currency": "USD",
-    "salary_schedule": "hourly"
+    "salary_schedule": "hourly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/cortland.png"
   },
   "greenhouse_4212010009": {
     "published_at": "2026-04-26T03:51:28.606293+00:00",
@@ -3759,7 +3967,8 @@
     "salary_min": 20,
     "salary_max": 32,
     "salary_currency": "USD",
-    "salary_schedule": "hourly"
+    "salary_schedule": "hourly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/cortland.png"
   },
   "greenhouse_4212032009": {
     "published_at": "2026-04-26T03:51:28.606293+00:00",
@@ -3777,7 +3986,8 @@
     "salary_min": 20,
     "salary_max": 32,
     "salary_currency": "USD",
-    "salary_schedule": "hourly"
+    "salary_schedule": "hourly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/cortland.png"
   },
   "greenhouse_4232283009": {
     "published_at": "2026-04-26T03:51:28.606293+00:00",
@@ -3795,7 +4005,8 @@
     "salary_min": 20,
     "salary_max": 32,
     "salary_currency": "USD",
-    "salary_schedule": "hourly"
+    "salary_schedule": "hourly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/cortland.png"
   },
   "greenhouse_4211697009": {
     "published_at": "2026-04-26T03:51:28.606293+00:00",
@@ -3813,7 +4024,8 @@
     "salary_min": 20,
     "salary_max": 32,
     "salary_currency": "USD",
-    "salary_schedule": "hourly"
+    "salary_schedule": "hourly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/cortland.png"
   },
   "greenhouse_4187926009": {
     "published_at": "2026-04-26T03:51:28.606293+00:00",
@@ -3831,7 +4043,8 @@
     "salary_min": 20,
     "salary_max": 32,
     "salary_currency": "USD",
-    "salary_schedule": "hourly"
+    "salary_schedule": "hourly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/cortland.png"
   },
   "greenhouse_4211931009": {
     "published_at": "2026-04-26T03:51:28.606293+00:00",
@@ -3849,7 +4062,8 @@
     "salary_min": 24000,
     "salary_max": 38400,
     "salary_currency": "USD",
-    "salary_schedule": "hourly"
+    "salary_schedule": "hourly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/cortland.png"
   },
   "greenhouse_4205131009": {
     "published_at": "2026-04-26T03:51:28.606293+00:00",
@@ -3867,7 +4081,8 @@
     "salary_min": 24,
     "salary_max": 32,
     "salary_currency": "USD",
-    "salary_schedule": "hourly"
+    "salary_schedule": "hourly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/cortland.png"
   },
   "greenhouse_4184376009": {
     "published_at": "2026-04-26T03:51:28.606293+00:00",
@@ -3885,7 +4100,8 @@
     "salary_min": 20,
     "salary_max": 32,
     "salary_currency": "USD",
-    "salary_schedule": "hourly"
+    "salary_schedule": "hourly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/cortland.png"
   },
   "greenhouse_4226459009": {
     "published_at": "2026-04-26T03:51:28.606293+00:00",
@@ -3903,7 +4119,8 @@
     "salary_min": 50000,
     "salary_max": 80000,
     "salary_currency": "USD",
-    "salary_schedule": "yearly"
+    "salary_schedule": "yearly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/cortland.png"
   },
   "greenhouse_4208738009": {
     "published_at": "2026-04-26T03:51:28.606293+00:00",
@@ -3921,7 +4138,8 @@
     "salary_min": 36000,
     "salary_max": 55000,
     "salary_currency": "USD",
-    "salary_schedule": "yearly"
+    "salary_schedule": "yearly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/cortland.png"
   },
   "greenhouse_4210182009": {
     "published_at": "2026-04-26T03:51:28.606293+00:00",
@@ -3939,7 +4157,8 @@
     "salary_min": 36000,
     "salary_max": 55000,
     "salary_currency": "USD",
-    "salary_schedule": "yearly"
+    "salary_schedule": "yearly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/cortland.png"
   },
   "greenhouse_4219182009": {
     "published_at": "2026-04-26T03:51:28.606293+00:00",
@@ -3957,7 +4176,8 @@
     "salary_min": 36000,
     "salary_max": 55000,
     "salary_currency": "USD",
-    "salary_schedule": "yearly"
+    "salary_schedule": "yearly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/cortland.png"
   },
   "greenhouse_4212216009": {
     "published_at": "2026-04-26T03:51:28.606293+00:00",
@@ -3975,7 +4195,8 @@
     "salary_min": 50000,
     "salary_max": 75000,
     "salary_currency": "USD",
-    "salary_schedule": "yearly"
+    "salary_schedule": "yearly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/cortland.png"
   },
   "greenhouse_4205506009": {
     "published_at": "2026-04-26T03:51:28.606293+00:00",
@@ -3993,7 +4214,8 @@
     "salary_min": 15,
     "salary_max": 22,
     "salary_currency": "USD",
-    "salary_schedule": "hourly"
+    "salary_schedule": "hourly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/cortland.png"
   },
   "greenhouse_4208740009": {
     "published_at": "2026-04-26T03:51:28.606293+00:00",
@@ -4011,7 +4233,8 @@
     "salary_min": 36000,
     "salary_max": 55000,
     "salary_currency": "USD",
-    "salary_schedule": "yearly"
+    "salary_schedule": "yearly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/cortland.png"
   },
   "greenhouse_4208634009": {
     "published_at": "2026-04-26T03:51:28.606293+00:00",
@@ -4029,7 +4252,8 @@
     "salary_min": 33000,
     "salary_max": 52000,
     "salary_currency": "USD",
-    "salary_schedule": "yearly"
+    "salary_schedule": "yearly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/cortland.png"
   },
   "greenhouse_4223772009": {
     "published_at": "2026-04-26T03:51:28.606293+00:00",
@@ -4047,7 +4271,8 @@
     "salary_min": 40000,
     "salary_max": 62000,
     "salary_currency": "USD",
-    "salary_schedule": "yearly"
+    "salary_schedule": "yearly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/cortland.png"
   },
   "greenhouse_4230089009": {
     "published_at": "2026-04-26T03:51:28.606293+00:00",
@@ -4065,7 +4290,8 @@
     "salary_min": 40000,
     "salary_max": 62000,
     "salary_currency": "USD",
-    "salary_schedule": "yearly"
+    "salary_schedule": "yearly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/cortland.png"
   },
   "greenhouse_4224062009": {
     "published_at": "2026-04-26T03:51:28.606293+00:00",
@@ -4083,7 +4309,8 @@
     "salary_min": 40000,
     "salary_max": 62000,
     "salary_currency": "USD",
-    "salary_schedule": "yearly"
+    "salary_schedule": "yearly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/cortland.png"
   },
   "greenhouse_4230091009": {
     "published_at": "2026-04-26T03:51:28.606293+00:00",
@@ -4101,7 +4328,8 @@
     "salary_min": 40000,
     "salary_max": 62000,
     "salary_currency": "USD",
-    "salary_schedule": "yearly"
+    "salary_schedule": "yearly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/cortland.png"
   },
   "greenhouse_4231635009": {
     "published_at": "2026-04-26T03:51:28.606293+00:00",
@@ -4119,7 +4347,8 @@
     "salary_min": 36000,
     "salary_max": 55000,
     "salary_currency": "USD",
-    "salary_schedule": "yearly"
+    "salary_schedule": "yearly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/cortland.png"
   },
   "greenhouse_4192953009": {
     "published_at": "2026-04-26T03:51:28.606293+00:00",
@@ -4137,7 +4366,8 @@
     "salary_min": 27,
     "salary_max": 30,
     "salary_currency": "USD",
-    "salary_schedule": "hourly"
+    "salary_schedule": "hourly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/cortland.png"
   },
   "greenhouse_4219057009": {
     "published_at": "2026-04-26T03:51:28.606293+00:00",
@@ -4155,7 +4385,8 @@
     "salary_min": 55000,
     "salary_max": 90000,
     "salary_currency": "USD",
-    "salary_schedule": "yearly"
+    "salary_schedule": "yearly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/cortland.png"
   },
   "greenhouse_4218008009": {
     "published_at": "2026-04-26T03:51:28.606293+00:00",
@@ -4173,7 +4404,8 @@
     "salary_min": 55000,
     "salary_max": 90000,
     "salary_currency": "USD",
-    "salary_schedule": "yearly"
+    "salary_schedule": "yearly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/cortland.png"
   },
   "greenhouse_4214190009": {
     "published_at": "2026-04-26T03:51:28.606293+00:00",
@@ -4191,7 +4423,8 @@
     "salary_min": 66000,
     "salary_max": 108000,
     "salary_currency": "USD",
-    "salary_schedule": "yearly"
+    "salary_schedule": "yearly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/cortland.png"
   },
   "greenhouse_4184363009": {
     "published_at": "2026-04-26T03:51:28.606293+00:00",
@@ -4209,7 +4442,8 @@
     "salary_min": 66000,
     "salary_max": 108000,
     "salary_currency": "USD",
-    "salary_schedule": "yearly"
+    "salary_schedule": "yearly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/cortland.png"
   },
   "greenhouse_4211708009": {
     "published_at": "2026-04-26T03:51:28.606293+00:00",
@@ -4227,7 +4461,8 @@
     "salary_min": 55000,
     "salary_max": 90000,
     "salary_currency": "USD",
-    "salary_schedule": "yearly"
+    "salary_schedule": "yearly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/cortland.png"
   },
   "greenhouse_4231362009": {
     "published_at": "2026-04-26T03:51:28.606293+00:00",
@@ -4245,7 +4480,8 @@
     "salary_min": 55000,
     "salary_max": 90000,
     "salary_currency": "USD",
-    "salary_schedule": "yearly"
+    "salary_schedule": "yearly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/cortland.png"
   },
   "greenhouse_4184219009": {
     "published_at": "2026-04-26T03:51:28.606293+00:00",
@@ -4263,7 +4499,8 @@
     "salary_min": 66000,
     "salary_max": 108000,
     "salary_currency": "USD",
-    "salary_schedule": "yearly"
+    "salary_schedule": "yearly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/cortland.png"
   },
   "greenhouse_4206795009": {
     "published_at": "2026-04-26T03:51:28.606293+00:00",
@@ -4281,7 +4518,8 @@
     "salary_min": 20,
     "salary_max": 28,
     "salary_currency": "USD",
-    "salary_schedule": "hourly"
+    "salary_schedule": "hourly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/cortland.png"
   },
   "greenhouse_4226737009": {
     "published_at": "2026-04-26T03:51:28.606293+00:00",
@@ -4299,7 +4537,8 @@
     "salary_min": 24000,
     "salary_max": 38400,
     "salary_currency": "USD",
-    "salary_schedule": "hourly"
+    "salary_schedule": "hourly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/cortland.png"
   },
   "greenhouse_4184211009": {
     "published_at": "2026-04-26T03:51:28.606293+00:00",
@@ -4317,7 +4556,8 @@
     "salary_min": 24000,
     "salary_max": 38400,
     "salary_currency": "USD",
-    "salary_schedule": "yearly"
+    "salary_schedule": "yearly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/cortland.png"
   },
   "greenhouse_4205667009": {
     "published_at": "2026-04-26T03:51:28.606293+00:00",
@@ -4335,7 +4575,8 @@
     "salary_min": 24,
     "salary_max": 27,
     "salary_currency": "USD",
-    "salary_schedule": "hourly"
+    "salary_schedule": "hourly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/cortland.png"
   },
   "greenhouse_4184635009": {
     "published_at": "2026-04-26T03:51:28.606293+00:00",
@@ -4353,7 +4594,8 @@
     "salary_min": 20,
     "salary_max": 32,
     "salary_currency": "USD",
-    "salary_schedule": "hourly"
+    "salary_schedule": "hourly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/cortland.png"
   },
   "greenhouse_4222471009": {
     "published_at": "2026-04-26T03:51:28.606293+00:00",
@@ -4371,7 +4613,8 @@
     "salary_min": 24000,
     "salary_max": 38400,
     "salary_currency": "USD",
-    "salary_schedule": "hourly"
+    "salary_schedule": "hourly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/cortland.png"
   },
   "greenhouse_4184778009": {
     "published_at": "2026-04-26T03:51:28.606293+00:00",
@@ -4389,7 +4632,8 @@
     "salary_min": 20,
     "salary_max": 32,
     "salary_currency": "USD",
-    "salary_schedule": "hourly"
+    "salary_schedule": "hourly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/cortland.png"
   },
   "greenhouse_4184306009": {
     "published_at": "2026-04-26T03:51:28.606293+00:00",
@@ -4407,7 +4651,8 @@
     "salary_min": 24,
     "salary_max": 32,
     "salary_currency": "USD",
-    "salary_schedule": "hourly"
+    "salary_schedule": "hourly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/cortland.png"
   },
   "greenhouse_4184319009": {
     "published_at": "2026-04-26T03:51:28.606293+00:00",
@@ -4425,7 +4670,8 @@
     "salary_min": 20,
     "salary_max": 32,
     "salary_currency": "USD",
-    "salary_schedule": "hourly"
+    "salary_schedule": "hourly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/cortland.png"
   },
   "greenhouse_4229437009": {
     "published_at": "2026-04-26T03:51:28.606293+00:00",
@@ -4443,7 +4689,8 @@
     "salary_min": 20,
     "salary_max": 32,
     "salary_currency": "USD",
-    "salary_schedule": "hourly"
+    "salary_schedule": "hourly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/cortland.png"
   },
   "greenhouse_4193098009": {
     "published_at": "2026-04-26T03:51:28.606293+00:00",
@@ -4461,7 +4708,8 @@
     "salary_min": 24000,
     "salary_max": 38400,
     "salary_currency": "USD",
-    "salary_schedule": "hourly"
+    "salary_schedule": "hourly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/cortland.png"
   },
   "lever_15cd2830-dfa4-40a2-a57f-df23b50d0180": {
     "published_at": "2026-04-26T03:51:28.606293+00:00",
@@ -4479,7 +4727,8 @@
     "salary_min": 23,
     "salary_max": 27,
     "salary_currency": "USD",
-    "salary_schedule": "hourly"
+    "salary_schedule": "hourly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/lessen.png"
   },
   "lever_7f2ac150-5e2c-4fe2-901a-4a8243e45c7f": {
     "published_at": "2026-04-26T03:51:28.606293+00:00",
@@ -4497,7 +4746,8 @@
     "salary_min": 23,
     "salary_max": 27,
     "salary_currency": "USD",
-    "salary_schedule": "hourly"
+    "salary_schedule": "hourly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/lessen.png"
   },
   "lever_9cdd5101-68a0-4064-938c-b443318f7e64": {
     "published_at": "2026-04-26T03:51:28.606293+00:00",
@@ -4515,7 +4765,8 @@
     "salary_min": 23,
     "salary_max": 27,
     "salary_currency": "USD",
-    "salary_schedule": "hourly"
+    "salary_schedule": "hourly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/lessen.png"
   },
   "lever_b2e15b5c-d9e8-4656-8a29-1efea8b94585": {
     "published_at": "2026-04-26T03:51:28.606293+00:00",
@@ -4533,7 +4784,8 @@
     "salary_min": 23,
     "salary_max": 27,
     "salary_currency": "USD",
-    "salary_schedule": "hourly"
+    "salary_schedule": "hourly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/lessen.png"
   },
   "lever_ecbbf23d-c5a1-42a0-b218-541e0b7445ec": {
     "published_at": "2026-04-26T15:26:20.674142+00:00",
@@ -4551,6 +4803,7 @@
     "salary_min": null,
     "salary_max": null,
     "salary_currency": "USD",
-    "salary_schedule": "yearly"
+    "salary_schedule": "yearly",
+    "company_logo_url": "https://graysontu.github.io/pmj-pipeline/logos/lessen.png"
   }
 }

@@ -51,6 +51,8 @@ def generate_feed_xml(active_jobs: list[dict], path: Path = FEED_PATH) -> None:
         etree.SubElement(job_el, "expiration_date").text = _iso_date(expiry)
         etree.SubElement(job_el, "remotetype").text = job.get("remote_type") or "onsite"
         etree.SubElement(job_el, "companyurl").text = etree.CDATA(job.get("company_url") or "")
+        if job.get("company_logo_url"):
+            etree.SubElement(job_el, "companylogo").text = etree.CDATA(job["company_logo_url"])
         if job.get("salary_min") is not None and job.get("salary_max") is not None:
             etree.SubElement(job_el, "salary_min").text = str(int(job["salary_min"]))
             etree.SubElement(job_el, "salary_max").text = str(int(job["salary_max"]))

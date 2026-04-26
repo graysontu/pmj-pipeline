@@ -81,6 +81,7 @@ def _job_snapshot(job: RewrittenJob) -> dict:
         "salary_max": job.salary_max,
         "salary_currency": job.salary_currency,
         "salary_schedule": job.salary_schedule,
+        "company_logo_url": job.company_logo_url or "",
     }
 
 
@@ -142,8 +143,11 @@ def run() -> None:
         for source in sources:
             slug = source["slug"]
             company_name = source["company_name"]
+            logo_url = source.get("logo_url") or ""
             try:
                 jobs = fetch_fn(slug, company_name)
+                if logo_url:
+                    jobs = [j.model_copy(update={"company_logo_url": logo_url}) for j in jobs]
                 all_jobs.extend(jobs)
                 fetch_counts[source_type] += len(jobs)
             except Exception as exc:

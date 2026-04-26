@@ -9,6 +9,7 @@ on:
       - "output/feed_test.xml"
       - "output/feed_minimal.xml"
       - "output/feed_diagnostic.xml"
+      - "output/logos/**"
 
 permissions:
   contents: read

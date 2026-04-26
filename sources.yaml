@@ -2,65 +2,94 @@
 greenhouse:
   - slug: bozzuto
     company_name: Bozzuto
+    logo_url: https://graysontu.github.io/pmj-pipeline/logos/bozzuto.png
   - slug: cortland
     company_name: Cortland
+    logo_url: https://graysontu.github.io/pmj-pipeline/logos/cortland.png
   - slug: lpc
     company_name: Lincoln Property Company
+    logo_url: https://graysontu.github.io/pmj-pipeline/logos/lincoln-property-company.png
   - slug: assetliving
     company_name: Asset Living
+    logo_url: https://graysontu.github.io/pmj-pipeline/logos/asset-living.png
   - slug: olympusproperty
     company_name: Olympus Property
+    logo_url: https://graysontu.github.io/pmj-pipeline/logos/olympus-property.png
   - slug: weinsteinproperties
     company_name: Weinstein Properties
+    logo_url: https://graysontu.github.io/pmj-pipeline/logos/weinstein-properties.png
   - slug: mgproperties
     company_name: MG Properties
+    logo_url: https://graysontu.github.io/pmj-pipeline/logos/mg-properties.png
   - slug: vacasa
     company_name: Vacasa
+    logo_url: https://graysontu.github.io/pmj-pipeline/logos/vacasa.png
   - slug: roofstock
     company_name: Roofstock
+    logo_url: https://graysontu.github.io/pmj-pipeline/logos/roofstock.png
   - slug: thesciongroupllc
     company_name: The Scion Group
+    logo_url: https://graysontu.github.io/pmj-pipeline/logos/the-scion-group.png
   - slug: midpenhousing
     company_name: MidPen Housing
+    logo_url: https://graysontu.github.io/pmj-pipeline/logos/midpen-housing.png
   - slug: prometheusrealestategroup
     company_name: Prometheus Real Estate Group
+    logo_url: https://graysontu.github.io/pmj-pipeline/logos/prometheus-real-estate-group.png
   - slug: hrpliving
     company_name: Hawthorne Residential Partners
+    logo_url: https://graysontu.github.io/pmj-pipeline/logos/hawthorne-residential-partners.png
   - slug: johnmcorcorancompany
     company_name: John M. Corcoran & Company
+    logo_url: https://graysontu.github.io/pmj-pipeline/logos/john-m-corcoran-company.png
   - slug: paragonpropertiesco
     company_name: Paragon Properties
+    logo_url: https://graysontu.github.io/pmj-pipeline/logos/paragon-properties.png
   - slug: hillpointe
     company_name: Hillpointe
+    logo_url: https://graysontu.github.io/pmj-pipeline/logos/hillpointe.png
   - slug: ackermanngroup
     company_name: Ackermann Group
+    logo_url: https://graysontu.github.io/pmj-pipeline/logos/ackermann-group.png
   - slug: vanmetre
     company_name: Van Metre
+    logo_url: https://graysontu.github.io/pmj-pipeline/logos/van-metre.png
   - slug: resideliving
     company_name: Reside Living
+    logo_url: https://graysontu.github.io/pmj-pipeline/logos/reside-living.png
   - slug: cottonwoodresidential
     company_name: Cottonwood Residential
+    logo_url: https://graysontu.github.io/pmj-pipeline/logos/cottonwood-residential.png
   - slug: birgo
     company_name: Birgo
+    logo_url: https://graysontu.github.io/pmj-pipeline/logos/birgo.png
   - slug: wms
     company_name: Waypoint Management Services
+    logo_url: https://graysontu.github.io/pmj-pipeline/logos/waypoint-management-services.png
   - slug: comstock
     company_name: Comstock
+    logo_url: https://graysontu.github.io/pmj-pipeline/logos/comstock.png
   - slug: bamfam
     company_name: BAM Companies
+    logo_url: https://graysontu.github.io/pmj-pipeline/logos/bam-companies.png
   - slug: propertymanagementassociates
     company_name: Property Management Associates
+    logo_url: https://graysontu.github.io/pmj-pipeline/logos/property-management-associates.png
   - slug: berkshiregroupllc
     company_name: Berkshire Group
+    logo_url: https://graysontu.github.io/pmj-pipeline/logos/berkshire-group.png
 
 # Verified slugs: https://api.lever.co/v0/postings/{slug}?mode=json
 lever:
   - slug: lessen
     company_name: Lessen
+    logo_url: https://graysontu.github.io/pmj-pipeline/logos/lessen.png
   - slug: belong
     company_name: Belong Home
+    logo_url: https://graysontu.github.io/pmj-pipeline/logos/belong-home.png
   - slug: entrata
     company_name: Entrata
+    logo_url: https://graysontu.github.io/pmj-pipeline/logos/entrata.png
 
 # Verified slugs: https://api.ashbyhq.com/posting-api/job-board/{slug}
 # Add companies here once you confirm their Ashby board is public.
