@@ -68,6 +68,10 @@
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/bozzuto]]></companyurl>
+    <salary_min>45176</salary_min>
+    <salary_max>52000</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>yearly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_5139812008]]></referencenumber>
@@ -100,6 +104,10 @@
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/bozzuto]]></companyurl>
+    <salary_min>47000</salary_min>
+    <salary_max>50000</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>yearly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_5125524008]]></referencenumber>
@@ -133,6 +141,10 @@
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/bozzuto]]></companyurl>
+    <salary_min>50000</salary_min>
+    <salary_max>64000</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>yearly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_5188664008]]></referencenumber>
@@ -165,6 +177,10 @@
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/bozzuto]]></companyurl>
+    <salary_min>52000</salary_min>
+    <salary_max>53000</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>yearly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_5188598008]]></referencenumber>
@@ -197,6 +213,10 @@
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/bozzuto]]></companyurl>
+    <salary_min>55000</salary_min>
+    <salary_max>60000</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>yearly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_5179217008]]></referencenumber>
@@ -232,6 +252,10 @@
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/bozzuto]]></companyurl>
+    <salary_min>54000</salary_min>
+    <salary_max>57000</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>yearly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_5171621008]]></referencenumber>
@@ -264,6 +288,10 @@
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/bozzuto]]></companyurl>
+    <salary_min>52530</salary_min>
+    <salary_max>55000</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>yearly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_5155524008]]></referencenumber>
@@ -299,6 +327,10 @@
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/bozzuto]]></companyurl>
+    <salary_min>52000</salary_min>
+    <salary_max>58240</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>yearly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_5188542008]]></referencenumber>
@@ -331,6 +363,10 @@
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/bozzuto]]></companyurl>
+    <salary_min>60000</salary_min>
+    <salary_max>66000</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>yearly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_5169269008]]></referencenumber>
@@ -363,6 +399,10 @@
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/bozzuto]]></companyurl>
+    <salary_min>53000</salary_min>
+    <salary_max>55000</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>yearly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_5170375008]]></referencenumber>
@@ -393,6 +433,10 @@
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/bozzuto]]></companyurl>
+    <salary_min>54110</salary_min>
+    <salary_max>56000</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>yearly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_5198150008]]></referencenumber>
@@ -425,6 +469,10 @@
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/bozzuto]]></companyurl>
+    <salary_min>50300</salary_min>
+    <salary_max>52700</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>yearly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_5193967008]]></referencenumber>
@@ -462,6 +510,10 @@
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/bozzuto]]></companyurl>
+    <salary_min>70000</salary_min>
+    <salary_max>72000</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>yearly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_5183069008]]></referencenumber>
@@ -491,6 +543,10 @@
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/bozzuto]]></companyurl>
+    <salary_min>51500</salary_min>
+    <salary_max>55000</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>yearly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_5170383008]]></referencenumber>
@@ -522,6 +578,10 @@
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/bozzuto]]></companyurl>
+    <salary_min>98400</salary_min>
+    <salary_max>120000</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>yearly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_5188583008]]></referencenumber>
@@ -553,6 +613,10 @@
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/bozzuto]]></companyurl>
+    <salary_min>47000</salary_min>
+    <salary_max>50000</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>yearly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_5198850008]]></referencenumber>
@@ -584,6 +648,10 @@
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/bozzuto]]></companyurl>
+    <salary_min>48000</salary_min>
+    <salary_max>48000</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>yearly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_5191065008]]></referencenumber>
@@ -615,6 +683,10 @@
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/bozzuto]]></companyurl>
+    <salary_min>50000</salary_min>
+    <salary_max>53000</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>yearly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_5182481008]]></referencenumber>
@@ -647,6 +719,10 @@
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/bozzuto]]></companyurl>
+    <salary_min>24</salary_min>
+    <salary_max>26</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>hourly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_5196899008]]></referencenumber>
@@ -681,6 +757,10 @@
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/bozzuto]]></companyurl>
+    <salary_min>42024</salary_min>
+    <salary_max>43000</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>yearly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_5147616008]]></referencenumber>
@@ -716,6 +796,10 @@
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/bozzuto]]></companyurl>
+    <salary_min>97000</salary_min>
+    <salary_max>107000</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>yearly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_5188377008]]></referencenumber>
@@ -748,6 +832,10 @@
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/bozzuto]]></companyurl>
+    <salary_min>82000</salary_min>
+    <salary_max>88000</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>yearly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_5195743008]]></referencenumber>
@@ -779,6 +867,10 @@
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/bozzuto]]></companyurl>
+    <salary_min>82000</salary_min>
+    <salary_max>90000</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>yearly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_5145811008]]></referencenumber>
@@ -809,6 +901,10 @@
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/bozzuto]]></companyurl>
+    <salary_min>43000</salary_min>
+    <salary_max>46000</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>yearly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_5188601008]]></referencenumber>
@@ -842,6 +938,10 @@
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/bozzuto]]></companyurl>
+    <salary_min>45000</salary_min>
+    <salary_max>45000</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>yearly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_5188592008]]></referencenumber>
@@ -874,6 +974,10 @@
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/bozzuto]]></companyurl>
+    <salary_min>43200</salary_min>
+    <salary_max>66000</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>yearly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_5165951008]]></referencenumber>
@@ -905,6 +1009,10 @@
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/bozzuto]]></companyurl>
+    <salary_min>51500</salary_min>
+    <salary_max>53000</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>yearly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_5181466008]]></referencenumber>
@@ -939,6 +1047,10 @@
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/bozzuto]]></companyurl>
+    <salary_min>50000</salary_min>
+    <salary_max>51000</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>yearly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_5164259008]]></referencenumber>
@@ -970,6 +1082,10 @@
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/bozzuto]]></companyurl>
+    <salary_min>46000</salary_min>
+    <salary_max>48000</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>yearly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_5188579008]]></referencenumber>
@@ -1002,6 +1118,10 @@
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/bozzuto]]></companyurl>
+    <salary_min>53000</salary_min>
+    <salary_max>57000</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>yearly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_5194401008]]></referencenumber>
@@ -1034,6 +1154,10 @@
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/bozzuto]]></companyurl>
+    <salary_min>50000</salary_min>
+    <salary_max>52000</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>yearly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_5192005008]]></referencenumber>
@@ -1059,6 +1183,10 @@
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/bozzuto]]></companyurl>
+    <salary_min>46000</salary_min>
+    <salary_max>50000</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>yearly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_5194388008]]></referencenumber>
@@ -1092,6 +1220,10 @@
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/bozzuto]]></companyurl>
+    <salary_min>50000</salary_min>
+    <salary_max>51000</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>yearly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_5121017008]]></referencenumber>
@@ -1124,6 +1256,10 @@
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/bozzuto]]></companyurl>
+    <salary_min>52000</salary_min>
+    <salary_max>55000</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>yearly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_5165574008]]></referencenumber>
@@ -1155,6 +1291,10 @@
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/bozzuto]]></companyurl>
+    <salary_min>43000</salary_min>
+    <salary_max>44720</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>yearly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_5177249008]]></referencenumber>
@@ -1188,6 +1328,10 @@
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/bozzuto]]></companyurl>
+    <salary_min>54000</salary_min>
+    <salary_max>59500</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>yearly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_5031999008]]></referencenumber>
@@ -1221,6 +1365,10 @@
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/bozzuto]]></companyurl>
+    <salary_min>48000</salary_min>
+    <salary_max>52000</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>yearly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_5181002008]]></referencenumber>
@@ -1254,6 +1402,10 @@
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/bozzuto]]></companyurl>
+    <salary_min>48000</salary_min>
+    <salary_max>54500</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>yearly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_5188139008]]></referencenumber>
@@ -1286,6 +1438,10 @@
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/bozzuto]]></companyurl>
+    <salary_min>45000</salary_min>
+    <salary_max>50000</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>yearly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_5031966008]]></referencenumber>
@@ -1318,6 +1474,10 @@
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/bozzuto]]></companyurl>
+    <salary_min>48000</salary_min>
+    <salary_max>52000</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>yearly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_5032021008]]></referencenumber>
@@ -1352,6 +1512,10 @@
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/bozzuto]]></companyurl>
+    <salary_min>48000</salary_min>
+    <salary_max>52000</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>yearly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_5126461008]]></referencenumber>
@@ -1386,6 +1550,10 @@
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/bozzuto]]></companyurl>
+    <salary_min>45760</salary_min>
+    <salary_max>49920</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>yearly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_5188155008]]></referencenumber>
@@ -1418,6 +1586,10 @@
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/bozzuto]]></companyurl>
+    <salary_min>45000</salary_min>
+    <salary_max>50000</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>yearly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_5193935008]]></referencenumber>
@@ -1449,6 +1621,10 @@
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/bozzuto]]></companyurl>
+    <salary_min>65000</salary_min>
+    <salary_max>70000</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>yearly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_5175964008]]></referencenumber>
@@ -1482,6 +1658,10 @@
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/bozzuto]]></companyurl>
+    <salary_min>54000</salary_min>
+    <salary_max>59000</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>yearly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_5195801008]]></referencenumber>
@@ -1513,6 +1693,10 @@
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/bozzuto]]></companyurl>
+    <salary_min>54000</salary_min>
+    <salary_max>60000</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>yearly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_5176768008]]></referencenumber>
@@ -1544,6 +1728,10 @@
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/bozzuto]]></companyurl>
+    <salary_min>54500</salary_min>
+    <salary_max>59000</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>yearly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_5136915008]]></referencenumber>
@@ -1577,6 +1765,10 @@
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/bozzuto]]></companyurl>
+    <salary_min>53560</salary_min>
+    <salary_max>55000</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>yearly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_5168812008]]></referencenumber>
@@ -1610,6 +1802,10 @@
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/bozzuto]]></companyurl>
+    <salary_min>58240</salary_min>
+    <salary_max>64480</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>yearly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_5197428008]]></referencenumber>
@@ -1640,6 +1836,10 @@
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/bozzuto]]></companyurl>
+    <salary_min>67200</salary_min>
+    <salary_max>72000</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>yearly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_5169130008]]></referencenumber>
@@ -1673,6 +1873,10 @@
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/bozzuto]]></companyurl>
+    <salary_min>56000</salary_min>
+    <salary_max>65000</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>yearly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_5198602008]]></referencenumber>
@@ -1702,6 +1906,10 @@
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/bozzuto]]></companyurl>
+    <salary_min>90000</salary_min>
+    <salary_max>103000</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>yearly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_5180022008]]></referencenumber>
@@ -1735,6 +1943,10 @@
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/bozzuto]]></companyurl>
+    <salary_min>130000</salary_min>
+    <salary_max>147500</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>yearly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_5149840008]]></referencenumber>
@@ -1768,6 +1980,10 @@
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/bozzuto]]></companyurl>
+    <salary_min>101908</salary_min>
+    <salary_max>105000</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>yearly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_5182595008]]></referencenumber>
@@ -1799,6 +2015,10 @@
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/bozzuto]]></companyurl>
+    <salary_min>55000</salary_min>
+    <salary_max>57000</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>yearly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_5190690008]]></referencenumber>
@@ -1834,6 +2054,10 @@
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/bozzuto]]></companyurl>
+    <salary_min>60000</salary_min>
+    <salary_max>60000</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>yearly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_5194139008]]></referencenumber>
@@ -1866,6 +2090,10 @@
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/bozzuto]]></companyurl>
+    <salary_min>26</salary_min>
+    <salary_max>30</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>hourly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_5186442008]]></referencenumber>
@@ -1898,6 +2126,10 @@
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/bozzuto]]></companyurl>
+    <salary_min>21</salary_min>
+    <salary_max>23</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>hourly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_4203729009]]></referencenumber>
@@ -1930,6 +2162,10 @@
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/cortland]]></companyurl>
+    <salary_min>36000</salary_min>
+    <salary_max>55000</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>yearly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_4194354009]]></referencenumber>
@@ -1962,6 +2198,10 @@
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/cortland]]></companyurl>
+    <salary_min>36000</salary_min>
+    <salary_max>55000</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>yearly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_4203010009]]></referencenumber>
@@ -1997,6 +2237,10 @@
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/cortland]]></companyurl>
+    <salary_min>24000</salary_min>
+    <salary_max>38400</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>hourly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_4192566009]]></referencenumber>
@@ -2030,6 +2274,10 @@
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/cortland]]></companyurl>
+    <salary_min>20</salary_min>
+    <salary_max>32</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>hourly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_4192575009]]></referencenumber>
@@ -2065,6 +2313,10 @@
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/cortland]]></companyurl>
+    <salary_min>20</salary_min>
+    <salary_max>32</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>hourly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_4184781009]]></referencenumber>
@@ -2098,6 +2350,10 @@
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/cortland]]></companyurl>
+    <salary_min>19</salary_min>
+    <salary_max>21</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>hourly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_4184543009]]></referencenumber>
@@ -2132,6 +2388,10 @@
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/cortland]]></companyurl>
+    <salary_min>22</salary_min>
+    <salary_max>32</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>hourly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_4184575009]]></referencenumber>
@@ -2166,6 +2426,10 @@
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/cortland]]></companyurl>
+    <salary_min>24000</salary_min>
+    <salary_max>38400</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>hourly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_4184785009]]></referencenumber>
@@ -2202,6 +2466,10 @@
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/cortland]]></companyurl>
+    <salary_min>24</salary_min>
+    <salary_max>38</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>hourly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_4203003009]]></referencenumber>
@@ -2233,6 +2501,10 @@
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/cortland]]></companyurl>
+    <salary_min>24</salary_min>
+    <salary_max>32</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>hourly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_4187863009]]></referencenumber>
@@ -2265,6 +2537,10 @@
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/cortland]]></companyurl>
+    <salary_min>50000</salary_min>
+    <salary_max>80000</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>yearly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_4184247009]]></referencenumber>
@@ -2297,6 +2573,10 @@
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/cortland]]></companyurl>
+    <salary_min>50000</salary_min>
+    <salary_max>75000</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>yearly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_4184261009]]></referencenumber>
@@ -2330,6 +2610,10 @@
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/cortland]]></companyurl>
+    <salary_min>50000</salary_min>
+    <salary_max>80000</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>yearly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_4219228009]]></referencenumber>
@@ -2359,6 +2643,10 @@
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/cortland]]></companyurl>
+    <salary_min>26</salary_min>
+    <salary_max>30</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>hourly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_4193094009]]></referencenumber>
@@ -2393,6 +2681,10 @@
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/cortland]]></companyurl>
+    <salary_min>50000</salary_min>
+    <salary_max>80000</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>yearly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_4222280009]]></referencenumber>
@@ -2427,6 +2719,10 @@
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/cortland]]></companyurl>
+    <salary_min>26</salary_min>
+    <salary_max>30</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>hourly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_4218633009]]></referencenumber>
@@ -2460,6 +2756,10 @@
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/cortland]]></companyurl>
+    <salary_min>50000</salary_min>
+    <salary_max>80000</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>yearly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_4225124009]]></referencenumber>
@@ -2490,6 +2790,10 @@
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/cortland]]></companyurl>
+    <salary_min>60000</salary_min>
+    <salary_max>95000</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>yearly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_4194253009]]></referencenumber>
@@ -2523,6 +2827,10 @@
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/cortland]]></companyurl>
+    <salary_min>24</salary_min>
+    <salary_max>26</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>hourly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_4210366009]]></referencenumber>
@@ -2557,6 +2865,10 @@
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/cortland]]></companyurl>
+    <salary_min>19</salary_min>
+    <salary_max>20</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>hourly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_4187598009]]></referencenumber>
@@ -2589,6 +2901,10 @@
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/cortland]]></companyurl>
+    <salary_min>16</salary_min>
+    <salary_max>22</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>hourly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_4187686009]]></referencenumber>
@@ -2622,6 +2938,10 @@
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/cortland]]></companyurl>
+    <salary_min>15</salary_min>
+    <salary_max>22</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>hourly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_4224353009]]></referencenumber>
@@ -2653,6 +2973,10 @@
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/cortland]]></companyurl>
+    <salary_min>15</salary_min>
+    <salary_max>22</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>hourly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_4209257009]]></referencenumber>
@@ -2683,6 +3007,10 @@
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/cortland]]></companyurl>
+    <salary_min>15</salary_min>
+    <salary_max>22</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>hourly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_4195519009]]></referencenumber>
@@ -2712,6 +3040,10 @@
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/cortland]]></companyurl>
+    <salary_min>15</salary_min>
+    <salary_max>22</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>hourly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_4184528009]]></referencenumber>
@@ -2740,6 +3072,10 @@
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/cortland]]></companyurl>
+    <salary_min>15</salary_min>
+    <salary_max>22</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>hourly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_4206073009]]></referencenumber>
@@ -2770,6 +3106,10 @@
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/cortland]]></companyurl>
+    <salary_min>36000</salary_min>
+    <salary_max>55000</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>yearly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_4193704009]]></referencenumber>
@@ -2800,6 +3140,10 @@
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/cortland]]></companyurl>
+    <salary_min>36000</salary_min>
+    <salary_max>55000</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>yearly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_4193690009]]></referencenumber>
@@ -2830,6 +3174,10 @@
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/cortland]]></companyurl>
+    <salary_min>36000</salary_min>
+    <salary_max>55000</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>yearly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_4209872009]]></referencenumber>
@@ -2860,6 +3208,10 @@
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/cortland]]></companyurl>
+    <salary_min>36000</salary_min>
+    <salary_max>55000</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>yearly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_4231638009]]></referencenumber>
@@ -2889,6 +3241,10 @@
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/cortland]]></companyurl>
+    <salary_min>36000</salary_min>
+    <salary_max>55000</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>yearly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_4219224009]]></referencenumber>
@@ -2919,6 +3275,10 @@
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/cortland]]></companyurl>
+    <salary_min>36000</salary_min>
+    <salary_max>55000</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>yearly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_4194988009]]></referencenumber>
@@ -2950,6 +3310,10 @@
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/cortland]]></companyurl>
+    <salary_min>36000</salary_min>
+    <salary_max>55000</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>yearly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_4218056009]]></referencenumber>
@@ -2980,6 +3344,10 @@
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/cortland]]></companyurl>
+    <salary_min>36000</salary_min>
+    <salary_max>55000</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>yearly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_4226661009]]></referencenumber>
@@ -3010,6 +3378,10 @@
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/cortland]]></companyurl>
+    <salary_min>20</salary_min>
+    <salary_max>22</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>hourly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_4184228009]]></referencenumber>
@@ -3040,6 +3412,10 @@
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/cortland]]></companyurl>
+    <salary_min>43200</salary_min>
+    <salary_max>66000</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>yearly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_4218065009]]></referencenumber>
@@ -3072,6 +3448,10 @@
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/cortland]]></companyurl>
+    <salary_min>36000</salary_min>
+    <salary_max>55000</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>yearly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_4184287009]]></referencenumber>
@@ -3104,6 +3484,10 @@
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/cortland]]></companyurl>
+    <salary_min>43000</salary_min>
+    <salary_max>66000</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>yearly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_4217751009]]></referencenumber>
@@ -3137,6 +3521,10 @@
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/cortland]]></companyurl>
+    <salary_min>36000</salary_min>
+    <salary_max>55000</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>yearly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_4225206009]]></referencenumber>
@@ -3169,6 +3557,10 @@
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/cortland]]></companyurl>
+    <salary_min>36000</salary_min>
+    <salary_max>55000</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>yearly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_4214973009]]></referencenumber>
@@ -3203,6 +3595,10 @@
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/cortland]]></companyurl>
+    <salary_min>36000</salary_min>
+    <salary_max>55000</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>yearly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_4184296009]]></referencenumber>
@@ -3236,6 +3632,10 @@
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/cortland]]></companyurl>
+    <salary_min>43200</salary_min>
+    <salary_max>66000</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>yearly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_4223584009]]></referencenumber>
@@ -3267,6 +3667,10 @@
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/cortland]]></companyurl>
+    <salary_min>36000</salary_min>
+    <salary_max>55000</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>yearly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_4184302009]]></referencenumber>
@@ -3300,6 +3704,10 @@
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/cortland]]></companyurl>
+    <salary_min>43200</salary_min>
+    <salary_max>66000</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>yearly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_4187879009]]></referencenumber>
@@ -3351,6 +3759,10 @@ HTML
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/cortland]]></companyurl>
+    <salary_min>36000</salary_min>
+    <salary_max>55000</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>yearly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_4184275009]]></referencenumber>
@@ -3384,6 +3796,10 @@ HTML
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/cortland]]></companyurl>
+    <salary_min>43200</salary_min>
+    <salary_max>66000</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>yearly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_4184406009]]></referencenumber>
@@ -3417,6 +3833,10 @@ HTML
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/cortland]]></companyurl>
+    <salary_min>36000</salary_min>
+    <salary_max>55000</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>yearly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_4193102009]]></referencenumber>
@@ -3446,6 +3866,10 @@ HTML
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/cortland]]></companyurl>
+    <salary_min>36000</salary_min>
+    <salary_max>55000</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>yearly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_4192743009]]></referencenumber>
@@ -3477,6 +3901,10 @@ HTML
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/cortland]]></companyurl>
+    <salary_min>36000</salary_min>
+    <salary_max>55000</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>yearly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_4224586009]]></referencenumber>
@@ -3510,6 +3938,10 @@ HTML
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/cortland]]></companyurl>
+    <salary_min>36000</salary_min>
+    <salary_max>55000</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>yearly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_4184763009]]></referencenumber>
@@ -3542,6 +3974,10 @@ HTML
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/cortland]]></companyurl>
+    <salary_min>36000</salary_min>
+    <salary_max>55000</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>yearly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_4203326009]]></referencenumber>
@@ -3573,6 +4009,10 @@ HTML
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/cortland]]></companyurl>
+    <salary_min>20</salary_min>
+    <salary_max>32</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>hourly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_4194530009]]></referencenumber>
@@ -3606,6 +4046,10 @@ HTML
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/cortland]]></companyurl>
+    <salary_min>20</salary_min>
+    <salary_max>32</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>hourly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_4184744009]]></referencenumber>
@@ -3635,6 +4079,10 @@ HTML
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/cortland]]></companyurl>
+    <salary_min>24000</salary_min>
+    <salary_max>38400</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>yearly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_4226705009]]></referencenumber>
@@ -3665,6 +4113,10 @@ HTML
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/cortland]]></companyurl>
+    <salary_min>20</salary_min>
+    <salary_max>32</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>hourly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_4184192009]]></referencenumber>
@@ -3698,6 +4150,10 @@ HTML
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/cortland]]></companyurl>
+    <salary_min>24000</salary_min>
+    <salary_max>38400</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>hourly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_4214627009]]></referencenumber>
@@ -3727,6 +4183,10 @@ HTML
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/cortland]]></companyurl>
+    <salary_min>24000</salary_min>
+    <salary_max>38400</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>hourly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_4217747009]]></referencenumber>
@@ -3758,6 +4218,10 @@ HTML
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/cortland]]></companyurl>
+    <salary_min>24000</salary_min>
+    <salary_max>38400</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>hourly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_4184351009]]></referencenumber>
@@ -3786,6 +4250,10 @@ HTML
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/cortland]]></companyurl>
+    <salary_min>26000</salary_min>
+    <salary_max>41600</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>yearly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_4187928009]]></referencenumber>
@@ -3816,6 +4284,10 @@ HTML
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/cortland]]></companyurl>
+    <salary_min>20</salary_min>
+    <salary_max>32</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>hourly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_4215751009]]></referencenumber>
@@ -3846,6 +4318,10 @@ HTML
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/cortland]]></companyurl>
+    <salary_min>25</salary_min>
+    <salary_max>26</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>hourly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_4218032009]]></referencenumber>
@@ -3877,6 +4353,10 @@ HTML
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/cortland]]></companyurl>
+    <salary_min>20</salary_min>
+    <salary_max>32</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>hourly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_4214967009]]></referencenumber>
@@ -3909,6 +4389,10 @@ HTML
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/cortland]]></companyurl>
+    <salary_min>24</salary_min>
+    <salary_max>32</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>hourly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_4187486009]]></referencenumber>
@@ -3941,6 +4425,10 @@ HTML
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/cortland]]></companyurl>
+    <salary_min>20</salary_min>
+    <salary_max>32</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>hourly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_4184225009]]></referencenumber>
@@ -3972,6 +4460,10 @@ HTML
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/cortland]]></companyurl>
+    <salary_min>20</salary_min>
+    <salary_max>32</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>hourly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_4218323009]]></referencenumber>
@@ -4006,6 +4498,10 @@ HTML
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/cortland]]></companyurl>
+    <salary_min>24000</salary_min>
+    <salary_max>38400</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>hourly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_4212010009]]></referencenumber>
@@ -4036,6 +4532,10 @@ HTML
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/cortland]]></companyurl>
+    <salary_min>20</salary_min>
+    <salary_max>32</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>hourly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_4212032009]]></referencenumber>
@@ -4067,6 +4567,10 @@ HTML
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/cortland]]></companyurl>
+    <salary_min>20</salary_min>
+    <salary_max>32</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>hourly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_4232283009]]></referencenumber>
@@ -4109,6 +4613,10 @@ HTML
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/cortland]]></companyurl>
+    <salary_min>20</salary_min>
+    <salary_max>32</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>hourly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_4211697009]]></referencenumber>
@@ -4139,6 +4647,10 @@ HTML
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/cortland]]></companyurl>
+    <salary_min>20</salary_min>
+    <salary_max>32</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>hourly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_4187926009]]></referencenumber>
@@ -4171,6 +4683,10 @@ HTML
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/cortland]]></companyurl>
+    <salary_min>20</salary_min>
+    <salary_max>32</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>hourly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_4211931009]]></referencenumber>
@@ -4202,6 +4718,10 @@ HTML
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/cortland]]></companyurl>
+    <salary_min>24000</salary_min>
+    <salary_max>38400</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>hourly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_4205131009]]></referencenumber>
@@ -4236,6 +4756,10 @@ HTML
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/cortland]]></companyurl>
+    <salary_min>24</salary_min>
+    <salary_max>32</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>hourly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_4184376009]]></referencenumber>
@@ -4268,6 +4792,10 @@ HTML
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/cortland]]></companyurl>
+    <salary_min>20</salary_min>
+    <salary_max>32</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>hourly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_4226459009]]></referencenumber>
@@ -4300,6 +4828,10 @@ HTML
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/cortland]]></companyurl>
+    <salary_min>50000</salary_min>
+    <salary_max>80000</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>yearly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_4208738009]]></referencenumber>
@@ -4331,6 +4863,10 @@ HTML
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/cortland]]></companyurl>
+    <salary_min>36000</salary_min>
+    <salary_max>55000</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>yearly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_4210182009]]></referencenumber>
@@ -4364,6 +4900,10 @@ HTML
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/cortland]]></companyurl>
+    <salary_min>36000</salary_min>
+    <salary_max>55000</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>yearly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_4219182009]]></referencenumber>
@@ -4395,6 +4935,10 @@ HTML
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/cortland]]></companyurl>
+    <salary_min>36000</salary_min>
+    <salary_max>55000</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>yearly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_4212216009]]></referencenumber>
@@ -4426,6 +4970,10 @@ HTML
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/cortland]]></companyurl>
+    <salary_min>50000</salary_min>
+    <salary_max>75000</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>yearly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_4205506009]]></referencenumber>
@@ -4459,6 +5007,10 @@ HTML
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/cortland]]></companyurl>
+    <salary_min>15</salary_min>
+    <salary_max>22</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>hourly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_4208740009]]></referencenumber>
@@ -4488,6 +5040,10 @@ HTML
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/cortland]]></companyurl>
+    <salary_min>36000</salary_min>
+    <salary_max>55000</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>yearly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_4208634009]]></referencenumber>
@@ -4521,6 +5077,10 @@ HTML
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/cortland]]></companyurl>
+    <salary_min>33000</salary_min>
+    <salary_max>52000</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>yearly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_4223772009]]></referencenumber>
@@ -4554,6 +5114,10 @@ HTML
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/cortland]]></companyurl>
+    <salary_min>40000</salary_min>
+    <salary_max>62000</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>yearly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_4230089009]]></referencenumber>
@@ -4585,6 +5149,10 @@ HTML
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/cortland]]></companyurl>
+    <salary_min>40000</salary_min>
+    <salary_max>62000</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>yearly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_4224062009]]></referencenumber>
@@ -4615,6 +5183,10 @@ HTML
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/cortland]]></companyurl>
+    <salary_min>40000</salary_min>
+    <salary_max>62000</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>yearly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_4230091009]]></referencenumber>
@@ -4647,6 +5219,10 @@ HTML
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/cortland]]></companyurl>
+    <salary_min>40000</salary_min>
+    <salary_max>62000</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>yearly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_4231635009]]></referencenumber>
@@ -4678,6 +5254,10 @@ HTML
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/cortland]]></companyurl>
+    <salary_min>36000</salary_min>
+    <salary_max>55000</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>yearly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_4192953009]]></referencenumber>
@@ -4707,6 +5287,10 @@ HTML
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/cortland]]></companyurl>
+    <salary_min>27</salary_min>
+    <salary_max>30</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>hourly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_4219057009]]></referencenumber>
@@ -4739,6 +5323,10 @@ HTML
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/cortland]]></companyurl>
+    <salary_min>55000</salary_min>
+    <salary_max>90000</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>yearly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_4218008009]]></referencenumber>
@@ -4771,6 +5359,10 @@ HTML
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/cortland]]></companyurl>
+    <salary_min>55000</salary_min>
+    <salary_max>90000</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>yearly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_4214190009]]></referencenumber>
@@ -4803,6 +5395,10 @@ HTML
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/cortland]]></companyurl>
+    <salary_min>66000</salary_min>
+    <salary_max>108000</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>yearly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_4184363009]]></referencenumber>
@@ -4835,6 +5431,10 @@ HTML
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/cortland]]></companyurl>
+    <salary_min>66000</salary_min>
+    <salary_max>108000</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>yearly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_4211708009]]></referencenumber>
@@ -4867,6 +5467,10 @@ HTML
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/cortland]]></companyurl>
+    <salary_min>55000</salary_min>
+    <salary_max>90000</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>yearly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_4231362009]]></referencenumber>
@@ -4900,6 +5504,10 @@ HTML
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/cortland]]></companyurl>
+    <salary_min>55000</salary_min>
+    <salary_max>90000</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>yearly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_4184219009]]></referencenumber>
@@ -4931,6 +5539,10 @@ HTML
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/cortland]]></companyurl>
+    <salary_min>66000</salary_min>
+    <salary_max>108000</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>yearly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_4206795009]]></referencenumber>
@@ -4961,6 +5573,10 @@ HTML
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/cortland]]></companyurl>
+    <salary_min>20</salary_min>
+    <salary_max>28</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>hourly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_4226737009]]></referencenumber>
@@ -4991,6 +5607,10 @@ HTML
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/cortland]]></companyurl>
+    <salary_min>24000</salary_min>
+    <salary_max>38400</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>hourly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_4184211009]]></referencenumber>
@@ -5020,6 +5640,10 @@ HTML
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/cortland]]></companyurl>
+    <salary_min>24000</salary_min>
+    <salary_max>38400</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>yearly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_4205667009]]></referencenumber>
@@ -5048,6 +5672,10 @@ HTML
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/cortland]]></companyurl>
+    <salary_min>24</salary_min>
+    <salary_max>27</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>hourly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_4184635009]]></referencenumber>
@@ -5078,6 +5706,10 @@ HTML
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/cortland]]></companyurl>
+    <salary_min>20</salary_min>
+    <salary_max>32</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>hourly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_4222471009]]></referencenumber>
@@ -5109,6 +5741,10 @@ HTML
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/cortland]]></companyurl>
+    <salary_min>24000</salary_min>
+    <salary_max>38400</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>hourly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_4184778009]]></referencenumber>
@@ -5140,6 +5776,10 @@ HTML
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/cortland]]></companyurl>
+    <salary_min>20</salary_min>
+    <salary_max>32</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>hourly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_4184306009]]></referencenumber>
@@ -5169,6 +5809,10 @@ HTML
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/cortland]]></companyurl>
+    <salary_min>24</salary_min>
+    <salary_max>32</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>hourly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_4184319009]]></referencenumber>
@@ -5201,6 +5845,10 @@ HTML
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/cortland]]></companyurl>
+    <salary_min>20</salary_min>
+    <salary_max>32</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>hourly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_4229437009]]></referencenumber>
@@ -5233,6 +5881,10 @@ HTML
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/cortland]]></companyurl>
+    <salary_min>20</salary_min>
+    <salary_max>32</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>hourly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_4193098009]]></referencenumber>
@@ -5266,6 +5918,10 @@ HTML
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/cortland]]></companyurl>
+    <salary_min>24000</salary_min>
+    <salary_max>38400</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>hourly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[lever_15cd2830-dfa4-40a2-a57f-df23b50d0180]]></referencenumber>
@@ -5297,6 +5953,10 @@ HTML
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://jobs.lever.co/lessen]]></companyurl>
+    <salary_min>23</salary_min>
+    <salary_max>27</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>hourly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[lever_7f2ac150-5e2c-4fe2-901a-4a8243e45c7f]]></referencenumber>
@@ -5327,6 +5987,10 @@ HTML
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://jobs.lever.co/lessen]]></companyurl>
+    <salary_min>23</salary_min>
+    <salary_max>27</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>hourly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[lever_9cdd5101-68a0-4064-938c-b443318f7e64]]></referencenumber>
@@ -5359,6 +6023,10 @@ HTML
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://jobs.lever.co/lessen]]></companyurl>
+    <salary_min>23</salary_min>
+    <salary_max>27</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>hourly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[lever_b2e15b5c-d9e8-4656-8a29-1efea8b94585]]></referencenumber>
@@ -5391,6 +6059,10 @@ HTML
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://jobs.lever.co/lessen]]></companyurl>
+    <salary_min>23</salary_min>
+    <salary_max>27</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>hourly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_5187848008]]></referencenumber>
@@ -5417,6 +6089,10 @@ HTML
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/bozzuto]]></companyurl>
+    <salary_min>55000</salary_min>
+    <salary_max>90000</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>yearly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_5174551008]]></referencenumber>
@@ -5448,6 +6124,10 @@ HTML
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/bozzuto]]></companyurl>
+    <salary_min>42000</salary_min>
+    <salary_max>65000</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>yearly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_5195970008]]></referencenumber>
@@ -5479,6 +6159,10 @@ HTML
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/bozzuto]]></companyurl>
+    <salary_min>50400</salary_min>
+    <salary_max>78000</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>yearly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_5197331008]]></referencenumber>
@@ -5513,6 +6197,10 @@ HTML
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/bozzuto]]></companyurl>
+    <salary_min>42000</salary_min>
+    <salary_max>65000</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>yearly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_5197383008]]></referencenumber>
@@ -5546,6 +6234,10 @@ HTML
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/bozzuto]]></companyurl>
+    <salary_min>50400</salary_min>
+    <salary_max>78000</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>yearly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_5188156008]]></referencenumber>
@@ -5579,6 +6271,10 @@ HTML
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/bozzuto]]></companyurl>
+    <salary_min>42000</salary_min>
+    <salary_max>65000</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>yearly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_5192108008]]></referencenumber>
@@ -5610,6 +6306,10 @@ HTML
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/bozzuto]]></companyurl>
+    <salary_min>42000</salary_min>
+    <salary_max>68000</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>yearly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_5188043008]]></referencenumber>
@@ -5640,6 +6340,10 @@ HTML
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/bozzuto]]></companyurl>
+    <salary_min>50000</salary_min>
+    <salary_max>80000</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>yearly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_5173290008]]></referencenumber>
@@ -5672,6 +6376,10 @@ HTML
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/bozzuto]]></companyurl>
+    <salary_min>50000</salary_min>
+    <salary_max>80000</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>yearly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_5178302008]]></referencenumber>
@@ -5705,6 +6413,10 @@ HTML
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/bozzuto]]></companyurl>
+    <salary_min>50000</salary_min>
+    <salary_max>96000</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>yearly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_5161922008]]></referencenumber>
@@ -5738,6 +6450,10 @@ HTML
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/bozzuto]]></companyurl>
+    <salary_min>50000</salary_min>
+    <salary_max>80000</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>yearly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_5165298008]]></referencenumber>
@@ -5767,6 +6483,10 @@ HTML
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/bozzuto]]></companyurl>
+    <salary_min>43200</salary_min>
+    <salary_max>66000</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>yearly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_5179241008]]></referencenumber>
@@ -5800,6 +6520,10 @@ HTML
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/bozzuto]]></companyurl>
+    <salary_min>43200</salary_min>
+    <salary_max>66000</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>yearly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_5196785008]]></referencenumber>
@@ -5832,6 +6556,10 @@ HTML
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/bozzuto]]></companyurl>
+    <salary_min>36000</salary_min>
+    <salary_max>55000</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>yearly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_5181738008]]></referencenumber>
@@ -5863,6 +6591,10 @@ HTML
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/bozzuto]]></companyurl>
+    <salary_min>43200</salary_min>
+    <salary_max>66000</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>yearly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_5195296008]]></referencenumber>
@@ -5894,6 +6626,10 @@ HTML
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/bozzuto]]></companyurl>
+    <salary_min>36000</salary_min>
+    <salary_max>55000</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>yearly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_5194569008]]></referencenumber>
@@ -5926,6 +6662,10 @@ HTML
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/bozzuto]]></companyurl>
+    <salary_min>40000</salary_min>
+    <salary_max>62000</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>yearly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_5155094008]]></referencenumber>
@@ -5958,6 +6698,10 @@ HTML
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/bozzuto]]></companyurl>
+    <salary_min>43200</salary_min>
+    <salary_max>66000</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>yearly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_5161850008]]></referencenumber>
@@ -5987,6 +6731,10 @@ HTML
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/bozzuto]]></companyurl>
+    <salary_min>43200</salary_min>
+    <salary_max>66000</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>yearly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_5163277008]]></referencenumber>
@@ -6019,6 +6767,10 @@ HTML
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/bozzuto]]></companyurl>
+    <salary_min>36000</salary_min>
+    <salary_max>55000</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>yearly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_5193907008]]></referencenumber>
@@ -6049,6 +6801,10 @@ HTML
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/bozzuto]]></companyurl>
+    <salary_min>36000</salary_min>
+    <salary_max>55000</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>yearly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_5165406008]]></referencenumber>
@@ -6080,6 +6836,10 @@ HTML
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/bozzuto]]></companyurl>
+    <salary_min>43200</salary_min>
+    <salary_max>66000</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>yearly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_5194449008]]></referencenumber>
@@ -6111,6 +6871,10 @@ HTML
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/bozzuto]]></companyurl>
+    <salary_min>36000</salary_min>
+    <salary_max>55000</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>yearly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_5163386008]]></referencenumber>
@@ -6142,6 +6906,10 @@ HTML
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/bozzuto]]></companyurl>
+    <salary_min>43200</salary_min>
+    <salary_max>66000</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>yearly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_5170732008]]></referencenumber>
@@ -6174,6 +6942,10 @@ HTML
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/bozzuto]]></companyurl>
+    <salary_min>36000</salary_min>
+    <salary_max>55000</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>yearly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_5170356008]]></referencenumber>
@@ -6205,6 +6977,10 @@ HTML
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/bozzuto]]></companyurl>
+    <salary_min>43200</salary_min>
+    <salary_max>66000</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>yearly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_5192863008]]></referencenumber>
@@ -6235,6 +7011,10 @@ HTML
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/bozzuto]]></companyurl>
+    <salary_min>36000</salary_min>
+    <salary_max>55000</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>yearly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_5174517008]]></referencenumber>
@@ -6266,6 +7046,10 @@ HTML
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/bozzuto]]></companyurl>
+    <salary_min>36000</salary_min>
+    <salary_max>55000</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>yearly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_5174979008]]></referencenumber>
@@ -6297,6 +7081,10 @@ HTML
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/bozzuto]]></companyurl>
+    <salary_min>36000</salary_min>
+    <salary_max>55000</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>yearly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_5173854008]]></referencenumber>
@@ -6330,6 +7118,10 @@ HTML
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/bozzuto]]></companyurl>
+    <salary_min>43200</salary_min>
+    <salary_max>66000</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>yearly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_5147644008]]></referencenumber>
@@ -6361,6 +7153,10 @@ HTML
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/bozzuto]]></companyurl>
+    <salary_min>36000</salary_min>
+    <salary_max>55000</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>yearly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_5198717008]]></referencenumber>
@@ -6391,6 +7187,10 @@ HTML
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/bozzuto]]></companyurl>
+    <salary_min>43200</salary_min>
+    <salary_max>66000</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>yearly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_5141063008]]></referencenumber>
@@ -6421,6 +7221,10 @@ HTML
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/bozzuto]]></companyurl>
+    <salary_min>36000</salary_min>
+    <salary_max>55000</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>yearly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_5169267008]]></referencenumber>
@@ -6452,6 +7256,10 @@ HTML
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/bozzuto]]></companyurl>
+    <salary_min>36000</salary_min>
+    <salary_max>55000</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>yearly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_5162698008]]></referencenumber>
@@ -6483,6 +7291,10 @@ HTML
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/bozzuto]]></companyurl>
+    <salary_min>36000</salary_min>
+    <salary_max>55000</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>yearly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_5146560008]]></referencenumber>
@@ -6514,6 +7326,10 @@ HTML
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/bozzuto]]></companyurl>
+    <salary_min>36000</salary_min>
+    <salary_max>55000</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>yearly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_5189588008]]></referencenumber>
@@ -6545,6 +7361,10 @@ HTML
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/bozzuto]]></companyurl>
+    <salary_min>43200</salary_min>
+    <salary_max>66000</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>yearly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_5189888008]]></referencenumber>
@@ -6577,6 +7397,10 @@ HTML
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/bozzuto]]></companyurl>
+    <salary_min>43200</salary_min>
+    <salary_max>66000</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>yearly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_5187101008]]></referencenumber>
@@ -6609,6 +7433,10 @@ HTML
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/bozzuto]]></companyurl>
+    <salary_min>43200</salary_min>
+    <salary_max>66000</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>yearly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_5169121008]]></referencenumber>
@@ -6642,6 +7470,10 @@ HTML
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/bozzuto]]></companyurl>
+    <salary_min>66000</salary_min>
+    <salary_max>108000</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>yearly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_5167525008]]></referencenumber>
@@ -6678,6 +7510,10 @@ HTML
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/bozzuto]]></companyurl>
+    <salary_min>55000</salary_min>
+    <salary_max>90000</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>yearly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_5184282008]]></referencenumber>
@@ -6711,6 +7547,10 @@ HTML
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/bozzuto]]></companyurl>
+    <salary_min>66000</salary_min>
+    <salary_max>108000</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>yearly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_5196696008]]></referencenumber>
@@ -6743,6 +7583,10 @@ HTML
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/bozzuto]]></companyurl>
+    <salary_min>66000</salary_min>
+    <salary_max>108000</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>yearly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_5112624008]]></referencenumber>
@@ -6776,6 +7620,10 @@ HTML
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/bozzuto]]></companyurl>
+    <salary_min>55000</salary_min>
+    <salary_max>90000</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>yearly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_5179951008]]></referencenumber>
@@ -6810,6 +7658,10 @@ HTML
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/bozzuto]]></companyurl>
+    <salary_min>66000</salary_min>
+    <salary_max>108000</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>yearly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_5173594008]]></referencenumber>
@@ -6841,6 +7693,10 @@ HTML
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/bozzuto]]></companyurl>
+    <salary_min>66000</salary_min>
+    <salary_max>108000</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>yearly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_5081486008]]></referencenumber>
@@ -6875,6 +7731,10 @@ HTML
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/bozzuto]]></companyurl>
+    <salary_min>55000</salary_min>
+    <salary_max>90000</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>yearly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_5189676008]]></referencenumber>
@@ -6907,6 +7767,10 @@ HTML
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/bozzuto]]></companyurl>
+    <salary_min>66000</salary_min>
+    <salary_max>108000</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>yearly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_5173464008]]></referencenumber>
@@ -6940,6 +7804,10 @@ HTML
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/bozzuto]]></companyurl>
+    <salary_min>24</salary_min>
+    <salary_max>38</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>hourly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_5135865008]]></referencenumber>
@@ -6970,6 +7838,10 @@ HTML
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/bozzuto]]></companyurl>
+    <salary_min>20</salary_min>
+    <salary_max>32</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>hourly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_5135881008]]></referencenumber>
@@ -7001,6 +7873,10 @@ HTML
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/bozzuto]]></companyurl>
+    <salary_min>20</salary_min>
+    <salary_max>32</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>hourly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_5147772008]]></referencenumber>
@@ -7031,6 +7907,10 @@ HTML
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/bozzuto]]></companyurl>
+    <salary_min>20</salary_min>
+    <salary_max>32</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>hourly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_5153818008]]></referencenumber>
@@ -7064,6 +7944,10 @@ HTML
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/bozzuto]]></companyurl>
+    <salary_min>24</salary_min>
+    <salary_max>38</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>hourly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_5154557008]]></referencenumber>
@@ -7096,6 +7980,10 @@ HTML
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/bozzuto]]></companyurl>
+    <salary_min>20</salary_min>
+    <salary_max>32</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>hourly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_5131226008]]></referencenumber>
@@ -7130,6 +8018,10 @@ HTML
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/bozzuto]]></companyurl>
+    <salary_min>24</salary_min>
+    <salary_max>38</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>hourly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_5163544008]]></referencenumber>
@@ -7163,6 +8055,10 @@ HTML
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/bozzuto]]></companyurl>
+    <salary_min>24</salary_min>
+    <salary_max>38</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>hourly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_5165351008]]></referencenumber>
@@ -7193,6 +8089,10 @@ HTML
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/bozzuto]]></companyurl>
+    <salary_min>24</salary_min>
+    <salary_max>35</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>hourly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_5168961008]]></referencenumber>
@@ -7221,6 +8121,10 @@ HTML
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/bozzuto]]></companyurl>
+    <salary_min>20</salary_min>
+    <salary_max>32</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>hourly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_5169687008]]></referencenumber>
@@ -7254,6 +8158,10 @@ HTML
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/bozzuto]]></companyurl>
+    <salary_min>26</salary_min>
+    <salary_max>38</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>hourly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_5169128008]]></referencenumber>
@@ -7284,6 +8192,10 @@ HTML
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/bozzuto]]></companyurl>
+    <salary_min>24</salary_min>
+    <salary_max>38</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>hourly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_5170609008]]></referencenumber>
@@ -7316,6 +8228,10 @@ HTML
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/bozzuto]]></companyurl>
+    <salary_min>20</salary_min>
+    <salary_max>32</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>hourly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_5173213008]]></referencenumber>
@@ -7348,6 +8264,10 @@ HTML
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/bozzuto]]></companyurl>
+    <salary_min>24</salary_min>
+    <salary_max>38</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>hourly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_5126975008]]></referencenumber>
@@ -7379,6 +8299,10 @@ HTML
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/bozzuto]]></companyurl>
+    <salary_min>20</salary_min>
+    <salary_max>32</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>hourly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_5180039008]]></referencenumber>
@@ -7412,6 +8336,10 @@ HTML
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/bozzuto]]></companyurl>
+    <salary_min>26000</salary_min>
+    <salary_max>41600</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>hourly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_5180264008]]></referencenumber>
@@ -7445,6 +8373,10 @@ HTML
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/bozzuto]]></companyurl>
+    <salary_min>24</salary_min>
+    <salary_max>38</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>hourly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_5179994008]]></referencenumber>
@@ -7474,6 +8406,10 @@ HTML
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/bozzuto]]></companyurl>
+    <salary_min>20</salary_min>
+    <salary_max>32</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>hourly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_5181772008]]></referencenumber>
@@ -7507,6 +8443,10 @@ HTML
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/bozzuto]]></companyurl>
+    <salary_min>26000</salary_min>
+    <salary_max>41600</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>hourly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_5186474008]]></referencenumber>
@@ -7538,6 +8478,10 @@ HTML
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/bozzuto]]></companyurl>
+    <salary_min>20</salary_min>
+    <salary_max>32</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>hourly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_5188599008]]></referencenumber>
@@ -7568,6 +8512,10 @@ HTML
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/bozzuto]]></companyurl>
+    <salary_min>24</salary_min>
+    <salary_max>38</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>hourly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_5193944008]]></referencenumber>
@@ -7597,6 +8545,10 @@ HTML
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/bozzuto]]></companyurl>
+    <salary_min>24000</salary_min>
+    <salary_max>38400</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>hourly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_5193360008]]></referencenumber>
@@ -7628,6 +8580,10 @@ HTML
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/bozzuto]]></companyurl>
+    <salary_min>24</salary_min>
+    <salary_max>38</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>hourly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_5191392008]]></referencenumber>
@@ -7660,6 +8616,10 @@ HTML
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/bozzuto]]></companyurl>
+    <salary_min>24000</salary_min>
+    <salary_max>38400</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>hourly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_5195458008]]></referencenumber>
@@ -7693,6 +8653,10 @@ HTML
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/bozzuto]]></companyurl>
+    <salary_min>20</salary_min>
+    <salary_max>32</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>hourly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_5174635008]]></referencenumber>
@@ -7726,6 +8690,10 @@ HTML
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/bozzuto]]></companyurl>
+    <salary_min>20</salary_min>
+    <salary_max>32</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>hourly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_5194176008]]></referencenumber>
@@ -7756,6 +8724,10 @@ HTML
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/bozzuto]]></companyurl>
+    <salary_min>72600</salary_min>
+    <salary_max>75000</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>yearly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_5191067008]]></referencenumber>
@@ -7790,6 +8762,10 @@ HTML
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/bozzuto]]></companyurl>
+    <salary_min>68000</salary_min>
+    <salary_max>70000</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>yearly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_5162715008]]></referencenumber>
@@ -7822,6 +8798,10 @@ HTML
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/bozzuto]]></companyurl>
+    <salary_min>27</salary_min>
+    <salary_max>29</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>hourly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_5181089008]]></referencenumber>
@@ -7855,6 +8835,10 @@ HTML
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/bozzuto]]></companyurl>
+    <salary_min>60000</salary_min>
+    <salary_max>67000</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>yearly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_5169124008]]></referencenumber>
@@ -7890,6 +8874,10 @@ HTML
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/bozzuto]]></companyurl>
+    <salary_min>80000</salary_min>
+    <salary_max>87000</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>yearly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_5186710008]]></referencenumber>
@@ -7924,6 +8912,10 @@ HTML
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/bozzuto]]></companyurl>
+    <salary_min>65000</salary_min>
+    <salary_max>70000</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>yearly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_5193940008]]></referencenumber>
@@ -7958,6 +8950,10 @@ HTML
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/bozzuto]]></companyurl>
+    <salary_min>65000</salary_min>
+    <salary_max>70000</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>yearly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_5195786008]]></referencenumber>
@@ -8001,6 +8997,10 @@ HTML
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/bozzuto]]></companyurl>
+    <salary_min>67000</salary_min>
+    <salary_max>69000</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>yearly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_5181291008]]></referencenumber>
@@ -8036,6 +9036,10 @@ HTML
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/bozzuto]]></companyurl>
+    <salary_min>67000</salary_min>
+    <salary_max>72000</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>yearly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_5194285008]]></referencenumber>
@@ -8071,5 +9075,9 @@ HTML
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/bozzuto]]></companyurl>
+    <salary_min>28</salary_min>
+    <salary_max>30</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>hourly</salary_schedule>
   </job>
 </source>

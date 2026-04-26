@@ -33,6 +33,10 @@
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/bozzuto]]></companyurl>
+    <salary_min>42000</salary_min>
+    <salary_max>68000</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>yearly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_5194176008]]></referencenumber>
@@ -63,6 +67,10 @@
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/bozzuto]]></companyurl>
+    <salary_min>72600</salary_min>
+    <salary_max>75000</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>yearly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_5162715008]]></referencenumber>
@@ -95,5 +103,9 @@
     <expiration_date>2026-06-25</expiration_date>
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/bozzuto]]></companyurl>
+    <salary_min>27</salary_min>
+    <salary_max>29</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>hourly</salary_schedule>
   </job>
 </source>
