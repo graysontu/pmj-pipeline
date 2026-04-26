@@ -50,6 +50,8 @@ greenhouse:
     company_name: BAM Companies
   - slug: propertymanagementassociates
     company_name: Property Management Associates
+  - slug: berkshiregroupllc
+    company_name: Berkshire Group
 
 # Verified slugs: https://api.lever.co/v0/postings/{slug}?mode=json
 lever:
