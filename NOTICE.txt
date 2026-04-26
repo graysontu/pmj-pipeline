@@ -1,0 +1,5 @@
+Pipeline notice - 2026-04-26T03:40:50Z
+
+- High rejection rate: 70% of classified jobs were rejected (198 of 282). Check classifier behavior or source feed quality.
+
+Check the Actions log for details.
