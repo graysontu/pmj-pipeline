@@ -20,7 +20,7 @@ def _rfc822(dt: datetime) -> str:
 def generate_feed_xml(active_jobs: list[dict], path: Path = FEED_PATH) -> None:
     now = datetime.now(tz=timezone.utc)
 
-    root = etree.Element("source")
+    root = etree.Element("jobs")
     etree.SubElement(root, "publisher").text = "PropertyManagementJobs.us"
     etree.SubElement(root, "publisherurl").text = SITE_BASE_URL
     etree.SubElement(root, "lastBuildDate").text = _rfc822(now)
