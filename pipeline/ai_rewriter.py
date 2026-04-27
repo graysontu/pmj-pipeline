@@ -30,28 +30,16 @@ SALARY_MAX_CONCURRENT = 2
 SALARY_REQUEST_INTERVAL = 3.0
 
 SALARY_SYSTEM = """\
-You extract or estimate salary ranges for US property management jobs. Return ONLY valid JSON, no other text.
+You extract explicit salary ranges from US property management job descriptions. Return ONLY valid JSON, no other text.
 
-STEP 1 - Look for explicit compensation in the description:
+Look for explicit compensation in the description:
 - If the description mentions a specific dollar amount per hour (e.g. "$22/hr", "$27 to $29 per hour"), extract it and use "hourly".
 - If it mentions an annual salary or salary range (e.g. "$68,000 to $75,000", "72,600 annually"), extract it and use "yearly".
+- If NO explicit salary or pay rate is mentioned anywhere in the description, return null for all fields.
 
-STEP 2 - If no explicit amount is found, estimate based on title, location, and category:
-- Groundskeeper & Porter Jobs: $15-$22/hr, schedule "hourly"
-- Maintenance Technician Jobs: $20-$32/hr, schedule "hourly"
-- Leasing Consultant Jobs: $36,000-$55,000/yr, schedule "yearly"
-- Real Estate Admin & Coordinator Jobs: $40,000-$62,000/yr, schedule "yearly"
-- Assistant Property Manager Jobs: $42,000-$65,000/yr, schedule "yearly"
-- Community Manager Jobs: $50,000-$80,000/yr, schedule "yearly"
-- Property Manager Jobs: $55,000-$90,000/yr, schedule "yearly"
-- Maintenance Supervisor Jobs: $55,000-$90,000/yr, schedule "yearly"
-- HOA & Association Manager Jobs: $55,000-$95,000/yr, schedule "yearly"
-- Commercial Property Manager Jobs: $65,000-$110,000/yr, schedule "yearly"
-- Regional Property Manager Jobs: $85,000-$130,000/yr, schedule "yearly"
-- Asset Manager Jobs: $90,000-$150,000/yr, schedule "yearly"
-- Adjust up 20-35% for NYC, SF, LA, Seattle, DC metro.
-
-Return exactly: {"salary_min": integer, "salary_max": integer, "salary_currency": "USD", "salary_schedule": "hourly" or "yearly"}\
+Return exactly one of:
+- {"salary_min": integer, "salary_max": integer, "salary_currency": "USD", "salary_schedule": "hourly" or "yearly"}
+- {"salary_min": null, "salary_max": null, "salary_currency": null, "salary_schedule": null}\
 """
 REWRITE_CACHE_PATH = Path(__file__).parent.parent / "data" / "rewrite_cache.json"
 QUALITY_SAMPLES_PATH = Path(__file__).parent.parent / "output" / "quality_samples.html"
@@ -455,7 +443,7 @@ async def _extract_salary_one(
         f"Company: {job.company}\n"
         f"Location: {job.location}\n"
         f"Category: {job.category}\n\n"
-        f"Description:\n{job.rewritten_description}"
+        f"Description:\n{job.description_text[:12000]}"
     )
 
     try:

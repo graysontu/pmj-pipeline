@@ -82,6 +82,7 @@ def _job_snapshot(job: RewrittenJob) -> dict:
         "salary_currency": job.salary_currency,
         "salary_schedule": job.salary_schedule,
         "company_logo_url": job.company_logo_url or "",
+        "description_text": job.description_text,
     }
 
 

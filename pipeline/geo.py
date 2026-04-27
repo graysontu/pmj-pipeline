@@ -9,6 +9,25 @@ _US_STATES = {
     "DC", "GU", "PR", "VI",
 }
 
+_US_STATE_NAMES = {
+    "Alabama": "AL", "Alaska": "AK", "Arizona": "AZ", "Arkansas": "AR",
+    "California": "CA", "Colorado": "CO", "Connecticut": "CT", "Delaware": "DE",
+    "Florida": "FL", "Georgia": "GA", "Hawaii": "HI", "Idaho": "ID",
+    "Illinois": "IL", "Indiana": "IN", "Iowa": "IA", "Kansas": "KS",
+    "Kentucky": "KY", "Louisiana": "LA", "Maine": "ME", "Maryland": "MD",
+    "Massachusetts": "MA", "Michigan": "MI", "Minnesota": "MN", "Mississippi": "MS",
+    "Missouri": "MO", "Montana": "MT", "Nebraska": "NE", "Nevada": "NV",
+    "New Hampshire": "NH", "New Jersey": "NJ", "New Mexico": "NM", "New York": "NY",
+    "North Carolina": "NC", "North Dakota": "ND", "Ohio": "OH", "Oklahoma": "OK",
+    "Oregon": "OR", "Pennsylvania": "PA", "Rhode Island": "RI", "South Carolina": "SC",
+    "South Dakota": "SD", "Tennessee": "TN", "Texas": "TX", "Utah": "UT",
+    "Vermont": "VT", "Virginia": "VA", "Washington": "WA", "West Virginia": "WV",
+    "Wisconsin": "WI", "Wyoming": "WY", "District Of Columbia": "DC",
+    "District of Columbia": "DC", "Puerto Rico": "PR", "Guam": "GU",
+}
+
+_COUNTRY_TOKENS = {"UNITED STATES", "UNITED STATES OF AMERICA", "USA", "US"}
+
 
 def _zip3_to_state(prefix: str) -> str:
     """Map a 3-digit ZIP prefix to a US state abbreviation using USPS zone ranges."""
@@ -80,8 +99,13 @@ def _zip3_to_state(prefix: str) -> str:
 def parse_location(location: str) -> tuple[str, str]:
     """Split a location string into (city, state_abbr).
 
-    Handles formats: 'City, ST', 'City, ZIP', 'City, ST ZIP', 'City, ST, Country'.
-    Returns ('', '') for single-token or unrecognized strings.
+    Handles formats including:
+      'City, ST'
+      'City, State'
+      'City, ST ZIP'
+      'City, State, Country'
+      'Property Name, City, State, Country'
+    Returns ('', '') for unrecognized strings.
     """
     if not location:
         return "", ""
@@ -90,25 +114,39 @@ def parse_location(location: str) -> tuple[str, str]:
     if len(parts) < 2:
         return location.strip().title(), ""
 
-    city = parts[0].strip().title()
+    # Strip trailing country tokens
+    while parts and parts[-1].upper().strip() in _COUNTRY_TOKENS:
+        parts.pop()
 
-    # Walk parts from the end looking for a recognizable state token
-    for candidate in reversed(parts[1:]):
-        upper = candidate.upper().strip()
+    if not parts:
+        return "", ""
+    if len(parts) == 1:
+        return parts[0].title(), ""
 
-        # Direct 2-letter state abbreviation
+    # Walk from right looking for a recognizable state token.
+    # The city is the part immediately before the matched state.
+    for i in range(len(parts) - 1, 0, -1):
+        candidate = parts[i].strip()
+        upper = candidate.upper()
+
+        # 2-letter abbreviation
         if upper in _US_STATES:
-            return city, upper
+            return parts[i - 1].strip().title(), upper
 
         # "ST ZIP" packed into one segment (e.g. "TX 78701")
         st_zip = re.match(r"^([A-Z]{2})\s+\d{5}", upper)
         if st_zip and st_zip.group(1) in _US_STATES:
-            return city, st_zip.group(1)
+            return parts[i - 1].strip().title(), st_zip.group(1)
 
-        # Pure 5-digit (or 5+4) ZIP code
-        zip_match = re.match(r"^(\d{5})(?:-\d{4})?$", candidate.strip())
-        if zip_match:
-            state = _zip3_to_state(zip_match.group(1)[:3])
-            return city, state
+        # Full state name (e.g. "Ohio", "Rhode Island")
+        state_abbr = _US_STATE_NAMES.get(candidate.title())
+        if state_abbr:
+            return parts[i - 1].strip().title(), state_abbr
 
-    return city, parts[-1]
+    # Last part is a standalone ZIP
+    zip_match = re.match(r"^(\d{5})(?:-\d{4})?$", parts[-1].strip())
+    if zip_match:
+        state = _zip3_to_state(zip_match.group(1)[:3])
+        return parts[0].strip().title(), state
+
+    return parts[0].strip().title(), parts[-1].strip()
