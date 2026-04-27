@@ -42,7 +42,8 @@ def generate_feed_xml(active_jobs: list[dict], path: Path = FEED_PATH) -> None:
         etree.SubElement(job_el, "company").text = etree.CDATA(job["company"])
         etree.SubElement(job_el, "city").text = etree.CDATA(city)
         etree.SubElement(job_el, "state").text = etree.CDATA(state)
-        etree.SubElement(job_el, "country").text = "US"
+        if city or state:
+            etree.SubElement(job_el, "country").text = "US"
         etree.SubElement(job_el, "jobtype").text = job.get("job_type") or "fulltime"
         etree.SubElement(job_el, "category").text = etree.CDATA(job["category"])
         etree.SubElement(job_el, "description").text = etree.CDATA(job["rewritten_description"])
