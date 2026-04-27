@@ -173,6 +173,16 @@ def run() -> None:
         logger.info("No jobs fetched. Nothing to classify.")
         return
 
+    all_jobs = [j for j in all_jobs if not state.is_processed(j.source_id)]
+    logger.info("%d jobs are new (not yet in state). Classifying.", len(all_jobs))
+
+    if not all_jobs:
+        logger.info("No new jobs this run.")
+        active_jobs = state.get_active_jobs()
+        generate_feed_xml(active_jobs)
+        print(f"\nState: 0 new jobs this run. Active feed: {len(active_jobs)} jobs.")
+        return
+
     DATA_DIR.mkdir(exist_ok=True)
     timestamp = datetime.now(tz=timezone.utc).strftime("%Y%m%d_%H%M%S")
 
