@@ -328,8 +328,8 @@
     <referencenumber><![CDATA[greenhouse_4232746009]]></referencenumber>
     <title><![CDATA[Assistant Community Manager]]></title>
     <company><![CDATA[Hawthorne Residential Partners]]></company>
-    <city><![CDATA[Park Forest - 3214 Brassfield Rd - Greensboro]]></city>
-    <state><![CDATA[NC - 27410]]></state>
+    <city><![CDATA[Greensboro]]></city>
+    <state><![CDATA[NC]]></state>
     <country>US</country>
     <jobtype>fulltime</jobtype>
     <category><![CDATA[Assistant Property Manager Jobs]]></category>
@@ -359,8 +359,8 @@
     <referencenumber><![CDATA[greenhouse_4232633009]]></referencenumber>
     <title><![CDATA[Assistant Community Manager]]></title>
     <company><![CDATA[Hawthorne Residential Partners]]></company>
-    <city><![CDATA[Atlanta Ga]]></city>
-    <state><![CDATA[]]></state>
+    <city><![CDATA[Atlanta]]></city>
+    <state><![CDATA[GA]]></state>
     <country>US</country>
     <jobtype>fulltime</jobtype>
     <category><![CDATA[Assistant Property Manager Jobs]]></category>
@@ -397,8 +397,8 @@
     <referencenumber><![CDATA[greenhouse_4232641009]]></referencenumber>
     <title><![CDATA[Community Manager]]></title>
     <company><![CDATA[Hawthorne Residential Partners]]></company>
-    <city><![CDATA[Atlanta Ga]]></city>
-    <state><![CDATA[]]></state>
+    <city><![CDATA[Atlanta]]></city>
+    <state><![CDATA[GA]]></state>
     <country>US</country>
     <jobtype>fulltime</jobtype>
     <category><![CDATA[Community Manager Jobs]]></category>
@@ -431,8 +431,8 @@
     <referencenumber><![CDATA[greenhouse_4230540009]]></referencenumber>
     <title><![CDATA[Leasing Consultant]]></title>
     <company><![CDATA[Hawthorne Residential Partners]]></company>
-    <city><![CDATA[Brookefield - 2400 Cluette Dr - Raleigh]]></city>
-    <state><![CDATA[NC - 27615]]></state>
+    <city><![CDATA[Raleigh]]></city>
+    <state><![CDATA[NC]]></state>
     <country>US</country>
     <jobtype>fulltime</jobtype>
     <category><![CDATA[Leasing Consultant Jobs]]></category>
@@ -465,8 +465,8 @@
     <referencenumber><![CDATA[greenhouse_4232626009]]></referencenumber>
     <title><![CDATA[Leasing Consultant]]></title>
     <company><![CDATA[Hawthorne Residential Partners]]></company>
-    <city><![CDATA[Atlanta Ga]]></city>
-    <state><![CDATA[]]></state>
+    <city><![CDATA[Atlanta]]></city>
+    <state><![CDATA[GA]]></state>
     <country>US</country>
     <jobtype>fulltime</jobtype>
     <category><![CDATA[Leasing Consultant Jobs]]></category>
@@ -503,8 +503,8 @@
     <referencenumber><![CDATA[greenhouse_4232201009]]></referencenumber>
     <title><![CDATA[Leasing Consultant- Multi Site]]></title>
     <company><![CDATA[Hawthorne Residential Partners]]></company>
-    <city><![CDATA[Retreat At Knoxville - 10600 Castlepointe Way - Knoxville]]></city>
-    <state><![CDATA[TN - 37932]]></state>
+    <city><![CDATA[Knoxville]]></city>
+    <state><![CDATA[TN]]></state>
     <country>US</country>
     <jobtype>fulltime</jobtype>
     <category><![CDATA[Leasing Consultant Jobs]]></category>
@@ -533,8 +533,8 @@
     <referencenumber><![CDATA[greenhouse_4232198009]]></referencenumber>
     <title><![CDATA[Maintenance Supervisor - Multi-Site]]></title>
     <company><![CDATA[Hawthorne Residential Partners]]></company>
-    <city><![CDATA[Atlanta Ga]]></city>
-    <state><![CDATA[]]></state>
+    <city><![CDATA[Atlanta]]></city>
+    <state><![CDATA[GA]]></state>
     <country>US</country>
     <jobtype>fulltime</jobtype>
     <category><![CDATA[Maintenance Supervisor Jobs]]></category>
@@ -599,8 +599,8 @@
     <referencenumber><![CDATA[greenhouse_5981531004]]></referencenumber>
     <title><![CDATA[Customer Experience Specialist (Leasing/Customer Service)]]></title>
     <company><![CDATA[Cottonwood Residential]]></company>
-    <city><![CDATA[Utah - Salt Lake City]]></city>
-    <state><![CDATA[]]></state>
+    <city><![CDATA[Salt Lake City]]></city>
+    <state><![CDATA[UT]]></state>
     <country>US</country>
     <jobtype>fulltime</jobtype>
     <category><![CDATA[Leasing Consultant Jobs]]></category>
@@ -860,23 +860,6 @@
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/cortland]]></companyurl>
     <companylogo><![CDATA[https://graysontu.github.io/pmj-pipeline/logos/cortland.png]]></companylogo>
-  </job>
-  <job>
-    <referencenumber><![CDATA[greenhouse_5120304007]]></referencenumber>
-    <title><![CDATA[Mobile Building Engineer]]></title>
-    <company><![CDATA[Lincoln Property Company]]></company>
-    <city><![CDATA[Charlotte]]></city>
-    <state><![CDATA[NC]]></state>
-    <country>US</country>
-    <jobtype>fulltime</jobtype>
-    <category><![CDATA[Maintenance Technician Jobs]]></category>
-    <description><![CDATA[<p>We are looking for a skilled Mobile Engineer to perform technical and mechanical functions related to the property&#x27;s plant and equipment in order to achieve energy efficiency, cost effectiveness, and engineering services to the building and its tenants. This person will be responsible for the operations and maintenance of all assigned buildings in the area. Responsibilities: Comply with all EPA, OSHA &amp; ASHRAE rules, requirements, procedures and industry and Company safety guidelines. Perform all</p>]]></description>
-    <url><![CDATA[https://job-boards.greenhouse.io/lpc/jobs/5120304007]]></url>
-    <date>2026-04-24</date>
-    <expiration_date>2026-06-26</expiration_date>
-    <remotetype>onsite</remotetype>
-    <companyurl><![CDATA[https://boards.greenhouse.io/lpc]]></companyurl>
-    <companylogo><![CDATA[https://graysontu.github.io/pmj-pipeline/logos/lincoln-property-company.png]]></companylogo>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_5981357004]]></referencenumber>

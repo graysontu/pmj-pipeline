@@ -30,7 +30,6 @@ _COUNTRY_TOKENS = {"UNITED STATES", "UNITED STATES OF AMERICA", "USA", "US"}
 
 
 def _zip3_to_state(prefix: str) -> str:
-    """Map a 3-digit ZIP prefix to a US state abbreviation using USPS zone ranges."""
     try:
         p = int(prefix)
     except ValueError:
@@ -96,57 +95,88 @@ def _zip3_to_state(prefix: str) -> str:
     return ""
 
 
+def _extract_city_from_segment(seg: str) -> str:
+    """If segment contains dash-separated parts, return the last meaningful one as city."""
+    if " - " in seg:
+        return seg.split(" - ")[-1].strip().title()
+    return seg.strip().title()
+
+
+def _match_state(candidate: str) -> str:
+    """Return state abbreviation if candidate is a recognizable state token, else ''."""
+    upper = candidate.upper().strip()
+
+    if upper in _US_STATES:
+        return upper
+
+    # "ST ZIP" or "ST - ZIP" (e.g. "NH 03766", "SC - 29414")
+    m = re.match(r"^([A-Z]{2})\s*-?\s*\d{5}", upper)
+    if m and m.group(1) in _US_STATES:
+        return m.group(1)
+
+    # Full state name
+    abbr = _US_STATE_NAMES.get(candidate.strip().title())
+    if abbr:
+        return abbr
+
+    return ""
+
+
 def parse_location(location: str) -> tuple[str, str]:
     """Split a location string into (city, state_abbr).
 
     Handles formats including:
-      'City, ST'
-      'City, State'
-      'City, ST ZIP'
-      'City, State, Country'
+      'City, ST' / 'City, State' / 'City, ST ZIP' / 'City, State, Country'
       'Property Name, City, State, Country'
-    Returns ('', '') for unrecognized strings.
+      'State - City'
+      'City ST' (no comma)
+      'Property - Street - City, ST - ZIP'
+    Returns ('', '') for strings with no usable location data.
     """
     if not location:
         return "", ""
 
+    # --- Comma-separated path ---
     parts = [p.strip() for p in location.split(",")]
-    if len(parts) < 2:
-        return location.strip().title(), ""
 
     # Strip trailing country tokens
-    while parts and parts[-1].upper().strip() in _COUNTRY_TOKENS:
+    while parts and parts[-1].upper() in _COUNTRY_TOKENS:
         parts.pop()
 
     if not parts:
         return "", ""
-    if len(parts) == 1:
-        return parts[0].title(), ""
 
-    # Walk from right looking for a recognizable state token.
-    # The city is the part immediately before the matched state.
-    for i in range(len(parts) - 1, 0, -1):
-        candidate = parts[i].strip()
-        upper = candidate.upper()
+    if len(parts) >= 2:
+        # Walk from right looking for a recognizable state token.
+        # City is the part immediately before the matched state.
+        for i in range(len(parts) - 1, 0, -1):
+            state = _match_state(parts[i])
+            if state:
+                city = _extract_city_from_segment(parts[i - 1])
+                return city, state
 
-        # 2-letter abbreviation
-        if upper in _US_STATES:
-            return parts[i - 1].strip().title(), upper
+        # Standalone ZIP in last part
+        zip_match = re.match(r"^(\d{5})(?:-\d{4})?$", parts[-1])
+        if zip_match:
+            state = _zip3_to_state(zip_match.group(1)[:3])
+            return _extract_city_from_segment(parts[-2]), state
 
-        # "ST ZIP" packed into one segment (e.g. "TX 78701")
-        st_zip = re.match(r"^([A-Z]{2})\s+\d{5}", upper)
-        if st_zip and st_zip.group(1) in _US_STATES:
-            return parts[i - 1].strip().title(), st_zip.group(1)
+        # No state found — return first comma-part as city
+        return _extract_city_from_segment(parts[0]), ""
 
-        # Full state name (e.g. "Ohio", "Rhode Island")
-        state_abbr = _US_STATE_NAMES.get(candidate.title())
-        if state_abbr:
-            return parts[i - 1].strip().title(), state_abbr
+    # --- Single segment: try various no-comma formats ---
+    seg = parts[0].strip()
 
-    # Last part is a standalone ZIP
-    zip_match = re.match(r"^(\d{5})(?:-\d{4})?$", parts[-1].strip())
-    if zip_match:
-        state = _zip3_to_state(zip_match.group(1)[:3])
-        return parts[0].strip().title(), state
+    # "City ST" or "City ST 12345" (space-separated state abbreviation)
+    m = re.match(r"^(.+?)\s+([A-Z]{2})(?:\s+\d{5})?$", seg)
+    if m and m.group(2) in _US_STATES:
+        return m.group(1).strip().title(), m.group(2)
 
-    return parts[0].strip().title(), parts[-1].strip()
+    # "State - City" (full state name or abbreviation before a dash)
+    if " - " in seg:
+        dash_parts = [p.strip() for p in seg.split(" - ")]
+        state = _match_state(dash_parts[0])
+        if state and len(dash_parts) >= 2:
+            return dash_parts[-1].title(), state
+
+    return seg.title(), ""

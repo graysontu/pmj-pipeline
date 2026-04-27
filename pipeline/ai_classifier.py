@@ -66,6 +66,7 @@ REJECT these:
 - Construction, development, project management for new builds
 - Hotel, hospitality, short-term rental management (unless explicitly STR property mgmt company)
 - Corporate facilities management not tied to a specific property
+- Building Engineers, Chief Engineers, Operating Engineers — commercial HVAC/mechanical/electrical plant operators (these are facilities roles, not property management)
 - Software engineers or product roles at proptech companies
 - Marketing, sales (B2B), or executive roles not directly operating properties
 - Real estate analysts at investment banks or REITs (asset management at a REIT operating properties is borderline OK)
