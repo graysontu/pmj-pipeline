@@ -462,12 +462,15 @@ async def _extract_salary_one(
                 raw = raw[4:]
             raw = raw.strip()
         parsed = json.loads(raw)
-        salary_data = {
-            "salary_min": int(parsed["salary_min"]),
-            "salary_max": int(parsed["salary_max"]),
-            "salary_currency": parsed.get("salary_currency", "USD"),
-            "salary_schedule": parsed.get("salary_schedule", "yearly"),
-        }
+        if parsed.get("salary_min") is None or parsed.get("salary_max") is None:
+            salary_data = {"salary_min": None, "salary_max": None, "salary_currency": None, "salary_schedule": None}
+        else:
+            salary_data = {
+                "salary_min": int(parsed["salary_min"]),
+                "salary_max": int(parsed["salary_max"]),
+                "salary_currency": parsed.get("salary_currency", "USD"),
+                "salary_schedule": parsed.get("salary_schedule", "yearly"),
+            }
     except Exception as exc:
         logger.warning("Salary extraction failed for %s: %s. Using None.", job.source_id, exc)
         salary_data = {"salary_min": None, "salary_max": None, "salary_currency": "USD", "salary_schedule": "yearly"}

@@ -896,6 +896,10 @@
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/assetliving]]></companyurl>
     <companylogo><![CDATA[https://graysontu.github.io/pmj-pipeline/logos/asset-living.png]]></companylogo>
+    <salary_min>95000</salary_min>
+    <salary_max>120000</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>yearly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_7713719003]]></referencenumber>
@@ -929,6 +933,10 @@
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/olympusproperty]]></companyurl>
     <companylogo><![CDATA[https://graysontu.github.io/pmj-pipeline/logos/olympus-property.png]]></companylogo>
+    <salary_min>80000</salary_min>
+    <salary_max>90000</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>yearly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_7851131]]></referencenumber>
@@ -1154,6 +1162,10 @@
     <remotetype>onsite</remotetype>
     <companyurl><![CDATA[https://boards.greenhouse.io/thesciongroupllc]]></companyurl>
     <companylogo><![CDATA[https://graysontu.github.io/pmj-pipeline/logos/the-scion-group.png]]></companylogo>
+    <salary_min>16</salary_min>
+    <salary_max>21</salary_max>
+    <salary_currency>USD</salary_currency>
+    <salary_schedule>hourly</salary_schedule>
   </job>
   <job>
     <referencenumber><![CDATA[greenhouse_8522903002]]></referencenumber>
