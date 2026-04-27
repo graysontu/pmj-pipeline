@@ -26,7 +26,8 @@ MAX_CONCURRENT = 3
 
 SALARY_MODEL = "claude-haiku-4-5"
 SALARY_MAX_TOKENS = 80
-SALARY_MAX_CONCURRENT = 10
+SALARY_MAX_CONCURRENT = 2
+SALARY_REQUEST_INTERVAL = 3.0
 
 SALARY_SYSTEM = """\
 You extract or estimate salary ranges for US property management jobs. Return ONLY valid JSON, no other text.
@@ -465,6 +466,7 @@ async def _extract_salary_one(
                 system=SALARY_SYSTEM,
                 messages=[{"role": "user", "content": user_prompt}],
             )
+            await asyncio.sleep(SALARY_REQUEST_INTERVAL)
         raw = response.content[0].text.strip()
         if raw.startswith("```"):
             raw = raw.split("```")[1]

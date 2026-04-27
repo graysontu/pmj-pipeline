@@ -16,7 +16,7 @@ logger = logging.getLogger(__name__)
 MODEL = "claude-haiku-4-5"
 MAX_TOKENS = 300
 MAX_CONCURRENT = 1
-REQUEST_INTERVAL = 2.0      # seconds to hold the semaphore after each response, throttling to ~25 RPM
+REQUEST_INTERVAL = 3.0      # seconds to hold the semaphore after each response, throttling to ~20 RPM
 RATE_LIMIT_RETRY_WAIT = 60  # seconds to wait after a 429 before retrying
 CACHE_PATH = Path(__file__).parent.parent / "data" / "classification_cache.json"
 
