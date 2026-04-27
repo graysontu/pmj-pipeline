@@ -6,32 +6,16 @@ from pipeline.state import State
 
 TEST_FEED_PATH = Path(__file__).parent.parent / "output" / "feed_test.xml"
 
-CATEGORIES = [
-    "Property Manager Jobs",
-    "Real Estate Admin & Coordinator Jobs",
-    "Leasing Consultant Jobs",
-    "Maintenance Technician Jobs",
-]
-
-# Additional specific jobs to include (e.g. to cover hourly pay)
-EXTRA_IDS = [
-    "greenhouse_5194285008",  # Assistant Maintenance Manager $28-$30/hr
-    "greenhouse_5135865008",  # Maintenance Technician $20-$32/hr
+# One job per company, chosen to test company logo URLs
+TEST_IDS = [
+    "greenhouse_5194176008",  # Bozzuto
+    "greenhouse_4203729009",  # Cortland
+    "lever_15cd2830-dfa4-40a2-a57f-df23b50d0180",  # Lessen
 ]
 
 state = State()
-all_jobs = state.get_active_jobs()
-all_jobs_by_id = {job["source_id"]: job for job in all_jobs}
+all_jobs_by_id = {job["source_id"]: job for job in state.get_active_jobs()}
 
-jobs = []
-for target_cat in CATEGORIES:
-    for job in all_jobs:
-        if job.get("category") == target_cat:
-            jobs.append(job)
-            break
-
-for sid in EXTRA_IDS:
-    if sid in all_jobs_by_id:
-        jobs.append(all_jobs_by_id[sid])
+jobs = [all_jobs_by_id[sid] for sid in TEST_IDS if sid in all_jobs_by_id]
 
 generate_feed_xml(jobs, path=TEST_FEED_PATH)
