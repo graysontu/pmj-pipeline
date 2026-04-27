@@ -10,6 +10,9 @@ on:
       - "output/feed_minimal.xml"
       - "output/feed_diagnostic.xml"
       - "output/logos/**"
+  workflow_run:
+    workflows: ["Run Pipeline"]
+    types: [completed]
 
 permissions:
   contents: read
@@ -23,6 +26,7 @@ concurrency:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    if: github.event_name == 'push' || github.event.workflow_run.conclusion == 'success'
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
