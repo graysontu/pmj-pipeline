@@ -24,9 +24,9 @@ def _parse_job(job: dict, company_name: str, company_url: str | None) -> RawJob:
     metadata = job.get("metadata", []) or []
     metadata_values = " ".join(str(m.get("value", "")) for m in metadata)
 
-    updated_at = job.get("updated_at") or job.get("created_at", "")
+    created_at = job.get("created_at", "")
     try:
-        date_posted = datetime.fromisoformat(updated_at.replace("Z", "+00:00"))
+        date_posted = datetime.fromisoformat(created_at.replace("Z", "+00:00"))
     except (ValueError, AttributeError):
         date_posted = datetime.now(tz=timezone.utc)
 
