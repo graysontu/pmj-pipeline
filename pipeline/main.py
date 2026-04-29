@@ -170,6 +170,17 @@ def run() -> None:
         )
     all_jobs = fresh_jobs
 
+    company_counts: dict[str, int] = defaultdict(int)
+    capped_jobs = []
+    for job in all_jobs:
+        if company_counts[job.company] < 3:
+            capped_jobs.append(job)
+            company_counts[job.company] += 1
+    capped_count = len(all_jobs) - len(capped_jobs)
+    if capped_count:
+        logger.info("Capped %d jobs (max 3 per company per run). %d remain.", capped_count, len(capped_jobs))
+    all_jobs = capped_jobs
+
     if not all_jobs:
         logger.info("No jobs fetched. Nothing to classify.")
         return
