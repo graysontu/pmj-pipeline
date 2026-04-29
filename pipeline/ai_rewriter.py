@@ -60,7 +60,6 @@ BANNED_PHRASES = [
     "pivotal",
     "tapestry",
     "ever-evolving",
-    "fast-paced environment",
     "passionate about",
     "apply today",
     "don't miss this opportunity",
@@ -71,11 +70,11 @@ BANNED_PHRASES = [
 
 PERSONAS = {
     "veteran_insider": {
-        "voice": "You write like a 15-year property management veteran who has seen it all. Conversational but knowing. You drop industry shorthand naturally without explaining it. You're occasionally a little dry. You don't oversell roles.",
+        "voice": "You write like a 15-year property management veteran who has seen it all. You drop industry shorthand naturally without explaining it. You're occasionally a little dry. You don't oversell roles.",
         "tone_notes": "First person plural ('we've seen', 'in our industry') is fine occasionally. Acknowledge real challenges of the role.",
     },
     "pragmatic_recruiter": {
-        "voice": "You write like a no-nonsense recruiter who respects the reader's time. Direct. Concrete. You cut filler words. You focus on what the job actually entails day-to-day.",
+        "voice": "You write like a no-nonsense recruiter who respects the reader's time. Direct. Concrete. You cut filler words. You focus on what the job entails day-to-day.",
         "tone_notes": "Short paragraphs. Active voice. No hype. State things plainly.",
     },
     "career_strategist": {
@@ -99,15 +98,15 @@ PERSONAS = {
         "tone_notes": "Distinguish between skills the role REQUIRES vs skills the role BUILDS. Both matter.",
     },
     "realist": {
-        "voice": "You write like someone who refuses to whitewash jobs. You acknowledge real challenges (after-hours emergencies, difficult residents, paperwork loads) without being negative or dramatic.",
-        "tone_notes": "Honesty as a feature. The reader trusts you because you're not pretending the job is glamorous.",
+        "voice": "You write like someone who refuses to whitewash jobs. You acknowledge challenges (after-hours emergencies, difficult residents, paperwork loads) without being negative or dramatic.",
+        "tone_notes": "Honesty as a feature. The reader trusts you because you're not pretending the job is glamorous. You're not pessimistic though.",
     },
 }
 
 STRUCTURES = [
     {
         "id": "context_first",
-        "guide": "Open with one or two sentences of role context (what this kind of role usually involves at this kind of company), then move into the actual responsibilities, then end with growth or culture angle. Use 2-3 H2 headings.",
+        "guide": "Open with one or two sentences of role context (what this kind of role usually involves at this kind of company), then move into the responsibilities, then end with growth or culture angle. Use 2-3 H2 headings.",
     },
     {
         "id": "scenario_open",
@@ -115,7 +114,7 @@ STRUCTURES = [
     },
     {
         "id": "what_you_do",
-        "guide": "Lead with a tight 'What you'll actually do' section that's specific to the role, then 'What you bring', then a closing context paragraph. 2-3 H2 headings.",
+        "guide": "If relevant, lead with a tight 'What you'll actually do' section that's specific to the role, then 'What you bring', then a closing context paragraph. 2-3 H2 headings.",
     },
     {
         "id": "industry_lens",
@@ -144,13 +143,13 @@ NEVER use these characters or phrases (these are AI tells):
 
 ALWAYS:
 - Use contractions naturally (you're, don't, we're, it's)
-- Vary sentence length aggressively. Mix 3-5 word sentences with 20-30 word sentences in the same paragraph.
+- Vary sentence length. Mix 5-8 word sentences with 20-30 word sentences in the same paragraph.
 - Use active voice as the default
 - Use property management vocabulary correctly when relevant: turn, make-ready, punch list, lease-up, T-12, NOI, delinquency, MTM, concessions, capex, RUBS, T-3, T-12, occupancy, traffic, Class A/B/C, garden-style, mid-rise, high-rise, fee management, third-party management, in-house. Only use terms that genuinely fit this specific role; do not stuff them.
 - Reflect the actual role and requirements from the source posting (paraphrased, not copied)
 
 NEVER:
-- Copy more than 8 consecutive words from the original posting verbatim
+- Copy more than 9 consecutive words from the original posting verbatim
 - Invent specific facts about the company, property, salary, benefits, or perks not present in the original
 - Use the same opening pattern across jobs
 - Bullet-list everything. Use prose for context; lists only for genuinely list-shaped content (e.g., qualifications)
@@ -169,13 +168,13 @@ Include ONE OR TWO additions beyond what the original posting says. Pick from th
 - Honest acknowledgment of common challenges (e.g., after-hours, difficult residents) when warranted
 - Industry context: how recent trends affect this role (smart home tech, AI leasing, RUBS billing, fee compression, regulatory scrutiny, build-to-rent, single-family rental at scale)
 
-The value-add should feel like an insight, not a paragraph filler. One paragraph or one short list. Sometimes a single well-placed sentence is the right value-add.
+The value-add should feel like an insight, not a paragraph filler. One paragraph or one short list. Sometimes a single well-placed sentence or brief list is the right value-add.
 
 == OUTPUT FORMAT ==
 
 Return ONLY valid HTML using exclusively these tags: <p>, <h2>, <h3>, <ul>, <li>, <strong>, <em>. No other tags. No markdown. No code fences. No preamble.
 
-Length: 350 to 650 words. Vary the length across jobs; do not always hit the same word count.
+Length: 350 to 700 words. Vary the length across jobs; do not always hit the same word count.
 
 == OUTPUT QUALITY CHECK (mental) ==
 
@@ -184,7 +183,7 @@ Before finalizing, verify:
 2. No banned phrases
 3. Opening doesn't follow a pattern you've used before
 4. The value-add is specific and actually useful, not generic
-5. The voice matches the assigned persona
+5. The voice aligns with the assigned persona
 6. The structure matches the assigned variant
 7. Industry vocab used correctly (or not at all)\
 """
