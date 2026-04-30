@@ -87,6 +87,18 @@ When rate limit errors appear during a run, jobs are skipped and logged. They wo
 
 **`ANTHROPIC_API_KEY` must be set as a GitHub repo secret** (Settings → Secrets and variables → Actions). If the daily run shows 400 errors with "credit balance too low", top up at console.anthropic.com.
 
+**GitHub's cron scheduler is unreliable and can be delayed by minutes to hours.** The scheduled run at `0 0 * * *` does not always fire at exactly midnight UTC. If a run appears missing, check the Actions tab before assuming a bug — it may just be delayed. The GitHub Actions API also has a lag before new runs appear.
+
+**The GitHub runner never has a `.env` file** — it's gitignored. `JOB_MAX_AGE_DAYS` and other non-secret config must be set via `config.py` defaults (or added as GitHub env vars in the workflow). Changes to local `.env` do not affect automated runs.
+
+**`classification_cache.json` and `rewrite_cache.json` on the runner are NOT committed to the repo** — they're only persisted via GitHub Actions cache. The local copies reflect only what was cached during local runs, not what the runner has classified. If you're trying to debug why the runner rejected a specific job, you can't check the local cache for it.
+
+**Silent early returns don't trigger the failure email.** If classification or rewrite fails (rate limit, API error, etc.), `main.py` catches the exception and returns with exit code 0. GitHub considers the run "successful," no failure email is sent, and no jobs are committed. If the feed hasn't updated and there's no failure email, check the run logs — a silent error is likely.
+
+**Changing `JOB_MAX_AGE_DAYS` and the cron schedule at the same time creates a gap.** Jobs published in the window between the last old-schedule run and the first new-schedule run can fall outside the new age window and be permanently missed. If you need to change both, temporarily increase `JOB_MAX_AGE_DAYS` to cover the gap, then lower it after the first new-schedule run.
+
+**`JOB_MAX_AGE_DAYS` must be at least 2 when the 3-per-company cap is active.** With a 1-day window, any jobs dropped by the cap today are outside the window tomorrow — permanently lost. A 2-day window gives capped jobs a second chance the following run.
+
 ---
 
 ## JobBoardly Integration
