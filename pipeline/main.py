@@ -173,12 +173,12 @@ def run() -> None:
     company_counts: dict[str, int] = defaultdict(int)
     capped_jobs = []
     for job in all_jobs:
-        if company_counts[job.company] < 3:
+        if company_counts[job.company] < 2:
             capped_jobs.append(job)
             company_counts[job.company] += 1
     capped_count = len(all_jobs) - len(capped_jobs)
     if capped_count:
-        logger.info("Capped %d jobs (max 3 per company per run). %d remain.", capped_count, len(capped_jobs))
+        logger.info("Capped %d jobs (max 2 per company per run). %d remain.", capped_count, len(capped_jobs))
     all_jobs = capped_jobs
 
     if not all_jobs:

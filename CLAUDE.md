@@ -97,7 +97,7 @@ When rate limit errors appear during a run, jobs are skipped and logged. They wo
 
 **Changing `JOB_MAX_AGE_DAYS` and the cron schedule at the same time creates a gap.** Jobs published in the window between the last old-schedule run and the first new-schedule run can fall outside the new age window and be permanently missed. If you need to change both, temporarily increase `JOB_MAX_AGE_DAYS` to cover the gap, then lower it after the first new-schedule run.
 
-**`JOB_MAX_AGE_DAYS` must be at least 2 when the 3-per-company cap is active.** With a 1-day window, any jobs dropped by the cap today are outside the window tomorrow — permanently lost. A 2-day window gives capped jobs a second chance the following run.
+**`JOB_MAX_AGE_DAYS` must be at least 2 when the 2-per-company cap is active.** With a 1-day window, any jobs dropped by the cap today are outside the window tomorrow — permanently lost. A 2-day window gives capped jobs a second chance the following run.
 
 ---
 
