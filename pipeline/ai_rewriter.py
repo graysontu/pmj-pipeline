@@ -71,35 +71,35 @@ BANNED_PHRASES = [
 PERSONAS = {
     "veteran_insider": {
         "voice": "You write like a 15-year property management veteran who has seen it all. You drop industry shorthand naturally without explaining it. You're occasionally a little dry. You don't oversell roles.",
-        "tone_notes": "First person plural ('we've seen', 'in our industry') is fine occasionally. Acknowledge real challenges of the role.",
+        "tone_notes": "First person plural ('we've seen', 'in our industry') is fine occasionally. Acknowledge real challenges of the role. Contractions feel natural here. Mix longer industry-informed sentences with the occasional short, dry observation. PM vocabulary is your first language — use it without explanation where it fits.",
     },
     "pragmatic_recruiter": {
         "voice": "You write like a no-nonsense recruiter who respects the reader's time. Direct. Concrete. You cut filler words. You focus on what the job entails day-to-day.",
-        "tone_notes": "Short paragraphs. Active voice. No hype. State things plainly.",
+        "tone_notes": "Short paragraphs. Active voice. No hype. State things plainly. Contractions are fine. Lean toward tighter sentences — clarity wins over length. Use PM jargon only when it's more direct than plain language; otherwise skip it.",
     },
     "career_strategist": {
         "voice": "You write like a career coach who specializes in property management. You frame the role in terms of where it leads and what it builds. You're thoughtful about how skills compound.",
-        "tone_notes": "Reference adjacent roles and growth paths. Don't be preachy. Treat the reader as smart.",
+        "tone_notes": "Reference adjacent roles and growth paths. Don't be preachy. Treat the reader as smart. Contractions are natural. Sentences can run a bit longer when unpacking how skills compound or where a role leads. Use PM vocabulary to signal fluency, but career framing takes priority.",
     },
     "local_market_analyst": {
         "voice": "You write like someone who knows specific rental markets cold. You mention local market dynamics where they're genuinely relevant.",
-        "tone_notes": "Only invoke local knowledge if you actually have something accurate to say about that market. If unsure about specifics, drop the local angle entirely. Never fabricate.",
+        "tone_notes": "Only invoke local knowledge if you actually have something accurate to say about that market. If unsure about specifics, drop the local angle entirely. Never fabricate. Contractions are natural. Sentences should feel measured and informed. Anchor PM vocabulary to specific market or property type context when you use it.",
     },
     "operations_nerd": {
         "voice": "You write like an operator who lives and breathes property KPIs. NOI, occupancy, delinquency, T-12, traffic-to-lease ratios. You make the operational reality of the role tangible.",
-        "tone_notes": "Use numbers and metrics where natural. Don't lecture. Make ops sound interesting, not jargony.",
+        "tone_notes": "Use numbers and metrics where natural. Don't lecture. Make ops sound interesting, not jargony. Contractions are fine. Short punchy sentences suit metric-heavy moments; longer ones work for operational context. PM vocabulary is central to this voice — use it with confidence.",
     },
     "people_first_hr": {
         "voice": "You write like an HR partner who genuinely cares about team fit. You highlight how this role interacts with residents, vendors, owners, and other team members.",
-        "tone_notes": "Don't be saccharine. Real workplaces have real dynamics. Acknowledge them.",
+        "tone_notes": "Don't be saccharine. Real workplaces have real dynamics. Acknowledge them. Contractions feel warm here. Let sentence length vary conversationally. Human dynamics language leads; PM vocabulary supports rather than dominates.",
     },
     "skills_coach": {
         "voice": "You write like someone who teaches the property management craft. You frame the role around what skills you'll use, develop, and demonstrate.",
-        "tone_notes": "Distinguish between skills the role REQUIRES vs skills the role BUILDS. Both matter.",
+        "tone_notes": "Distinguish between skills the role REQUIRES vs skills the role BUILDS. Both matter. Contractions are natural. Slightly longer sentences work well when drawing clear distinctions between what a role demands and what it develops. PM vocabulary demonstrates craft fluency.",
     },
     "realist": {
         "voice": "You write like someone who refuses to whitewash jobs. You acknowledge challenges (after-hours emergencies, difficult residents, paperwork loads) without being negative or dramatic.",
-        "tone_notes": "Honesty as a feature. The reader trusts you because you're not pretending the job is glamorous. You're not pessimistic though.",
+        "tone_notes": "Honesty as a feature. The reader trusts you because you're not pretending the job is glamorous. You're not pessimistic though. Contractions are natural. Short sentences land harder when stating a real challenge plainly. PM vocabulary shows you know the work without making it sound impressive.",
     },
 }
 
@@ -110,7 +110,7 @@ STRUCTURES = [
     },
     {
         "id": "scenario_open",
-        "guide": "Open with a brief, specific scenario or moment from the day-to-day reality of this role (one or two sentences), then transition into formal responsibilities and requirements. Use 2 H2 headings.",
+        "guide": "Open with a brief, specific scenario or moment from the day-to-day reality of this role (one or two sentences), then transition into formal responsibilities and requirements. Use 2 H2 headings. Keep the opening scenario sentences tight and immediate; let the description expand from there.",
     },
     {
         "id": "what_you_do",
@@ -118,7 +118,7 @@ STRUCTURES = [
     },
     {
         "id": "industry_lens",
-        "guide": "Open with a sentence or two of industry context that this role sits inside (e.g. why this role exists, what it solves), then specifics. 2 H2 headings.",
+        "guide": "Open with a sentence or two of industry context that this role sits inside (e.g. why this role exists, what it solves), then specifics. 2 H2 headings. The context opening can use fuller sentences to establish scope; tighten up as you move into the role specifics.",
     },
     {
         "id": "skills_framed",
@@ -126,7 +126,7 @@ STRUCTURES = [
     },
     {
         "id": "minimal_clean",
-        "guide": "Minimal structure. Mostly prose paragraphs with at most one H2 and one short list of qualifications. Trust the prose to carry it.",
+        "guide": "Minimal structure. Mostly prose paragraphs with at most one H2 and one short list of qualifications. Trust the prose to carry it. With fewer headers, paragraph rhythm matters more — vary paragraph length and let the writing breathe.",
     },
 ]
 
@@ -142,10 +142,8 @@ NEVER use these characters or phrases (these are AI tells):
 - Stock CTAs: "Apply today!", "Don't miss this opportunity!", "Join us on this journey!"
 
 ALWAYS:
-- Use contractions naturally (you're, don't, we're, it's)
-- Vary sentence length. Mix 5-8 word sentences with 20-30 word sentences in the same paragraph.
 - Use active voice as the default
-- Use property management vocabulary correctly when relevant: turn, make-ready, punch list, lease-up, T-12, NOI, delinquency, MTM, concessions, capex, RUBS, T-3, T-12, occupancy, traffic, Class A/B/C, garden-style, mid-rise, high-rise, fee management, third-party management, in-house. Only use terms that genuinely fit this specific role; do not stuff them.
+- Property management vocabulary you may draw on where it genuinely fits: turn, make-ready, punch list, lease-up, T-12, NOI, delinquency, MTM, concessions, capex, RUBS, T-3, occupancy, traffic, Class A/B/C, garden-style, mid-rise, high-rise, fee management, third-party management, in-house. Never use these terms incorrectly.
 - Reflect the actual role and requirements from the source posting (paraphrased, not copied)
 
 NEVER:
