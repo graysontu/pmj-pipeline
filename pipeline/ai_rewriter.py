@@ -152,6 +152,8 @@ NEVER:
 - Use the same opening pattern across jobs
 - Bullet-list everything. Use prose for context; lists only for genuinely list-shaped content (e.g., qualifications)
 - Always title sections "Role Overview" or "What You'll Do". Use varied, specific section headings (or skip headings if the structure says minimal).
+- Use contrarian "not X, it's Y" framing (e.g., "You're not walking the property, you're watching ledgers"). This rhetorical device reads as clever but is overused and off-putting. State what the role IS directly.
+- Use "whether X or Y, you'll..." constructions to enumerate scope. This is a formulaic AI filler pattern. State responsibilities directly instead.
 
 == VALUE-ADD REQUIREMENT ==
 
