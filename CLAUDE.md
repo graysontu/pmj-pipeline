@@ -28,6 +28,18 @@ Greenhouse lets each company set location however they want. Known formats encou
 
 ---
 
+## ATS APIs (verification gotchas)
+
+**Workable's v3 jobs endpoint only answers POST** — GET returns 404 for every account, indistinguishable from a bad slug. The list response has no description; each fresh job needs a per-job GET to the v2 detail endpoint. The fetcher only detail-fetches jobs published within `JOB_MAX_AGE_DAYS + 1` days to keep HTTP volume low.
+
+**SmartRecruiters returns 200 with zero postings for nonexistent company slugs** — an empty result proves nothing. Only a non-empty postings list confirms a slug. The list response has no `jobAd` (description) and its `ref` is an API URL, so each fresh posting needs a detail fetch for content and the real apply page.
+
+**Ashby and Recruitee have essentially no US property management companies** (verified July 2026 via site: searches). Don't spend time hunting for PM slugs there.
+
+**The 1-per-company cap runs BEFORE classification**, so a company whose board is mostly non-PM roles (construction, corporate, finance) wastes its daily slot on jobs the classifier rejects. Prefer companies whose boards are majority PM/leasing titles.
+
+---
+
 ## Salary Extraction
 
 **Always use `description_text`, never `rewritten_description`**
