@@ -78,6 +78,27 @@ greenhouse:
   - slug: berkshiregroupllc
     company_name: Berkshire Group
     logo_url: https://graysontu.github.io/pmj-pipeline/logos/berkshire-group.png
+  - slug: redstoneresidential
+    company_name: Redstone Residential
+    logo_url: https://graysontu.github.io/pmj-pipeline/logos/redstone-residential.png
+  - slug: fairsteadescllc
+    company_name: Fairstead
+    logo_url: https://graysontu.github.io/pmj-pipeline/logos/fairstead.svg
+  - slug: cloudten
+    company_name: CloudTen Residential
+    logo_url: https://graysontu.github.io/pmj-pipeline/logos/cloudten-residential.png
+  - slug: sunrise
+    company_name: Sunrise Management
+    logo_url: https://graysontu.github.io/pmj-pipeline/logos/sunrise-management.jpg
+  - slug: dreamliveprospermgmt
+    company_name: Dream Live Prosper Communities
+    logo_url: https://graysontu.github.io/pmj-pipeline/logos/dream-live-prosper-communities.jpg
+  - slug: griffisresidential
+    company_name: Griffis Residential
+    logo_url: https://graysontu.github.io/pmj-pipeline/logos/griffis-residential.jpg
+  - slug: redpeak
+    company_name: RedPeak
+    logo_url: https://graysontu.github.io/pmj-pipeline/logos/redpeak.png
 
 # Verified slugs: https://api.lever.co/v0/postings/{slug}?mode=json
 lever:
@@ -90,18 +111,49 @@ lever:
   - slug: entrata
     company_name: Entrata
     logo_url: https://graysontu.github.io/pmj-pipeline/logos/entrata.png
+  - slug: tripalink
+    company_name: Tripalink
+    logo_url: https://graysontu.github.io/pmj-pipeline/logos/tripalink.png
+  - slug: loganpm
+    company_name: Logan Property Management
 
 # Verified slugs: https://api.ashbyhq.com/posting-api/job-board/{slug}
 # Add companies here once you confirm their Ashby board is public.
 ashby: []
 
-# Verified slugs: https://apply.workable.com/api/v3/accounts/{slug}/jobs
-# Add companies here once you confirm their Workable account slug.
-workable: []
+# Verify slugs via: curl -X POST -H "Content-Type: application/json" -d "{}" https://apply.workable.com/api/v3/accounts/{slug}/jobs
+# (the v3 jobs endpoint only answers POST; a GET returns 404 even for valid slugs)
+workable:
+  - slug: peak-made
+    company_name: PeakMade Real Estate
+    logo_url: https://graysontu.github.io/pmj-pipeline/logos/peakmade-real-estate.png
+  - slug: karya-property-management
+    company_name: Karya Property Management
+    logo_url: https://graysontu.github.io/pmj-pipeline/logos/karya-property-management.png
+  - slug: investment-property-group
+    company_name: Investment Property Group
+    logo_url: https://graysontu.github.io/pmj-pipeline/logos/investment-property-group.jpg
+  - slug: makowsky-ringel-greenberg-llc
+    company_name: Makowsky Ringel Greenberg
+    logo_url: https://graysontu.github.io/pmj-pipeline/logos/makowsky-ringel-greenberg.jpg
+  - slug: livecommonplace
+    company_name: CommonPlace
+    logo_url: https://graysontu.github.io/pmj-pipeline/logos/commonplace.png
+  - slug: flats-llc
+    company_name: Flats LLC
+    logo_url: https://graysontu.github.io/pmj-pipeline/logos/flats-llc.png
+  - slug: bluecrestresidential
+    company_name: Bluecore Residential
+    logo_url: https://graysontu.github.io/pmj-pipeline/logos/bluecore-residential.jpg
 
 # Verified slugs: https://{slug}.recruitee.com/api/offers/
 recruitee: []
 
 # SmartRecruiters public boards: https://api.smartrecruiters.com/v1/companies/{slug}/postings
 # Most companies set their SR boards to private. Add slugs only after confirming public access.
-smartrecruiters: []
+# NOTE: this endpoint returns 200 with zero jobs for nonexistent slugs - a non-empty
+# postings list is the only real confirmation.
+smartrecruiters:
+  - slug: AIRCommunities
+    company_name: AIR Communities
+    logo_url: https://graysontu.github.io/pmj-pipeline/logos/air-communities.png
