@@ -1,0 +1,85 @@
+name: Pipeline Watchdog
+
+# Runs after every failed "Run Pipeline" run and handles the one failure mode
+# that run-pipeline.yml structurally cannot handle itself.
+#
+# When GitHub cannot allocate a hosted runner, the pipeline job is cancelled
+# before ANY step executes -- so the "Send failure email" step inside
+# run-pipeline.yml never fires, and the run is silent apart from GitHub's own
+# notification. Alerting for that case has to live outside the job.
+#
+# This workflow also retries those runs, because JOB_MAX_AGE_DAYS=2 means two
+# consecutive missed runs permanently drop the jobs published in between.
+#
+# Ordinary step failures are deliberately left alone: run-pipeline.yml already
+# emails on those, and retrying real code failures just burns Anthropic credits.
+
+on:
+  workflow_run:
+    workflows: ["Run Pipeline"]
+    types: [completed]
+
+permissions:
+  actions: write
+  contents: read
+
+jobs:
+  watch:
+    if: github.event.workflow_run.conclusion == 'failure'
+    runs-on: ubuntu-latest
+
+    steps:
+      # A run that never got a runner has zero recorded steps. That is what
+      # separates "GitHub was broken" from "the pipeline itself failed".
+      - name: Classify the failure
+        id: triage
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+          RUN_ID: ${{ github.event.workflow_run.id }}
+          ATTEMPT: ${{ github.event.workflow_run.run_attempt }}
+        run: |
+          steps_run=$(gh api "repos/$REPO/actions/runs/$RUN_ID/attempts/$ATTEMPT/jobs" \
+            --jq '[.jobs[].steps[]?] | length')
+          echo "Recorded steps across all jobs: $steps_run"
+          if [ "$steps_run" -eq 0 ]; then
+            echo "kind=infrastructure" >> "$GITHUB_OUTPUT"
+          else
+            echo "kind=pipeline" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Retry the run
+        id: retry
+        if: steps.triage.outputs.kind == 'infrastructure' && github.event.workflow_run.run_attempt < 3
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh run rerun ${{ github.event.workflow_run.id }} --failed --repo ${{ github.repository }}
+          echo "retried=true" >> "$GITHUB_OUTPUT"
+
+      - name: Email about the infrastructure failure
+        if: steps.triage.outputs.kind == 'infrastructure'
+        uses: dawidd6/action-send-mail@v3.12.0
+        with:
+          server_address: smtp.gmail.com
+          server_port: 465
+          username: ${{ secrets.GMAIL_USERNAME }}
+          password: ${{ secrets.GMAIL_APP_PASSWORD }}
+          subject: >-
+            ${{ steps.retry.outputs.retried == 'true'
+                && 'PMJ Pipeline: no runner available - retry queued'
+                || 'PMJ Pipeline: no runner available - retries exhausted' }}
+          to: turleygrayson@gmail.com
+          from: PMJ Pipeline <${{ secrets.GMAIL_USERNAME }}>
+          body: |
+            GitHub never assigned a hosted runner to the daily pipeline run, so
+            no pipeline step executed. Nothing is wrong with the repo or the
+            code -- this is a GitHub Actions capacity/incident failure.
+
+            Run: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.event.workflow_run.id }}
+            Failed attempt: ${{ github.event.workflow_run.run_attempt }}
+            Automatic retry queued: ${{ steps.retry.outputs.retried == 'true' && 'yes' || 'no (attempt limit reached)' }}
+
+            If retries were exhausted, re-run it manually once runners are
+            available. JOB_MAX_AGE_DAYS is 2, so a single missed day is
+            recoverable but two consecutive missed days drop jobs permanently.
