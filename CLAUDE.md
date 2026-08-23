@@ -69,6 +69,15 @@ for entry in cache.values():
 
 **`JOB_MAX_AGE_DAYS` in `.env` overrides `config.py` default.** If the date filter seems wrong, check `.env` first — it takes precedence over the default in `config.py`.
 
+**The age cutoff is a rolling `now - JOB_MAX_AGE_DAYS`, so the time of day you run matters.** It is recomputed on every run, not anchored to a calendar day. On 2026-08-23 the 16:14 UTC run found 48 jobs inside a 2-day window; a manual re-run at 23:31 UTC the same day found **6** — about 42 jobs published during the US afternoon two days earlier fell out the back of the window in those seven hours. Consequence: re-running a failed job later the same day does **not** recover what the failed run would have published. If a run fails and you care about its jobs, either re-run immediately or temporarily raise `JOB_MAX_AGE_DAYS`.
+
+**A daily publish cap is enforced by `MAX_JOBS_PER_RUN`** (`config.py`, default 9, override via env). It is applied **after classification and before rewrite** — after, so the cap counts real PM jobs rather than candidates the classifier would reject; before, so deferred jobs cost no Sonnet rewrite tokens. Two things to preserve if you touch it:
+
+- **Don't reassign `kept`.** The health-check block computes `rejection_rate` from `classified` vs `kept`; capping `kept` in place makes every capped run look like a >50% rejection spike and writes a bogus NOTICE.txt. The capped list lives in `publishable`.
+- **The selection rotates by date and must keep doing so.** `kept` follows `sources.yaml` order and the 1-per-company cap means each entry is a different company, so a plain `kept[:N]` would hand every slot to the same top-of-file companies daily and starve the ones at the bottom. The offset steps by the cap size per day so consecutive days take near-disjoint slices; with 15–20 qualifying jobs this covers every company within about 6 days.
+
+**Deferred jobs get one extra chance, not an unlimited queue.** They aren't written to state, so the next run reconsiders them — but only while they remain inside the `JOB_MAX_AGE_DAYS` window. At ~15–20 qualifying jobs/day against a cap of 9, expect a persistent surplus that ages out unpublished. The cap is a ceiling, not a backlog.
+
 ---
 
 ## Classification
@@ -97,15 +106,23 @@ When rate limit errors appear during a run, jobs are skipped and logged. They wo
 
 **The pipeline commits `state.json` and `feed.xml` back to the repo.** This commit triggers `deploy-pages.yml` which redeploys GitHub Pages. The full chain is: pipeline run → commit → Pages deploy → JobBoardly import.
 
+**`requirements.txt` must stay pinned — the runner installs fresh every run.** `anthropic` is pinned to `==1.0.0`. It was previously unpinned, and when SDK 1.0.0 released between the Aug 20 and Aug 21 2026 runs, the runner picked it up automatically and the pipeline broke for three days: 1.0.0 removed `temperature`/`top_p`/`top_k` from `messages.create()` entirely, and `ai_rewriter.py` was passing `temperature=0.85`. It failed as a Python `TypeError` before any HTTP request, not as an API error. Notes for future debugging:
+
+- **Local `.venv` is not evidence.** It lags far behind whatever the runner installs, so a break like this reproduces only in CI. Check the `Install dependencies` step in the run log for the actual version (`anthropic-1.0.0`).
+- **Don't re-add sampling parameters.** `temperature`, `top_p`, and `top_k` are gone from `messages.create()` in 1.x. Rewrite variety comes from per-job persona/structure selection in `_pick_persona_and_structure()`, not sampling.
+- The remaining requirements are still unpinned and can break the same way.
+
 **`ANTHROPIC_API_KEY` must be set as a GitHub repo secret** (Settings → Secrets and variables → Actions). If the daily run shows 400 errors with "credit balance too low", top up at console.anthropic.com.
 
-**GitHub's cron scheduler is unreliable and can be delayed by minutes to hours.** The scheduled run at `0 0 * * *` does not always fire at exactly midnight UTC. If a run appears missing, check the Actions tab before assuming a bug — it may just be delayed. The GitHub Actions API also has a lag before new runs appear.
+**GitHub's cron scheduler is unreliable and can be delayed by minutes to hours.** The scheduled run at `0 16 * * *` does not always fire on time. If a run appears missing, check the Actions tab before assuming a bug — it may just be delayed. The GitHub Actions API also has a lag before new runs appear.
+
+**"The job was not acquired by Runner of type hosted" is a GitHub outage, not a bug.** GitHub failed to allocate a hosted runner; the job sits queued (~15 min) and is then cancelled. Diagnostic: `gh api repos/OWNER/REPO/actions/runs/RUN_ID/attempts/N/jobs --jq '[.jobs[].steps[]?] | length'` returns **0** — no step ever executed. Because no step ran, the `if: failure()` email step inside `run-pipeline.yml` never fires either, so the only notification is GitHub's own "Run failed" email. `pipeline-watchdog.yml` exists to cover this: it triggers on `workflow_run` completion, uses that zero-steps check to distinguish infra failures from real pipeline failures, retries infra failures (up to attempt 3), and emails. It deliberately ignores ordinary step failures, which `run-pipeline.yml` already emails about. Don't make the watchdog retry those — it would burn Anthropic credits re-running the same bug.
 
 **The GitHub runner never has a `.env` file** — it's gitignored. `JOB_MAX_AGE_DAYS` and other non-secret config must be set via `config.py` defaults (or added as GitHub env vars in the workflow). Changes to local `.env` do not affect automated runs.
 
 **`classification_cache.json` and `rewrite_cache.json` on the runner are NOT committed to the repo** — they're only persisted via GitHub Actions cache. The local copies reflect only what was cached during local runs, not what the runner has classified. If you're trying to debug why the runner rejected a specific job, you can't check the local cache for it.
 
-**Silent early returns don't trigger the failure email.** If classification or rewrite fails (rate limit, API error, etc.), `main.py` catches the exception and returns with exit code 0. GitHub considers the run "successful," no failure email is sent, and no jobs are committed. If the feed hasn't updated and there's no failure email, check the run logs — a silent error is likely.
+**Silent early returns used to hide failures — fixed Aug 2026, don't regress it.** `run()` returns a process exit code and `__main__` does `sys.exit(run())`. Classification and rewrite failures return `1` so the `if: failure()` email step fires; benign paths ("no new jobs this run") return `0`. Before this, every stage failure returned exit 0, GitHub reported "success," and no email was sent — an SDK break ran undetected for three days that way. If you add an early `return` to `run()`, give it an explicit exit code; a bare `return` is now a bug.
 
 **Changing `JOB_MAX_AGE_DAYS` and the cron schedule at the same time creates a gap.** Jobs published in the window between the last old-schedule run and the first new-schedule run can fall outside the new age window and be permanently missed. If you need to change both, temporarily increase `JOB_MAX_AGE_DAYS` to cover the gap, then lower it after the first new-schedule run.
 

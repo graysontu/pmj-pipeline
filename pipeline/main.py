@@ -229,12 +229,20 @@ def run() -> int:
     # jobs, and before rewrite so deferred jobs cost no Sonnet tokens. Deferred
     # jobs are not written to state, so they are reconsidered on the next run
     # (while they remain inside the JOB_MAX_AGE_DAYS window).
-    publishable = kept[:MAX_JOBS_PER_RUN]
-    deferred_count = len(kept) - len(publishable)
-    if deferred_count:
+    publishable = kept
+    if len(kept) > MAX_JOBS_PER_RUN:
+        # `kept` follows sources.yaml order, and the 1-per-company cap upstream
+        # means each entry is a different company. Taking a plain kept[:N] would
+        # hand the slots to the same top-of-file companies every single day, so
+        # rotate the starting point by date. Stepping the offset by the cap size
+        # makes consecutive days pick near-disjoint slices of the list.
+        offset = (datetime.now(tz=timezone.utc).date().toordinal() * MAX_JOBS_PER_RUN) % len(kept)
+        rotated = kept[offset:] + kept[:offset]
+        publishable = rotated[:MAX_JOBS_PER_RUN]
         logger.info(
-            "Daily cap: publishing %d of %d PM jobs (max %d per run). %d deferred to a later run.",
-            len(publishable), len(kept), MAX_JOBS_PER_RUN, deferred_count,
+            "Daily cap: publishing %d of %d PM jobs (max %d per run, rotation offset %d). "
+            "%d deferred to a later run.",
+            len(publishable), len(kept), MAX_JOBS_PER_RUN, offset, len(kept) - len(publishable),
         )
 
     jobs_to_rewrite = publishable[:args.limit] if args.limit else publishable
