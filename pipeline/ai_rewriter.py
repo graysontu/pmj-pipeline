@@ -21,7 +21,6 @@ logger = logging.getLogger(__name__)
 
 MODEL = "claude-sonnet-4-6"
 MAX_TOKENS = 2500
-TEMPERATURE = 0.85
 MAX_CONCURRENT = 3
 
 SALARY_MODEL = "claude-haiku-4-5"
@@ -309,7 +308,6 @@ async def _call_api(
         response = await client.messages.create(
             model=MODEL,
             max_tokens=MAX_TOKENS,
-            temperature=TEMPERATURE,
             system=system_prompt,
             messages=[{"role": "user", "content": user_prompt}],
         )

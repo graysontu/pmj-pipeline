@@ -11,7 +11,7 @@ from typing import Callable
 
 from pipeline.ai_classifier import ClassifiedJob, batch_classify, summarize
 from pipeline.ai_rewriter import RewrittenJob, batch_extract_salary, batch_rewrite, generate_quality_samples
-from pipeline.config import JOB_MAX_AGE_DAYS, SITE_BASE_URL, SOURCES
+from pipeline.config import JOB_MAX_AGE_DAYS, MAX_JOBS_PER_RUN, SITE_BASE_URL, SOURCES
 from pipeline.indexing_api import notify_google
 from pipeline.models import RawJob
 from pipeline.output_csv import generate_jobs_csv
@@ -129,7 +129,10 @@ def _parse_args() -> argparse.Namespace:
     return parser.parse_args()
 
 
-def run() -> None:
+def run() -> int:
+    """Run the pipeline. Returns a process exit code: 0 on success, 1 on a
+    stage failure that prevented publishing (so the workflow's failure-email
+    step actually fires instead of the run reporting a silent success)."""
     args = _parse_args()
     state = State()
     all_jobs: list[RawJob] = []
@@ -183,7 +186,7 @@ def run() -> None:
 
     if not all_jobs:
         logger.info("No jobs fetched. Nothing to classify.")
-        return
+        return 0
 
     all_jobs = [j for j in all_jobs if not state.is_processed(j.source_id)]
     logger.info("%d jobs are new (not yet in state). Classifying.", len(all_jobs))
@@ -193,7 +196,7 @@ def run() -> None:
         active_jobs = state.get_active_jobs()
         generate_feed_xml(active_jobs)
         print(f"\nState: 0 new jobs this run. Active feed: {len(active_jobs)} jobs.")
-        return
+        return 0
 
     DATA_DIR.mkdir(exist_ok=True)
     timestamp = datetime.now(tz=timezone.utc).strftime("%Y%m%d_%H%M%S")
@@ -206,10 +209,10 @@ def run() -> None:
         classified: list[ClassifiedJob] = batch_classify(all_jobs)
     except ValueError as exc:
         logger.error("Classification skipped: %s", exc)
-        return
+        return 1
     except Exception as exc:
         logger.error("Unexpected error during classification: %s", exc)
-        return
+        return 1
 
     kept = [j for j in classified if j.is_pm_job]
     summarize(classified)
@@ -220,11 +223,23 @@ def run() -> None:
 
     if not kept:
         logger.info("No PM jobs to rewrite.")
-        return
+        return 0
 
-    jobs_to_rewrite = kept[:args.limit] if args.limit else kept
+    # Daily publish cap. Applied after classification so the cap counts real PM
+    # jobs, and before rewrite so deferred jobs cost no Sonnet tokens. Deferred
+    # jobs are not written to state, so they are reconsidered on the next run
+    # (while they remain inside the JOB_MAX_AGE_DAYS window).
+    publishable = kept[:MAX_JOBS_PER_RUN]
+    deferred_count = len(kept) - len(publishable)
+    if deferred_count:
+        logger.info(
+            "Daily cap: publishing %d of %d PM jobs (max %d per run). %d deferred to a later run.",
+            len(publishable), len(kept), MAX_JOBS_PER_RUN, deferred_count,
+        )
+
+    jobs_to_rewrite = publishable[:args.limit] if args.limit else publishable
     if args.limit:
-        logger.info("--limit %d: rewriting %d of %d kept jobs.", args.limit, len(jobs_to_rewrite), len(kept))
+        logger.info("--limit %d: rewriting %d of %d publishable jobs.", args.limit, len(jobs_to_rewrite), len(publishable))
 
     if args.dry_run:
         logger.info("--dry-run: skipping rewrite API calls.")
@@ -246,10 +261,10 @@ def run() -> None:
             rewrite_elapsed = time.perf_counter() - rewrite_start
         except ValueError as exc:
             logger.error("Rewrite skipped: %s", exc)
-            return
+            return 1
         except Exception as exc:
             logger.error("Unexpected error during rewrite: %s", exc)
-            return
+            return 1
 
     avg_words = _avg_word_count(rewritten_jobs)
     print(
@@ -319,6 +334,8 @@ def run() -> None:
         NOTICE_PATH.unlink()
         logger.info("Previous NOTICE.txt cleared - run looks healthy.")
 
+    return 0
+
 
 if __name__ == "__main__":
-    run()
+    sys.exit(run())
