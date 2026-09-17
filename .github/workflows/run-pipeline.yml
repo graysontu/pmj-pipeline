@@ -45,7 +45,7 @@ jobs:
           # The runner has no .env, so non-secret config lives here. Flip this to
           # "true" to enable removing confirmed-closed jobs from the feed; back to
           # "false" to roll the behaviour back. See CLAUDE.md, "Closure Detection".
-          CLOSURE_CHECK_ENABLED: "false"
+          CLOSURE_CHECK_ENABLED: "true"
         run: >-
           python -m pipeline.main --skip-indexing
           ${{ (github.event_name == 'workflow_dispatch' && inputs.allow_mass_removal) && '--allow-mass-removal' || '' }}
