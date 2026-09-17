@@ -189,6 +189,14 @@ ages out via `ACTIVE_DAYS` (60). It does not need to be rediscovered daily. The
 `MAX_JOBS_PER_RUN` and 1-per-company caps gate *admission of new jobs only* and
 never cause retention loss.
 
+**Workable rate-limits the census (HTTP 429) if you run it repeatedly from one IP.**
+Observed 2026-09-17 while testing: after several censuses in a few minutes, all 7
+Workable accounts returned 429 while the other 39 boards were fine. The daily
+runner has never hit this - one census a day, ~77 Workable requests, succeeded
+cleanly. It is safe when it happens: 429 is a `CensusError`, so those jobs go
+`unknown` and nothing is removed. If you are iterating locally, expect Workable
+jobs to show as unknown and don't read it as a bug.
+
 ### Feed guard
 
 `generate_feed_xml(..., max_removal_fraction=...)` refuses to publish and raises
