@@ -11,11 +11,21 @@ from typing import Callable
 
 from pipeline.ai_classifier import ClassifiedJob, batch_classify, summarize
 from pipeline.ai_rewriter import RewrittenJob, batch_extract_salary, batch_rewrite, generate_quality_samples
-from pipeline.config import JOB_MAX_AGE_DAYS, MAX_JOBS_PER_RUN, SITE_BASE_URL, SOURCES
+from pipeline.census import run_census
+from pipeline.closure import apply_verdicts, build_source_index, reconcile
+from pipeline.config import (
+    CLOSURE_CHECK_ENABLED,
+    CLOSURE_STRIKES,
+    JOB_MAX_AGE_DAYS,
+    MAX_FEED_REMOVAL_FRACTION,
+    MAX_JOBS_PER_RUN,
+    SITE_BASE_URL,
+    SOURCES,
+)
 from pipeline.indexing_api import notify_google
 from pipeline.models import RawJob
 from pipeline.output_csv import generate_jobs_csv
-from pipeline.output_xml import generate_feed_xml
+from pipeline.output_xml import FeedGuardTripped, generate_feed_xml
 from pipeline.state import State
 from pipeline.sources.ashby import fetch_ashby_jobs
 from pipeline.sources.greenhouse import fetch_greenhouse_jobs
@@ -126,7 +136,103 @@ def _parse_args() -> argparse.Namespace:
         action="store_true",
         help="Skip Google Indexing API notifications. Use when JobBoardly handles indexing.",
     )
+    parser.add_argument(
+        "--allow-mass-removal",
+        action="store_true",
+        help=(
+            "Let this run remove more than MAX_FEED_REMOVAL_FRACTION of the feed. "
+            "Intended for the one-time closed-job backlog cleanup only."
+        ),
+    )
     return parser.parse_args()
+
+
+def _closure_stage(state: State) -> tuple[list[str], int, int]:
+    """Check every published job against its employer board and apply the verdicts
+    to `state` in memory. Returns (notices, removed, reinstated).
+
+    Nothing is saved here. The caller saves only after the feed write succeeds, so
+    a tripped feed guard rolls the whole check back instead of leaving state and
+    feed disagreeing.
+    """
+    if not CLOSURE_CHECK_ENABLED:
+        logger.info(
+            "Closure check disabled (CLOSURE_CHECK_ENABLED is false). "
+            "Feed expiry stays age-based only."
+        )
+        return [], 0, 0
+
+    try:
+        censuses = run_census(SOURCES)
+        report = reconcile(
+            state.get_published_jobs(),
+            censuses,
+            build_source_index(SOURCES),
+            strikes_required=CLOSURE_STRIKES,
+        )
+    except Exception as exc:
+        logger.error("Closure check failed: %s. No jobs removed this run.", exc)
+        return [f"Closure check failed ({exc}). No jobs were removed."], 0, 0
+
+    print("\nEmployer availability check:")
+    for line in report.summary_lines():
+        print(f"  {line}")
+
+    removed, reinstated = apply_verdicts(state, report)
+
+    notices: list[str] = []
+    if report.boards_failed:
+        detail = ", ".join(f"{k} ({v})" for k, v in sorted(report.board_errors.items()))
+        logger.warning("%d boards unavailable: %s", report.boards_failed, detail)
+        # Half the boards failing means something systemic (network, block, outage)
+        # rather than a couple of dead slugs.
+        if report.boards_failed > report.boards_ok:
+            notices.append(
+                f"{report.boards_failed} of {report.boards_ok + report.boards_failed} employer "
+                f"boards were unavailable this run. Their jobs were left in the feed as unknown. "
+                f"Details: {detail}"
+            )
+    if reinstated:
+        logger.info("%d previously closed jobs were listed again and reinstated.", reinstated)
+
+    return notices, removed, reinstated
+
+
+def _publish_feed(state: State, allow_mass_removal: bool) -> list[dict]:
+    """Write the guarded feed and return the jobs it contains."""
+    active_jobs = state.get_active_jobs()
+    generate_feed_xml(
+        active_jobs,
+        max_removal_fraction=MAX_FEED_REMOVAL_FRACTION,
+        allow_mass_removal=allow_mass_removal,
+    )
+    return active_jobs
+
+
+def _closure_and_publish(state: State, args: argparse.Namespace, note: str) -> int:
+    """Run the availability check and publish the guarded feed, then return an
+    exit code.
+
+    Every benign early exit routes through here, so the check still runs on days
+    that admit no new jobs - which is most days, since an empty new-job batch
+    usually just means nobody posted inside the JOB_MAX_AGE_DAYS window.
+    """
+    closure_notices, removed, _ = _closure_stage(state)
+    try:
+        active_jobs = _publish_feed(state, args.allow_mass_removal)
+    except FeedGuardTripped as exc:
+        logger.error("Feed not published: %s", exc)
+        _write_notice([str(exc)] + closure_notices)
+        return 1
+
+    state.save()
+    if closure_notices:
+        _write_notice(closure_notices)
+    print(
+        f"\nState: {note} {removed} confirmed-closed jobs removed. "
+        f"Active feed: {len(active_jobs)} jobs."
+    )
+    return 0
 
 
 def run() -> int:
@@ -185,18 +291,17 @@ def run() -> int:
     all_jobs = capped_jobs
 
     if not all_jobs:
+        # Usually benign: nobody posted inside the JOB_MAX_AGE_DAYS window. The
+        # availability check still needs to run, so route through the common path.
         logger.info("No jobs fetched. Nothing to classify.")
-        return 0
+        return _closure_and_publish(state, args, "0 new jobs (nothing fresh fetched).")
 
     all_jobs = [j for j in all_jobs if not state.is_processed(j.source_id)]
     logger.info("%d jobs are new (not yet in state). Classifying.", len(all_jobs))
 
     if not all_jobs:
         logger.info("No new jobs this run.")
-        active_jobs = state.get_active_jobs()
-        generate_feed_xml(active_jobs)
-        print(f"\nState: 0 new jobs this run. Active feed: {len(active_jobs)} jobs.")
-        return 0
+        return _closure_and_publish(state, args, "0 new jobs this run.")
 
     DATA_DIR.mkdir(exist_ok=True)
     timestamp = datetime.now(tz=timezone.utc).strftime("%Y%m%d_%H%M%S")
@@ -223,7 +328,7 @@ def run() -> int:
 
     if not kept:
         logger.info("No PM jobs to rewrite.")
-        return 0
+        return _closure_and_publish(state, args, "0 new jobs (none classified as PM).")
 
     # Daily publish cap. Applied after classification so the cap counts real PM
     # jobs, and before rewrite so deferred jobs cost no Sonnet tokens. Deferred
@@ -299,8 +404,15 @@ def run() -> int:
         state.mark_processed(job.source_id, now, _job_snapshot(job))
     state.save()
 
-    active_jobs = state.get_active_jobs()
-    generate_feed_xml(active_jobs)
+    closure_notices, closed_removed, _ = _closure_stage(state)
+
+    try:
+        active_jobs = _publish_feed(state, args.allow_mass_removal)
+    except FeedGuardTripped as exc:
+        logger.error("Feed not published: %s", exc)
+        _write_notice([str(exc)] + closure_notices)
+        return 1
+    state.save()
 
     if new_jobs:
         generate_jobs_csv([_job_snapshot(j) for j in new_jobs], timestamp)
@@ -313,11 +425,12 @@ def run() -> int:
 
     print(
         f"\nState: {len(new_jobs)} new jobs this run. "
+        f"{closed_removed} confirmed-closed jobs removed. "
         f"Active feed: {len(active_jobs)} jobs."
     )
 
     # Health checks - write NOTICE.txt if anything looks wrong, clear it if not
-    notices = []
+    notices = list(closure_notices)
     if len(new_jobs) == 0 and len(kept) > 0:
         notices.append(
             f"Zero new jobs this run despite {len(kept)} PM jobs fetched. "
