@@ -1,4 +1,5 @@
 import logging
+import os
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
@@ -12,11 +13,64 @@ logger = logging.getLogger(__name__)
 FEED_PATH = Path(__file__).parent.parent / "output" / "feed.xml"
 
 
+class FeedGuardTripped(Exception):
+    """Raised instead of publishing a feed that looks like the product of a
+    failed or incomplete run. The existing feed on disk is left untouched, so
+    the last good feed stays live."""
+
+
 def _iso_date(dt: datetime) -> str:
     return dt.astimezone(timezone.utc).strftime("%Y-%m-%d")
 
 
-def generate_feed_xml(active_jobs: list[dict], path: Path = FEED_PATH) -> None:
+def count_feed_jobs(path: Path = FEED_PATH) -> int | None:
+    """Job count in a feed already on disk, or None if there is no readable feed
+    to compare against (first run, or a corrupt file)."""
+    if not path.exists():
+        return None
+    try:
+        tree = etree.parse(str(path))
+    except etree.XMLSyntaxError as exc:
+        logger.warning("Existing feed at %s is not parseable (%s). Skipping guard.", path, exc)
+        return None
+    return len(tree.getroot().findall("job"))
+
+
+def _check_guard(
+    new_count: int,
+    previous_count: int | None,
+    max_removal_fraction: float,
+    allow_mass_removal: bool,
+    path: Path,
+) -> None:
+    if previous_count is None or previous_count == 0:
+        return
+
+    if new_count == 0:
+        raise FeedGuardTripped(
+            f"refusing to publish an empty feed: {previous_count} jobs are currently live. "
+            f"The last good feed at {path} was left in place."
+        )
+
+    removed = previous_count - new_count
+    if removed <= 0:
+        return
+
+    fraction = removed / previous_count
+    if fraction > max_removal_fraction and not allow_mass_removal:
+        raise FeedGuardTripped(
+            f"refusing to remove {removed} of {previous_count} jobs ({fraction:.1%}) in one run; "
+            f"the limit is {max_removal_fraction:.0%}. The last good feed at {path} was left in "
+            "place. If this drop is expected, re-run with the mass-removal override."
+        )
+    if fraction > max_removal_fraction:
+        logger.warning(
+            "Mass-removal override in effect: removing %d of %d jobs (%.1f%%).",
+            removed, previous_count, fraction * 100,
+        )
+
+
+def build_feed_tree(active_jobs: list[dict]) -> etree._ElementTree:
     now = datetime.now(tz=timezone.utc)
 
     root = etree.Element("source")
@@ -60,7 +114,34 @@ def generate_feed_xml(active_jobs: list[dict], path: Path = FEED_PATH) -> None:
             etree.SubElement(job_el, "salary_currency").text = job.get("salary_currency") or "USD"
             etree.SubElement(job_el, "salary_schedule").text = job.get("salary_schedule") or "yearly"
 
+    return etree.ElementTree(root)
+
+
+def generate_feed_xml(
+    active_jobs: list[dict],
+    path: Path = FEED_PATH,
+    max_removal_fraction: float | None = None,
+    allow_mass_removal: bool = False,
+) -> None:
+    """Write the feed. When max_removal_fraction is set, a run that would empty
+    the feed or drop more than that share of it raises FeedGuardTripped and
+    writes nothing, leaving the previous feed live.
+
+    The guard is opt-in so that deliberately small feeds (scripts/make_test_feed.py)
+    still work unguarded.
+    """
+    if max_removal_fraction is not None:
+        _check_guard(
+            len(active_jobs), count_feed_jobs(path), max_removal_fraction, allow_mass_removal, path
+        )
+
+    tree = build_feed_tree(active_jobs)
+
+    # Write to a sibling temp file and rename, so a crash mid-write cannot leave
+    # a truncated feed being served.
     path.parent.mkdir(exist_ok=True)
-    tree = etree.ElementTree(root)
-    tree.write(str(path), xml_declaration=True, encoding="UTF-8", pretty_print=True)
-    logger.info("Feed written to %s (%d jobs)", path, len(sorted_jobs))
+    tmp_path = path.with_name(path.name + ".tmp")
+    tree.write(str(tmp_path), xml_declaration=True, encoding="UTF-8", pretty_print=True)
+    os.replace(tmp_path, path)
+
+    logger.info("Feed written to %s (%d jobs)", path, len(active_jobs))

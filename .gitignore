@@ -17,3 +17,6 @@ output/jobs_*.csv
 
 # local quality preview - not published
 output/quality_samples.html
+
+# local pre-cleanup snapshots written by scripts/check_closures.py --apply
+backups/

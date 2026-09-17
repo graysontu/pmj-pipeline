@@ -4,6 +4,11 @@ on:
   schedule:
     - cron: "0 16 * * *"
   workflow_dispatch:
+    inputs:
+      allow_mass_removal:
+        description: "One-time: let this run remove more than MAX_FEED_REMOVAL_FRACTION of the feed (approved backlog cleanup only)"
+        type: boolean
+        default: false
 
 permissions:
   contents: write
@@ -37,7 +42,13 @@ jobs:
       - name: Run pipeline
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
-        run: python -m pipeline.main --skip-indexing
+          # The runner has no .env, so non-secret config lives here. Flip this to
+          # "true" to enable removing confirmed-closed jobs from the feed; back to
+          # "false" to roll the behaviour back. See CLAUDE.md, "Closure Detection".
+          CLOSURE_CHECK_ENABLED: "false"
+        run: >-
+          python -m pipeline.main --skip-indexing
+          ${{ (github.event_name == 'workflow_dispatch' && inputs.allow_mass_removal) && '--allow-mass-removal' || '' }}
 
       - name: Upload output artifact
         if: always()
