@@ -28,6 +28,16 @@ Greenhouse lets each company set location however they want. Known formats encou
 `pipeline/geo.py` handles all of these. When a new company shows wrong locations, add
 its format to `tests/test_geo.py` and extend `resolve_location`.
 
+`scripts/audit_locations.py` reports a before/after against the published feed and
+can write a preview feed (`--preview path.xml`), writing nothing live. Run it after
+any `geo.py` change:
+
+    python -m scripts.audit_locations --preview output/feed_preview.xml
+
+It compares against `output/feed.xml` - what is actually published - rather than
+against a previous version of the parser, so the report reflects reality. It also
+lists every job whose location could not be resolved, grouped by company.
+
 **A location is only trusted when a US state can be identified.** This is the core
 rule, and it exists because the old fallback returned *any* unrecognised string as
 the city. That put property names ("Trellis House"), corporate offices
@@ -374,6 +384,14 @@ days of pipeline commits you were behind. The runner always checks out fresh; us
   Already-imported jobs must be corrected by hand in JobBoardly's job editor, or
   deleted so the next import re-adds them (which changes their URL). Budget for this
   whenever changing `geo.py` - the 2026-09-18 fix left 8 jobs needing manual edits.
+
+- **The 8 jobs left stale on 2026-09-18 were a deliberate decision, not an oversight.**
+  When the location fix shipped, 8 already-imported jobs kept their old (missing)
+  city because of the first-import-only behaviour above. Grayson chose not to hand-
+  edit them - they age out within 60 days and the pipeline is correct going forward.
+  If you check job pages against the feed and find location mismatches on jobs
+  published before 2026-09-18, that is expected, not a regression. Jobs imported
+  after that date should match; if one of *those* does not, that is a real bug.
 
 - **Some correct cities are genuinely unsupported.** `Whistler, AL` is a real but
   unincorporated community and JobBoardly drops it. There is nothing to fix in the
