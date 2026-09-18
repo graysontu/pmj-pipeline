@@ -20,3 +20,6 @@ output/quality_samples.html
 
 # local pre-cleanup snapshots written by scripts/check_closures.py --apply
 backups/
+
+# local location-audit preview, never published
+output/feed_preview.xml
