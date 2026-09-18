@@ -1,4 +1,5 @@
 import re
+from dataclasses import dataclass
 
 _US_STATES = {
     "AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DE", "FL", "GA",
@@ -27,6 +28,28 @@ _US_STATE_NAMES = {
 }
 
 _COUNTRY_TOKENS = {"UNITED STATES", "UNITED STATES OF AMERICA", "USA", "US"}
+
+# JobBoardly matches city names against a gazetteer of canonical US place names and
+# silently drops any city it cannot resolve, keeping only the state. Measured on
+# 2026-09-18 against live job pages: "St. Petersburg" and "Saint Paul" are kept,
+# while "St Augustine" (no period) and "Mt. Juliet" are dropped - the canonical
+# forms are "St. Augustine" and "Mount Juliet". These rewrites are USPS/Census
+# conventions, not guesses about which city was meant.
+_ABBREVIATIONS = (
+    (re.compile(r"^St\.?\s+(?=[A-Z])"), "St. "),
+    (re.compile(r"^Mt\.?\s+(?=[A-Z])"), "Mount "),
+    (re.compile(r"^Ft\.?\s+(?=[A-Z])"), "Fort "),
+)
+
+# Misspellings in employer postings, corrected only where the misspelling is not
+# itself a real US place and the correct city exists in the state given. Each entry
+# must be verified before being added - this is normalization of a known-bad value,
+# never a guess at an unknown one.
+#   "Pheonix, AZ" (Hillpointe): no such place; Phoenix, AZ is unambiguous, and
+#   JobBoardly drops "Pheonix" entirely, so the page currently shows no city.
+_CITY_CORRECTIONS = {
+    ("PHEONIX", "AZ"): "Phoenix",
+}
 
 
 def _zip3_to_state(prefix: str) -> str:
@@ -102,6 +125,16 @@ def _extract_city_from_segment(seg: str) -> str:
     return seg.strip().title()
 
 
+def _normalize_city(city: str, state: str) -> str:
+    """Canonicalise a city name so JobBoardly's gazetteer can resolve it."""
+    city = city.strip().strip(".,;-").strip()
+    if not city:
+        return ""
+    for pattern, replacement in _ABBREVIATIONS:
+        city = pattern.sub(replacement, city)
+    return _CITY_CORRECTIONS.get((city.upper(), state.upper()), city)
+
+
 def _match_state(candidate: str) -> str:
     """Return state abbreviation if candidate is a recognizable state token, else ''."""
     upper = candidate.upper().strip()
@@ -122,61 +155,116 @@ def _match_state(candidate: str) -> str:
     return ""
 
 
-def parse_location(location: str) -> tuple[str, str]:
-    """Split a location string into (city, state_abbr).
+@dataclass(frozen=True)
+class Location:
+    """A resolved job location. `needs_review` marks a posting whose location could
+    not be established, so it can be reported rather than silently guessed at."""
+    city: str
+    state: str
+    needs_review: bool = False
+    reason: str = ""
 
-    Handles formats including:
-      'City, ST' / 'City, State' / 'City, ST ZIP' / 'City, State, Country'
-      'Property Name, City, State, Country'
-      'State - City'
-      'City ST' (no comma)
-      'Property - Street - City, ST - ZIP'
-    Returns ('', '') for strings with no usable location data.
-    """
-    if not location:
-        return "", ""
+    @property
+    def resolved(self) -> bool:
+        return bool(self.city and self.state)
 
-    # --- Comma-separated path ---
-    parts = [p.strip() for p in location.split(",")]
 
-    # Strip trailing country tokens
+def _parse_segment(segment: str) -> tuple[str, str]:
+    """Parse one location string into (city, state). Returns ('', '') when no US
+    state can be identified - see resolve_location for why that matters."""
+    parts = [p.strip() for p in segment.split(",")]
+
     while parts and parts[-1].upper() in _COUNTRY_TOKENS:
         parts.pop()
-
     if not parts:
         return "", ""
 
     if len(parts) >= 2:
-        # Walk from right looking for a recognizable state token.
-        # City is the part immediately before the matched state.
+        # Walk from the right looking for a state token; city is the part before it.
         for i in range(len(parts) - 1, 0, -1):
             state = _match_state(parts[i])
             if state:
-                city = _extract_city_from_segment(parts[i - 1])
-                return city, state
+                return _extract_city_from_segment(parts[i - 1]), state
 
-        # Standalone ZIP in last part
         zip_match = re.match(r"^(\d{5})(?:-\d{4})?$", parts[-1])
         if zip_match:
             state = _zip3_to_state(zip_match.group(1)[:3])
-            return _extract_city_from_segment(parts[-2]), state
+            if state:
+                return _extract_city_from_segment(parts[-2]), state
+        return "", ""
 
-        # No state found — return first comma-part as city
-        return _extract_city_from_segment(parts[0]), ""
-
-    # --- Single segment: try various no-comma formats ---
     seg = parts[0].strip()
 
-    # "City ST" or "City ST 12345" (space-separated state abbreviation)
+    # "City ST" or "City ST 12345"
     m = re.match(r"^(.+?)\s+([A-Z]{2})(?:\s+\d{5})?$", seg)
     if m and m.group(2) in _US_STATES:
         return m.group(1).strip().title(), m.group(2)
 
-    # "State - City" (full state name or abbreviation before a dash)
+    # "State - City"
     if " - " in seg:
         dash_parts = [p.strip() for p in seg.split(" - ")]
         state = _match_state(dash_parts[0])
         if state and len(dash_parts) >= 2:
             return dash_parts[-1].title(), state
 
-    return seg.title(), ""
+    return "", ""
+
+
+def resolve_location(location: str) -> Location:
+    """Resolve an ATS location string into a city and state.
+
+    A location is only trusted when a US state can be identified. Employers
+    routinely put a property name ("Trellis House"), a corporate office
+    ("Corporate - CloudTen") or their own company name ("Redstone Residential") in
+    this field, and an earlier version returned those as the city - which put
+    property names into <city> and, because JobBoardly drops cities it cannot
+    resolve, produced job pages with no location at all.
+
+    Nothing is inferred from the job description. Descriptions routinely name the
+    employer's headquarters ("Headquartered in Provo, Utah" on a Redstone posting
+    for a property elsewhere), so mining them would attach the wrong city to real
+    jobs. An unresolved location is reported, not guessed.
+    """
+    if not location or not location.strip():
+        return Location("", "", True, "no location provided by the employer")
+
+    raw = location.strip()
+    if raw.upper() in _COUNTRY_TOKENS:
+        return Location("", "", True, f"only a country was given ({raw!r})")
+
+    # Some employers list several locations for one requisition, separated by
+    # semicolons ("Reno, NV; Sparks, NV"). Splitting on commas alone turned that
+    # into the city "Nv; Sparks". Take the first segment that resolves.
+    segments = [seg.strip() for seg in raw.split(";") if seg.strip()]
+    multi = len(segments) > 1
+
+    for segment in segments:
+        city, state = _parse_segment(segment)
+        if city and state:
+            city = _normalize_city(city, state)
+            if not city:
+                continue
+            reason = (
+                f"first of {len(segments)} locations listed for this requisition"
+                if multi else ""
+            )
+            return Location(city, state, False, reason)
+
+    return Location(
+        "", "", True,
+        f"no US state could be identified in {raw!r}; "
+        "the value looks like a property or company name rather than a place",
+    )
+
+
+def parse_location(location: str) -> tuple[str, str]:
+    """Split a location string into (city, state_abbr), or ('', '') if unresolved.
+
+    Handles 'City, ST', 'City, State', 'City, ST ZIP', 'City, State, Country',
+    'Property Name, City, State, Country', 'State - City', 'City ST',
+    'Property - Street - City, ST - ZIP', and semicolon-separated multi-location
+    strings. Kept as a thin wrapper so callers that only need the pair are
+    unaffected; use resolve_location when the review flag matters.
+    """
+    result = resolve_location(location)
+    return result.city, result.state

@@ -22,9 +22,34 @@ Greenhouse lets each company set location however they want. Known formats encou
 - `"Property Name Only"` — Berkshire Group (no geographic data at all)
 - `"United States"` — literally just the country (no useful data)
 
-`pipeline/geo.py` handles all of these. If a new company shows wrong locations, add their format to the test cases in that file and extend `parse_location`.
+- `"City A, ST; City B, ST"` — Asset Living, Griffis (several locations, one requisition)
+- `"Property; Property; Property"` — CloudTen, Sunrise (a list of buildings)
 
-**Berkshire Group has no city/state in their location field** — only property names. We suppress `<country>` in the XML when both city and state are empty to avoid JobBoardly showing "United States."
+`pipeline/geo.py` handles all of these. When a new company shows wrong locations, add
+its format to `tests/test_geo.py` and extend `resolve_location`.
+
+**A location is only trusted when a US state can be identified.** This is the core
+rule, and it exists because the old fallback returned *any* unrecognised string as
+the city. That put property names ("Trellis House"), corporate offices
+("Corporate - CloudTen") and employers' own names ("Redstone Residential") into
+`<city>` — 26 of 269 published jobs on 2026-09-18. `resolve_location` returns
+`("", "")` with `needs_review=True` instead. Affected companies: Berkshire Group,
+Sunrise Management, CloudTen Residential, Redstone Residential, Birgo.
+
+**Never infer a location from the job description.** Descriptions name the
+*employer's headquarters*: a Redstone posting for a property in another state says
+"Headquartered in Provo, Utah". Mining descriptions would attach Provo to jobs that
+are nowhere near it. An unresolved location is reported, not guessed.
+
+**A real city with no state is still rejected.** Birgo posts bare `"Greensburg"`,
+which is a real place — but Greensburg exists in PA, KS, IN, KY and LA, so the state
+cannot be inferred. Flag it; don't pick one.
+
+**Semicolon-separated multi-location strings must be split first.** Splitting on
+commas alone turned `"Reno, NV; Sparks, NV"` into the city `"Nv; Sparks"`. The first
+segment that resolves wins.
+
+**Berkshire Group has no city/state in their location field** — only property names. We suppress `<country>` in the XML when both city and state are empty to avoid JobBoardly showing "United States." The strict-state rule above makes that suppression fire correctly for every such company, not just the ones whose parse happened to fail.
 
 ---
 
@@ -310,4 +335,29 @@ days of pipeline commits you were behind. The runner always checks out fresh; us
 - `<referencenumber>` is the stable employer requisition ID (`{ats}_{native_id}`)
   and is what JobBoardly matches on between imports. Closure never changes it, and
   a reinstated job returns with the same reference number and the same `<date>`.
+- **Location mapping is already correct — do not change it.** Verified against the
+  live admin on 2026-09-18: Location type = `source/job → remotetype` (fallback
+  Onsite), Country = `source/job → country`, Region = `source/job → state`, City =
+  `source/job → city`. The separate "Location" field stays **empty** — that one is
+  for a combined `"Memphis, Tennessee, US"` string, and we send discrete fields.
+  "Location limits" also stays empty; it restricts remote roles to regions.
+- **JobBoardly geocodes `<city>` against a gazetteer and silently drops what it
+  cannot resolve**, keeping the state. This is the single most important thing to
+  know when a job page shows no city. Measured on live pages 2026-09-18:
+
+  | Sent | Result |
+  |---|---|
+  | `Boca Raton`, `Rexburg`, `Soddy-Daisy`, `Winooski` | kept — small towns are fine |
+  | `Mckinney` | kept, and normalised to `McKinney` |
+  | `St. Petersburg`, `Saint Paul` | kept |
+  | `St Augustine` (no period) | **dropped** — canonical form is `St. Augustine` |
+  | `Mt. Juliet` | **dropped** — canonical form is `Mount Juliet` |
+  | `Pheonix` | **dropped** — employer typo for Phoenix |
+  | `Trellis House`, `Nv; Sparks` | **dropped** — not places |
+
+  So a missing city on a job page is usually *our* bad value, not a JobBoardly bug.
+  Check what the feed actually sends before blaming the importer.
+- **Some correct cities are genuinely unsupported.** `Whistler, AL` is a real but
+  unincorporated community and JobBoardly drops it. There is nothing to fix in the
+  pipeline for these; correct them in JobBoardly's job editor if they matter.
 - Field mapping syntax: `source/job → fieldname` (e.g., `source/job/title → Title`).
