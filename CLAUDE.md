@@ -36,6 +36,13 @@ Greenhouse lets each company set location however they want. Known formats encou
 
 **Ashby and Recruitee have essentially no US property management companies** (verified July 2026 via site: searches). Don't spend time hunting for PM slugs there.
 
+**Dead slugs in `sources.yaml` as of 2026-09-17.** `lever/belong` (Belong Home) and
+`workable/bluecrestresidential` (Bluecore Residential) both return **404** — they
+are the 2 boards the daily census always reports as unavailable, and that warning is
+expected noise rather than a bug. Vacasa (Greenhouse), Entrata and Tripalink (Lever)
+resolve fine but have never produced a job. All five are candidates for removal; the
+404 pair is safe to delete outright.
+
 **The 1-per-company cap runs BEFORE classification**, so a company whose board is mostly non-PM roles (construction, corporate, finance) wastes its daily slot on jobs the classifier rejects. Prefer companies whose boards are majority PM/leasing titles.
 
 ---
@@ -237,10 +244,28 @@ Dry run, which writes nothing:
 It accepts `--state` / `--feed` to reconcile a snapshot instead of the working
 tree, which is how the 2026-09-17 dry run was produced without touching the repo.
 
-**The one-time backlog cleanup is `--strikes 1 --allow-mass-removal`.** On
-2026-09-17 the first census found **353 of 606 published jobs (58.3%) already
-closed** — 86% of jobs in the 46–60 day bucket were dead, versus 4% in the 0–7 day
-bucket. Steady-state runs must use the default 2 strikes and no override.
+**Status: enabled and the backlog cleanup is done.** `CLOSURE_CHECK_ENABLED` is
+`"true"` in the workflow as of 2026-09-17. What actually ran that day:
+
+- The first census found **353 of 606 published jobs (58.3%) already closed** — 86%
+  of the 46–60 day bucket was dead, versus 4% of the 0–7 day bucket.
+- **Run 1** (flag on, no override) gave all 353 their first strike and removed
+  nothing — a free production validation pass. Do this first if you ever re-enable
+  from cold; it costs one run and proves the census before anything is deleted.
+- **Run 2** (`workflow_dispatch` with `allow_mass_removal: true`) removed all 353.
+  Feed went **615 → 269**.
+
+The cleanup is historical now. **Steady-state runs must use the default 2 strikes
+and no override** — measured churn afterwards is ~11 removals/day (~4%). A run
+proposing hundreds of removals again means something is wrong, not that another
+cleanup is due.
+
+The one-time form, for reference only: `--strikes 1 --allow-mass-removal`.
+
+**Never run the cleanup from a local checkout.** `--apply` locally writes
+`data/state.json`, and committing that from a stale checkout reverts however many
+days of pipeline commits you were behind. The runner always checks out fresh; use
+`workflow_dispatch`.
 
 ---
 
@@ -250,11 +275,38 @@ bucket. Steady-state runs must use the default 2 strikes and no override.
 - Root element must be `<source>` — changing it breaks stored field mappings.
 - JobBoardly requires `<publisher>`, `<publisherurl>`, `<lastBuildDate>` to recognize the feed format.
 - JobBoardly has a "require salary on all posts" setting — keep this **OFF** or jobs without salary data won't import.
-- Removal semantics: JobBoardly drops a listing when it disappears from the feed on
-  the next refresh, so omitting a `<job>` element is the delisting mechanism. The
-  feed keeps emitting the same schema and the same `<source>` root — closure only
+- **Removal semantics are confirmed empirically, not just documented.** JobBoardly
+  **hard-deletes** a listing that disappears from the feed: on 2026-09-17 an import
+  took the site from **611 job pages to 275**, and the 352 removed URLs now return
+  **404** (verified against `sitemap.xml` before and after, plus per-URL checks).
+  Omitting a `<job>` element is all that is required. No backdated
+  `<expiration_date>` tombstone is needed — that fallback was considered and is
+  **not** necessary.
+- The import is **not instant**. It happens on the feed's configured refresh cycle,
+  or when triggered by hand in the JobBoardly admin. If closed jobs seem to linger,
+  check that refresh frequency before suspecting the pipeline — the feed can be
+  correct for hours while the board is stale.
+- The feed keeps emitting the same schema and the same `<source>` root — closure only
   changes *which* jobs appear, never the field structure, so stored field mappings
   are unaffected.
+- **The board carries paid employer posts that are not in the XML feed.** As of
+  2026-09-17 there are 6 (MAA, Ciminelli Real Estate Services, Pennrose x2, and two
+  more). They are posted through employer accounts, have no ATS links, and are
+  **correctly invisible to closure detection** — it only reconciles jobs it sourced.
+  Any comparison of feed size to site job count must allow for them: 275 site pages
+  = 269 feed jobs + 6 employer posts. Do not "fix" that gap.
+- **Do not map site pages back to jobs by title.** Two traps, both hit on
+  2026-09-17:
+  - **Titles are not unique.** Lessen had 4 postings titled exactly "Experienced
+    Field Maintenance Technician (3+ Years Required)". Matching by title picked the
+    wrong one and produced a false "this closed job is still live" alarm.
+  - **JobBoardly slugifies differently than `_slugify` in `main.py`.**
+    `Groundskeeper/Porter` becomes `groundskeeper-porter` there but
+    `groundskeeperporter` here; `$1,500` becomes `1-500` not `1500`. Parentheses,
+    colons and slashes all differ.
+
+  To identify which job a site page belongs to, fetch the page and read the
+  requisition ID out of its apply URL. That is exact; titles and slugs are not.
 - `<referencenumber>` is the stable employer requisition ID (`{ats}_{native_id}`)
   and is what JobBoardly matches on between imports. Closure never changes it, and
   a reinstated job returns with the same reference number and the same `<date>`.
