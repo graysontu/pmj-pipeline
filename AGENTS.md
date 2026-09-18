@@ -357,6 +357,24 @@ days of pipeline commits you were behind. The runner always checks out fresh; us
 
   So a missing city on a job page is usually *our* bad value, not a JobBoardly bug.
   Check what the feed actually sends before blaming the importer.
+- **JobBoardly sets a job's location on FIRST import and never updates it.** This is
+  the most consequential thing to know before planning any location work. Proven by
+  control on 2026-09-18: after correcting `Pheonix` → `Phoenix` in the feed and
+  re-importing, the corrected job's page still showed no city, while two other jobs
+  whose feed value had *always* been `Phoenix` displayed `Phoenix` correctly. Same
+  value, same feed, same import - the only difference was whether the job already
+  existed on the board. Re-checked 17 minutes after the import; it is not a queue
+  delay.
+
+  Note this is specifically about *updating fields*. Removal on disappearance does
+  work (352 jobs were delisted on 2026-09-17), so existing jobs are not ignored
+  wholesale. Only field updates were tested for location; other fields are unverified.
+
+  **Consequence:** a location fix only benefits jobs imported *after* it ships.
+  Already-imported jobs must be corrected by hand in JobBoardly's job editor, or
+  deleted so the next import re-adds them (which changes their URL). Budget for this
+  whenever changing `geo.py` - the 2026-09-18 fix left 8 jobs needing manual edits.
+
 - **Some correct cities are genuinely unsupported.** `Whistler, AL` is a real but
   unincorporated community and JobBoardly drops it. There is nothing to fix in the
   pipeline for these; correct them in JobBoardly's job editor if they matter.
