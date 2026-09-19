@@ -240,3 +240,81 @@ def test_run_census_flags_unknown_source_type():
 
     assert not results[("greenhouse", "good")].ok
     assert "no census function" in results[("greenhouse", "good")].error
+
+
+# --- rate limiting -----------------------------------------------------------
+
+
+def _status_error(code: int) -> httpx.HTTPStatusError:
+    response = MagicMock()
+    response.status_code = code
+    return httpx.HTTPStatusError("boom", request=MagicMock(), response=response)
+
+
+@pytest.mark.parametrize("code", [429, 500, 502, 503, 504])
+def test_retryable_statuses(code):
+    """429 is the one that matters: a Workable burst put all 7 accounts out of
+    reach on 2026-09-18, leaving 10% of the feed unchecked for a run."""
+    from pipeline.census import _is_retryable
+
+    assert _is_retryable(_status_error(code)) is True
+
+
+@pytest.mark.parametrize("code", [400, 401, 403, 404, 410])
+def test_non_retryable_statuses_fail_fast(code):
+    """A dead slug must not cost four attempts and 30s of backoff every run."""
+    from pipeline.census import _is_retryable
+
+    assert _is_retryable(_status_error(code)) is False
+
+
+def test_transport_errors_are_still_retryable():
+    from pipeline.census import _is_retryable
+
+    assert _is_retryable(httpx.ConnectTimeout("timed out")) is True
+
+
+def test_request_retries_a_429_then_succeeds():
+    from pipeline.census import _request
+
+    client = _client()
+    client.request.side_effect = [_raising(429), _raising(429), _json_response({"ok": True})]
+
+    result = _request.retry_with(wait=lambda *_a, **_k: 0)(client, "GET", "https://x/y")
+
+    assert result == {"ok": True}
+    assert client.request.call_count == 3
+
+
+def test_request_gives_up_after_the_attempt_limit():
+    from pipeline.census import _request
+
+    client = _client()
+    client.request.side_effect = [_raising(429)] * 6
+
+    with pytest.raises(httpx.HTTPStatusError):
+        _request.retry_with(wait=lambda *_a, **_k: 0)(client, "GET", "https://x/y")
+
+    assert client.request.call_count == 4
+
+
+def _raising(code: int):
+    response = MagicMock()
+    response.status_code = code
+    response.raise_for_status.side_effect = _status_error(code)
+    return response
+
+
+def test_a_rate_limited_board_is_unknown_not_empty():
+    """The safety property: a 429 that outlives the retries must mark the board
+    unavailable, never return an empty ID set that would look like mass closure."""
+    def fake(client, slug):
+        raise _status_error(429)
+
+    with patch.dict("pipeline.census.CENSUS_FNS", {"greenhouse": fake}):
+        results = run_census(SOURCES)
+
+    for census in results.values():
+        assert census.ok is False
+        assert census.open_ids == frozenset()
+        assert census.error == "HTTP 429"

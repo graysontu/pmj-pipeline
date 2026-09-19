@@ -231,13 +231,24 @@ ages out via `ACTIVE_DAYS` (60). It does not need to be rediscovered daily. The
 `MAX_JOBS_PER_RUN` and 1-per-company caps gate *admission of new jobs only* and
 never cause retention loss.
 
-**Workable rate-limits the census (HTTP 429) if you run it repeatedly from one IP.**
-Observed 2026-09-17 while testing: after several censuses in a few minutes, all 7
-Workable accounts returned 429 while the other 39 boards were fine. The daily
-runner has never hit this - one census a day, ~77 Workable requests, succeeded
-cleanly. It is safe when it happens: 429 is a `CensusError`, so those jobs go
-`unknown` and nothing is removed. If you are iterating locally, expect Workable
-jobs to show as unknown and don't read it as a bug.
+**Workable rate-limits the census (HTTP 429), and the daily runner does hit it.**
+First seen 2026-09-17 while testing locally; then on the 2026-09-18 scheduled run
+all 7 Workable accounts returned 429 at once, so 8 boards were unavailable and 60
+jobs (10% of the feed) went `unknown` for that run. Nothing was wrongly removed -
+a 429 surfaces as `HTTP 429` on the `BoardCensus`, so those jobs are `unknown` and
+the strike counter neither advances nor resets. But a persistent 429 means Workable
+jobs stop being closure-checked, so dead ones would linger.
+
+Mitigated in `census.py` two ways: `_request` retries `RETRYABLE_STATUSES`
+(429/500/502/503/504, deliberately **not** 404) with exponential backoff, and the
+Workable page walk sleeps `WORKABLE_PAGE_DELAY` between pages so ~77 rapid requests
+across 7 accounts stop arriving as one burst. After that change a full local census
+established 44 of 46 boards with 0 unknown, in about 16 seconds.
+
+Note the retry predicate must be wrapped in tenacity's `retry_if_exception(...)`.
+Passing a bare function to `retry=` silently never fires - tenacity hands that
+callable a `RetryCallState`, not the exception, so every `isinstance` check is
+False. A test caught this; keep `test_request_retries_a_429_then_succeeds`.
 
 ### Feed guard
 

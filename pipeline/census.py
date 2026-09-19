@@ -15,10 +15,11 @@ live jobs.
 """
 
 import logging
+import time
 from dataclasses import dataclass
 
 import httpx
-from tenacity import retry, retry_if_exception_type, stop_after_attempt, wait_exponential
+from tenacity import retry, retry_if_exception, stop_after_attempt, wait_exponential
 
 logger = logging.getLogger(__name__)
 
@@ -32,6 +33,7 @@ USER_AGENT = "pmj-pipeline-census/1.0 (+https://propertymanagementjobs.us)"
 # reusing them.
 MAX_PAGES = 200
 SR_PAGE_LIMIT = 100
+WORKABLE_PAGE_DELAY = 0.3
 
 
 class CensusError(Exception):
@@ -63,10 +65,26 @@ def _check_complete(found: int, declared: int | None, slug: str) -> None:
         )
 
 
+# Statuses worth retrying. 429 is the one that matters: Workable rate-limits the
+# census when its ~77 requests arrive in a burst, and on 2026-09-18 that put all 7
+# Workable accounts out of reach for a whole run - 29 feed jobs (10.5%) went
+# unchecked. 404 is deliberately absent; a dead slug should fail fast.
+RETRYABLE_STATUSES = frozenset({429, 500, 502, 503, 504})
+
+
+def _is_retryable(exc: BaseException) -> bool:
+    if isinstance(exc, httpx.TransportError):
+        return True
+    return (
+        isinstance(exc, httpx.HTTPStatusError)
+        and exc.response.status_code in RETRYABLE_STATUSES
+    )
+
+
 @retry(
-    retry=retry_if_exception_type(httpx.TransportError),
-    stop=stop_after_attempt(3),
-    wait=wait_exponential(multiplier=1, min=2, max=10),
+    retry=retry_if_exception(_is_retryable),
+    stop=stop_after_attempt(4),
+    wait=wait_exponential(multiplier=2, min=2, max=30),
     reraise=True,
 )
 def _request(client: httpx.Client, method: str, url: str, **kwargs) -> dict | list:
@@ -129,10 +147,15 @@ def census_workable(client: httpx.Client, slug: str) -> tuple[frozenset[str], in
     declared: int | None = None
     token: str | None = None
 
-    for _ in range(MAX_PAGES):
+    for page_index in range(MAX_PAGES):
         body: dict = {"query": "", "location": [], "department": [], "worktype": [], "remote": []}
         if token:
             body["token"] = token
+        # Workable pages 10 jobs at a time, so a full census is ~77 rapid requests
+        # across 7 accounts. A short pause between pages keeps the burst under the
+        # rate limit; retries above handle it when that is not enough.
+        if page_index:
+            time.sleep(WORKABLE_PAGE_DELAY)
         page = _request(client, "POST", url, json=body)
         if not isinstance(page, dict):
             raise CensusError(f"unexpected Workable payload for '{slug}': {type(page).__name__}")
