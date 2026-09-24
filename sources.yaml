@@ -99,6 +99,19 @@ greenhouse:
   - slug: redpeak
     company_name: RedPeak
     logo_url: https://graysontu.github.io/pmj-pipeline/logos/redpeak.png
+  - slug: davisdevelopment
+    company_name: Davis Development
+    logo_url: https://graysontu.github.io/pmj-pipeline/logos/davis-development.png
+  - slug: jeffersonapartmentgroup
+    company_name: Jefferson Apartment Group
+    logo_url: https://graysontu.github.io/pmj-pipeline/logos/jefferson-apartment-group.png
+  # Avanath's Greenhouse board token really is "communitymanager".
+  - slug: communitymanager
+    company_name: Avanath
+    logo_url: https://graysontu.github.io/pmj-pipeline/logos/avanath.png
+  - slug: riseamg
+    company_name: Rise Association Management Group
+    logo_url: https://graysontu.github.io/pmj-pipeline/logos/rise-association-management-group.png
 
 # Verified slugs: https://api.lever.co/v0/postings/{slug}?mode=json
 lever:
@@ -116,6 +129,12 @@ lever:
     logo_url: https://graysontu.github.io/pmj-pipeline/logos/tripalink.png
   - slug: loganpm
     company_name: Logan Property Management
+  - slug: actionlife
+    company_name: Action Property Management
+    logo_url: https://graysontu.github.io/pmj-pipeline/logos/action-property-management.png
+  - slug: havenparkcommunities
+    company_name: Havenpark Communities
+    logo_url: https://graysontu.github.io/pmj-pipeline/logos/havenpark-communities.png
 
 # Verified slugs: https://api.ashbyhq.com/posting-api/job-board/{slug}
 # Add companies here once you confirm their Ashby board is public.
@@ -142,9 +161,26 @@ workable:
   - slug: flats-llc
     company_name: Flats LLC
     logo_url: https://graysontu.github.io/pmj-pipeline/logos/flats-llc.png
-  - slug: bluecrestresidential
+  # Was "bluecrestresidential" (404 since at least 2026-09-17); Bluecore renamed its
+  # Workable account and existing job shortcodes carried over to the new slug.
+  - slug: bluecoreresidential
     company_name: Bluecore Residential
     logo_url: https://graysontu.github.io/pmj-pipeline/logos/bluecore-residential.jpg
+  - slug: wrmc
+    company_name: Worth Ross Management Company
+    logo_url: https://graysontu.github.io/pmj-pipeline/logos/worth-ross-management-company.png
+  - slug: peak-management
+    company_name: Peak Management
+    logo_url: https://graysontu.github.io/pmj-pipeline/logos/peak-management.png
+  - slug: wendover-management-llc
+    company_name: Wendover Management
+    logo_url: https://graysontu.github.io/pmj-pipeline/logos/wendover-management.png
+  - slug: cym-living
+    company_name: CYM Living
+    logo_url: https://graysontu.github.io/pmj-pipeline/logos/cym-living.png
+  - slug: banyan-living-3
+    company_name: Banyan Living
+    logo_url: https://graysontu.github.io/pmj-pipeline/logos/banyan-living.jpg
 
 # Verified slugs: https://{slug}.recruitee.com/api/offers/
 recruitee: []
@@ -157,3 +193,15 @@ smartrecruiters:
   - slug: AIRCommunities
     company_name: AIR Communities
     logo_url: https://graysontu.github.io/pmj-pipeline/logos/air-communities.png
+  - slug: VillageGreen1
+    company_name: Village Green
+    logo_url: https://graysontu.github.io/pmj-pipeline/logos/village-green.png
+  - slug: CirrusAssetManagement
+    company_name: Cirrus Asset Management
+    logo_url: https://graysontu.github.io/pmj-pipeline/logos/cirrus-asset-management.png
+  - slug: LivCorLLC1
+    company_name: LivCor
+    logo_url: https://graysontu.github.io/pmj-pipeline/logos/livcor.png
+  - slug: StreamRealty
+    company_name: Stream Realty Partners
+    logo_url: https://graysontu.github.io/pmj-pipeline/logos/stream-realty-partners.jpg

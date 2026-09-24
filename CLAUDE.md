@@ -72,13 +72,62 @@ segment that resolves wins.
 **Ashby and Recruitee have essentially no US property management companies** (verified July 2026 via site: searches). Don't spend time hunting for PM slugs there.
 
 **Dead slugs in `sources.yaml` as of 2026-09-17.** `lever/belong` (Belong Home) and
-`workable/bluecrestresidential` (Bluecore Residential) both return **404** — they
-are the 2 boards the daily census always reports as unavailable, and that warning is
-expected noise rather than a bug. Vacasa (Greenhouse), Entrata and Tripalink (Lever)
-resolve fine but have never produced a job. All five are candidates for removal; the
-404 pair is safe to delete outright.
+`workable/bluecrestresidential` (Bluecore Residential) both returned **404** — the
+2 boards the daily census always reported as unavailable. Vacasa (Greenhouse),
+Entrata and Tripalink (Lever) resolve fine but have never produced a job. All are
+candidates for removal; `lever/belong` is safe to delete outright.
+
+**Bluecore was a rename, not a dead board** (fixed 2026-09-23). The account moved to
+`bluecoreresidential`, and job shortcodes carried over (the one Bluecore job in state
+had apply URL `/bluecrestresidential/j/10C55DDF3C/`; that shortcode now lives under
+the new slug). Before deleting a 404 slug, search `site:<ats domain> "<company>"` -
+the company may simply have renamed its ATS account.
 
 **The 1-per-company cap runs BEFORE classification**, so a company whose board is mostly non-PM roles (construction, corporate, finance) wastes its daily slot on jobs the classifier rejects. Prefer companies whose boards are majority PM/leasing titles.
+
+### Adding companies (research notes, 2026-09-23)
+
+**Search the ATS domains; don't guess slugs.** Guessing slugs for ~365 well-known
+PM and HOA companies found almost nothing: most large operators (Greystar, RPM,
+FirstService, Associa, Bell, ZRS...) use Workday, iCIMS, UKG, Paycom or Paylocity,
+which the pipeline does not support. Every company added on 2026-09-23 came from
+searches like `site:job-boards.greenhouse.io "leasing consultant" apartments`, and
+likewise for `jobs.lever.co`, `jobs.smartrecruiters.com` and `apply.workable.com`.
+Short slugs (`peak`, `access`, `omni`) belong to unrelated companies - read the titles.
+
+**Most HOA / community-association managers use Paylocity** (e.g. Keystone Pacific)
+or in-house pages. Only Action Property Management (Lever) and Rise AMG (Greenhouse)
+turned up active on supported systems. A Paylocity fetcher would unlock far more.
+
+**Check posting velocity, not board size.** Many small SmartRecruiters boards
+(Community Management Associates, The Manor Association, Omni Management Services,
+Mercy Housing, AGM Management...) list only evergreen postings older than 30 days;
+with `JOB_MAX_AGE_DAYS=2` they would never contribute a job. Run candidates through
+the real fetchers and count postings from the last 2/7/30 days.
+
+**Workable throttles probing hard.** Probing a few hundred Workable slugs from one
+IP brought sustained 429s for 30+ minutes, which also broke local runs of the
+existing Workable fetchers. Probe Workable last, slowly, and only for specific leads.
+
+**Looked at and rejected on 2026-09-23**, so nobody re-researches them: Evernest
+(posts Philippines/Mexico roles that would publish with no US location), Flow, CIM
+Group, Intrinsic Development, AVE by Korman (mostly corporate or hospitality roles),
+RXR (location field unparseable), Twin Pines (NYC addresses without a state, ~2
+jobs/month), and the dormant SmartRecruiters boards above.
+
+**Don't add employers who pay for listings on the board.** As of 2026-09-23: MAA,
+Federal Realty Investment Trust, Lloyd Management, Pennrose, Ciminelli Real Estate
+Services.
+
+**Avanath's Greenhouse board token is `communitymanager`**, and about half its
+location fields are property names ("Northpointe"). Greenhouse's `offices[].location`
+(returned with `content=true`) has the real address for 40 of those 43 jobs, but the
+fetcher does not read `offices`. Berkshire, Sunrise and CloudTen have no location in
+`offices` either, so that fallback would only help Avanath.
+
+**LivCor and AIR Communities are both Blackstone operators**, and livcor.com redirects
+to AIR, but their SmartRecruiters boards list different communities (no overlapping
+postings on 2026-09-23). They are not duplicates.
 
 ---
 
@@ -407,4 +456,10 @@ days of pipeline commits you were behind. The runner always checks out fresh; us
 - **Some correct cities are genuinely unsupported.** `Whistler, AL` is a real but
   unincorporated community and JobBoardly drops it. There is nothing to fix in the
   pipeline for these; correct them in JobBoardly's job editor if they matter.
+- **A company with no `logo_url` gets the ATS's logo, not a blank.** JobBoardly
+  scrapes a logo from the apply URL's domain when `<companylogo>` is absent: Logan
+  Property Management's jobs display an image named `lever.co.png` (checked
+  2026-09-23). Give every new company in `sources.yaml` a logo, self-hosted in
+  `output/logos/`. Check it on a white background first - many company sites only
+  serve a white logo meant for a dark header.
 - Field mapping syntax: `source/job → fieldname` (e.g., `source/job/title → Title`).
