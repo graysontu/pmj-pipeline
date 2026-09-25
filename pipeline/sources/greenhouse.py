@@ -1,9 +1,11 @@
 import logging
+import re
 from datetime import datetime, timezone
 
 import httpx
 from tenacity import retry, retry_if_exception_type, stop_after_attempt, wait_exponential
 
+from pipeline.geo import mentions_us_state, resolve_location
 from pipeline.models import RawJob
 from pipeline.sources.utils import html_to_text, infer_remote_type, unescape_html
 
@@ -12,11 +14,64 @@ logger = logging.getLogger(__name__)
 GREENHOUSE_API = "https://boards-api.greenhouse.io/v1/boards/{slug}/jobs"
 TIMEOUT = 30.0
 
+# Words that say nothing about *which* property a posting belongs to. An office
+# only stands in for a posting's location when the two names share a word outside
+# this set (and outside the employer's own name).
+_GENERIC_WORDS = frozenset({
+    "the", "and", "for", "apartment", "apartments", "apts", "home", "homes",
+    "community", "communities", "property", "properties", "management", "residential",
+    "living", "corporate", "corp", "office", "offices", "headquarters", "group", "llc",
+    "inc", "company", "remote", "hybrid", "senior", "place", "park", "village", "plaza",
+    "court", "square", "center", "centre", "north", "south", "east", "west", "unknown",
+})
+
+
+def _words(text: str) -> set[str]:
+    return {w for w in re.findall(r"\w+", text.lower()) if len(w) >= 3}
+
+
+def _office_location(job: dict, location: str, company_name: str) -> str | None:
+    """An office address for a posting whose location field is only a property name.
+
+    Avanath puts a bare property name ("Northpointe") in the location field, which
+    resolve_location rightly refuses. Greenhouse also lets the employer tag each
+    requisition with an office, and offices carry an address ("Northpointe" ->
+    "5441 N. Paramount Blvd, Long Beach, CA 90805"). The office is used only when
+    its name shares a distinctive word with the location - the employer's own tag
+    for the same property. Postings filed under a corporate office keep no location
+    rather than inheriting headquarters: Avanath's "San Diego" posting is tagged to
+    its Irvine office, and Fairstead's remote roles to New York. A location that
+    names a state, or says remote, is left to the parser.
+    """
+    if resolve_location(location).state or mentions_us_state(location):
+        return None
+    if "remote" in location.lower():
+        return None
+    ignore = _GENERIC_WORDS | _words(company_name)
+    wanted = _words(location) - ignore
+    if not wanted:
+        return None
+
+    matches: list[tuple[str, str]] = []
+    for office in job.get("offices") or []:
+        address = (office.get("location") or "").strip()
+        if not address or not wanted & (_words(office.get("name") or "") - ignore):
+            continue
+        state = resolve_location(address).state
+        if state:
+            matches.append((address, state))
+
+    # Offices for the same property in two different states would be a guess.
+    if not matches or len({state for _, state in matches}) > 1:
+        return None
+    return matches[0][0]
+
 
 def _parse_job(job: dict, company_name: str, company_url: str | None) -> RawJob:
     job_id = str(job["id"])
     title = job.get("title", "")
-    location = (job.get("location", {}) or {}).get("name", "").strip() or "Unknown"
+    listed_location = (job.get("location", {}) or {}).get("name", "").strip() or "Unknown"
+    location = _office_location(job, listed_location, company_name) or listed_location
     description_html = unescape_html(job.get("content", "") or "")
     description_text = html_to_text(description_html)
     apply_url = job.get("absolute_url", "")
@@ -40,7 +95,7 @@ def _parse_job(job: dict, company_name: str, company_url: str | None) -> RawJob:
         description_text=description_text,
         apply_url=apply_url,
         date_posted=date_posted,
-        remote_type=infer_remote_type(title, location, metadata_values),
+        remote_type=infer_remote_type(title, listed_location, metadata_values),
         company_url=company_url,
     )
 

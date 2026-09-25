@@ -53,7 +53,31 @@ are nowhere near it. An unresolved location is reported, not guessed.
 
 **A real city with no state is still rejected.** Birgo posts bare `"Greensburg"`,
 which is a real place — but Greensburg exists in PA, KS, IN, KY and LA, so the state
-cannot be inferred. Flag it; don't pick one.
+cannot be inferred. Flag it; don't pick one. (The one exception is the Greenhouse
+office fallback below: if the employer itself tagged that requisition with an office
+named "Greensburg" whose address is in Pennsylvania, that is the employer's data,
+not a guess.)
+
+**Greenhouse offices stand in for a bare property name - under two guards**
+(added 2026-09-26, `_office_location` in `pipeline/sources/greenhouse.py`).
+Greenhouse lets employers tag each requisition with an office, and offices carry an
+address. When the location field doesn't resolve, the fetcher uses an office address
+only if (1) the location field names no state at all (`geo.mentions_us_state`), is
+not "remote", and (2) the office *name* shares a distinctive word with the location
+field, ignoring generic words and the employer's own name. Guard 2 is what keeps
+headquarters out: Avanath files a "San Diego" posting under its Irvine "Corporate"
+office, Fairstead files remote roles under "Fairstead Communities" in New York, and
+Lincoln files "Remote" under Charlotte - none of those match, so they stay
+unresolved. Guard 1 leaves real-but-garbled places ("Concord, NC (Charlotte area)")
+to the parser rather than swapping in a nearby office city. Measured across all 1,700
+Greenhouse postings on 2026-09-26: 38 went from unresolved to resolved (Avanath 36,
+Birgo 1, Comstock 1) and no already-resolved location changed. The fetcher changes
+only newly discovered jobs; published ones keep their location on JobBoardly.
+
+**Weinstein's parenthetical locations are a parser gap, not fixed yet.** About 14 of
+Weinstein's ~40 postings read like "Richmond, VA (Henrico/West End)" or "Mount
+Juliet, TN (Nashville)", and `_parse_segment` fails on the trailing parenthetical, so
+they publish with no city. Stripping a trailing `(...)` before parsing would fix them.
 
 **Semicolon-separated multi-location strings must be split first.** Splitting on
 commas alone turned `"Reno, NV; Sparks, NV"` into the city `"Nv; Sparks"`. The first
@@ -120,10 +144,11 @@ Federal Realty Investment Trust, Lloyd Management, Pennrose, Ciminelli Real Esta
 Services.
 
 **Avanath's Greenhouse board token is `communitymanager`**, and about half its
-location fields are property names ("Northpointe"). Greenhouse's `offices[].location`
-(returned with `content=true`) has the real address for 40 of those 43 jobs, but the
-fetcher does not read `offices`. Berkshire, Sunrise and CloudTen have no location in
-`offices` either, so that fallback would only help Avanath.
+location fields are property names ("Northpointe"). Since 2026-09-26 the fetcher
+resolves these through Greenhouse offices (see "Greenhouse offices stand in for a bare
+property name"). Berkshire, Sunrise and CloudTen have no location in `offices`, so
+the fallback does not help them. One Avanath job published before the fix ("Maintenance
+Supervisor", listed as "Canvas", really Austin, TX) went live with no city.
 
 **LivCor and AIR Communities are both Blackstone operators**, and livcor.com redirects
 to AIR, but their SmartRecruiters boards list different communities (no overlapping
