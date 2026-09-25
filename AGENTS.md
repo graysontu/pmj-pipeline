@@ -162,12 +162,12 @@ for entry in cache.values():
 
 **The age cutoff is a rolling `now - JOB_MAX_AGE_DAYS`, so the time of day you run matters.** It is recomputed on every run, not anchored to a calendar day. On 2026-08-23 the 16:14 UTC run found 48 jobs inside a 2-day window; a manual re-run at 23:31 UTC the same day found **6** — about 42 jobs published during the US afternoon two days earlier fell out the back of the window in those seven hours. Consequence: re-running a failed job later the same day does **not** recover what the failed run would have published. If a run fails and you care about its jobs, either re-run immediately or temporarily raise `JOB_MAX_AGE_DAYS`.
 
-**A daily publish cap is enforced by `MAX_JOBS_PER_RUN`** (`config.py`, default 9, override via env). It is applied **after classification and before rewrite** — after, so the cap counts real PM jobs rather than candidates the classifier would reject; before, so deferred jobs cost no Sonnet rewrite tokens. Two things to preserve if you touch it:
+**A daily publish cap is enforced by `MAX_JOBS_PER_RUN`** (`config.py`, default 11 since 2026-09-26 - it was 9 - override via env). It is applied **after classification and before rewrite** — after, so the cap counts real PM jobs rather than candidates the classifier would reject; before, so deferred jobs cost no Sonnet rewrite tokens. Two things to preserve if you touch it:
 
 - **Don't reassign `kept`.** The health-check block computes `rejection_rate` from `classified` vs `kept`; capping `kept` in place makes every capped run look like a >50% rejection spike and writes a bogus NOTICE.txt. The capped list lives in `publishable`.
 - **The selection rotates by date and must keep doing so.** `kept` follows `sources.yaml` order and the 1-per-company cap means each entry is a different company, so a plain `kept[:N]` would hand every slot to the same top-of-file companies daily and starve the ones at the bottom. The offset steps by the cap size per day so consecutive days take near-disjoint slices; with 15–20 qualifying jobs this covers every company within about 6 days.
 
-**Deferred jobs get one extra chance, not an unlimited queue.** They aren't written to state, so the next run reconsiders them — but only while they remain inside the `JOB_MAX_AGE_DAYS` window. At ~15–20 qualifying jobs/day against a cap of 9, expect a persistent surplus that ages out unpublished. The cap is a ceiling, not a backlog.
+**Deferred jobs get one extra chance, not an unlimited queue.** They aren't written to state, so the next run reconsiders them — but only while they remain inside the `JOB_MAX_AGE_DAYS` window. At ~15–20 qualifying jobs/day against a cap of 9, expect a persistent surplus that ages out unpublished. After 15 companies were added on 2026-09-24 the first run found 32 qualifying jobs, so even at 11 most days still leave a surplus. The cap is a ceiling, not a backlog.
 
 ---
 
