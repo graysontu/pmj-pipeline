@@ -257,6 +257,29 @@ def resolve_location(location: str) -> Location:
     )
 
 
+_STATE_NAME_RE = re.compile(
+    r"\b(?:" + "|".join(sorted((re.escape(n) for n in _US_STATE_NAMES), key=len, reverse=True)) + r")\b",
+    re.IGNORECASE,
+)
+
+
+def mentions_us_state(text: str) -> bool:
+    """True when `text` names a US state, as a capitalised two-letter code or in full.
+
+    This asks a looser question than resolve_location: whether the value names a
+    state at all, not whether a city and state can be parsed from it. A value like
+    "Concord, NC (Charlotte area)" names a real place that the parser does not
+    handle; callers use this to tell that apart from a bare property name. It is
+    deliberately cautious - a property called "Washington Square" counts as naming
+    a state.
+    """
+    if not text:
+        return False
+    if any(token in _US_STATES for token in re.findall(r"\b[A-Z]{2}\b", text)):
+        return True
+    return bool(_STATE_NAME_RE.search(text))
+
+
 def parse_location(location: str) -> tuple[str, str]:
     """Split a location string into (city, state_abbr), or ('', '') if unresolved.
 

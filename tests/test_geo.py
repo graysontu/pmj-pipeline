@@ -145,3 +145,27 @@ def test_nothing_is_inferred_when_the_field_names_the_employer():
 def test_parse_location_returns_a_plain_pair():
     assert parse_location("Dallas, TX") == ("Dallas", "TX")
     assert parse_location("Trellis House") == ("", "")
+
+
+@pytest.mark.parametrize("text", [
+    "Concord, NC (Charlotte area)",
+    "Charlotte North Carolina",
+    "Washington Square",
+    "Richmond, VA (Henrico/West End)",
+])
+def test_mentions_us_state_detects_named_states(text):
+    from pipeline.geo import mentions_us_state
+    assert mentions_us_state(text)
+
+
+@pytest.mark.parametrize("text", [
+    "Northpointe",
+    "Peninsula Park & Alta Torre",
+    "Acorn",
+    "Casa Sueños",
+    "Villa Loma Apartments",
+    "",
+])
+def test_mentions_us_state_ignores_property_names(text):
+    from pipeline.geo import mentions_us_state
+    assert not mentions_us_state(text)
