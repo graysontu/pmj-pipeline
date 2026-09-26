@@ -29,6 +29,13 @@ from pipeline.geo import parse_location, resolve_location
     ("Hawthorne Tower - 500 Elm - Charlotte, NC - 28202", ("Charlotte", "NC")),
     # ZIP-only state resolution
     ("Cambridge, 02139", ("Cambridge", "MA")),
+    # Weinstein: neighborhood note in parentheses glued onto the state
+    ("Richmond, VA (Henrico/West End)", ("Richmond", "VA")),
+    ("Concord, NC (Charlotte area)", ("Concord", "NC")),
+    ("Mount Juliet, TN (Nashville)", ("Mount Juliet", "TN")),
+    ("Richmond, VA (Tuckahoe / Short Pump Area", ("Richmond", "VA")),
+    # Lincoln: work arrangement in parentheses
+    ("Charlotte, NC (Hybrid)", ("Charlotte", "NC")),
 ])
 def test_known_employer_formats(raw, expected):
     assert parse_location(raw) == expected
@@ -169,3 +176,20 @@ def test_mentions_us_state_detects_named_states(text):
 def test_mentions_us_state_ignores_property_names(text):
     from pipeline.geo import mentions_us_state
     assert not mentions_us_state(text)
+
+
+def test_a_parenthetical_note_is_only_dropped_when_the_location_fails_without_it():
+    # Already resolvable: the note is irrelevant and the result is unchanged.
+    assert parse_location("Chicago, Illinois, United States (Remote)") == ("Chicago", "IL")
+    # A leading note (Logan) is left alone; the location still resolves as before.
+    assert parse_location("(Peachtree) 901 F Street, San Diego, CA 92101") == ("San Diego", "CA")
+
+
+@pytest.mark.parametrize("raw", [
+    "Fairstead Management - Corp Remote (Property)",
+    "Arborlane Apartments (fka Corporate Woods); Van Mall North",
+    # A place that exists only inside the note is not dug out of it.
+    "Olympus Grand Crossing (Katy, TX)",
+])
+def test_dropping_a_note_does_not_invent_a_location(raw):
+    assert parse_location(raw) == ("", "")

@@ -24,6 +24,8 @@ Greenhouse lets each company set location however they want. Known formats encou
 
 - `"City A, ST; City B, ST"` — Asset Living, Griffis (several locations, one requisition)
 - `"Property; Property; Property"` — CloudTen, Sunrise (a list of buildings)
+- `"City, ST (Neighborhood)"` — Weinstein; `"City, ST (Hybrid)"` — Lincoln (a note in
+  parentheses, sometimes missing its closing bracket)
 
 `pipeline/geo.py` handles all of these. When a new company shows wrong locations, add
 its format to `tests/test_geo.py` and extend `resolve_location`.
@@ -74,10 +76,17 @@ Greenhouse postings on 2026-09-26: 38 went from unresolved to resolved (Avanath 
 Birgo 1, Comstock 1) and no already-resolved location changed. The fetcher changes
 only newly discovered jobs; published ones keep their location on JobBoardly.
 
-**Weinstein's parenthetical locations are a parser gap, not fixed yet.** About 14 of
-Weinstein's ~40 postings read like "Richmond, VA (Henrico/West End)" or "Mount
-Juliet, TN (Nashville)", and `_parse_segment` fails on the trailing parenthetical, so
-they publish with no city. Stripping a trailing `(...)` before parsing would fix them.
+**A trailing note in parentheses is dropped - but only when the location fails
+without it** (fixed 2026-09-26, `_parse_segment_ignoring_notes` in `geo.py`). Weinstein
+writes "Richmond, VA (Henrico/West End)" and "Mount Juliet, TN (Nashville)"; the note
+glued onto the state ("VA (Henrico/West End)") so nothing resolved. Only notes at the
+*end* are removed, and only after the full string fails, so an already-working value
+("Chicago, Illinois, United States (Remote)") is untouched and a place that exists
+only inside the note ("Olympus Grand Crossing (Katy, TX)") is not dug out - it stays
+unresolved. Measured on all 2,468 live postings across the 61 boards: 16 went from
+unresolved to resolved (Weinstein 14, Lincoln 2 "Charlotte, NC (Hybrid)"), none
+changed that already resolved. None was in the published feed at the time, so this
+helps future jobs only.
 
 **Semicolon-separated multi-location strings must be split first.** Splitting on
 commas alone turned `"Reno, NV; Sparks, NV"` into the city `"Nv; Sparks"`. The first
