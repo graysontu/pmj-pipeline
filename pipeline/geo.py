@@ -169,6 +169,32 @@ class Location:
         return bool(self.city and self.state)
 
 
+# A note in parentheses at the end of a location: "Richmond, VA (Henrico/West End)",
+# "Charlotte, NC (Hybrid)". The closing parenthesis is optional because some
+# employers leave it off.
+_TRAILING_NOTE = re.compile(r"\s*\([^()]*\)?\s*$")
+
+
+def _parse_segment_ignoring_notes(segment: str) -> tuple[str, str]:
+    """_parse_segment, retried without trailing parenthetical notes when it fails.
+
+    Weinstein writes "Richmond, VA (Henrico/West End)" and "Concord, NC (Charlotte
+    area)", where the note glues onto the state ("VA (Henrico/West End)") and hides
+    it. The note is only dropped after the full string fails to parse, and only from
+    the end, so a location whose one real place is inside the parentheses is not
+    changed by this - it was unresolved before and stays unresolved.
+    """
+    city, state = _parse_segment(segment)
+    stripped = segment
+    while not (city and state):
+        shorter = _TRAILING_NOTE.sub("", stripped)
+        if not shorter or shorter == stripped:
+            break
+        stripped = shorter
+        city, state = _parse_segment(stripped)
+    return city, state
+
+
 def _parse_segment(segment: str) -> tuple[str, str]:
     """Parse one location string into (city, state). Returns ('', '') when no US
     state can be identified - see resolve_location for why that matters."""
@@ -239,7 +265,7 @@ def resolve_location(location: str) -> Location:
     multi = len(segments) > 1
 
     for segment in segments:
-        city, state = _parse_segment(segment)
+        city, state = _parse_segment_ignoring_notes(segment)
         if city and state:
             city = _normalize_city(city, state)
             if not city:
