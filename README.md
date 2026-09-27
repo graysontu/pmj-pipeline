@@ -33,6 +33,20 @@ python -m pipeline.main --dry-run --limit 20
 python -m pipeline.main --skip-indexing
 ```
 
+## LinkedIn posts
+
+Every Monday, Wednesday and Friday `.github/workflows/linkedin-post.yml` picks one job,
+draws its image and schedules it on the LinkedIn company page through Buffer. Every post
+is logged, with its image and caption, on the `linkedin-posts` branch. How it works and
+its gotchas: CLAUDE.md, "LinkedIn Posts".
+
+Local dry run (writes to `./linkedin-posts`, sends nothing):
+
+```bash
+python -m pipeline.linkedin prepare --no-ai
+python -m pipeline.linkedin publish --no-wait
+```
+
 ## Adding sources
 
 Edit `sources.yaml`. Each ATS type has a list of companies:

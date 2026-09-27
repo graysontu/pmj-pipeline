@@ -9,3 +9,5 @@ tenacity
 pytest
 google-api-python-client
 google-auth
+pillow==12.3.0
+tzdata==2026.4

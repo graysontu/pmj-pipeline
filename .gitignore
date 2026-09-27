@@ -23,3 +23,8 @@ backups/
 
 # local location-audit preview, never published
 output/feed_preview.xml
+
+# LinkedIn posts: local runs of `python -m pipeline.linkedin` write here. The real
+# log lives on the linkedin-posts branch, never on main.
+linkedin-posts/
+linkedin-email/

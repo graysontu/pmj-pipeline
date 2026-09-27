@@ -35,6 +35,24 @@ CLOSURE_STRIKES: int = int(os.getenv("CLOSURE_STRIKES", "2"))
 # 15% is generous; the one-time backlog cleanup needs an explicit override.
 MAX_FEED_REMOVAL_FRACTION: float = float(os.getenv("MAX_FEED_REMOVAL_FRACTION", "0.15"))
 
+# LinkedIn posts (pipeline/linkedin, .github/workflows/linkedin-post.yml). Off by
+# default: while false each run still picks a job, draws the image and writes the
+# caption to the linkedin-posts branch for review, but sends nothing to Buffer.
+# Setting it "true" in the workflow is the single switch that starts real posting;
+# back to "false" stops it. See CLAUDE.md, "LinkedIn posts".
+LINKEDIN_POSTING_ENABLED: bool = _env_flag("LINKEDIN_POSTING_ENABLED", False)
+BUFFER_API_KEY: str = os.getenv("BUFFER_API_KEY", "")
+# Only needed if more than one LinkedIn channel is connected in Buffer.
+BUFFER_CHANNEL_ID: str = os.getenv("BUFFER_CHANNEL_ID", "")
+# Local time the post goes live. The workflow runs earlier and schedules it in
+# Buffer, so GitHub's cron delays don't move the post.
+LINKEDIN_POST_TIME: str = os.getenv("LINKEDIN_POST_TIME", "10:00")
+LINKEDIN_POST_TIMEZONE: str = os.getenv("LINKEDIN_POST_TIMEZONE", "America/New_York")
+# A company is not posted again within this many days.
+LINKEDIN_COMPANY_COOLDOWN_DAYS: int = int(os.getenv("LINKEDIN_COMPANY_COOLDOWN_DAYS", "14"))
+# Only jobs added to the feed within this many days count as a "new job".
+LINKEDIN_MAX_JOB_AGE_DAYS: int = int(os.getenv("LINKEDIN_MAX_JOB_AGE_DAYS", "7"))
+
 _sources_path = Path(__file__).parent.parent / "sources.yaml"
 
 with open(_sources_path, "r") as _f:
