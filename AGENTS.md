@@ -497,3 +497,102 @@ days of pipeline commits you were behind. The runner always checks out fresh; us
   `output/logos/`. Check it on a white background first - many company sites only
   serve a white logo meant for a dark header.
 - Field mapping syntax: `source/job → fieldname` (e.g., `source/job/title → Title`).
+
+---
+
+## LinkedIn Posts
+
+`.github/workflows/linkedin-post.yml` + `pipeline/linkedin/` post one job to the
+LinkedIn company page every Monday, Wednesday and Friday (added 2026-09-27).
+
+**It posts through Buffer, not the LinkedIn API.** LinkedIn only lets approved
+apps post to a company page: the Community Management API is limited to
+"registered legal organizations" with a verified business email (not Gmail), its
+starter tier expires after 12 months unless a screencast review is passed, and its
+tokens expire every 60 days without a separate refresh-token approval. Buffer
+already holds that approval; its free plan gives a personal API key (repo secret
+`BUFFER_API_KEY`). Buffer's API is labelled "public beta".
+
+**One switch: `LINKEDIN_POSTING_ENABLED` in the workflow's `env`.** `"false"` is
+preview mode: every run still picks, draws and records the post, but nothing is
+sent to Buffer (if a key is saved, preview only checks the connection, read-only).
+Preview and live history are kept apart, so preview posts don't count against
+the live company cooldown or colour rotation.
+
+**Everything it writes goes to the `linkedin-posts` branch, never to main.**
+`images/`, `history.json` and a `README.md` that shows every post with its image,
+caption and why it was picked. That keeps it from ever colliding with the daily
+pipeline's commit of `state.json`/`feed.xml`. The workflow checks the branch out
+and fails without it - don't delete it (if it is ever lost, recreate it as an
+orphan branch). Images are served from `raw.githubusercontent.com`, which works
+because the repo is public; Buffer needs a public image URL, which is why the
+workflow pushes the image *before* scheduling. If the repo goes private, the
+images need another host.
+
+**Posts link to the job's page on the site, never to the ATS.** The site
+publishes `https://propertymanagementjobs.us/jobs.xml` with each page's `url`
+next to the employer's `application_link`; matching on the apply link is exact.
+On 2026-09-27, 262 of the site's 271 jobs matched a feed job; the other 9 were the
+6 paid employer posts and 3 jobs the pipeline had just closed. Posting from inside the
+main pipeline run would be wrong: at that moment JobBoardly hasn't imported the
+new jobs, so their pages don't exist yet.
+
+**`jobs.xml`'s `<location>` is empty for every feed-imported job** - only paid
+employer posts fill it, because the feed sends discrete city/state fields. So the
+city check reads each candidate's page instead: its JobPosting structured data
+(`addressLocality`/`addressRegion`) is exactly what the page displays. A city
+JobBoardly dropped (see "JobBoardly geocodes `<city>`") is therefore never put on
+a card. Only the 10 best-ranked candidates get a page fetch.
+
+**What qualifies** (`pipeline/linkedin/picker.py`): live on the site and not
+pinned, added to the feed within `LINKEDIN_MAX_JOB_AGE_DAYS` (7), explicit salary
+within sane bounds, a city and state the page shows, a usable logo, and a title
+that reads cleanly. **Maintenance roles are excluded for now** - Maintenance
+Technician, Maintenance Supervisor and Groundskeeper & Porter categories, plus a
+title backstop (Grayson's call, 2026-09-27). Remove a category from
+`EXCLUDED_CATEGORIES` to start posting it. No company repeats within
+`LINKEDIN_COMPANY_COOLDOWN_DAYS` (14). Role types are balanced, not prioritised:
+the category posted least in the last 12 posts goes first.
+
+**Titles are cut back to the role, or skipped.** Property names, requisition
+numbers, bonuses and shift notes are removed ("Leasing Consultant - Lakeline at
+Bartram Park" -> "Leasing Consultant"; "Assistant Community Manager Manufactured
+Housing Community and RV Park" -> "Assistant Community Manager"). Job fairs,
+non-English postings, and titles still too long for two lines on the image are
+skipped. Measured on 2026-09-27: of 462 distinct non-maintenance titles in
+state, 445 come out usable. Add a case to `tests/test_linkedin.py` when a new
+title format comes out wrong.
+
+**Logos are trimmed of padding and checked.** Several logo files are mostly empty
+margin (CommonPlace, Griffis, IPG, KPM). **Reside Living's `reside-living.png` is
+broken** - a white wordmark flattened onto white, only the blue "i" survives - so
+its jobs are skipped; the same file shows on its site listings too.
+`fairstead.svg` is skipped (Pillow can't read SVG).
+
+**The caption's facts are templated; only the opening line is Claude's**
+(`claude-opus-5`, low effort, about 13 calls a month). Location, pay, company and
+link come straight from the job record, so the model can't misstate them. Any
+failure - API error, refusal, SDK mismatch, unusable output - falls back to a
+template line; a post never fails because of its caption. As in the rewriter, do
+not add `temperature`.
+
+**Timing:** the cron runs at 12:17 UTC (about 8 AM Eastern) and schedules the post
+in Buffer for `LINKEDIN_POST_TIME` 10:00 `America/New_York`, so GitHub's cron
+delays don't move it; a run that starts after 10 posts 15 minutes later. There is
+deliberately no randomisation - nothing suggests LinkedIn rewards it, and posting
+guidance favours consistency.
+
+**Colours rotate through five themes** (slate, coral, cream, teal, plum - all
+built on the site's coral and slate) with "NEW JOB"/"NOW HIRING" alternating, so
+consecutive posts never look identical. Rendering uses the bundled Open Sans (SIL
+OFL, `pipeline/linkedin/fonts/`); the Segoe UI in the first mockups is Microsoft's
+and can't be committed.
+
+**Failure modes.** No qualifying job exits 1 so the failure email fires - rare,
+and it means data or filters broke. A Buffer failure leaves the job unrecorded,
+and the next run picks afresh. If Buffer accepted a post but the final push of
+`history.json` failed, the next run could pick the same job again. The pipeline
+watchdog does not watch this workflow; a runner outage just means a missed post.
+Buffer's documented schema can't tell a LinkedIn page from a personal profile
+(`service` is "linkedin" for both), so with more than one LinkedIn channel
+connected it refuses to guess - set the repo variable `BUFFER_CHANNEL_ID`.
