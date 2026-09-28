@@ -25,7 +25,7 @@ env:
   # The one switch. "false" is preview mode: each run picks, draws and records
   # the post on the linkedin-posts branch but sends nothing to Buffer. "true"
   # schedules real posts. Flip back to "false" to stop posting.
-  LINKEDIN_POSTING_ENABLED: "false"
+  LINKEDIN_POSTING_ENABLED: "true"
 
 jobs:
   post:
