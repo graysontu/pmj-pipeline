@@ -587,6 +587,19 @@ failure - API error, refusal, SDK mismatch, unusable output - falls back to a
 template line; a post never fails because of its caption. As in the rewriter, do
 not add `temperature`.
 
+**Caption tone is Grayson's call, and three rules are enforced in code**
+(2026-09-28). The first prompt asked for a line that would "make someone want to
+open the listing" and produced cocky, AI-sounding lines ("630 units, a waitlist
+longer than the vacancies... the kind of compliance depth that leads to..."). The
+prompt now asks for a helpful, professional, somewhat personable summary, like a
+recruiter describing the role to a colleague, and not opening with the company
+(it is listed below). `_clean_hook` rejects any line with an em or en dash (or a
+spaced/doubled hyphen standing in for one; hyphenated words are fine), "it's not X,
+it's Y" / "not just X, but Y" framing, or an exclamation point. A rejected line
+gets one retry, then the template line is used. The rewritten site descriptions
+the model reads often use "This isn't a traditional role..." framing, which is
+why the guard exists - don't remove it. Tested on 10 real jobs: 10 of 10 usable.
+
 **Timing:** the cron runs at 12:17 UTC (about 8 AM Eastern) and schedules the post
 in Buffer for `LINKEDIN_POST_TIME` 10:00 `America/New_York`, so GitHub's cron
 delays don't move it; a run that starts after 10 posts 15 minutes later. There is

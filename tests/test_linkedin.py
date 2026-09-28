@@ -319,10 +319,34 @@ def test_links_carry_linkedin_tracking():
     "Apply now at https://example.com for this role today, it is great.",
     "Great leasing role with a growing team #hiring and more to come.",
     "Earn $25 an hour running tours at a beautiful new community downtown.",
-    "x" * 300,
+    "x" * 330,
+    # Grayson's rules, 2026-09-28: never an em dash (or a stand-in for one) ...
+    "630 units, a waitlist longer than the vacancies, and a full LIHTC certification cycle to own "
+    "— the kind of compliance depth that leads to senior leasing and compliance coordinator roles.",
+    "A leasing role at a busy lease-up – tours, move-ins and renewals every day.",
+    "A leasing role at a busy lease-up - tours, move-ins and renewals every day.",
+    "A leasing role at a busy lease-up -- tours, move-ins and renewals every day.",
+    # ... and never "it's not X, it's Y" framing.
+    "This isn't a traditional leasing role. It's a centralized hub working leads by phone and text.",
+    "It’s not just leasing, it’s owning the whole resident experience at a 300-unit community.",
+    "The job is not only tours but also renewals, delinquency and move-out statements for the team.",
+    "A leasing role at a 300-unit community with tours, renewals and a supportive team!",
 ])
 def test_unusable_opening_lines_are_rejected(text):
     assert _clean_hook(text) is None
+
+
+@pytest.mark.parametrize("text", [
+    # Lines the revised prompt produced for real jobs on 2026-09-28.
+    "Pines at Castle Rock, a 630-unit affordable community, is hiring a leasing consultant to handle "
+    "tours and move-in inspections alongside income certifications and waitlist management.",
+    "A two-site Community Manager role covering 168 units, with three days a week at Cottonwood Creek "
+    "and two at Elowyn Townhomes.",
+    "This assistant role covers two sites side by side: a 65-home 55+ manufactured housing community "
+    "and a 107-site RV park, with rent collection, leasing and daily property walks.",
+])
+def test_plain_professional_lines_with_hyphenated_words_pass(text):
+    assert _clean_hook(text) == text
 
 
 def test_post_text_has_the_facts_link_and_hashtags():
@@ -353,6 +377,28 @@ def test_opening_line_comes_from_claude_when_usable():
 ])
 def test_unusable_model_output_falls_back(client):
     assert write_hook(_candidate(), client) is None
+
+
+def _reply(text):
+    return SimpleNamespace(stop_reason="end_turn", content=[SimpleNamespace(type="text", text=text)])
+
+
+def test_a_line_that_breaks_a_rule_gets_one_retry():
+    client = MagicMock()
+    client.beta.messages.create.side_effect = [
+        _reply("Own the whole leasing cycle — from first tour to signed lease."),
+        _reply("A leasing role at a 300-unit community covering tours, applications and renewals."),
+    ]
+    assert write_hook(_candidate(), client) == (
+        "A leasing role at a 300-unit community covering tours, applications and renewals.")
+    assert client.beta.messages.create.call_count == 2
+
+
+def test_two_rule_breaking_lines_fall_back_to_the_template():
+    client = MagicMock()
+    client.beta.messages.create.return_value = _reply("It's not just leasing, it's a career launchpad.")
+    assert write_hook(_candidate(), client) is None
+    assert client.beta.messages.create.call_count == 2
 
 
 def test_any_model_error_falls_back_rather_than_failing_the_post():

@@ -20,7 +20,8 @@ from pipeline.linkedin.picker import Candidate
 logger = logging.getLogger(__name__)
 
 HOOK_MODEL = "claude-opus-5"
-HOOK_MAX_CHARS = 220
+HOOK_MAX_CHARS = 320  # the prompt asks for ~240; this is only the hard stop
+HOOK_ATTEMPTS = 2
 
 # Tags every link so the site's analytics can count visitors LinkedIn sends.
 UTM_PARAMS = {"utm_source": "linkedin", "utm_medium": "social", "utm_campaign": "job_post"}
@@ -37,19 +38,32 @@ ROLE_HASHTAGS = {
     "Real Estate Admin & Coordinator Jobs": "RealEstateJobs",
 }
 
+# Grayson's direction (2026-09-28): helpful, professional, somewhat personable.
+# Not cute, salesy or cocky; no em dashes; no "it's not X, it's Y" framing.
+# _clean_hook enforces the mechanical rules, so a line that breaks them is never posted.
 SYSTEM_PROMPT = """\
 You write the opening line of a LinkedIn post for PropertyManagementJobs.us, a job \
-board for property management careers. Each post announces one job opening. Under \
-your line the post already lists the job's location, pay and company, then a link \
-to the full listing.
+board for property management careers. Each post shares one job opening. Below your \
+line, the post lists the job's location, pay and company, then a link to the full \
+listing.
 
-Write one or two sentences, at most 200 characters, that would make someone who \
-works in property management want to open the listing. Draw on what is distinctive \
-about this particular role in its description: the kind of property, the scope, \
-the team, the growth path. Use only facts the description states. Leave out pay, \
-location and benefits, since the post lists those below your line.
+Write one or two sentences, around 200 to 240 characters, that tell someone in \
+property management what this job is and who it would suit. Sound like a \
+knowledgeable, friendly recruiter describing a role to a colleague: plain, specific \
+and accurate. Use one or two concrete details the description states, such as the \
+kind or size of property, the main day-to-day work, the schedule, or training the \
+employer offers. Use only facts from the description, and don't repeat the pay or \
+location. The company's name is listed below your line, so there's no need to open \
+with it; vary how you begin.
 
-Reply with the line only: no hashtags, emojis, links or quotation marks."""
+Write complete, natural sentences. Keep the tone calm and matter-of-fact: no hype, \
+slogans, dramatic fragments or bold claims about where the job will lead. Never use \
+em dashes or en dashes; use commas or periods instead (ordinary hyphenated words \
+like "two-site" or "65-home" are fine). Don't frame the job by what \
+it isn't ("It's not X, it's Y", "not just X, but Y"). No exclamation points, \
+hashtags, emojis, links or quotation marks.
+
+Reply with the line only."""
 
 
 def tracked_url(url: str) -> str:
@@ -63,11 +77,27 @@ def _plain_text(html: str) -> str:
     return BeautifulSoup(html or "", "html.parser").get_text(" ", strip=True)
 
 
+# Dashes used as punctuation: em, en, figure and horizontal-bar dashes, and the
+# spaced or doubled hyphens that stand in for them. Hyphenated words are fine.
+_DASHES = re.compile(r"[‒–—―]|\s-+\s|--")
+# "It's not X, it's Y" / "not just X, but Y" / "This isn't X. It's Y."
+_NOT_X_BUT_Y = re.compile(
+    r"\bnot (?:just|only|simply|merely)\b"
+    r"|\b(?:it'?s|it is|this is|that'?s|that is)\s+not\b"
+    r"|\b(?:isn'?t|is not|aren'?t|are not|wasn'?t)\b[^.!?]*[.;,:]\s*(?:it'?s|it is|this is|they'?re|it'?s about)\b",
+    re.IGNORECASE,
+)
+
+
 def _clean_hook(text: str) -> str | None:
+    """The line, tidied, or None if it breaks a rule and must not be posted."""
     hook = re.sub(r"\s+", " ", text or "").strip().strip("\"'“”")
+    plain = hook.replace("’", "'")
     if not 20 <= len(hook) <= HOOK_MAX_CHARS:
         return None
-    if re.search(r"https?://|www\.|#|\$", hook):
+    if re.search(r"https?://|www\.|#|\$|!", hook):
+        return None
+    if _DASHES.search(hook) or _NOT_X_BUT_Y.search(plain):
         return None
     return hook
 
@@ -86,28 +116,32 @@ def write_hook(candidate: Candidate, client: anthropic.Anthropic | None = None) 
         f"Category: {candidate.category}\n\n"
         f"Job description:\n{_plain_text(candidate.description_html)}"
     )
-    try:
-        response = client.beta.messages.create(
-            model=HOOK_MODEL,
-            max_tokens=4000,
-            betas=["server-side-fallback-2026-07-01"],
-            fallbacks="default",
-            output_config={"effort": "low"},
-            system=SYSTEM_PROMPT,
-            messages=[{"role": "user", "content": prompt}],
-        )
-    except Exception as exc:  # noqa: BLE001 - any failure, API or SDK, falls back to the template
-        logger.warning("Opening line not generated (%s: %s); using the template.", type(exc).__name__, exc)
-        return None
+    # A line that breaks a rule gets one more try before the template is used.
+    for attempt in range(HOOK_ATTEMPTS):
+        try:
+            response = client.beta.messages.create(
+                model=HOOK_MODEL,
+                max_tokens=4000,
+                betas=["server-side-fallback-2026-07-01"],
+                fallbacks="default",
+                output_config={"effort": "low"},
+                system=SYSTEM_PROMPT,
+                messages=[{"role": "user", "content": prompt}],
+            )
+        except Exception as exc:  # noqa: BLE001 - any failure, API or SDK, falls back to the template
+            logger.warning("Opening line not generated (%s: %s); using the template.", type(exc).__name__, exc)
+            return None
 
-    if response.stop_reason != "end_turn":
-        logger.warning("Opening line stopped with %s; using the template.", response.stop_reason)
-        return None
-    text = "".join(block.text for block in response.content if block.type == "text")
-    hook = _clean_hook(text)
-    if hook is None:
-        logger.warning("Opening line unusable (%r); using the template.", text[:300])
-    return hook
+        if response.stop_reason != "end_turn":
+            logger.warning("Opening line stopped with %s; using the template.", response.stop_reason)
+            return None
+        text = "".join(block.text for block in response.content if block.type == "text")
+        hook = _clean_hook(text)
+        if hook is not None:
+            return hook
+        logger.warning("Opening line broke a rule (attempt %d): %r", attempt + 1, text[:300])
+    logger.warning("No usable opening line; using the template.")
+    return None
 
 
 def template_hook(candidate: Candidate) -> str:
