@@ -564,10 +564,14 @@ state, 445 come out usable. Add a case to `tests/test_linkedin.py` when a new
 title format comes out wrong.
 
 **Logos are trimmed of padding and checked.** Several logo files are mostly empty
-margin (CommonPlace, Griffis, IPG, KPM). **Reside Living's `reside-living.png` is
-broken** - a white wordmark flattened onto white, only the blue "i" survives - so
-its jobs are skipped; the same file shows on its site listings too.
-`fairstead.svg` is skipped (Pillow can't read SVG).
+margin (CommonPlace, Griffis, IPG, KPM). `logo_problem` rejects a file whose
+artwork is missing: `reside-living.png` used to be Reside's white wordmark
+flattened onto white, leaving only the blue "i". It was replaced on 2026-09-27
+with the dark version from resideliving.com (rendered from their SVG, since
+Pillow can't read SVG - which is also why `fairstead.svg` is skipped).
+JobBoardly keeps its own copy of the logo for each job (the two live Reside
+listings had two different cdn.jobboardly.com URLs), so a replaced file should
+only show on jobs imported afterwards.
 
 **The caption's facts are templated; only the opening line is Claude's**
 (`claude-opus-5`, low effort, about 13 calls a month). Location, pay, company and
