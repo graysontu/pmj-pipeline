@@ -519,6 +519,10 @@ sent to Buffer (if a key is saved, preview only checks the connection, read-only
 Preview and live history are kept apart, so preview posts don't count against
 the live company cooldown or colour rotation.
 
+**Status: live since 2026-09-28.** Grayson approved after reviewing previews. To
+stop posting, set the flag back to `"false"` - nothing else needs undoing, and a
+post already scheduled in Buffer can be deleted from Buffer's queue.
+
 **Everything it writes goes to the `linkedin-posts` branch, never to main.**
 `images/`, `history.json` and a `README.md` that shows every post with its image,
 caption and why it was picked. That keeps it from ever colliding with the daily
