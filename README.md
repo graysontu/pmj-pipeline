@@ -1,8 +1,30 @@
 # LinkedIn posts
 
-Written automatically by `.github/workflows/linkedin-post.yml` every Monday, Wednesday and Friday. Posting is currently **off (preview mode)** - nothing is sent to Buffer or LinkedIn. The switch is `LINKEDIN_POSTING_ENABLED` in that workflow.
+Written automatically by `.github/workflows/linkedin-post.yml` every Monday, Wednesday and Friday. Posting is currently **on** - posts are scheduled in Buffer. The switch is `LINKEDIN_POSTING_ENABLED` in that workflow.
 
 Newest first.
+
+---
+
+### LIHTC Leasing Consultant at Cirrus Asset Management
+
+Scheduled Mon Sep 28, 2026 at 10:00 AM EDT · Castle Rock, CO · $22–$24/hr · [job page](https://propertymanagementjobs.us/jobs/lihtc-leasing-consultant-30024-29ffb3e8)  
+Buffer: Scheduled on property-management-jobs-us · colours: slate · opening line: claude  
+Why this job: 6 of 272 jobs in the feed qualified. Skipped: posted more than 4 days ago on the site 239, maintenance role 9, no salary 7, not live on the site 6, no city and state 3, pay at or below the LinkedIn floor 2.
+
+<img src="images/2026-09-28-smartrecruiters_744000151928944.png" width="420" alt="LIHTC Leasing Consultant card">
+
+```text
+630 units, a waitlist longer than the vacancies, and a full LIHTC certification cycle to own — the kind of compliance depth that leads to senior leasing and compliance coordinator roles.
+
+📍 Castle Rock, CO
+💰 $22–$24/hr
+🏢 Cirrus Asset Management
+
+See the full job and apply 👉 https://propertymanagementjobs.us/jobs/lihtc-leasing-consultant-30024-29ffb3e8?utm_source=linkedin&utm_medium=social&utm_campaign=job_post
+
+#PropertyManagement #LeasingJobs #NowHiring #CastleRockJobs
+```
 
 ---
 
