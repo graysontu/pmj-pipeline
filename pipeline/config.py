@@ -52,6 +52,10 @@ LINKEDIN_POST_TIMEZONE: str = os.getenv("LINKEDIN_POST_TIMEZONE", "America/New_Y
 LINKEDIN_COMPANY_COOLDOWN_DAYS: int = int(os.getenv("LINKEDIN_COMPANY_COOLDOWN_DAYS", "14"))
 # Only jobs added to the feed within this many days count as a "new job".
 LINKEDIN_MAX_JOB_AGE_DAYS: int = int(os.getenv("LINKEDIN_MAX_JOB_AGE_DAYS", "7"))
+# Low-paying jobs aren't highlighted on LinkedIn: a job is skipped when the bottom
+# of its pay range is at or below these (Grayson's floor, 2026-09-28).
+LINKEDIN_MIN_HOURLY_PAY_FLOOR: float = float(os.getenv("LINKEDIN_MIN_HOURLY_PAY_FLOOR", "21"))
+LINKEDIN_MIN_YEARLY_PAY_FLOOR: float = float(os.getenv("LINKEDIN_MIN_YEARLY_PAY_FLOOR", "45000"))
 
 _sources_path = Path(__file__).parent.parent / "sources.yaml"
 

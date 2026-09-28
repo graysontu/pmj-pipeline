@@ -17,6 +17,7 @@ from dataclasses import dataclass, replace
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
+from pipeline import config
 from pipeline.geo import _US_STATE_NAMES, _US_STATES, parse_location
 from pipeline.linkedin.card import logo_problem, title_fits
 
@@ -197,6 +198,16 @@ def format_pay(job: dict) -> tuple[str | None, str | None]:
     return span + _PAY_SUFFIX[schedule], None
 
 
+def pay_at_or_below_floor(job: dict) -> bool:
+    """Whether the bottom of the pay range is too low to highlight on LinkedIn:
+    $21/hr or less, or $45,000/yr or less (config LINKEDIN_MIN_*_PAY_FLOOR).
+    Call after format_pay has accepted the salary."""
+    floors = {"hourly": config.LINKEDIN_MIN_HOURLY_PAY_FLOOR,
+              "yearly": config.LINKEDIN_MIN_YEARLY_PAY_FLOOR}
+    schedule = (job.get("salary_schedule") or "").lower()
+    return float(job["salary_min"]) <= floors[schedule]
+
+
 # --- location ----------------------------------------------------------------
 
 def _norm(text: str) -> str:
@@ -299,6 +310,8 @@ def evaluate(
     pay, reason = format_pay(job)
     if reason:
         return None, reason
+    if pay_at_or_below_floor(job):
+        return None, "pay at or below the LinkedIn floor"
     location, reason = feed_location(job)
     if reason:
         return None, reason

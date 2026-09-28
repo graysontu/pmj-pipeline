@@ -149,6 +149,7 @@ def prepare(
     site_jobs: dict[str, SiteJob] | None = None,
     page_locator=None,
     use_ai: bool = True,
+    email_dir: Path | None = None,
 ) -> int:
     now = now or datetime.now(tz=timezone.utc)
     mode = "live" if config.LINKEDIN_POSTING_ENABLED else "preview"
@@ -192,10 +193,14 @@ def prepare(
     selection["skipped"] = dict(skipped.most_common())
 
     if pick is None:
+        # Not a failure: with the pay floor some days simply have nothing worth
+        # highlighting. Skip the day and say why, rather than post a weaker job.
         _append_summary(f"## LinkedIn post\n\nNo job qualified today, so nothing was posted.\n\n"
                         f"{_selection_line(selection)}\n")
-        logger.error("No job qualified for a LinkedIn post.")
-        return 1
+        if email_dir is not None:
+            _write_skip_email(email_dir, selection)
+        logger.warning("No job qualified for a LinkedIn post; skipping today.")
+        return 0
 
     number = len(history)
     theme, label = THEMES[number % len(THEMES)], LABELS[number % len(LABELS)]
@@ -358,3 +363,15 @@ def _write_email(email_dir: Path, entry: dict) -> None:
     )
     (email_dir / "subject.txt").write_text(subject, encoding="utf-8")
     (email_dir / "body.txt").write_text(body, encoding="utf-8")
+
+
+def _write_skip_email(email_dir: Path, selection: dict) -> None:
+    email_dir.mkdir(parents=True, exist_ok=True)
+    (email_dir / "subject.txt").write_text("LinkedIn: no post today - no job met the bar", encoding="utf-8")
+    (email_dir / "body.txt").write_text(
+        "No job qualified for today's LinkedIn post, so nothing was posted. Nothing is "
+        "broken; the next run tries again.\n\n"
+        f"{_selection_line(selection)}\n\n"
+        f"All posts: https://github.com/{REPO}/tree/{POST_BRANCH}\n",
+        encoding="utf-8",
+    )

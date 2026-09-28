@@ -185,6 +185,28 @@ def test_jobs_missing_something_are_skipped_with_a_reason(overrides, reason):
     assert _evaluate(_job(**overrides)) == (None, reason)
 
 
+@pytest.mark.parametrize("low,high,schedule", [
+    ("15", "17", "hourly"),        # the Rise Association Management Group concierge
+    ("21", "21", "hourly"),        # exactly $21 is at the floor
+    ("20", "30", "hourly"),        # judged on the bottom of the range, not the top
+    ("45000", "45000", "yearly"),  # exactly $45,000 is at the floor
+    ("40000", "60000", "yearly"),
+])
+def test_low_paying_jobs_are_not_highlighted(low, high, schedule):
+    job = _job(salary_min=low, salary_max=high, salary_schedule=schedule)
+    assert _evaluate(job) == (None, "pay at or below the LinkedIn floor")
+
+
+@pytest.mark.parametrize("low,high,schedule", [
+    ("21.50", "23", "hourly"),
+    ("22", "24", "hourly"),
+    ("45760", "52000", "yearly"),
+])
+def test_pay_just_above_the_floor_qualifies(low, high, schedule):
+    candidate, reason = _evaluate(_job(salary_min=low, salary_max=high, salary_schedule=schedule))
+    assert reason is None and candidate
+
+
 def test_pinned_employer_posts_are_never_picked():
     site = {APPLY: SiteJob(url=SITE[APPLY].url, sticky=True)}
     assert evaluate(_job(), site, now=NOW, max_age_days=7, posted_ids=set(),
@@ -391,8 +413,9 @@ def test_preview_run_records_the_post_without_touching_buffer(tmp_path, state_fi
     assert not (post_dir / "pending.json").exists()
     assert "Property Manager at PeakMade Real Estate" in (post_dir / "README.md").read_text(encoding="utf-8")
 
-    # The same job is not picked twice, and nothing else qualifies.
-    assert run.prepare(post_dir, state_path=state_file, site_jobs=SITE, page_locator=_davis, use_ai=False) == 1
+    # The same job is not picked twice, and nothing else qualifies: the day is skipped.
+    assert run.prepare(post_dir, state_path=state_file, site_jobs=SITE, page_locator=_davis, use_ai=False) == 0
+    assert not (post_dir / "pending.json").exists()
 
 
 def test_preview_with_a_key_only_checks_the_connection(tmp_path, state_file, monkeypatch):
@@ -444,12 +467,36 @@ def test_preview_history_does_not_count_against_live_posts(tmp_path, state_file,
 
     monkeypatch.setattr(config, "LINKEDIN_POSTING_ENABLED", True)
     assert run.prepare(post_dir, state_path=state_file, site_jobs=SITE, page_locator=_davis, use_ai=False) == 0
+    assert json.loads((post_dir / "pending.json").read_text(encoding="utf-8"))["mode"] == "live"
 
 
 def test_a_city_the_page_does_not_show_is_never_posted(tmp_path, state_file, monkeypatch):
     monkeypatch.setattr(config, "LINKEDIN_POSTING_ENABLED", False)
     assert run.prepare(tmp_path, state_path=state_file, site_jobs=SITE,
-                       page_locator=lambda url: (None, "California"), use_ai=False) == 1
+                       page_locator=lambda url: (None, "California"), use_ai=False) == 0
+    assert not (tmp_path / "pending.json").exists()
+
+
+def test_a_day_with_no_qualifying_job_is_skipped_with_an_email(tmp_path, monkeypatch):
+    """With the pay floor some days have nothing worth highlighting. That is a
+    skip, not a failure: no post, exit 0, and an email saying why."""
+    monkeypatch.setattr(config, "LINKEDIN_POSTING_ENABLED", True)
+    low_pay = {"workable_84C40F6B99": _job(salary_min="15", salary_max="17", salary_schedule="hourly",
+                                           published_at=datetime.now(timezone.utc).isoformat())}
+    state_path = tmp_path / "state.json"
+    state_path.write_text(json.dumps(low_pay), encoding="utf-8")
+    post_dir, email_dir = tmp_path / "posts", tmp_path / "email"
+
+    assert run.prepare(post_dir, state_path=state_path, site_jobs=SITE, page_locator=_davis,
+                       use_ai=False, email_dir=email_dir) == 0
+    assert not (post_dir / "pending.json").exists()
+    assert (email_dir / "subject.txt").read_text(encoding="utf-8") == "LinkedIn: no post today - no job met the bar"
+    assert "pay at or below the LinkedIn floor 1" in (email_dir / "body.txt").read_text(encoding="utf-8")
+
+    buffer = MagicMock()
+    assert run.publish(post_dir, buffer_client=buffer, wait_for_image=False, email_dir=email_dir) == 0
+    buffer.schedule_image_post.assert_not_called()
+    assert (email_dir / "subject.txt").read_text(encoding="utf-8").startswith("LinkedIn: no post today")
 
 
 def test_post_time_is_ten_eastern_or_soon_after_a_late_start():
