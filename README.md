@@ -6,6 +6,28 @@ Newest first.
 
 ---
 
+### Community Administrative Coordinator at Action Property Management
+
+Preview only - would post Mon Sep 28, 2026 at 10:00 AM EDT · San Francisco, CA · $29–$30/hr · [job page](https://propertymanagementjobs.us/jobs/community-administrative-coordinator-the-infinity-d20bb63e)  
+Buffer: Connected - live posts would go to property-management-jobs-us · colours: cream · opening line: claude  
+Why this job: 7 of 272 jobs in the feed qualified. Skipped: older than the posting window 213, maintenance role 21, no salary 15, not live on the site 6, no city and state 4, pay at or below the LinkedIn floor 3, already posted 2, company posted recently 1.
+
+<img src="images/2026-09-28-lever_982204c8-2a6e-43cb-921f-22b736406092.png" width="420" alt="Community Administrative Coordinator card">
+
+```text
+Be the operational anchor at The Infinity, a luxury high-rise HOA, learning governance, vendors and hospitality-grade service up close: the fastest path coordinators take toward community manager.
+
+📍 San Francisco, CA
+💰 $29–$30/hr
+🏢 Action Property Management
+
+See the full job and apply 👉 https://propertymanagementjobs.us/jobs/community-administrative-coordinator-the-infinity-d20bb63e?utm_source=linkedin&utm_medium=social&utm_campaign=job_post
+
+#PropertyManagement #RealEstateJobs #NowHiring #SanFranciscoJobs
+```
+
+---
+
 ### Concierge at Rise Association Management Group
 
 Preview only - would post Sun Sep 27, 2026 at 9:57 PM EDT · Houston, TX · $15–$17/hr · [job page](https://propertymanagementjobs.us/jobs/concierge-f2c39551)  
