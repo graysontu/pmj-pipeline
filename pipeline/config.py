@@ -50,8 +50,10 @@ LINKEDIN_POST_TIME: str = os.getenv("LINKEDIN_POST_TIME", "10:00")
 LINKEDIN_POST_TIMEZONE: str = os.getenv("LINKEDIN_POST_TIMEZONE", "America/New_York")
 # A company is not posted again within this many days.
 LINKEDIN_COMPANY_COOLDOWN_DAYS: int = int(os.getenv("LINKEDIN_COMPANY_COOLDOWN_DAYS", "14"))
-# Only jobs added to the feed within this many days count as a "new job".
-LINKEDIN_MAX_JOB_AGE_DAYS: int = int(os.getenv("LINKEDIN_MAX_JOB_AGE_DAYS", "7"))
+# When the post goes live, the job's page must read "posted N days ago" with N at
+# most this (Grayson, 2026-09-28: 4 is the oldest that may go live). A day with no
+# job that recent is skipped rather than posting an older one.
+LINKEDIN_MAX_POSTED_DAYS_AGO: int = int(os.getenv("LINKEDIN_MAX_POSTED_DAYS_AGO", "4"))
 # Low-paying jobs aren't highlighted on LinkedIn: a job is skipped when the bottom
 # of its pay range is at or below these (Grayson's floor, 2026-09-28).
 LINKEDIN_MIN_HOURLY_PAY_FLOOR: float = float(os.getenv("LINKEDIN_MIN_HOURLY_PAY_FLOOR", "21"))

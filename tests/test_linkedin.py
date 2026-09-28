@@ -151,13 +151,25 @@ def _job(**overrides) -> dict:
     return job
 
 
-SITE = {APPLY: SiteJob(url="https://propertymanagementjobs.us/jobs/property-manager-c960a0b0", sticky=False)}
+PAGE = "https://propertymanagementjobs.us/jobs/property-manager-c960a0b0"
+CENTRAL = timezone(timedelta(hours=-5))
+POST_TIME = datetime(2026, 9, 28, 14, 0, tzinfo=timezone.utc)   # Monday 10:00 AM Eastern
 
 
-def _evaluate(job, **overrides):
-    kwargs = dict(now=NOW, max_age_days=7, posted_ids=set(), cooling_companies=set())
+def _site(posted: datetime | None, sticky: bool = False) -> dict[str, SiteJob]:
+    return {APPLY: SiteJob(url=PAGE, sticky=sticky, published_at=posted)}
+
+
+# The site dates each job at midnight Central, as jobs.xml shows ("2026-09-25T00:00:00-05:00").
+SITE = _site(datetime(2026, 9, 26, tzinfo=CENTRAL))
+# For the workflow tests, which run at the real current time.
+RECENT_SITE = _site(datetime.now(timezone.utc) - timedelta(days=1))
+
+
+def _evaluate(job, site=None, **overrides):
+    kwargs = dict(post_time=POST_TIME, max_days_ago=4, posted_ids=set(), cooling_companies=set())
     kwargs.update(overrides)
-    return evaluate(job, SITE, **kwargs)
+    return evaluate(job, site or SITE, **kwargs)
 
 
 def test_a_complete_job_qualifies_and_links_to_the_site():
@@ -169,7 +181,6 @@ def test_a_complete_job_qualifies_and_links_to_the_site():
 
 @pytest.mark.parametrize("overrides,reason", [
     ({"apply_url": "https://elsewhere.example/job"}, "not live on the site"),
-    ({"published_at": (NOW - timedelta(days=9)).isoformat()}, "older than the posting window"),
     ({"category": "Maintenance Technician Jobs"}, "maintenance role"),
     ({"category": "Groundskeeper & Porter Jobs", "title": "Porter"}, "maintenance role"),
     # misfiled by the classifier, caught by the title
@@ -207,10 +218,36 @@ def test_pay_just_above_the_floor_qualifies(low, high, schedule):
     assert reason is None and candidate
 
 
+@pytest.mark.parametrize("age_days,label", [
+    # Measured on live job pages, 2026-09-28: the site rounds to the nearest day.
+    (6.97, 7), (5.97, 6), (4.97, 5), (3.97, 4), (2.97, 3), (1.97, 2),
+    (4.49, 4), (4.5, 5), (1.2, 1), (0.8, 0),
+])
+def test_days_ago_matches_the_site_label(age_days, label):
+    from pipeline.linkedin.picker import site_days_ago
+    assert site_days_ago(timedelta(days=age_days)) == label
+
+
+@pytest.mark.parametrize("site_date,qualifies", [
+    (datetime(2026, 9, 28, tzinfo=CENTRAL), True),    # "9 hours ago"
+    (datetime(2026, 9, 24, tzinfo=CENTRAL), True),    # 4 days 9 hours: reads "4 days ago"
+    (datetime(2026, 9, 23, tzinfo=CENTRAL), False),   # 5 days 9 hours: reads "5 days ago"
+])
+def test_jobs_older_than_four_days_on_the_site_are_not_posted(site_date, qualifies):
+    candidate, reason = _evaluate(_job(), site=_site(site_date))
+    if qualifies:
+        assert reason is None and candidate
+    else:
+        assert reason == "posted more than 4 days ago on the site"
+
+
+def test_a_job_without_a_site_date_is_not_posted():
+    assert _evaluate(_job(), site=_site(None)) == (None, "no posting date on the site")
+
+
 def test_pinned_employer_posts_are_never_picked():
-    site = {APPLY: SiteJob(url=SITE[APPLY].url, sticky=True)}
-    assert evaluate(_job(), site, now=NOW, max_age_days=7, posted_ids=set(),
-                    cooling_companies=set()) == (None, "pinned employer post")
+    assert _evaluate(_job(), site=_site(datetime(2026, 9, 26, tzinfo=CENTRAL), sticky=True)) == (
+        None, "pinned employer post")
 
 
 def test_posted_jobs_and_cooling_companies_are_skipped():
@@ -402,7 +439,7 @@ def test_preview_run_records_the_post_without_touching_buffer(tmp_path, state_fi
     monkeypatch.setattr(config, "BUFFER_API_KEY", "")
     post_dir = tmp_path / "posts"
 
-    assert run.prepare(post_dir, state_path=state_file, site_jobs=SITE, page_locator=_davis, use_ai=False) == 0
+    assert run.prepare(post_dir, state_path=state_file, site_jobs=RECENT_SITE, page_locator=_davis, use_ai=False) == 0
     pending = json.loads((post_dir / "pending.json").read_text(encoding="utf-8"))
     assert pending["mode"] == "preview" and (post_dir / pending["image"]).exists()
 
@@ -414,14 +451,14 @@ def test_preview_run_records_the_post_without_touching_buffer(tmp_path, state_fi
     assert "Property Manager at PeakMade Real Estate" in (post_dir / "README.md").read_text(encoding="utf-8")
 
     # The same job is not picked twice, and nothing else qualifies: the day is skipped.
-    assert run.prepare(post_dir, state_path=state_file, site_jobs=SITE, page_locator=_davis, use_ai=False) == 0
+    assert run.prepare(post_dir, state_path=state_file, site_jobs=RECENT_SITE, page_locator=_davis, use_ai=False) == 0
     assert not (post_dir / "pending.json").exists()
 
 
 def test_preview_with_a_key_only_checks_the_connection(tmp_path, state_file, monkeypatch):
     monkeypatch.setattr(config, "LINKEDIN_POSTING_ENABLED", False)
     post_dir = tmp_path / "posts"
-    run.prepare(post_dir, state_path=state_file, site_jobs=SITE, page_locator=_davis, use_ai=False)
+    run.prepare(post_dir, state_path=state_file, site_jobs=RECENT_SITE, page_locator=_davis, use_ai=False)
     buffer = MagicMock()
     buffer.linkedin_channel.return_value = {"id": "c1", "name": "Property Management Jobs"}
     assert run.publish(post_dir, buffer_client=buffer, wait_for_image=False) == 0
@@ -433,7 +470,7 @@ def test_preview_with_a_key_only_checks_the_connection(tmp_path, state_file, mon
 def test_live_run_schedules_in_buffer(tmp_path, state_file, monkeypatch):
     monkeypatch.setattr(config, "LINKEDIN_POSTING_ENABLED", True)
     post_dir = tmp_path / "posts"
-    assert run.prepare(post_dir, state_path=state_file, site_jobs=SITE, page_locator=_davis, use_ai=False) == 0
+    assert run.prepare(post_dir, state_path=state_file, site_jobs=RECENT_SITE, page_locator=_davis, use_ai=False) == 0
 
     buffer = MagicMock()
     buffer.linkedin_channel.return_value = {"id": "c1", "name": "Property Management Jobs"}
@@ -447,10 +484,40 @@ def test_live_run_schedules_in_buffer(tmp_path, state_file, monkeypatch):
     assert history[0]["mode"] == "live" and history[0]["buffer_post_id"] == "post-9"
 
 
+def test_never_two_live_posts_on_the_same_day(tmp_path, monkeypatch):
+    """A manual re-run after the scheduled run must not post a second job, even
+    though another qualifying job is available."""
+    monkeypatch.setattr(config, "LINKEDIN_POSTING_ENABLED", True)
+    other_apply = "https://job-boards.greenhouse.io/commonplace/jobs/1"
+    jobs = {
+        "workable_84C40F6B99": _job(),
+        "greenhouse_1": _job(source_id="greenhouse_1", company="CommonPlace", apply_url=other_apply,
+                             company_logo_url="https://x/logos/commonplace.png", title="Leasing Consultant",
+                             category="Leasing Consultant Jobs", location="Charlotte, NC"),
+    }
+    state_path = tmp_path / "state.json"
+    state_path.write_text(json.dumps(jobs), encoding="utf-8")
+    posted = datetime.now(timezone.utc) - timedelta(days=1)
+    site = {**_site(posted), other_apply: SiteJob(url="https://propertymanagementjobs.us/jobs/lc", sticky=False,
+                                                  published_at=posted)}
+    locate = {PAGE: ("Davis", "California"), "https://propertymanagementjobs.us/jobs/lc": ("Charlotte", "North Carolina")}
+    post_dir = tmp_path / "posts"
+
+    assert run.prepare(post_dir, state_path=state_path, site_jobs=site, page_locator=locate.get, use_ai=False) == 0
+    buffer = MagicMock()
+    buffer.linkedin_channel.return_value = {"id": "c1", "name": "Page"}
+    buffer.schedule_image_post.return_value = {"id": "post-1"}
+    run.publish(post_dir, buffer_client=buffer, wait_for_image=False)
+
+    assert run.prepare(post_dir, state_path=state_path, site_jobs=site, page_locator=locate.get, use_ai=False) == 0
+    assert not (post_dir / "pending.json").exists()
+    assert len(json.loads((post_dir / "history.json").read_text(encoding="utf-8"))) == 1
+
+
 def test_a_failed_buffer_post_is_not_recorded(tmp_path, state_file, monkeypatch):
     monkeypatch.setattr(config, "LINKEDIN_POSTING_ENABLED", True)
     post_dir = tmp_path / "posts"
-    run.prepare(post_dir, state_path=state_file, site_jobs=SITE, page_locator=_davis, use_ai=False)
+    run.prepare(post_dir, state_path=state_file, site_jobs=RECENT_SITE, page_locator=_davis, use_ai=False)
     buffer = MagicMock()
     buffer.linkedin_channel.side_effect = BufferError("No LinkedIn channel is connected in Buffer.")
     with pytest.raises(BufferError):
@@ -462,17 +529,17 @@ def test_preview_history_does_not_count_against_live_posts(tmp_path, state_file,
     post_dir = tmp_path / "posts"
     monkeypatch.setattr(config, "LINKEDIN_POSTING_ENABLED", False)
     monkeypatch.setattr(config, "BUFFER_API_KEY", "")
-    run.prepare(post_dir, state_path=state_file, site_jobs=SITE, page_locator=_davis, use_ai=False)
+    run.prepare(post_dir, state_path=state_file, site_jobs=RECENT_SITE, page_locator=_davis, use_ai=False)
     run.publish(post_dir, wait_for_image=False)
 
     monkeypatch.setattr(config, "LINKEDIN_POSTING_ENABLED", True)
-    assert run.prepare(post_dir, state_path=state_file, site_jobs=SITE, page_locator=_davis, use_ai=False) == 0
+    assert run.prepare(post_dir, state_path=state_file, site_jobs=RECENT_SITE, page_locator=_davis, use_ai=False) == 0
     assert json.loads((post_dir / "pending.json").read_text(encoding="utf-8"))["mode"] == "live"
 
 
 def test_a_city_the_page_does_not_show_is_never_posted(tmp_path, state_file, monkeypatch):
     monkeypatch.setattr(config, "LINKEDIN_POSTING_ENABLED", False)
-    assert run.prepare(tmp_path, state_path=state_file, site_jobs=SITE,
+    assert run.prepare(tmp_path, state_path=state_file, site_jobs=RECENT_SITE,
                        page_locator=lambda url: (None, "California"), use_ai=False) == 0
     assert not (tmp_path / "pending.json").exists()
 
@@ -487,7 +554,7 @@ def test_a_day_with_no_qualifying_job_is_skipped_with_an_email(tmp_path, monkeyp
     state_path.write_text(json.dumps(low_pay), encoding="utf-8")
     post_dir, email_dir = tmp_path / "posts", tmp_path / "email"
 
-    assert run.prepare(post_dir, state_path=state_path, site_jobs=SITE, page_locator=_davis,
+    assert run.prepare(post_dir, state_path=state_path, site_jobs=RECENT_SITE, page_locator=_davis,
                        use_ai=False, email_dir=email_dir) == 0
     assert not (post_dir / "pending.json").exists()
     assert (email_dir / "subject.txt").read_text(encoding="utf-8") == "LinkedIn: no post today - no job met the bar"

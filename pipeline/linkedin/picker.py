@@ -10,11 +10,12 @@ Among qualifying jobs the choice keeps a balanced mix of role types, avoids
 repeating a company within the cooldown, and spreads posts across states.
 """
 
+import math
 import re
 import unicodedata
 from collections import Counter
 from dataclasses import dataclass, replace
-from datetime import datetime, timedelta, timezone
+from datetime import datetime, timedelta
 from pathlib import Path
 
 from pipeline import config
@@ -254,6 +255,19 @@ def confirm_page_location(
 class SiteJob:
     url: str
     sticky: bool
+    published_at: datetime | None = None  # the date the site's "posted N days ago" counts from
+
+
+def site_days_ago(elapsed: timedelta) -> int:
+    """The N in the site's "posted N days ago" label for a job this old.
+
+    The site rounds rather than counting whole days (Rails-style: 2 days 23 hours
+    reads "3 days ago"), so "5 days ago" starts at 4.5 days. Measured against
+    live job pages on 2026-09-28. Under 42 hours it reads "1 day" or hours."""
+    minutes = elapsed.total_seconds() / 60
+    if minutes < 2520:
+        return 1 if minutes >= 1440 else 0
+    return math.floor(minutes / 1440 + 0.5)
 
 
 @dataclass(frozen=True)
@@ -274,32 +288,29 @@ class Candidate:
         return self.location.rsplit(", ", 1)[-1]
 
 
-def _published(job: dict) -> datetime | None:
-    try:
-        return datetime.fromisoformat(job["published_at"]).astimezone(timezone.utc)
-    except (KeyError, TypeError, ValueError):
-        return None
-
-
 def evaluate(
     job: dict,
     site_jobs: dict[str, SiteJob],
     *,
-    now: datetime,
-    max_age_days: int,
+    post_time: datetime,
+    max_days_ago: int,
     posted_ids: set[str],
     cooling_companies: set[str],
     logo_dir: Path = LOGO_DIR,
 ) -> tuple[Candidate | None, str | None]:
-    """(candidate, None) when the job may be posted, else (None, reason)."""
+    """(candidate, None) when the job may be posted, else (None, reason).
+
+    post_time is when the LinkedIn post goes live: at that moment the job's page
+    must still read "posted max_days_ago days ago" or newer."""
     site = site_jobs.get((job.get("apply_url") or "").strip())
     if site is None:
         return None, "not live on the site"
     if site.sticky:
         return None, "pinned employer post"
-    published = _published(job)
-    if published is None or now - published > timedelta(days=max_age_days):
-        return None, "older than the posting window"
+    if site.published_at is None:
+        return None, "no posting date on the site"
+    if site_days_ago(post_time - site.published_at) > max_days_ago:
+        return None, f"posted more than {max_days_ago} days ago on the site"
     if job.get("category") in EXCLUDED_CATEGORIES or _MAINTENANCE_TITLE.search(job.get("title") or ""):
         return None, "maintenance role"
     if job.get("source_id") in posted_ids:
@@ -335,7 +346,7 @@ def evaluate(
         category=job.get("category") or "",
         logo_path=logo_path,
         site_url=site.url,
-        published_at=published,
+        published_at=site.published_at,
         description_html=job.get("rewritten_description") or "",
     ), None
 
