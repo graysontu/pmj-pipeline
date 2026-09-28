@@ -550,7 +550,10 @@ within sane bounds, a city and state the page shows, a usable logo, and a title
 that reads cleanly. **Maintenance roles are excluded for now** - Maintenance
 Technician, Maintenance Supervisor and Groundskeeper & Porter categories, plus a
 title backstop (Grayson's call, 2026-09-27). Remove a category from
-`EXCLUDED_CATEGORIES` to start posting it. No company repeats within
+`EXCLUDED_CATEGORIES` to start posting it. **Low-paying jobs are not highlighted**:
+a job is skipped when the bottom of its pay range is $21/hr or less, or $45,000/yr
+or less (`LINKEDIN_MIN_HOURLY_PAY_FLOOR` / `LINKEDIN_MIN_YEARLY_PAY_FLOOR`, Grayson's
+call 2026-09-28 - the bottom, not the top, so "$20-$30/hr" is skipped). No company repeats within
 `LINKEDIN_COMPANY_COOLDOWN_DAYS` (14). Role types are balanced, not prioritised:
 the category posted least in the last 12 posts goes first.
 
@@ -592,8 +595,14 @@ consecutive posts never look identical. Rendering uses the bundled Open Sans (SI
 OFL, `pipeline/linkedin/fonts/`); the Segoe UI in the first mockups is Microsoft's
 and can't be committed.
 
-**Failure modes.** No qualifying job exits 1 so the failure email fires - rare,
-and it means data or filters broke. A Buffer failure leaves the job unrecorded,
+**A day with no qualifying job is skipped, not failed.** The pay floor thins the
+pool: replaying Sep 14-27 with it, the seven posting days had 3, 3, 7, 5, 4, 1
+and 5 qualifying jobs (7-day window). On a zero day `prepare` exits 0, nothing is
+posted, and the email says "no post today" with the skip reasons. If that email
+starts arriving often, widen `LINKEDIN_MAX_JOB_AGE_DAYS`; if its reasons look
+wrong (say, every job "site page shows no city"), something upstream broke.
+
+**Failure modes.** A Buffer failure leaves the job unrecorded,
 and the next run picks afresh. If Buffer accepted a post but the final push of
 `history.json` failed, the next run could pick the same job again. The pipeline
 watchdog does not watch this workflow; a runner outage just means a missed post.

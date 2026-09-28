@@ -52,7 +52,7 @@ jobs:
       - name: Pick the job and draw the post
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
-        run: python -m pipeline.linkedin prepare --dir linkedin-posts
+        run: python -m pipeline.linkedin prepare --dir linkedin-posts --email-dir linkedin-email
 
       # Buffer fetches the image from a public URL, so it has to be pushed
       # before the post is scheduled.
