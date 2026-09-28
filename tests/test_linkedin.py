@@ -233,12 +233,18 @@ def test_every_theme_renders_a_square_card(tmp_path, theme):
 
 
 def test_broken_and_blank_logos_are_rejected(tmp_path):
-    # Reside Living's file is a white wordmark flattened onto white; only the dot survives.
-    assert logo_problem(LOGOS / "reside-living.png")
+    # Reside Living's old file was a white wordmark flattened onto white, so only
+    # the blue "i" survived: a tall sliver of artwork on an empty canvas.
+    sliver = tmp_path / "sliver.png"
+    image = Image.new("RGB", (400, 200), "white")
+    image.paste((0, 157, 220), (185, 60, 215, 140))
+    image.save(sliver)
+    assert logo_problem(sliver) == "logo artwork looks cut off (tall sliver)"
     blank = tmp_path / "blank.png"
     Image.new("RGB", (400, 200), "white").save(blank)
     assert logo_problem(blank) == "logo is blank"
     assert logo_problem(LOGOS / "peakmade-real-estate.png") is None
+    assert logo_problem(LOGOS / "reside-living.png") is None
 
 
 # --- caption -----------------------------------------------------------------
