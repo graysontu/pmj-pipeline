@@ -78,11 +78,16 @@ jobs:
           git diff --cached --quiet || git commit -m "Record LinkedIn post $(date -u +%Y-%m-%d)"
           git push origin HEAD:linkedin-posts
 
+      # No email when there was nothing to report (a post already scheduled today).
       - name: Read email subject
         id: email
-        run: echo "subject=$(cat linkedin-email/subject.txt)" >> "$GITHUB_OUTPUT"
+        run: |
+          if [ -f linkedin-email/subject.txt ]; then
+            echo "subject=$(cat linkedin-email/subject.txt)" >> "$GITHUB_OUTPUT"
+          fi
 
       - name: Send post email
+        if: steps.email.outputs.subject != ''
         uses: dawidd6/action-send-mail@v3.12.0
         with:
           server_address: smtp.gmail.com

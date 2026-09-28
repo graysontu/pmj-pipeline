@@ -73,10 +73,18 @@ def load_site_jobs(http: httpx.Client | None = None) -> dict[str, SiteJob]:
             jobs[link] = SiteJob(
                 url=(job.findtext("url") or "").strip(),
                 sticky=(job.findtext("sticky") or "").strip().lower() == "true",
+                published_at=_parse_time(job.findtext("published_at")),
             )
     if len(jobs) < MIN_SITE_JOBS:
         raise RuntimeError(f"{SITE_JOBS_URL} listed only {len(jobs)} jobs; refusing to pick from it.")
     return jobs
+
+
+def _parse_time(text: str | None) -> datetime | None:
+    try:
+        return datetime.fromisoformat((text or "").strip())
+    except ValueError:
+        return None
 
 
 def fetch_page_location(url: str, http: httpx.Client | None = None) -> tuple[str | None, str | None]:
@@ -160,6 +168,18 @@ def prepare(
     # Preview runs keep their own rotation, so going live starts the company
     # cooldown and the colour sequence fresh.
     history = [entry for entry in load_history(post_dir) if entry.get("mode") == mode]
+    post_time = next_post_time(now)
+
+    # Never two live posts on one day, e.g. a manual re-run after the scheduled one.
+    zone = ZoneInfo(config.LINKEDIN_POST_TIMEZONE)
+    post_day = post_time.astimezone(zone).date()
+    if mode == "live" and any(
+        datetime.fromisoformat(entry["due_at"]).astimezone(zone).date() == post_day for entry in history
+    ):
+        logger.info("A live post is already scheduled for %s; nothing to do.", post_day)
+        _append_summary(f"## LinkedIn post\n\nA post is already scheduled for {post_day}; nothing to do.\n")
+        return 0
+
     posted_ids = {entry["source_id"] for entry in history}
     cooling = cooling_companies(history, now, config.LINKEDIN_COMPANY_COOLDOWN_DAYS)
 
@@ -170,7 +190,7 @@ def prepare(
     candidates, skipped = [], Counter()
     for job in jobs:
         candidate, reason = evaluate(
-            job, site_jobs, now=now, max_age_days=config.LINKEDIN_MAX_JOB_AGE_DAYS,
+            job, site_jobs, post_time=post_time, max_days_ago=config.LINKEDIN_MAX_POSTED_DAYS_AGO,
             posted_ids=posted_ids, cooling_companies=cooling,
         )
         if candidate:
@@ -213,7 +233,7 @@ def prepare(
         "source_id": pick.source_id,
         "mode": mode,
         "created_at": now.isoformat(),
-        "due_at": next_post_time(now).isoformat(),
+        "due_at": post_time.isoformat(),
         "title": pick.title,
         "company": pick.company,
         "category": pick.category,

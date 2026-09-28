@@ -545,7 +545,7 @@ JobBoardly dropped (see "JobBoardly geocodes `<city>`") is therefore never put o
 a card. Only the 10 best-ranked candidates get a page fetch.
 
 **What qualifies** (`pipeline/linkedin/picker.py`): live on the site and not
-pinned, added to the feed within `LINKEDIN_MAX_JOB_AGE_DAYS` (7), explicit salary
+pinned, recent (below), explicit salary
 within sane bounds, a city and state the page shows, a usable logo, and a title
 that reads cleanly. **Maintenance roles are excluded for now** - Maintenance
 Technician, Maintenance Supervisor and Groundskeeper & Porter categories, plus a
@@ -595,12 +595,27 @@ consecutive posts never look identical. Rendering uses the bundled Open Sans (SI
 OFL, `pipeline/linkedin/fonts/`); the Segoe UI in the first mockups is Microsoft's
 and can't be committed.
 
-**A day with no qualifying job is skipped, not failed.** The pay floor thins the
-pool: replaying Sep 14-27 with it, the seven posting days had 3, 3, 7, 5, 4, 1
-and 5 qualifying jobs (7-day window). On a zero day `prepare` exits 0, nothing is
-posted, and the email says "no post today" with the skip reasons. If that email
-starts arriving often, widen `LINKEDIN_MAX_JOB_AGE_DAYS`; if its reasons look
-wrong (say, every job "site page shows no city"), something upstream broke.
+**Recency is judged by the label the site shows, at the moment the post goes
+live.** When the post publishes (10:00 AM Eastern), the job's page must read
+"posted 4 days ago" or newer (`LINKEDIN_MAX_POSTED_DAYS_AGO`; Grayson, 2026-09-28:
+"4 days ago is the oldest that can go live" - and he explicitly does not want
+the pool widened). The date is `published_at` from `jobs.xml` (the employer's
+posting date, at midnight Central), not our `state.json` `published_at`.
+**The site rounds**: measured on live pages, 2.97 days reads "3 days ago" and
+4.97 reads "5 days ago", so "5 days ago" starts at 4.5 days
+(`site_days_ago`). In practice a Monday post can use jobs dated Thursday or later.
+
+**A day with no qualifying job is skipped, not failed - and that is expected.**
+Replaying the ten posting days Sep 7-27 with the 4-day rule and the pay floor gave
+6 posts and 4 empty days (roughly two posts a week). Empty days come from real
+gaps: most fresh jobs list no salary, and the rest are often under the floor or
+from a company in the 14-day cooldown. Grayson is fine with empty days. On one,
+`prepare` exits 0, nothing is posted, and the email says "no post today" with
+the skip reasons; if the reasons look wrong (say, every job "site page shows no
+city"), something upstream broke.
+
+**Never two live posts on one day.** If a live post is already scheduled for the
+day, a further run (a manual re-run, say) does nothing and sends no email.
 
 **Failure modes.** A Buffer failure leaves the job unrecorded,
 and the next run picks afresh. If Buffer accepted a post but the final push of
