@@ -15,7 +15,8 @@ import os
 import re
 import time
 from collections import Counter
-from datetime import datetime, timedelta, timezone
+from dataclasses import dataclass
+from datetime import date, datetime, timedelta, timezone
 from datetime import time as dt_time
 from pathlib import Path
 from zoneinfo import ZoneInfo
@@ -41,6 +42,8 @@ MIN_LEAD = timedelta(minutes=15)
 # Runs this close to the post time are the day's last chance (the final trigger
 # fires about 7-8 AM Eastern for a 10 AM post).
 FINAL_NOTICE_LEAD = timedelta(hours=3)
+# A run may prepare the next posting day's post at most this far ahead.
+MAX_EARLY = timedelta(hours=12)
 
 
 def raw_url(relative_path: str) -> str:
@@ -139,28 +142,56 @@ def _write_json(path: Path, data) -> None:
     path.write_text(json.dumps(data, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
 
 
-def next_post_time(now: datetime) -> datetime | None:
-    """When a post prepared now should go live, or None if it's too late today.
+@dataclass(frozen=True)
+class PostSlot:
+    """One posting day (Mon/Wed/Fri) and when a post for it would go live."""
+    day: date                    # the posting day this post belongs to
+    post_time: datetime | None   # None: too late, and no next-day fallback
+    moved: bool = False          # moved to the next day (Tue/Thu) because every run started late
 
-    On a posting day: LINKEDIN_POST_TIME, or shortly after now if a delayed run
-    starts after that - unless it starts after LINKEDIN_LATEST_POST_HOUR, when
-    nothing is posted that day. On any other day (a trigger that fires the
-    evening before in local time, or a manual run): the next posting day's
-    LINKEDIN_POST_TIME."""
+
+def post_slot(now: datetime) -> PostSlot | None:
+    """The posting day a run starting now serves, or None if none is due yet.
+
+    - On a posting day before LINKEDIN_LATEST_POST_HOUR (6 PM): that day, at
+      LINKEDIN_POST_TIME or shortly after now if the run started late.
+    - After 6 PM: moved to the next day at LINKEDIN_POST_TIME if that day is a
+      fallback day (Mon -> Tue, Wed -> Thu), else missed (Fri: no weekend posts).
+    - On the fallback day itself before 6 PM (a very delayed run): the previous
+      posting day's post, going out that day.
+    - Otherwise the next posting day, but only within MAX_EARLY of its post time
+      (the winter 04:17 UTC trigger lands at 11:17 PM Eastern the night before).
+    """
     zone = ZoneInfo(config.LINKEDIN_POST_TIMEZONE)
     hour, minute = (int(part) for part in config.LINKEDIN_POST_TIME.split(":"))
     local = now.astimezone(zone)
-    if local.weekday() in config.LINKEDIN_POST_WEEKDAYS:
-        slot = datetime.combine(local.date(), dt_time(hour, minute), tzinfo=zone)
-        if now + MIN_LEAD <= slot:
-            return slot.astimezone(timezone.utc)
-        if local.hour >= config.LINKEDIN_LATEST_POST_HOUR:
-            return None
-        return (now + MIN_LEAD + timedelta(minutes=1)).replace(second=0, microsecond=0)
-    for offset in range(1, 8):
-        day = local.date() + timedelta(days=offset)
-        if day.weekday() in config.LINKEDIN_POST_WEEKDAYS:
-            return datetime.combine(day, dt_time(hour, minute), tzinfo=zone).astimezone(timezone.utc)
+    today = local.date()
+    before_cutoff = local.hour < config.LINKEDIN_LATEST_POST_HOUR
+
+    def post_time_on(day: date) -> datetime:
+        return datetime.combine(day, dt_time(hour, minute), tzinfo=zone).astimezone(timezone.utc)
+
+    def asap_on(day: date) -> datetime:
+        soon = (now + MIN_LEAD + timedelta(minutes=1)).replace(second=0, microsecond=0)
+        return max(post_time_on(day), soon)
+
+    recent = next(today - timedelta(days=n) for n in range(7)
+                  if (today - timedelta(days=n)).weekday() in config.LINKEDIN_POST_WEEKDAYS)
+    fallback = recent + timedelta(days=1)
+    has_fallback = fallback.weekday() in config.LINKEDIN_FALLBACK_WEEKDAYS
+
+    if recent == today:
+        if before_cutoff:
+            return PostSlot(today, asap_on(today))
+        if has_fallback:
+            return PostSlot(today, post_time_on(fallback), moved=True)
+        return PostSlot(today, None)
+    if has_fallback and fallback == today and before_cutoff:
+        return PostSlot(recent, asap_on(today), moved=True)
+    upcoming = next(today + timedelta(days=n) for n in range(1, 8)
+                    if (today + timedelta(days=n)).weekday() in config.LINKEDIN_POST_WEEKDAYS)
+    if post_time_on(upcoming) - now <= MAX_EARLY:
+        return PostSlot(upcoming, post_time_on(upcoming))
     return None
 
 
@@ -185,23 +216,30 @@ def prepare(
     # Preview runs keep their own rotation, so going live starts the company
     # cooldown and the colour sequence fresh.
     history = [entry for entry in load_history(post_dir) if entry.get("mode") == mode]
-    post_time = next_post_time(now)
-    if post_time is None:
-        logger.info("Too late in the day to post; nothing to do.")
-        _append_summary("## LinkedIn post\n\nToo late in the day to post; nothing to do.\n")
+    slot = post_slot(now)
+    if slot is None:
+        logger.info("No posting day is due yet; nothing to do.")
+        _append_summary("## LinkedIn post\n\nNo posting day is due yet; nothing to do.\n")
+        return 0
+    post_day = slot.day
+
+    # One post per posting day. The workflow fires several times for each posting
+    # day (GitHub delays and drops scheduled runs), so the first run to start
+    # handles it and the rest stop here - including a late straggler, which must
+    # not turn an already-posted Monday into a Tuesday post as well.
+    if mode == "live" and _slot_handled(post_dir, history, post_day, mode):
+        logger.info("The post for %s is already handled; nothing to do.", post_day)
+        _append_summary(f"## LinkedIn post\n\nThe post for {post_day} is already handled; nothing to do.\n")
         return 0
 
-    # Never two live posts on one day. The workflow fires several times before each
-    # posting day (GitHub delays and drops scheduled runs), so the first run to
-    # start schedules the post and the rest stop here.
-    zone = ZoneInfo(config.LINKEDIN_POST_TIMEZONE)
-    post_day = post_time.astimezone(zone).date()
-    if mode == "live" and any(
-        datetime.fromisoformat(entry["due_at"]).astimezone(zone).date() == post_day for entry in history
-    ):
-        logger.info("A live post is already scheduled for %s; nothing to do.", post_day)
-        _append_summary(f"## LinkedIn post\n\nA post is already scheduled for {post_day}; nothing to do.\n")
+    if slot.post_time is None:
+        logger.warning("No run started before %s:00 on %s; that day's post is missed.",
+                       config.LINKEDIN_LATEST_POST_HOUR, post_day)
+        _append_summary(f"## LinkedIn post\n\nNo run started in time for {post_day}; that post is missed.\n")
+        if email_dir is not None and _note_skipped_day(post_dir, post_day, mode, now, {"missed": True}):
+            _write_missed_email(email_dir, post_day, now)
         return 0
+    post_time = slot.post_time
 
     posted_ids = {entry["source_id"] for entry in history}
     cooling = cooling_companies(history, now, config.LINKEDIN_COMPANY_COOLDOWN_DAYS)
@@ -242,10 +280,11 @@ def prepare(
                         f"{_selection_line(selection)}\n")
         logger.warning("No job qualified for a LinkedIn post on %s.", post_day)
         # An earlier trigger may still find nothing before the day's jobs import,
-        # so only the last chance says "no post today", and only once.
-        if email_dir is not None and now >= post_time - FINAL_NOTICE_LEAD:
+        # so only the last chance says "no post today", and only once. A moved
+        # post has no later chance.
+        if email_dir is not None and (slot.moved or now >= post_time - FINAL_NOTICE_LEAD):
             if _note_skipped_day(post_dir, post_day, mode, now, selection):
-                _write_skip_email(email_dir, selection)
+                _write_skip_email(email_dir, selection, post_day if slot.moved else None)
         return 0
 
     number = len(history)
@@ -259,6 +298,8 @@ def prepare(
         "source_id": pick.source_id,
         "mode": mode,
         "created_at": now.isoformat(),
+        "slot": post_day.isoformat(),
+        "moved_to_next_day": slot.moved,
         "due_at": post_time.isoformat(),
         "title": pick.title,
         "company": pick.company,
@@ -400,8 +441,12 @@ def _write_email(email_dir: Path, entry: dict) -> None:
     verb = "scheduled" if entry["mode"] == "live" else "preview"
     subject = f"LinkedIn post {verb}: {entry['title']} at {entry['company']}"
     when = _local_time(entry["due_at"])
+    moved = ""
+    if entry.get("moved_to_next_day"):
+        moved = (f" This is {date.fromisoformat(entry['slot']):%A}'s post, moved to the next day because "
+                 f"GitHub didn't start the job before {config.LINKEDIN_LATEST_POST_HOUR - 12} PM.")
     body = (
-        f"{'Scheduled in Buffer for' if entry['mode'] == 'live' else 'Preview only (not posted). Would post'} {when}.\n\n"
+        f"{'Scheduled in Buffer for' if entry['mode'] == 'live' else 'Preview only (not posted). Would post'} {when}.{moved}\n\n"
         f"{entry['text']}\n\n"
         f"Buffer: {entry.get('buffer', '-')}\n"
         f"Image: {raw_url(entry['image'])}\n"
@@ -411,25 +456,57 @@ def _write_email(email_dir: Path, entry: dict) -> None:
     (email_dir / "body.txt").write_text(body, encoding="utf-8")
 
 
-def _note_skipped_day(post_dir: Path, day, mode: str, now: datetime, selection: dict) -> bool:
-    """Record that `day` had no post. False if it was already recorded, so the
-    "no post today" email goes out once however many runs find nothing."""
+def _skipped_days(post_dir: Path) -> list[dict]:
     path = post_dir / "skipped_days.json"
-    days = json.loads(path.read_text(encoding="utf-8")) if path.exists() else []
+    return json.loads(path.read_text(encoding="utf-8")) if path.exists() else []
+
+
+def _slot_handled(post_dir: Path, history: list[dict], day: date, mode: str) -> bool:
+    """Whether posting day `day` already has a post, or was already written off
+    (no qualifying job, or missed)."""
+    zone = ZoneInfo(config.LINKEDIN_POST_TIMEZONE)
+    for entry in history:
+        # Entries from before "slot" was recorded were all posted on their own day.
+        slot = entry.get("slot") or datetime.fromisoformat(entry["due_at"]).astimezone(zone).date().isoformat()
+        if slot == day.isoformat():
+            return True
+    return any(e["date"] == day.isoformat() and e["mode"] == mode for e in _skipped_days(post_dir))
+
+
+def _note_skipped_day(post_dir: Path, day: date, mode: str, now: datetime, details: dict) -> bool:
+    """Record that posting day `day` had no post. False if it was already
+    recorded, so its email goes out once however many runs find nothing."""
+    days = _skipped_days(post_dir)
     if any(entry["date"] == day.isoformat() and entry["mode"] == mode for entry in days):
         return False
-    days.append({"date": day.isoformat(), "mode": mode, "noted_at": now.isoformat(), "selection": selection})
-    _write_json(path, days)
+    days.append({"date": day.isoformat(), "mode": mode, "noted_at": now.isoformat(), "details": details})
+    _write_json(post_dir / "skipped_days.json", days)
     return True
 
 
-def _write_skip_email(email_dir: Path, selection: dict) -> None:
+def _write_skip_email(email_dir: Path, selection: dict, moved_from: date | None = None) -> None:
+    when = f"{moved_from:%A}'s post (moved to the next day)" if moved_from else "today's post"
     email_dir.mkdir(parents=True, exist_ok=True)
-    (email_dir / "subject.txt").write_text("LinkedIn: no post today - no job met the bar", encoding="utf-8")
+    (email_dir / "subject.txt").write_text(
+        f"LinkedIn: no post {'for ' + format(moved_from, '%A') if moved_from else 'today'} (no job met the bar)",
+        encoding="utf-8")
     (email_dir / "body.txt").write_text(
-        "No job qualified for today's LinkedIn post, so nothing was posted. Nothing is "
-        "broken; the next run tries again.\n\n"
+        f"No job qualified for {when}, so nothing was posted. Nothing is broken; the next "
+        "posting day runs as normal.\n\n"
         f"{_selection_line(selection)}\n\n"
+        f"All posts: https://github.com/{REPO}/tree/{POST_BRANCH}\n",
+        encoding="utf-8",
+    )
+
+
+def _write_missed_email(email_dir: Path, day: date, now: datetime) -> None:
+    started = now.astimezone(ZoneInfo(config.LINKEDIN_POST_TIMEZONE)).strftime("%I:%M %p %Z").lstrip("0")
+    email_dir.mkdir(parents=True, exist_ok=True)
+    (email_dir / "subject.txt").write_text(f"LinkedIn: {day:%A}'s post was missed", encoding="utf-8")
+    (email_dir / "body.txt").write_text(
+        f"GitHub didn't start the LinkedIn job until {started}, after the "
+        f"{config.LINKEDIN_LATEST_POST_HOUR - 12} PM cutoff, and posts don't move to the weekend, "
+        f"so {day:%A}'s post was skipped. Nothing needs fixing; the next posting day runs as normal.\n\n"
         f"All posts: https://github.com/{REPO}/tree/{POST_BRANCH}\n",
         encoding="utf-8",
     )
