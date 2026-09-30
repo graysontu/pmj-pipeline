@@ -600,11 +600,19 @@ gets one retry, then the template line is used. The rewritten site descriptions
 the model reads often use "This isn't a traditional role..." framing, which is
 why the guard exists - don't remove it. Tested on 10 real jobs: 10 of 10 usable.
 
-**Timing:** the cron runs at 12:17 UTC (about 8 AM Eastern) and schedules the post
-in Buffer for `LINKEDIN_POST_TIME` 10:00 `America/New_York`, so GitHub's cron
-delays don't move it; a run that starts after 10 posts 15 minutes later. There is
-deliberately no randomisation - nothing suggests LinkedIn rewards it, and posting
-guidance favours consistency.
+**Timing: three triggers per posting day, because GitHub's scheduler is not
+reliable here.** Measured in the first week: Monday 2026-09-28's single 12:17 UTC
+run started 7h24m late, Wednesday 2026-09-30's never started at all (no post
+that day), and the main pipeline's 16:00 UTC run started 3-5 hours late every
+day. So the workflow fires at 04:17, 08:17 and 12:17 UTC on Mon/Wed/Fri. The
+first run to start schedules the post in Buffer for `LINKEDIN_POST_TIME` 10:00
+`America/New_York`; the others hit the one-post-per-day guard and stop. In winter
+the 04:17 trigger lands on the previous evening in Eastern time; `next_post_time`
+handles that by aiming at the next posting day. A run delayed past 10 AM posts
+15 minutes later, but one that starts after `LINKEDIN_LATEST_POST_HOUR` (6 PM)
+posts nothing that day. No randomisation - nothing suggests LinkedIn rewards it,
+and posting guidance favours consistency. If posts still go missing, the next
+step is an external scheduler calling `workflow_dispatch` (needs a GitHub token).
 
 **Colours rotate through five themes** (slate, coral, cream, teal, plum - all
 built on the site's coral and slate) with "NEW JOB"/"NOW HIRING" alternating, so
@@ -629,7 +637,9 @@ gaps: most fresh jobs list no salary, and the rest are often under the floor or
 from a company in the 14-day cooldown. Grayson is fine with empty days. On one,
 `prepare` exits 0, nothing is posted, and the email says "no post today" with
 the skip reasons; if the reasons look wrong (say, every job "site page shows no
-city"), something upstream broke.
+city"), something upstream broke. Only a run within 3 hours of the post time
+sends that email (earlier triggers stay quiet, since the day's jobs may not have
+imported yet), and only once per day - `skipped_days.json` on the branch records it.
 
 **Never two live posts on one day.** If a live post is already scheduled for the
 day, a further run (a manual re-run, say) does nothing and sends no email.
