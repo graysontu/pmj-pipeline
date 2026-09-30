@@ -6,6 +6,28 @@ Newest first.
 
 ---
 
+### Assistant Manager at Olympus Property
+
+Scheduled Wed Sep 30, 2026 at 12:46 PM EDT · Phoenix, AZ · $25/hr · [job page](https://propertymanagementjobs.us/jobs/assistant-manager-the-tessera-9157f9aa)  
+Buffer: Scheduled on property-management-jobs-us · colours: coral · opening line: claude  
+Why this job: 2 of 282 jobs in the feed qualified. Skipped: posted more than 4 days ago on the site 257, no salary 10, maintenance role 7, pay at or below the LinkedIn floor 3, no city and state 2, not live on the site 1.
+
+<img src="images/2026-09-30-greenhouse_8006965003.png" width="420" alt="Assistant Manager card">
+
+```text
+An Assistant Manager role at the Tessera apartment community where the scope leans financial: rent collection, deposits, final account statements, and delinquency oversight, plus leasing floor support. RealPage and Knock experience is a real advantage.
+
+📍 Phoenix, AZ
+💰 $25/hr
+🏢 Olympus Property
+
+See the full job and apply 👉 https://propertymanagementjobs.us/jobs/assistant-manager-the-tessera-9157f9aa?utm_source=linkedin&utm_medium=social&utm_campaign=job_post
+
+#PropertyManagement #AssistantPropertyManager #NowHiring #PhoenixJobs
+```
+
+---
+
 ### LIHTC Leasing Consultant at Cirrus Asset Management
 
 Scheduled Mon Sep 28, 2026 at 10:00 AM EDT · Castle Rock, CO · $22–$24/hr · [job page](https://propertymanagementjobs.us/jobs/lihtc-leasing-consultant-30024-29ffb3e8)  
