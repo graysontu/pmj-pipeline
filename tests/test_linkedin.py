@@ -162,8 +162,8 @@ def _site(posted: datetime | None, sticky: bool = False) -> dict[str, SiteJob]:
 
 # The site dates each job at midnight Central, as jobs.xml shows ("2026-09-25T00:00:00-05:00").
 SITE = _site(datetime(2026, 9, 26, tzinfo=CENTRAL))
-# For the workflow tests, which run at the real current time.
-RECENT_SITE = _site(datetime.now(timezone.utc) - timedelta(days=1))
+# For the workflow tests, which run as if on Monday 2026-09-28 at 8:17 AM Eastern.
+RECENT_SITE = _site(NOW - timedelta(days=1))
 
 
 def _evaluate(job, site=None, **overrides):
@@ -485,11 +485,11 @@ def test_preview_run_records_the_post_without_touching_buffer(tmp_path, state_fi
     monkeypatch.setattr(config, "BUFFER_API_KEY", "")
     post_dir = tmp_path / "posts"
 
-    assert run.prepare(post_dir, state_path=state_file, site_jobs=RECENT_SITE, page_locator=_davis, use_ai=False) == 0
+    assert run.prepare(post_dir, state_path=state_file, site_jobs=RECENT_SITE, page_locator=_davis, use_ai=False, now=NOW) == 0
     pending = json.loads((post_dir / "pending.json").read_text(encoding="utf-8"))
     assert pending["mode"] == "preview" and (post_dir / pending["image"]).exists()
 
-    assert run.publish(post_dir, wait_for_image=False) == 0
+    assert run.publish(post_dir, wait_for_image=False, now=NOW) == 0
     history = json.loads((post_dir / "history.json").read_text(encoding="utf-8"))
     assert [e["source_id"] for e in history] == ["workable_84C40F6B99"]
     assert history[0]["buffer"] == "No Buffer API key saved yet"
@@ -497,17 +497,17 @@ def test_preview_run_records_the_post_without_touching_buffer(tmp_path, state_fi
     assert "Property Manager at PeakMade Real Estate" in (post_dir / "README.md").read_text(encoding="utf-8")
 
     # The same job is not picked twice, and nothing else qualifies: the day is skipped.
-    assert run.prepare(post_dir, state_path=state_file, site_jobs=RECENT_SITE, page_locator=_davis, use_ai=False) == 0
+    assert run.prepare(post_dir, state_path=state_file, site_jobs=RECENT_SITE, page_locator=_davis, use_ai=False, now=NOW) == 0
     assert not (post_dir / "pending.json").exists()
 
 
 def test_preview_with_a_key_only_checks_the_connection(tmp_path, state_file, monkeypatch):
     monkeypatch.setattr(config, "LINKEDIN_POSTING_ENABLED", False)
     post_dir = tmp_path / "posts"
-    run.prepare(post_dir, state_path=state_file, site_jobs=RECENT_SITE, page_locator=_davis, use_ai=False)
+    run.prepare(post_dir, state_path=state_file, site_jobs=RECENT_SITE, page_locator=_davis, use_ai=False, now=NOW)
     buffer = MagicMock()
     buffer.linkedin_channel.return_value = {"id": "c1", "name": "Property Management Jobs"}
-    assert run.publish(post_dir, buffer_client=buffer, wait_for_image=False) == 0
+    assert run.publish(post_dir, buffer_client=buffer, wait_for_image=False, now=NOW) == 0
     buffer.schedule_image_post.assert_not_called()
     history = json.loads((post_dir / "history.json").read_text(encoding="utf-8"))
     assert history[0]["buffer"] == "Connected - live posts would go to Property Management Jobs"
@@ -516,12 +516,12 @@ def test_preview_with_a_key_only_checks_the_connection(tmp_path, state_file, mon
 def test_live_run_schedules_in_buffer(tmp_path, state_file, monkeypatch):
     monkeypatch.setattr(config, "LINKEDIN_POSTING_ENABLED", True)
     post_dir = tmp_path / "posts"
-    assert run.prepare(post_dir, state_path=state_file, site_jobs=RECENT_SITE, page_locator=_davis, use_ai=False) == 0
+    assert run.prepare(post_dir, state_path=state_file, site_jobs=RECENT_SITE, page_locator=_davis, use_ai=False, now=NOW) == 0
 
     buffer = MagicMock()
     buffer.linkedin_channel.return_value = {"id": "c1", "name": "Property Management Jobs"}
     buffer.schedule_image_post.return_value = {"id": "post-9"}
-    assert run.publish(post_dir, buffer_client=buffer, wait_for_image=False) == 0
+    assert run.publish(post_dir, buffer_client=buffer, wait_for_image=False, now=NOW) == 0
 
     channel_id, text, image_url, _ = buffer.schedule_image_post.call_args.args
     assert channel_id == "c1" and "utm_source=linkedin" in text
@@ -543,19 +543,19 @@ def test_never_two_live_posts_on_the_same_day(tmp_path, monkeypatch):
     }
     state_path = tmp_path / "state.json"
     state_path.write_text(json.dumps(jobs), encoding="utf-8")
-    posted = datetime.now(timezone.utc) - timedelta(days=1)
+    posted = NOW - timedelta(days=1)
     site = {**_site(posted), other_apply: SiteJob(url="https://propertymanagementjobs.us/jobs/lc", sticky=False,
                                                   published_at=posted)}
     locate = {PAGE: ("Davis", "California"), "https://propertymanagementjobs.us/jobs/lc": ("Charlotte", "North Carolina")}
     post_dir = tmp_path / "posts"
 
-    assert run.prepare(post_dir, state_path=state_path, site_jobs=site, page_locator=locate.get, use_ai=False) == 0
+    assert run.prepare(post_dir, state_path=state_path, site_jobs=site, page_locator=locate.get, use_ai=False, now=NOW) == 0
     buffer = MagicMock()
     buffer.linkedin_channel.return_value = {"id": "c1", "name": "Page"}
     buffer.schedule_image_post.return_value = {"id": "post-1"}
-    run.publish(post_dir, buffer_client=buffer, wait_for_image=False)
+    run.publish(post_dir, buffer_client=buffer, wait_for_image=False, now=NOW)
 
-    assert run.prepare(post_dir, state_path=state_path, site_jobs=site, page_locator=locate.get, use_ai=False) == 0
+    assert run.prepare(post_dir, state_path=state_path, site_jobs=site, page_locator=locate.get, use_ai=False, now=NOW) == 0
     assert not (post_dir / "pending.json").exists()
     assert len(json.loads((post_dir / "history.json").read_text(encoding="utf-8"))) == 1
 
@@ -563,11 +563,11 @@ def test_never_two_live_posts_on_the_same_day(tmp_path, monkeypatch):
 def test_a_failed_buffer_post_is_not_recorded(tmp_path, state_file, monkeypatch):
     monkeypatch.setattr(config, "LINKEDIN_POSTING_ENABLED", True)
     post_dir = tmp_path / "posts"
-    run.prepare(post_dir, state_path=state_file, site_jobs=RECENT_SITE, page_locator=_davis, use_ai=False)
+    run.prepare(post_dir, state_path=state_file, site_jobs=RECENT_SITE, page_locator=_davis, use_ai=False, now=NOW)
     buffer = MagicMock()
     buffer.linkedin_channel.side_effect = BufferError("No LinkedIn channel is connected in Buffer.")
     with pytest.raises(BufferError):
-        run.publish(post_dir, buffer_client=buffer, wait_for_image=False)
+        run.publish(post_dir, buffer_client=buffer, wait_for_image=False, now=NOW)
     assert not (post_dir / "history.json").exists()
 
 
@@ -575,18 +575,18 @@ def test_preview_history_does_not_count_against_live_posts(tmp_path, state_file,
     post_dir = tmp_path / "posts"
     monkeypatch.setattr(config, "LINKEDIN_POSTING_ENABLED", False)
     monkeypatch.setattr(config, "BUFFER_API_KEY", "")
-    run.prepare(post_dir, state_path=state_file, site_jobs=RECENT_SITE, page_locator=_davis, use_ai=False)
-    run.publish(post_dir, wait_for_image=False)
+    run.prepare(post_dir, state_path=state_file, site_jobs=RECENT_SITE, page_locator=_davis, use_ai=False, now=NOW)
+    run.publish(post_dir, wait_for_image=False, now=NOW)
 
     monkeypatch.setattr(config, "LINKEDIN_POSTING_ENABLED", True)
-    assert run.prepare(post_dir, state_path=state_file, site_jobs=RECENT_SITE, page_locator=_davis, use_ai=False) == 0
+    assert run.prepare(post_dir, state_path=state_file, site_jobs=RECENT_SITE, page_locator=_davis, use_ai=False, now=NOW) == 0
     assert json.loads((post_dir / "pending.json").read_text(encoding="utf-8"))["mode"] == "live"
 
 
 def test_a_city_the_page_does_not_show_is_never_posted(tmp_path, state_file, monkeypatch):
     monkeypatch.setattr(config, "LINKEDIN_POSTING_ENABLED", False)
     assert run.prepare(tmp_path, state_path=state_file, site_jobs=RECENT_SITE,
-                       page_locator=lambda url: (None, "California"), use_ai=False) == 0
+                       page_locator=lambda url: (None, "California"), use_ai=False, now=NOW) == 0
     assert not (tmp_path / "pending.json").exists()
 
 
@@ -601,21 +601,69 @@ def test_a_day_with_no_qualifying_job_is_skipped_with_an_email(tmp_path, monkeyp
     post_dir, email_dir = tmp_path / "posts", tmp_path / "email"
 
     assert run.prepare(post_dir, state_path=state_path, site_jobs=RECENT_SITE, page_locator=_davis,
-                       use_ai=False, email_dir=email_dir) == 0
+                       use_ai=False, now=NOW, email_dir=email_dir) == 0
     assert not (post_dir / "pending.json").exists()
     assert (email_dir / "subject.txt").read_text(encoding="utf-8") == "LinkedIn: no post today - no job met the bar"
     assert "pay at or below the LinkedIn floor 1" in (email_dir / "body.txt").read_text(encoding="utf-8")
 
     buffer = MagicMock()
-    assert run.publish(post_dir, buffer_client=buffer, wait_for_image=False, email_dir=email_dir) == 0
+    assert run.publish(post_dir, buffer_client=buffer, wait_for_image=False, now=NOW, email_dir=email_dir) == 0
     buffer.schedule_image_post.assert_not_called()
     assert (email_dir / "subject.txt").read_text(encoding="utf-8").startswith("LinkedIn: no post today")
 
 
-def test_post_time_is_ten_eastern_or_soon_after_a_late_start():
-    early = datetime(2026, 9, 28, 12, 17, tzinfo=timezone.utc)   # 8:17 EDT
-    assert run.next_post_time(early) == datetime(2026, 9, 28, 14, 0, tzinfo=timezone.utc)
-    winter = datetime(2026, 12, 7, 12, 17, tzinfo=timezone.utc)  # 7:17 EST
-    assert run.next_post_time(winter) == datetime(2026, 12, 7, 15, 0, tzinfo=timezone.utc)
-    late = datetime(2026, 9, 28, 15, 30, tzinfo=timezone.utc)    # cron ran 11:30 EDT
-    assert late + timedelta(minutes=15) <= run.next_post_time(late) <= late + timedelta(minutes=17)
+def _utc(*args):
+    return datetime(*args, tzinfo=timezone.utc)
+
+
+@pytest.mark.parametrize("now,expected", [
+    # The three triggers on a summer Monday: 12:17, 4:17 and 8:17 AM EDT all aim at 10 AM.
+    (_utc(2026, 9, 28, 4, 17), _utc(2026, 9, 28, 14, 0)),
+    (_utc(2026, 9, 28, 8, 17), _utc(2026, 9, 28, 14, 0)),
+    (_utc(2026, 9, 28, 12, 17), _utc(2026, 9, 28, 14, 0)),
+    # In winter the first trigger lands on Sunday 11:17 PM EST: still Monday 10 AM EST.
+    (_utc(2026, 12, 7, 4, 17), _utc(2026, 12, 7, 15, 0)),
+    (_utc(2026, 12, 7, 12, 17), _utc(2026, 12, 7, 15, 0)),
+    # A manual run on a non-posting day aims at the next posting day.
+    (_utc(2026, 9, 29, 20, 0), _utc(2026, 9, 30, 14, 0)),     # Tuesday -> Wednesday
+    (_utc(2026, 10, 3, 15, 0), _utc(2026, 10, 5, 14, 0)),     # Saturday -> Monday
+    # A run delayed past 10 AM on a posting day posts 15-16 minutes later...
+    (_utc(2026, 9, 30, 17, 0), _utc(2026, 9, 30, 17, 16)),    # 1:00 PM EDT
+    # ...but one that only starts in the evening posts nothing that day.
+    (_utc(2026, 9, 30, 22, 30), None),                         # 6:30 PM EDT
+])
+def test_post_time(now, expected):
+    assert run.next_post_time(now) == expected
+
+
+def test_no_post_today_email_only_from_the_last_chance_and_only_once(tmp_path, monkeypatch):
+    """Three triggers a day means three runs that might find nothing. Earlier ones
+    stay quiet (the day's jobs may not have imported yet); the one near the post
+    time sends the email; any later straggler doesn't send it again."""
+    monkeypatch.setattr(config, "LINKEDIN_POSTING_ENABLED", True)
+    low_pay = {"workable_84C40F6B99": _job(salary_min="15", salary_max="17", salary_schedule="hourly",
+                                           published_at=datetime.now(timezone.utc).isoformat())}
+    state_path = tmp_path / "state.json"
+    state_path.write_text(json.dumps(low_pay), encoding="utf-8")
+    post_dir = tmp_path / "posts"
+
+    def attempt(now, name):
+        email_dir = tmp_path / name
+        assert run.prepare(post_dir, state_path=state_path, site_jobs=RECENT_SITE, page_locator=_davis,
+                           use_ai=False, now=now, email_dir=email_dir) == 0
+        return (email_dir / "subject.txt").exists()
+
+    assert not attempt(_utc(2026, 9, 28, 4, 17), "first")    # 12:17 AM EDT
+    assert not attempt(_utc(2026, 9, 28, 8, 17), "second")   # 4:17 AM EDT
+    assert attempt(_utc(2026, 9, 28, 12, 17), "third")       # 8:17 AM EDT
+    assert not attempt(_utc(2026, 9, 28, 13, 30), "late")    # a delayed straggler
+    days = json.loads((post_dir / "skipped_days.json").read_text(encoding="utf-8"))
+    assert [d["date"] for d in days] == ["2026-09-28"]
+
+
+def test_a_run_that_starts_in_the_evening_does_nothing(tmp_path, state_file, monkeypatch):
+    monkeypatch.setattr(config, "LINKEDIN_POSTING_ENABLED", True)
+    email_dir = tmp_path / "email"
+    assert run.prepare(tmp_path / "posts", state_path=state_file, site_jobs=RECENT_SITE, page_locator=_davis,
+                       use_ai=False, now=_utc(2026, 9, 30, 22, 30), email_dir=email_dir) == 0
+    assert not (tmp_path / "posts" / "pending.json").exists() and not email_dir.exists()

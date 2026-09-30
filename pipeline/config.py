@@ -48,6 +48,12 @@ BUFFER_CHANNEL_ID: str = os.getenv("BUFFER_CHANNEL_ID", "")
 # Buffer, so GitHub's cron delays don't move the post.
 LINKEDIN_POST_TIME: str = os.getenv("LINKEDIN_POST_TIME", "10:00")
 LINKEDIN_POST_TIMEZONE: str = os.getenv("LINKEDIN_POST_TIMEZONE", "America/New_York")
+# Posting days (Monday=0 ... Sunday=6, in LINKEDIN_POST_TIMEZONE) - Monday, Wednesday, Friday.
+LINKEDIN_POST_WEEKDAYS: frozenset[int] = frozenset(
+    int(day) for day in os.getenv("LINKEDIN_POST_WEEKDAYS", "0,2,4").split(","))
+# A run that only starts after this local hour on a posting day posts nothing that
+# day rather than posting in the evening.
+LINKEDIN_LATEST_POST_HOUR: int = int(os.getenv("LINKEDIN_LATEST_POST_HOUR", "18"))
 # A company is not posted again within this many days.
 LINKEDIN_COMPANY_COOLDOWN_DAYS: int = int(os.getenv("LINKEDIN_COMPANY_COOLDOWN_DAYS", "14"))
 # When the post goes live, the job's page must read "posted N days ago" with N at

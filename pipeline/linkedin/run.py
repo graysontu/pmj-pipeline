@@ -16,6 +16,7 @@ import re
 import time
 from collections import Counter
 from datetime import datetime, timedelta, timezone
+from datetime import time as dt_time
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
@@ -37,6 +38,9 @@ REPO = os.getenv("GITHUB_REPOSITORY", "graysontu/pmj-pipeline")
 MIN_SITE_JOBS = 20
 MAX_PAGE_CHECKS = 10
 MIN_LEAD = timedelta(minutes=15)
+# Runs this close to the post time are the day's last chance (the final trigger
+# fires about 7-8 AM Eastern for a 10 AM post).
+FINAL_NOTICE_LEAD = timedelta(hours=3)
 
 
 def raw_url(relative_path: str) -> str:
@@ -135,16 +139,29 @@ def _write_json(path: Path, data) -> None:
     path.write_text(json.dumps(data, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
 
 
-def next_post_time(now: datetime) -> datetime:
-    """Today at LINKEDIN_POST_TIME in LINKEDIN_POST_TIMEZONE, or shortly after
-    now if that has passed (a late-running cron)."""
+def next_post_time(now: datetime) -> datetime | None:
+    """When a post prepared now should go live, or None if it's too late today.
+
+    On a posting day: LINKEDIN_POST_TIME, or shortly after now if a delayed run
+    starts after that - unless it starts after LINKEDIN_LATEST_POST_HOUR, when
+    nothing is posted that day. On any other day (a trigger that fires the
+    evening before in local time, or a manual run): the next posting day's
+    LINKEDIN_POST_TIME."""
     zone = ZoneInfo(config.LINKEDIN_POST_TIMEZONE)
     hour, minute = (int(part) for part in config.LINKEDIN_POST_TIME.split(":"))
-    target = now.astimezone(zone).replace(hour=hour, minute=minute, second=0, microsecond=0)
-    earliest = now + MIN_LEAD
-    if target < earliest:
-        target = (earliest + timedelta(minutes=1)).replace(second=0, microsecond=0)
-    return target.astimezone(timezone.utc)
+    local = now.astimezone(zone)
+    if local.weekday() in config.LINKEDIN_POST_WEEKDAYS:
+        slot = datetime.combine(local.date(), dt_time(hour, minute), tzinfo=zone)
+        if now + MIN_LEAD <= slot:
+            return slot.astimezone(timezone.utc)
+        if local.hour >= config.LINKEDIN_LATEST_POST_HOUR:
+            return None
+        return (now + MIN_LEAD + timedelta(minutes=1)).replace(second=0, microsecond=0)
+    for offset in range(1, 8):
+        day = local.date() + timedelta(days=offset)
+        if day.weekday() in config.LINKEDIN_POST_WEEKDAYS:
+            return datetime.combine(day, dt_time(hour, minute), tzinfo=zone).astimezone(timezone.utc)
+    return None
 
 
 # --- prepare -----------------------------------------------------------------
@@ -169,8 +186,14 @@ def prepare(
     # cooldown and the colour sequence fresh.
     history = [entry for entry in load_history(post_dir) if entry.get("mode") == mode]
     post_time = next_post_time(now)
+    if post_time is None:
+        logger.info("Too late in the day to post; nothing to do.")
+        _append_summary("## LinkedIn post\n\nToo late in the day to post; nothing to do.\n")
+        return 0
 
-    # Never two live posts on one day, e.g. a manual re-run after the scheduled one.
+    # Never two live posts on one day. The workflow fires several times before each
+    # posting day (GitHub delays and drops scheduled runs), so the first run to
+    # start schedules the post and the rest stop here.
     zone = ZoneInfo(config.LINKEDIN_POST_TIMEZONE)
     post_day = post_time.astimezone(zone).date()
     if mode == "live" and any(
@@ -215,11 +238,14 @@ def prepare(
     if pick is None:
         # Not a failure: with the pay floor some days simply have nothing worth
         # highlighting. Skip the day and say why, rather than post a weaker job.
-        _append_summary(f"## LinkedIn post\n\nNo job qualified today, so nothing was posted.\n\n"
+        _append_summary(f"## LinkedIn post\n\nNo job qualified for {post_day}, so nothing was posted.\n\n"
                         f"{_selection_line(selection)}\n")
-        if email_dir is not None:
-            _write_skip_email(email_dir, selection)
-        logger.warning("No job qualified for a LinkedIn post; skipping today.")
+        logger.warning("No job qualified for a LinkedIn post on %s.", post_day)
+        # An earlier trigger may still find nothing before the day's jobs import,
+        # so only the last chance says "no post today", and only once.
+        if email_dir is not None and now >= post_time - FINAL_NOTICE_LEAD:
+            if _note_skipped_day(post_dir, post_day, mode, now, selection):
+                _write_skip_email(email_dir, selection)
         return 0
 
     number = len(history)
@@ -383,6 +409,18 @@ def _write_email(email_dir: Path, entry: dict) -> None:
     )
     (email_dir / "subject.txt").write_text(subject, encoding="utf-8")
     (email_dir / "body.txt").write_text(body, encoding="utf-8")
+
+
+def _note_skipped_day(post_dir: Path, day, mode: str, now: datetime, selection: dict) -> bool:
+    """Record that `day` had no post. False if it was already recorded, so the
+    "no post today" email goes out once however many runs find nothing."""
+    path = post_dir / "skipped_days.json"
+    days = json.loads(path.read_text(encoding="utf-8")) if path.exists() else []
+    if any(entry["date"] == day.isoformat() and entry["mode"] == mode for entry in days):
+        return False
+    days.append({"date": day.isoformat(), "mode": mode, "noted_at": now.isoformat(), "selection": selection})
+    _write_json(path, days)
+    return True
 
 
 def _write_skip_email(email_dir: Path, selection: dict) -> None:
