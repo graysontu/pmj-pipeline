@@ -51,9 +51,13 @@ LINKEDIN_POST_TIMEZONE: str = os.getenv("LINKEDIN_POST_TIMEZONE", "America/New_Y
 # Posting days (Monday=0 ... Sunday=6, in LINKEDIN_POST_TIMEZONE) - Monday, Wednesday, Friday.
 LINKEDIN_POST_WEEKDAYS: frozenset[int] = frozenset(
     int(day) for day in os.getenv("LINKEDIN_POST_WEEKDAYS", "0,2,4").split(","))
-# A run that only starts after this local hour on a posting day posts nothing that
-# day rather than posting in the evening.
+# If no run starts on a posting day before this local hour, the post moves to the
+# next day at LINKEDIN_POST_TIME when that day is a fallback day - Monday's to
+# Tuesday, Wednesday's to Thursday. Friday's is skipped (no weekend posts).
+# Grayson, 2026-09-30.
 LINKEDIN_LATEST_POST_HOUR: int = int(os.getenv("LINKEDIN_LATEST_POST_HOUR", "18"))
+LINKEDIN_FALLBACK_WEEKDAYS: frozenset[int] = frozenset(
+    int(day) for day in os.getenv("LINKEDIN_FALLBACK_WEEKDAYS", "1,3").split(","))
 # A company is not posted again within this many days.
 LINKEDIN_COMPANY_COOLDOWN_DAYS: int = int(os.getenv("LINKEDIN_COMPANY_COOLDOWN_DAYS", "14"))
 # When the post goes live, the job's page must read "posted N days ago" with N at

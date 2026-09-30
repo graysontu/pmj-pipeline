@@ -603,7 +603,7 @@ def test_a_day_with_no_qualifying_job_is_skipped_with_an_email(tmp_path, monkeyp
     assert run.prepare(post_dir, state_path=state_path, site_jobs=RECENT_SITE, page_locator=_davis,
                        use_ai=False, now=NOW, email_dir=email_dir) == 0
     assert not (post_dir / "pending.json").exists()
-    assert (email_dir / "subject.txt").read_text(encoding="utf-8") == "LinkedIn: no post today - no job met the bar"
+    assert (email_dir / "subject.txt").read_text(encoding="utf-8") == "LinkedIn: no post today (no job met the bar)"
     assert "pay at or below the LinkedIn floor 1" in (email_dir / "body.txt").read_text(encoding="utf-8")
 
     buffer = MagicMock()
@@ -616,24 +616,39 @@ def _utc(*args):
     return datetime(*args, tzinfo=timezone.utc)
 
 
-@pytest.mark.parametrize("now,expected", [
+@pytest.mark.parametrize("now,slot_day,post_time,moved", [
     # The three triggers on a summer Monday: 12:17, 4:17 and 8:17 AM EDT all aim at 10 AM.
-    (_utc(2026, 9, 28, 4, 17), _utc(2026, 9, 28, 14, 0)),
-    (_utc(2026, 9, 28, 8, 17), _utc(2026, 9, 28, 14, 0)),
-    (_utc(2026, 9, 28, 12, 17), _utc(2026, 9, 28, 14, 0)),
+    (_utc(2026, 9, 28, 4, 17), "2026-09-28", _utc(2026, 9, 28, 14, 0), False),
+    (_utc(2026, 9, 28, 8, 17), "2026-09-28", _utc(2026, 9, 28, 14, 0), False),
+    (_utc(2026, 9, 28, 12, 17), "2026-09-28", _utc(2026, 9, 28, 14, 0), False),
     # In winter the first trigger lands on Sunday 11:17 PM EST: still Monday 10 AM EST.
-    (_utc(2026, 12, 7, 4, 17), _utc(2026, 12, 7, 15, 0)),
-    (_utc(2026, 12, 7, 12, 17), _utc(2026, 12, 7, 15, 0)),
-    # A manual run on a non-posting day aims at the next posting day.
-    (_utc(2026, 9, 29, 20, 0), _utc(2026, 9, 30, 14, 0)),     # Tuesday -> Wednesday
-    (_utc(2026, 10, 3, 15, 0), _utc(2026, 10, 5, 14, 0)),     # Saturday -> Monday
-    # A run delayed past 10 AM on a posting day posts 15-16 minutes later...
-    (_utc(2026, 9, 30, 17, 0), _utc(2026, 9, 30, 17, 16)),    # 1:00 PM EDT
-    # ...but one that only starts in the evening posts nothing that day.
-    (_utc(2026, 9, 30, 22, 30), None),                         # 6:30 PM EDT
+    (_utc(2026, 12, 7, 4, 17), "2026-12-07", _utc(2026, 12, 7, 15, 0), False),
+    (_utc(2026, 12, 7, 12, 17), "2026-12-07", _utc(2026, 12, 7, 15, 0), False),
+    # A run delayed past 10 AM on a posting day posts 15-16 minutes later.
+    (_utc(2026, 9, 30, 17, 0), "2026-09-30", _utc(2026, 9, 30, 17, 16), False),       # Wed 1:00 PM EDT
+    # Nothing started before 6 PM: Monday's post moves to Tuesday, Wednesday's to Thursday...
+    (_utc(2026, 9, 28, 22, 30), "2026-09-28", _utc(2026, 9, 29, 14, 0), True),        # Mon 6:30 PM EDT
+    (_utc(2026, 9, 30, 22, 30), "2026-09-30", _utc(2026, 10, 1, 14, 0), True),        # Wed 6:30 PM EDT
+    # ...including a trigger so delayed it lands on the Tuesday itself.
+    (_utc(2026, 9, 29, 5, 0), "2026-09-28", _utc(2026, 9, 29, 14, 0), True),          # Tue 1:00 AM EDT
+    (_utc(2026, 9, 29, 16, 0), "2026-09-28", _utc(2026, 9, 29, 16, 16), True),        # Tue noon EDT
+    # ...but Friday's is missed rather than posted on a Saturday.
+    (_utc(2026, 10, 2, 22, 30), "2026-10-02", None, False),                            # Fri 6:30 PM EDT
+    # The next posting day is prepared at most 12 hours ahead.
+    (_utc(2026, 9, 30, 3, 17), "2026-09-30", _utc(2026, 9, 30, 14, 0), False),        # Tue 11:17 PM EDT
 ])
-def test_post_time(now, expected):
-    assert run.next_post_time(now) == expected
+def test_post_slot(now, slot_day, post_time, moved):
+    slot = run.post_slot(now)
+    assert (slot.day.isoformat(), slot.post_time, slot.moved) == (slot_day, post_time, moved)
+
+
+@pytest.mark.parametrize("now", [
+    _utc(2026, 9, 29, 23, 0),    # Tue 7 PM EDT: too late for Monday, Wednesday is 15 hours off
+    _utc(2026, 10, 3, 15, 0),    # Saturday
+    _utc(2026, 10, 4, 23, 0),    # Sunday 7 PM EDT
+])
+def test_no_posting_day_due(now):
+    assert run.post_slot(now) is None
 
 
 def test_no_post_today_email_only_from_the_last_chance_and_only_once(tmp_path, monkeypatch):
@@ -661,9 +676,52 @@ def test_no_post_today_email_only_from_the_last_chance_and_only_once(tmp_path, m
     assert [d["date"] for d in days] == ["2026-09-28"]
 
 
-def test_a_run_that_starts_in_the_evening_does_nothing(tmp_path, state_file, monkeypatch):
+def _publish_live(post_dir, now):
+    buffer = MagicMock()
+    buffer.linkedin_channel.return_value = {"id": "c1", "name": "Page"}
+    buffer.schedule_image_post.return_value = {"id": "post-1"}
+    assert run.publish(post_dir, buffer_client=buffer, wait_for_image=False, now=now) == 0
+    return buffer
+
+
+def test_monday_with_no_run_before_6pm_posts_on_tuesday(tmp_path, state_file, monkeypatch):
     monkeypatch.setattr(config, "LINKEDIN_POSTING_ENABLED", True)
-    email_dir = tmp_path / "email"
-    assert run.prepare(tmp_path / "posts", state_path=state_file, site_jobs=RECENT_SITE, page_locator=_davis,
-                       use_ai=False, now=_utc(2026, 9, 30, 22, 30), email_dir=email_dir) == 0
-    assert not (tmp_path / "posts" / "pending.json").exists() and not email_dir.exists()
+    post_dir = tmp_path / "posts"
+    assert run.prepare(post_dir, state_path=state_file, site_jobs=RECENT_SITE, page_locator=_davis,
+                       use_ai=False, now=_utc(2026, 9, 28, 22, 30)) == 0             # Mon 6:30 PM EDT
+    pending = json.loads((post_dir / "pending.json").read_text(encoding="utf-8"))
+    assert pending["slot"] == "2026-09-28" and pending["moved_to_next_day"] is True
+    assert pending["due_at"] == "2026-09-29T14:00:00+00:00"                          # Tue 10 AM EDT
+    _publish_live(post_dir, _utc(2026, 9, 28, 22, 35))
+
+    # A still-later Monday trigger landing on Tuesday morning does nothing.
+    assert run.prepare(post_dir, state_path=state_file, site_jobs=RECENT_SITE, page_locator=_davis,
+                       use_ai=False, now=_utc(2026, 9, 29, 5, 0)) == 0
+    assert not (post_dir / "pending.json").exists()
+
+
+def test_a_straggler_after_monday_posted_does_not_add_a_tuesday_post(tmp_path, state_file, monkeypatch):
+    monkeypatch.setattr(config, "LINKEDIN_POSTING_ENABLED", True)
+    post_dir = tmp_path / "posts"
+    run.prepare(post_dir, state_path=state_file, site_jobs=RECENT_SITE, page_locator=_davis,
+                use_ai=False, now=_utc(2026, 9, 28, 12, 17))                        # posted Monday
+    _publish_live(post_dir, _utc(2026, 9, 28, 12, 20))
+    assert run.prepare(post_dir, state_path=state_file, site_jobs=RECENT_SITE, page_locator=_davis,
+                       use_ai=False, now=_utc(2026, 9, 28, 22, 30)) == 0             # Mon 6:30 PM straggler
+    assert not (post_dir / "pending.json").exists()
+
+
+def test_friday_with_no_run_before_6pm_is_missed_with_one_email(tmp_path, state_file, monkeypatch):
+    monkeypatch.setattr(config, "LINKEDIN_POSTING_ENABLED", True)
+    post_dir = tmp_path / "posts"
+
+    def attempt(now, name):
+        email_dir = tmp_path / name
+        assert run.prepare(post_dir, state_path=state_file, site_jobs=RECENT_SITE, page_locator=_davis,
+                           use_ai=False, now=now, email_dir=email_dir) == 0
+        assert not (post_dir / "pending.json").exists()
+        return email_dir / "subject.txt"
+
+    first = attempt(_utc(2026, 10, 2, 22, 30), "first")                             # Fri 6:30 PM EDT
+    assert first.read_text(encoding="utf-8") == "LinkedIn: Friday's post was missed"
+    assert not attempt(_utc(2026, 10, 2, 23, 30), "second").exists()

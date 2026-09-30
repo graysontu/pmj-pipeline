@@ -608,9 +608,12 @@ day. So the workflow fires at 04:17, 08:17 and 12:17 UTC on Mon/Wed/Fri. The
 first run to start schedules the post in Buffer for `LINKEDIN_POST_TIME` 10:00
 `America/New_York`; the others hit the one-post-per-day guard and stop. In winter
 the 04:17 trigger lands on the previous evening in Eastern time; `next_post_time`
-handles that by aiming at the next posting day. A run delayed past 10 AM posts
-15 minutes later, but one that starts after `LINKEDIN_LATEST_POST_HOUR` (6 PM)
-posts nothing that day. No randomisation - nothing suggests LinkedIn rewards it,
+handles that by aiming at the next posting day (but never more than 12 hours
+ahead, `MAX_EARLY`). A run delayed past 10 AM posts 15 minutes later. If no run
+starts before `LINKEDIN_LATEST_POST_HOUR` (6 PM), Monday's post moves to Tuesday
+and Wednesday's to Thursday at 10 AM (`LINKEDIN_FALLBACK_WEEKDAYS`), and Friday's
+is missed rather than posted on a weekend, with one "Friday's post was missed"
+email (Grayson, 2026-09-30). No randomisation - nothing suggests LinkedIn rewards it,
 and posting guidance favours consistency. If posts still go missing, the next
 step is an external scheduler calling `workflow_dispatch` (needs a GitHub token).
 
@@ -641,8 +644,14 @@ city"), something upstream broke. Only a run within 3 hours of the post time
 sends that email (earlier triggers stay quiet, since the day's jobs may not have
 imported yet), and only once per day - `skipped_days.json` on the branch records it.
 
-**Never two live posts on one day.** If a live post is already scheduled for the
-day, a further run (a manual re-run, say) does nothing and sends no email.
+**One post per posting day.** Each history entry records the posting day it
+serves (`slot`, which differs from the post date when a post was moved to the
+next day). Once a posting day has a post, or was written off (no qualifying job,
+or missed - `skipped_days.json`), every further run for it does nothing and
+sends no email. Checking the slot rather than the post date is what stops a late
+Monday straggler from adding a Tuesday post when Monday already posted. Entries
+from before `slot` existed fall back to their `due_at` date. Grayson's computer
+plays no part in any of this (he asked): the runs are on GitHub, and Buffer publishes.
 
 **Failure modes.** A Buffer failure leaves the job unrecorded,
 and the next run picks afresh. If Buffer accepted a post but the final push of
