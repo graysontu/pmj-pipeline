@@ -6,6 +6,28 @@ Newest first.
 
 ---
 
+### Community Manager at Redstone Residential
+
+Scheduled Fri Oct 2, 2026 at 10:00 AM EDT · Orem, UT · $60K–$65K/yr · [job page](https://propertymanagementjobs.us/jobs/community-manager-003fb9b2)  
+Buffer: Scheduled on property-management-jobs-us · colours: cream · opening line: claude  
+Why this job: 3 of 281 jobs in the feed qualified. Skipped: posted more than 4 days ago on the site 235, maintenance role 15, no salary 15, pay at or below the LinkedIn floor 5, no city and state 4, not live on the site 2, already posted 1, unsupported logo format .svg 1.
+
+<img src="images/2026-10-02-greenhouse_4425112009.png" width="420" alt="Community Manager card">
+
+```text
+A student housing site next to Utah Valley University is looking for a Community Manager with full P&L ownership, covering occupancy, delinquency, leasing and renewal strategy, and coaching the on-site team.
+
+📍 Orem, UT
+💰 $60K–$65K/yr
+🏢 Redstone Residential
+
+See the full job and apply 👉 https://propertymanagementjobs.us/jobs/community-manager-003fb9b2?utm_source=linkedin&utm_medium=social&utm_campaign=job_post
+
+#PropertyManagement #CommunityManager #NowHiring #OremJobs
+```
+
+---
+
 ### Assistant Manager at Olympus Property
 
 Scheduled Wed Sep 30, 2026 at 12:46 PM EDT · Phoenix, AZ · $25/hr · [job page](https://propertymanagementjobs.us/jobs/assistant-manager-the-tessera-9157f9aa)  
