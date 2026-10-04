@@ -4,6 +4,31 @@ Reference this when troubleshooting. These are things that aren't obvious from r
 
 ---
 
+## Start every session by syncing with GitHub
+
+GitHub's `main` branch is the master copy. The pipeline commits `state.json` and
+`feed.xml` to it every day, and work is done from both local and cloud sessions, so a
+local checkout falls behind within a day. Before reading, changing or running anything:
+
+1. `git status`. If there are uncommitted changes, tell Grayson what they are and ask
+   before stashing, committing or discarding anything.
+2. `git checkout main` and `git pull origin main`. If the pull reports a conflict,
+   stop and explain it in plain words; never resolve it by discarding the remote side.
+3. Make changes on a new branch, open a pull request and merge it into `main` (squash,
+   matching the history), rather than pushing to `main` directly - the daily run
+   pushes there too.
+
+Never commit `data/state.json` or `output/feed.xml` from a local session: only the
+runner writes them, and committing a stale copy reverts days of pipeline work. If a
+local run changed them, `git checkout -- data/state.json output/feed.xml` before
+committing. Files git does not track stay local and are not synced: `.env`, `.venv`,
+`data/classification_cache.json`, `data/rewrite_cache.json`.
+
+Grayson works in local sessions and is not a git user - do the syncing for him and
+explain anything that needs his decision without git jargon.
+
+---
+
 ## Greenhouse API
 
 **Use `first_published`, not `created_at` or `updated_at`**
@@ -81,16 +106,49 @@ without it** (fixed 2026-09-26, `_parse_segment_ignoring_notes` in `geo.py`). We
 writes "Richmond, VA (Henrico/West End)" and "Mount Juliet, TN (Nashville)"; the note
 glued onto the state ("VA (Henrico/West End)") so nothing resolved. Only notes at the
 *end* are removed, and only after the full string fails, so an already-working value
-("Chicago, Illinois, United States (Remote)") is untouched and a place that exists
-only inside the note ("Olympus Grand Crossing (Katy, TX)") is not dug out - it stays
-unresolved. Measured on all 2,468 live postings across the 61 boards: 16 went from
-unresolved to resolved (Weinstein 14, Lincoln 2 "Charlotte, NC (Hybrid)"), none
-changed that already resolved. None was in the published feed at the time, so this
-helps future jobs only.
+("Chicago, Illinois, United States (Remote)") is untouched. Measured on all 2,468 live
+postings across the 61 boards: 16 went from unresolved to resolved (Weinstein 14,
+Lincoln 2 "Charlotte, NC (Hybrid)"), none changed that already resolved. None was in
+the published feed at the time, so this helps future jobs only.
+
+**A property name with its city and state in parentheses resolves to that place**
+(added 2026-10-04, `_parse_place_in_note` in `geo.py`; this reverses the 2026-09-26
+choice to leave such places unresolved). Bigos writes every location this way: "Era
+on Excelsior (Saint Louis Park, Minnesota)". It is the last thing tried, and only when
+the text outside the parentheses names no US state (so "Concord, NC (Charlotte area)"
+keeps Concord, not the metro), is not a remote role, and the text inside is a complete
+city and state. Measured before adopting it, on 2,271 live postings across every board
+plus Bigos, Brighthaven, Evergreen and Morguard: 32 went from unresolved to resolved,
+all Bigos, all correct; nothing that already resolved changed; and none of the 1,794
+locations ever recorded in `state.json` changed, so the published feed was untouched
+(`audit_locations`: 279 of 279 unchanged). "Olympus Grand Crossing (Katy, TX)" now
+resolves to Katy, TX too.
 
 **Semicolon-separated multi-location strings must be split first.** Splitting on
 commas alone turned `"Reno, NV; Sparks, NV"` into the city `"Nv; Sparks"`. The first
 segment that resolves wins.
+
+**No non-US job is ever published - Grayson's rule, "no matter what"** (added
+2026-10-04). PeakMade's "Kingston, Ontario" was published once before this existed.
+Two layers, both in place for every source:
+
+- Each fetcher drops listings whose ATS-supplied country is explicitly not the US,
+  before any detail fetch: Workable `location.countryCode`, SmartRecruiters
+  `location.country`, Lever `country`, Ashby `address.postalAddress.addressCountry`
+  (primary and secondary locations; kept if any is the US), Recruitee `country_code`.
+  A missing country is not evidence either way (`geo.listed_outside_us`).
+- `run()` in `main.py` then drops any job whose location text names a foreign country
+  or Canadian province (`geo.names_foreign_country`), which is all Greenhouse gives.
+  It runs before the age filter, so no later stage ever sees a non-US job. The last
+  comma-separated part is the country position: "Perth, WA, Australia" is foreign,
+  "Lebanon, PA" and "Mexico, MO" are US towns, and Georgia is a state. A requisition
+  that is also listed somewhere in the US ("Toronto, ON; Seattle, WA") is kept.
+
+Measured on all 1,794 jobs ever recorded in `state.json`: exactly one flagged, the
+Kingston one. Yugo, added the same day, lists its UK and European jobs on the same
+Workable account, which is why the Workable filter matters. Only full country names
+are matched in text - two-letter codes collide with states ("CA") - so add a country
+to `_FOREIGN_COUNTRIES` if a new employer's format slips through.
 
 **Berkshire Group has no city/state in their location field** — only property names. We suppress `<country>` in the XML when both city and state are empty to avoid JobBoardly showing "United States." The strict-state rule above makes that suppression fire correctly for every such company, not just the ones whose parse happened to fail.
 
@@ -141,6 +199,9 @@ the real fetchers and count postings from the last 2/7/30 days.
 **Workable throttles probing hard.** Probing a few hundred Workable slugs from one
 IP brought sustained 429s for 30+ minutes, which also broke local runs of the
 existing Workable fetchers. Probe Workable last, slowly, and only for specific leads.
+On 2026-10-04 a few dozen `apply.workable.com` requests from one IP earned 429s
+carrying `Retry-After: 57415` (16 hours). The cross-company search at
+`jobs.workable.com` (below) is a separate service and was not throttled.
 
 **Looked at and rejected on 2026-09-23**, so nobody re-researches them: Evernest
 (posts Philippines/Mexico roles that would publish with no US location), Flow, CIM
@@ -162,6 +223,79 @@ Supervisor", listed as "Canvas", really Austin, TX) went live with no city.
 **LivCor and AIR Communities are both Blackstone operators**, and livcor.com redirects
 to AIR, but their SmartRecruiters boards list different communities (no overlapping
 postings on 2026-09-23). They are not duplicates.
+
+### Adding companies (second round, 2026-10-04)
+
+**Use the ATS vendors' own cross-company job search - it finds what `site:` searches
+miss.** By this round, `site:` searches on Greenhouse returned almost only companies
+already in `sources.yaml`.
+- Workable: `GET https://jobs.workable.com/api/v1/jobs?query=leasing%20consultant&location=United%20States`,
+  paged with `pageToken` = the response's `nextPageToken`. It covers every Workable
+  account and gives the company name and website, but not the account slug: find that
+  with `site:apply.workable.com "<company>"`, or confirm a guess with
+  `GET https://apply.workable.com/api/v1/widget/accounts/<slug>` (counts against the
+  apply.workable.com throttle).
+- SmartRecruiters: `GET https://jobs.smartrecruiters.com/sr-jobs/search?keyword=...&limit=100&offset=...&country=us`
+  returns each posting's company identifier, which is the slug. Matching is loose, so
+  filter by title.
+- Greenhouse and Lever have no public cross-company search. After title searches were
+  exhausted, searching for board front pages still found new ones
+  (`site:job-boards.greenhouse.io "Jobs at" Residential`, likewise Properties,
+  Communities, Homes, Apartments).
+- Measure every candidate the same way: PM-titled postings in the last 7 and 30 days,
+  share of PM titles, how many locations `geo.resolve_location` resolves, and US share.
+  The boards already in `sources.yaml` had a median of 8.5 PM postings per 30 days.
+
+**Most large operators are on ATSs the pipeline cannot read.** Crawling the careers
+pages of ~150 multifamily, affordable, student, single-family, HOA, commercial and
+manufactured-housing operators found UKG/UltiPro (34), Workday (26), Harri (17), ADP
+(17), iCIMS (12), Fountain (12), Dayforce (7), RentCafe (7) and Paylocity (7). Only
+Morguard and Bigos were on supported systems. Don't repeat the crawl; reaching the big
+operators needs a new fetcher (UKG, Workday, Harri or Paylocity).
+
+**SmartRecruiters accounts being retired show `TBD2026...` identifiers.** FPI
+Management, Maryland Management Company and Aimco Apartment Homes return zero postings,
+and looking up one of their old postings says the identifier is now e.g.
+`TBD20260518FPIManagementInc`. They have left SmartRecruiters. WinnCompanies' Lever
+board is empty too; its careers page now points to Dayforce.
+
+**Added on 2026-10-04** (PM postings in the prior 30 days, at research time):
+Brighthaven (Greenhouse, 23), Yugo (Workable, 13 US only), Morguard (SmartRecruiters,
+11), Evergreen Residential (Greenhouse, 9, single-family rentals), Bigos Management
+(Greenhouse, 7), DePaul Housing Management (Workable, 6, all in one week, so its
+usual pace is unknown), Denton Floyd Real Estate Group (Workable, 6, only 27% PM
+titles), LV Collective (Workable, 5, 41% PM titles, student housing), Taylor
+Management Company (Workable, 4, NJ condo/HOA), Lynco Properties (Workable, 3) and
+Mountain Valley (Workable, 3, Colorado HOA/resort). The last few were added for HOA
+and regional coverage, not volume. Brighthaven is an Avanath / BRIDGE Housing venture
+that shares Avanath's Greenhouse offices; it is a separate board, not a duplicate.
+Yugo's Workable account also lists UK and European jobs - see "No non-US job is ever
+published". Bigos depends on the parentheses rule above.
+
+**Looked at and rejected on 2026-10-04**, so nobody re-researches them:
+- Too few PM postings (1-2 a month): Allmark Property Management, Farbman Group,
+  SoLa Impact, Boulder Housing Partners, F&F Properties, Encore Property Management,
+  Keeley Properties.
+- Empty or dormant boards: Grand Peaks, ATC Development, Holton-Wise, Billingsley,
+  Elysian Living, Hercules Living, Waypoint Residential, Aria Luxury Apartments,
+  American Property Management, Real Equity Management (404), ResProp (`resprop`,
+  404), Campus Advantage (Lever 404).
+- Staffing agencies and aggregators: NoGigiddy (1,800+ jobs for clients), HOA Talent,
+  Samazon Staffing, Classet.
+- Not property management: Second Nature (Ashby, proptech), Experience Senior Living,
+  Colorado Coalition for the Homeless, LISC, DivcoWest, BioMed Realty, Empire State
+  Realty Trust, Hazel Valley Homes (corporate roles only), Collective Residential.
+
+**Logos for this round, and how to source them.** ATS-uploaded logos (Workable,
+SmartRecruiters) are only 120px, and the LinkedIn card enlarges logos up to 3x, so
+prefer the company's own SVG. In a cloud session, render SVGs with node Playwright
+from local files only: Chromium there does not trust the session's proxy
+certificate, so it cannot load live sites (don't disable TLS checks to get around
+it). LV Collective's site logo is white, so its file is their vector logo in the gold
+(#9F7E50) of their own Workable upload. Yugo's is the badge from parent company GSA
+Group's launch announcement (Workable's wordmark is only 91x39px). bigos.com is a
+parked domain; Bigos's site is tbigos.com (behind a Cloudflare challenge), and its
+logo came from the inline SVG on rentals.tbigos.com.
 
 ---
 
@@ -196,12 +330,12 @@ for entry in cache.values():
 
 **The age cutoff is a rolling `now - JOB_MAX_AGE_DAYS`, so the time of day you run matters.** It is recomputed on every run, not anchored to a calendar day. On 2026-08-23 the 16:14 UTC run found 48 jobs inside a 2-day window; a manual re-run at 23:31 UTC the same day found **6** — about 42 jobs published during the US afternoon two days earlier fell out the back of the window in those seven hours. Consequence: re-running a failed job later the same day does **not** recover what the failed run would have published. If a run fails and you care about its jobs, either re-run immediately or temporarily raise `JOB_MAX_AGE_DAYS`.
 
-**A daily publish cap is enforced by `MAX_JOBS_PER_RUN`** (`config.py`, default 11 since 2026-09-26 - it was 9 - override via env). It is applied **after classification and before rewrite** — after, so the cap counts real PM jobs rather than candidates the classifier would reject; before, so deferred jobs cost no Sonnet rewrite tokens. Two things to preserve if you touch it:
+**A daily publish cap is enforced by `MAX_JOBS_PER_RUN`** (`config.py`, default 13 since 2026-10-04 - it was 11 from 2026-09-26, and 9 before that - override via env). It is applied **after classification and before rewrite** — after, so the cap counts real PM jobs rather than candidates the classifier would reject; before, so deferred jobs cost no Sonnet rewrite tokens. Two things to preserve if you touch it:
 
 - **Don't reassign `kept`.** The health-check block computes `rejection_rate` from `classified` vs `kept`; capping `kept` in place makes every capped run look like a >50% rejection spike and writes a bogus NOTICE.txt. The capped list lives in `publishable`.
 - **The selection rotates by date and must keep doing so.** `kept` follows `sources.yaml` order and the 1-per-company cap means each entry is a different company, so a plain `kept[:N]` would hand every slot to the same top-of-file companies daily and starve the ones at the bottom. The offset steps by the cap size per day so consecutive days take near-disjoint slices; with 15–20 qualifying jobs this covers every company within about 6 days.
 
-**Deferred jobs get one extra chance, not an unlimited queue.** They aren't written to state, so the next run reconsiders them — but only while they remain inside the `JOB_MAX_AGE_DAYS` window. At ~15–20 qualifying jobs/day against a cap of 9, expect a persistent surplus that ages out unpublished. After 15 companies were added on 2026-09-24 the first run found 32 qualifying jobs, so even at 11 most days still leave a surplus. The cap is a ceiling, not a backlog.
+**Deferred jobs get one extra chance, not an unlimited queue.** They aren't written to state, so the next run reconsiders them — but only while they remain inside the `JOB_MAX_AGE_DAYS` window. At ~15–20 qualifying jobs/day against a cap of 9, expect a persistent surplus that ages out unpublished. After 15 companies were added on 2026-09-24 the first run found 32 qualifying jobs, and the cap of 11 was reached every day from 2026-09-28. It went to 13 on 2026-10-04, when 11 more companies were added; expect a surplus most days still. The cap is a ceiling, not a backlog.
 
 ---
 
@@ -332,6 +466,26 @@ Note the retry predicate must be wrapped in tenacity's `retry_if_exception(...)`
 Passing a bare function to `retry=` silently never fires - tenacity hands that
 callable a `RetryCallState`, not the exception, so every `isinstance` check is
 False. A test caught this; keep `test_request_retries_a_429_then_succeeds`.
+
+**A Workable lockout is not retried into, and stops further Workable requests for
+the run** (added 2026-10-04, `pipeline/throttle.py`). Workable's 429 can carry a
+`Retry-After` of hours (57,415 seconds was seen), and it applies to the whole IP, not
+one account. So:
+- A 429 whose `Retry-After` is over `MAX_RETRY_AFTER` (60s) is not retried. A shorter
+  one is waited out exactly. With no header, the old exponential backoff applies.
+- Once a Workable census is still 429 after that, `run_census` skips the remaining
+  Workable boards ("skipped: workable was rate-limiting this run"). They are
+  `unknown` like any unavailable board: nothing is removed, and strike counts are
+  untouched. Other ATSs keep the per-board behaviour; none has been seen to limit by IP.
+- Discovery (`sources/workable.py`) now spaces its page and detail requests by
+  `REQUEST_DELAY` (0.3s), retries a short 429 or 5xx, and after a lasting 429 skips
+  the remaining Workable accounts for the run. Their new jobs are picked up on the next
+  run, inside the `JOB_MAX_AGE_DAYS` window.
+
+The first live test hit an IP that was already locked out: one request, no retries,
+and the other six accounts skipped. The old code would have sent up to 28.
+Workable rejects a larger page size (`limit` in the body is HTTP 400), so it stays at
+10 per request.
 
 ### Feed guard
 

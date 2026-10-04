@@ -5,6 +5,7 @@ import httpx
 from tenacity import retry, retry_if_exception_type, stop_after_attempt, wait_exponential
 
 from pipeline.config import JOB_MAX_AGE_DAYS
+from pipeline.geo import listed_outside_us
 from pipeline.models import RawJob
 from pipeline.sources.utils import html_to_text, infer_remote_type, normalize_job_type, normalize_location
 
@@ -138,6 +139,7 @@ def fetch_smartrecruiters_jobs(slug: str, company_name: str) -> list[RawJob]:
         fresh = [
             j for j in listings
             if (_parse_iso(j.get("releasedDate", "")) or datetime.now(tz=timezone.utc)) >= cutoff
+            and not listed_outside_us((j.get("location") or {}).get("country"))
         ]
 
         jobs: list[RawJob] = []

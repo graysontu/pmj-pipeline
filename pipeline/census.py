@@ -19,7 +19,9 @@ import time
 from dataclasses import dataclass
 
 import httpx
-from tenacity import retry, retry_if_exception, stop_after_attempt, wait_exponential
+from tenacity import retry, retry_if_exception, stop_after_attempt
+
+from pipeline import throttle
 
 logger = logging.getLogger(__name__)
 
@@ -65,26 +67,22 @@ def _check_complete(found: int, declared: int | None, slug: str) -> None:
         )
 
 
-# Statuses worth retrying. 429 is the one that matters: Workable rate-limits the
-# census when its ~77 requests arrive in a burst, and on 2026-09-18 that put all 7
-# Workable accounts out of reach for a whole run - 29 feed jobs (10.5%) went
-# unchecked. 404 is deliberately absent; a dead slug should fail fast.
-RETRYABLE_STATUSES = frozenset({429, 500, 502, 503, 504})
+# Statuses worth retrying live in pipeline/throttle.py. 429 is the one that
+# matters: Workable rate-limits the census when its requests arrive in a burst,
+# and on 2026-09-18 that put all 7 Workable accounts out of reach for a whole run
+# - 29 feed jobs (10.5%) went unchecked. A 429 naming a long Retry-After is not
+# retried at all (see throttle.py), and run_census stops asking that ATS.
+RETRYABLE_STATUSES = throttle.RETRYABLE_STATUSES
+_is_retryable = throttle.is_retryable
 
-
-def _is_retryable(exc: BaseException) -> bool:
-    if isinstance(exc, httpx.TransportError):
-        return True
-    return (
-        isinstance(exc, httpx.HTTPStatusError)
-        and exc.response.status_code in RETRYABLE_STATUSES
-    )
+# ATSs whose 429 locks out the whole IP rather than one board.
+IP_RATE_LIMITED = frozenset({"workable"})
 
 
 @retry(
     retry=retry_if_exception(_is_retryable),
     stop=stop_after_attempt(4),
-    wait=wait_exponential(multiplier=2, min=2, max=30),
+    wait=throttle.wait_for_retry,
     reraise=True,
 )
 def _request(client: httpx.Client, method: str, url: str, **kwargs) -> dict | list:
@@ -232,6 +230,12 @@ def run_census(sources: dict[str, list[dict]]) -> dict[tuple[str, str], BoardCen
     """Census every board in sources.yaml. Never raises: a board that cannot be
     established is returned with ok=False so its jobs stay 'unknown'."""
     results: dict[tuple[str, str], BoardCensus] = {}
+    # Workable rate-limits by IP: once it is still answering 429 after the retries,
+    # every further request fails the same way and can extend the lockout, so its
+    # remaining boards are skipped for this run. They come back as unknown, which
+    # removes nothing and leaves strike counts alone. Other ATSs have not been seen
+    # to limit by IP and keep the per-board behaviour.
+    rate_limited: set[str] = set()
 
     with httpx.Client(timeout=TIMEOUT, headers={"User-Agent": USER_AGENT}) as client:
         for source_type, entries in sources.items():
@@ -247,12 +251,21 @@ def run_census(sources: dict[str, list[dict]]) -> dict[tuple[str, str], BoardCen
                     )
                     continue
 
+                if source_type in rate_limited:
+                    results[(source_type, slug)] = BoardCensus(
+                        source_type, slug, company_name, False, frozenset(),
+                        error=f"skipped: {source_type} was rate-limiting this run (HTTP 429)",
+                    )
+                    continue
+
                 try:
                     ids, declared = fn(client, slug)
                 except CensusError as exc:
                     error = str(exc)
                 except httpx.HTTPStatusError as exc:
                     error = f"HTTP {exc.response.status_code}"
+                    if source_type in IP_RATE_LIMITED and throttle.is_rate_limited(exc):
+                        rate_limited.add(source_type)
                 except Exception as exc:
                     error = f"{type(exc).__name__}: {exc}"
                 else:

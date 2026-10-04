@@ -22,6 +22,7 @@ from pipeline.config import (
     SITE_BASE_URL,
     SOURCES,
 )
+from pipeline.geo import names_foreign_country
 from pipeline.indexing_api import notify_google
 from pipeline.models import RawJob
 from pipeline.output_csv import generate_jobs_csv
@@ -268,6 +269,17 @@ def run() -> int:
     print(f"\nFetched {len(all_jobs)} total jobs")
     for source_type, count in sorted(fetch_counts.items()):
         print(f"  {source_type}: {count} jobs")
+
+    # The board is US-only. Fetchers already drop listings their ATS marks with a
+    # non-US country; this catches the rest from the location text, which is all
+    # Greenhouse provides. It runs before anything else so no later stage ever
+    # sees a non-US job.
+    foreign = [j for j in all_jobs if names_foreign_country(j.location)]
+    if foreign:
+        for job in foreign:
+            logger.info("Dropped non-US job %s (%s): %r", job.source_id, job.company, job.location)
+        all_jobs = [j for j in all_jobs if not names_foreign_country(j.location)]
+        logger.info("Dropped %d non-US jobs. %d remain.", len(foreign), len(all_jobs))
 
     cutoff = datetime.now(tz=timezone.utc) - timedelta(days=JOB_MAX_AGE_DAYS)
     fresh_jobs = [j for j in all_jobs if j.date_posted.astimezone(timezone.utc) >= cutoff]

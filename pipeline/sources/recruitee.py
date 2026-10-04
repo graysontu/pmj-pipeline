@@ -4,6 +4,7 @@ from datetime import datetime, timezone
 import httpx
 from tenacity import retry, retry_if_exception_type, stop_after_attempt, wait_exponential
 
+from pipeline.geo import listed_outside_us
 from pipeline.models import RawJob
 from pipeline.sources.utils import html_to_text, infer_remote_type, normalize_job_type
 
@@ -82,6 +83,8 @@ def fetch_recruitee_jobs(slug: str, company_name: str) -> list[RawJob]:
     jobs_raw = data.get("offers", [])
     jobs: list[RawJob] = []
     for job in jobs_raw:
+        if listed_outside_us(job.get("country_code")):
+            continue
         try:
             jobs.append(_parse_job(job, company_name, company_url))
         except Exception as exc:
