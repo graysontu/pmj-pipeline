@@ -103,9 +103,10 @@ Before the first workflow run, make sure `data/state.json` and `output/feed.xml`
 The pipeline is scheduled once a day at **16:00 UTC** (cron: `0 16 * * *`). GitHub starts scheduled runs late, often by 3 to 5 hours, so expect it to land in the afternoon or evening UTC. Each run:
 
 - Fetches all configured sources
+- Drops every job outside the US (the board is US-only; see CLAUDE.md)
 - Keeps jobs the employer posted in the last `JOB_MAX_AGE_DAYS` (2) days, at most one per company, and skips jobs already in state
 - Classifies new jobs with Claude Haiku
-- Publishes at most `MAX_JOBS_PER_RUN` (11) new jobs, rotating which companies get the slots each day
+- Publishes at most `MAX_JOBS_PER_RUN` (13) new jobs, rotating which companies get the slots each day
 - Rewrites PM jobs with Claude Sonnet (cached, no re-cost for existing jobs)
 - Extracts salary data with Claude Haiku
 - Checks every published job against its employer's board and removes jobs confirmed closed on two runs in a row

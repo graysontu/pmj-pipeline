@@ -192,7 +192,33 @@ def _parse_segment_ignoring_notes(segment: str) -> tuple[str, str]:
             break
         stripped = shorter
         city, state = _parse_segment(stripped)
+    if not (city and state):
+        city, state = _parse_place_in_note(segment)
     return city, state
+
+
+# "Era on Excelsior (Saint Louis Park, Minnesota)": a property name followed by
+# its city and state in parentheses, closed.
+_PLACE_IN_NOTE = re.compile(r"^(?P<outside>[^()]+?)\s*\((?P<inside>[^()]+)\)\s*$")
+
+
+def _parse_place_in_note(segment: str) -> tuple[str, str]:
+    """The city and state from a closing parenthetical, for a location that names
+    a property outside the parentheses and its place inside them.
+
+    Bigos writes every location this way, and Olympus wrote "Olympus Grand
+    Crossing (Katy, TX)". Used only as a last resort, and only when the text
+    outside the parentheses names no US state (so it is not itself a place with a
+    note, as in "Concord, NC (Charlotte area)") and is not a remote role, and the
+    text inside is a complete city and state.
+    """
+    match = _PLACE_IN_NOTE.match(segment.strip())
+    if not match:
+        return "", ""
+    outside = match.group("outside")
+    if mentions_us_state(outside) or "remote" in outside.lower():
+        return "", ""
+    return _parse_segment(match.group("inside"))
 
 
 def _parse_segment(segment: str) -> tuple[str, str]:
@@ -304,6 +330,103 @@ def mentions_us_state(text: str) -> bool:
     if any(token in _US_STATES for token in re.findall(r"\b[A-Z]{2}\b", text)):
         return True
     return bool(_STATE_NAME_RE.search(text))
+
+
+# --- non-US guard ---------------------------------------------------------
+# The board is US-only, and no non-US job may be published. Two checks enforce it:
+# the fetchers drop listings whose ATS-supplied country is explicitly not the US
+# (is_foreign_country), and main.py drops any job whose location text names a
+# foreign country or Canadian province (names_foreign_country), which is the only
+# signal Greenhouse provides. PeakMade's "Kingston, Ontario" was published once,
+# before either check existed.
+
+_US_COUNTRY_VALUES = {
+    "US", "USA", "U.S.", "U.S.A.", "UNITED STATES", "UNITED STATES OF AMERICA", "AMERICA",
+}
+
+# Full names only: two-letter country codes collide with state codes ("CA" is
+# California). Georgia is deliberately absent - it is a state here.
+_FOREIGN_COUNTRIES = {
+    "AFGHANISTAN", "ALBANIA", "ALGERIA", "ANDORRA", "ANGOLA", "ARGENTINA", "ARMENIA", "AUSTRALIA",
+    "AUSTRIA", "AZERBAIJAN", "BAHAMAS", "THE BAHAMAS", "BAHRAIN", "BANGLADESH", "BARBADOS", "BELARUS",
+    "BELGIUM", "BELIZE", "BENIN", "BERMUDA", "BHUTAN", "BOLIVIA", "BOSNIA AND HERZEGOVINA", "BOTSWANA",
+    "BRAZIL", "BRASIL", "BRUNEI", "BULGARIA", "BURKINA FASO", "BURUNDI", "CAMBODIA", "CAMEROON",
+    "CANADA", "CAPE VERDE", "CAYMAN ISLANDS", "CHAD", "CHILE", "CHINA", "COLOMBIA", "CONGO",
+    "COSTA RICA", "CROATIA", "CUBA", "CYPRUS", "CZECH REPUBLIC", "CZECHIA", "DENMARK", "DJIBOUTI",
+    "DOMINICA", "DOMINICAN REPUBLIC", "ECUADOR", "EGYPT", "EL SALVADOR", "ESTONIA", "ESWATINI",
+    "ETHIOPIA", "FIJI", "FINLAND", "FRANCE", "GABON", "GAMBIA", "GERMANY", "DEUTSCHLAND", "GHANA",
+    "GREECE", "GRENADA", "GUATEMALA", "GUINEA", "GUYANA", "HAITI", "HONDURAS", "HONG KONG", "HUNGARY",
+    "ICELAND", "INDIA", "INDONESIA", "IRAN", "IRAQ", "IRELAND", "ISRAEL", "ITALY", "IVORY COAST",
+    "JAMAICA", "JAPAN", "JORDAN", "KAZAKHSTAN", "KENYA", "KOREA", "SOUTH KOREA", "KOSOVO", "KUWAIT",
+    "KYRGYZSTAN", "LAOS", "LATVIA", "LEBANON", "LESOTHO", "LIBERIA", "LIBYA", "LIECHTENSTEIN",
+    "LITHUANIA", "LUXEMBOURG", "MACAU", "MADAGASCAR", "MALAWI", "MALAYSIA", "MALDIVES", "MALI",
+    "MALTA", "MAURITANIA", "MAURITIUS", "MEXICO", "MÉXICO", "MOLDOVA", "MONACO", "MONGOLIA",
+    "MONTENEGRO", "MOROCCO", "MOZAMBIQUE", "MYANMAR", "NAMIBIA", "NEPAL", "NETHERLANDS",
+    "THE NETHERLANDS", "NEW ZEALAND", "NICARAGUA", "NIGER", "NIGERIA", "NORTH MACEDONIA", "NORWAY",
+    "OMAN", "PAKISTAN", "PANAMA", "PAPUA NEW GUINEA", "PARAGUAY", "PERU", "PHILIPPINES", "POLAND",
+    "PORTUGAL", "QATAR", "ROMANIA", "RUSSIA", "RWANDA", "SAUDI ARABIA", "SENEGAL", "SERBIA",
+    "SIERRA LEONE", "SINGAPORE", "SLOVAKIA", "SLOVENIA", "SOMALIA", "SOUTH AFRICA", "SPAIN",
+    "ESPAÑA", "SRI LANKA", "SUDAN", "SURINAME", "SWEDEN", "SWITZERLAND", "SYRIA", "TAIWAN",
+    "TAJIKISTAN", "TANZANIA", "THAILAND", "TOGO", "TRINIDAD AND TOBAGO", "TUNISIA", "TURKEY",
+    "TÜRKIYE", "TURKMENISTAN", "UGANDA", "UKRAINE", "UNITED ARAB EMIRATES", "UAE", "URUGUAY",
+    "UZBEKISTAN", "VENEZUELA", "VIETNAM", "VIET NAM", "YEMEN", "ZAMBIA", "ZIMBABWE",
+    "UNITED KINGDOM", "UK", "U.K", "GREAT BRITAIN", "BRITAIN", "ENGLAND", "SCOTLAND", "WALES",
+    "NORTHERN IRELAND",
+    # Canadian provinces and territories, which often stand in for the country.
+    "ONTARIO", "QUEBEC", "QUÉBEC", "BRITISH COLUMBIA", "ALBERTA", "MANITOBA", "SASKATCHEWAN",
+    "NOVA SCOTIA", "NEW BRUNSWICK", "NEWFOUNDLAND", "NEWFOUNDLAND AND LABRADOR",
+    "PRINCE EDWARD ISLAND", "YUKON", "NUNAVUT", "NORTHWEST TERRITORIES",
+}
+# Province codes are only trusted in the last position ("Kingston, ON"); none of
+# them is also a US state code.
+_CANADIAN_PROVINCE_CODES = {"AB", "BC", "MB", "NB", "NL", "NS", "NT", "NU", "ON", "PE", "QC", "SK", "YT"}
+
+_LOCATION_TOKEN_SPLIT = re.compile(r"\s*[,|/()\[\]]\s*|\s+[-–—]\s+")
+
+
+def is_foreign_country(value: str | None) -> bool:
+    """True when an ATS-supplied country value is present and is not the US.
+
+    A missing or blank value is not foreign: it says nothing, and the location
+    text check in names_foreign_country still applies afterwards."""
+    if not value or not str(value).strip():
+        return False
+    return str(value).strip().upper() not in _US_COUNTRY_VALUES
+
+
+def listed_outside_us(*countries: str | None) -> bool:
+    """True when an ATS gives at least one country for a listing and none of them
+    is the US. A listing with no country at all is left to names_foreign_country."""
+    given = [c for c in countries if c and str(c).strip()]
+    return bool(given) and all(is_foreign_country(c) for c in given)
+
+
+def names_foreign_country(location: str) -> bool:
+    """True when a location string places the job outside the US.
+
+    A requisition listed in several places ("Toronto, ON; Seattle, WA") is kept
+    when any of them is in the US, since it can be filled here. Within one place,
+    the last part is the country position: "Perth, WA, Australia" is foreign even
+    though "WA" reads as Washington, while "Lebanon, PA" and "Mexico, MO" are US
+    towns. A place that does not resolve to a US state is foreign if any part of
+    it names another country ("Canada - Toronto", "Remote (Canada)"); a bare
+    "Lebanon" is treated as foreign too, since it cannot be shown to be in the US.
+    """
+    if not location or not location.strip():
+        return False
+    foreign = us = False
+    for segment in (s.strip() for s in location.split(";")):
+        tokens = [t.strip(" .") for t in _LOCATION_TOKEN_SPLIT.split(segment) if t.strip(" .")]
+        if not tokens:
+            continue
+        upper = [t.upper() for t in tokens]
+        if upper[-1] in _FOREIGN_COUNTRIES or tokens[-1] in _CANADIAN_PROVINCE_CODES:
+            foreign = True
+        elif resolve_location(segment).state:
+            us = True
+        elif any(t in _FOREIGN_COUNTRIES for t in upper):
+            foreign = True
+    return foreign and not us
 
 
 def parse_location(location: str) -> tuple[str, str]:

@@ -188,8 +188,32 @@ def test_a_parenthetical_note_is_only_dropped_when_the_location_fails_without_it
 @pytest.mark.parametrize("raw", [
     "Fairstead Management - Corp Remote (Property)",
     "Arborlane Apartments (fka Corporate Woods); Van Mall North",
-    # A place that exists only inside the note is not dug out of it.
-    "Olympus Grand Crossing (Katy, TX)",
+    # The note holds no complete city and state.
+    "Lakeside Commons (Houston area)",
+    "Northpointe (Texas)",
+    # A remote role does not take the place named in its note.
+    "Remote (Dallas, TX)",
 ])
 def test_dropping_a_note_does_not_invent_a_location(raw):
     assert parse_location(raw) == ("", "")
+
+
+@pytest.mark.parametrize("raw,expected", [
+    # Bigos writes every location as "Property (City, State)".
+    ("Era on Excelsior (Saint Louis Park, Minnesota)", ("Saint Louis Park", "MN")),
+    ("Cedars Lakeside (Little Canada, Minnesota)", ("Little Canada", "MN")),
+    ("Willow Pond (Burnsville, Minnesota) ", ("Burnsville", "MN")),
+    ("Bigos Management- Corporate Office (Golden Valley, Minnesota)", ("Golden Valley", "MN")),
+    ("Olympus Grand Crossing (Katy, TX)", ("Katy", "TX")),
+    # One property per segment of a multi-location requisition.
+    ("Edina Towers (Edina, Minnesota); Park Towers (Saint Louis Park, Minnesota)", ("Edina", "MN")),
+])
+def test_a_property_name_with_its_place_in_parentheses_resolves(raw, expected):
+    assert parse_location(raw) == expected
+
+
+def test_a_place_with_a_note_still_reads_the_place_not_the_note():
+    """The note is only read when nothing outside it names a state; a location
+    that is itself a place keeps its own city, not the metro in the note."""
+    assert parse_location("Concord, NC (Charlotte area)") == ("Concord", "NC")
+    assert parse_location("Mount Juliet, TN (Nashville, TN)") == ("Mount Juliet", "TN")

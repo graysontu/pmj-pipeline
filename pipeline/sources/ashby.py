@@ -4,6 +4,7 @@ from datetime import datetime, timezone
 import httpx
 from tenacity import retry, retry_if_exception_type, stop_after_attempt, wait_exponential
 
+from pipeline.geo import listed_outside_us
 from pipeline.models import RawJob
 from pipeline.sources.utils import html_to_text, infer_remote_type, normalize_job_type
 
@@ -80,6 +81,10 @@ def fetch_ashby_jobs(slug: str, company_name: str) -> list[RawJob]:
     jobs_raw = data.get("jobs", [])
     jobs: list[RawJob] = []
     for job in jobs_raw:
+        places = [job] + list(job.get("secondaryLocations") or [])
+        countries = (((p.get("address") or {}).get("postalAddress") or {}).get("addressCountry") for p in places)
+        if listed_outside_us(*countries):
+            continue
         try:
             jobs.append(_parse_job(job, company_name, company_url))
         except Exception as exc:

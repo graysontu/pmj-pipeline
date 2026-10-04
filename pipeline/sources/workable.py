@@ -1,10 +1,13 @@
 import logging
+import time
 from datetime import datetime, timedelta, timezone
 
 import httpx
-from tenacity import retry, retry_if_exception_type, stop_after_attempt, wait_exponential
+from tenacity import retry, retry_if_exception, stop_after_attempt
 
+from pipeline import throttle
 from pipeline.config import JOB_MAX_AGE_DAYS
+from pipeline.geo import listed_outside_us
 from pipeline.models import RawJob
 from pipeline.sources.utils import html_to_text, infer_remote_type, normalize_job_type, normalize_location
 
@@ -16,6 +19,16 @@ WORKABLE_LIST_API = "https://apply.workable.com/api/v3/accounts/{slug}/jobs"
 WORKABLE_DETAIL_API = "https://apply.workable.com/api/v2/accounts/{slug}/jobs/{shortcode}"
 TIMEOUT = 30.0
 MAX_PAGES = 10
+# Workable rate-limits by IP (CLAUDE.md, "Workable rate-limits the census"). Space
+# requests out like the census does, rather than sending each account's pages and
+# detail fetches back to back.
+REQUEST_DELAY = 0.3
+
+# Set once Workable is still answering 429 after the retries. The lockout covers
+# the whole IP, so the remaining accounts are skipped for this run instead of
+# extending it; their jobs are fetched on the next run, still inside the
+# JOB_MAX_AGE_DAYS window.
+_rate_limited = False
 
 
 def _parse_iso(value: str) -> datetime | None:
@@ -23,6 +36,13 @@ def _parse_iso(value: str) -> datetime | None:
         return datetime.fromisoformat(str(value).replace("Z", "+00:00"))
     except (ValueError, TypeError):
         return None
+
+
+def _outside_us(listing: dict) -> bool:
+    """Yugo lists UK and European jobs on the same account as its US ones; the
+    list response carries each listing's country code."""
+    places = [listing.get("location") or {}] + list(listing.get("locations") or [])
+    return listed_outside_us(*(p.get("countryCode") or p.get("country_code") for p in places))
 
 
 def _parse_job(job: dict, slug: str, company_name: str, company_url: str) -> RawJob:
@@ -59,9 +79,9 @@ def _parse_job(job: dict, slug: str, company_name: str, company_url: str) -> Raw
 
 
 @retry(
-    retry=retry_if_exception_type(httpx.TransportError),
-    stop=stop_after_attempt(3),
-    wait=wait_exponential(multiplier=1, min=2, max=10),
+    retry=retry_if_exception(throttle.is_retryable),
+    stop=stop_after_attempt(4),
+    wait=throttle.wait_for_retry,
     reraise=True,
 )
 def _get_page(client: httpx.Client, slug: str, token: str | None) -> dict:
@@ -75,9 +95,9 @@ def _get_page(client: httpx.Client, slug: str, token: str | None) -> dict:
 
 
 @retry(
-    retry=retry_if_exception_type(httpx.TransportError),
-    stop=stop_after_attempt(3),
-    wait=wait_exponential(multiplier=1, min=2, max=10),
+    retry=retry_if_exception(throttle.is_retryable),
+    stop=stop_after_attempt(4),
+    wait=throttle.wait_for_retry,
     reraise=True,
 )
 def _get_detail(client: httpx.Client, slug: str, shortcode: str) -> dict:
@@ -87,8 +107,21 @@ def _get_detail(client: httpx.Client, slug: str, shortcode: str) -> dict:
     return response.json()
 
 
+def _note_rate_limit(exc: Exception) -> None:
+    global _rate_limited
+    if throttle.is_rate_limited(exc):
+        _rate_limited = True
+        logger.error(
+            "Workable is rate-limiting this IP (HTTP 429). Skipping the remaining Workable "
+            "accounts this run; their jobs are fetched on the next run."
+        )
+
+
 def fetch_workable_jobs(slug: str, company_name: str) -> list[RawJob]:
     """Fetch recent jobs for a Workable-hosted company and return parsed RawJob objects."""
+    if _rate_limited:
+        logger.warning("Skipping Workable slug '%s': Workable rate-limited this run.", slug)
+        return []
     logger.info("Fetching Workable jobs for %s (slug: %s)", company_name, slug)
     company_url = f"https://apply.workable.com/{slug}"
 
@@ -96,7 +129,9 @@ def fetch_workable_jobs(slug: str, company_name: str) -> list[RawJob]:
     token: str | None = None
 
     with httpx.Client(timeout=TIMEOUT) as client:
-        for _ in range(MAX_PAGES):
+        for page_index in range(MAX_PAGES):
+            if page_index:
+                time.sleep(REQUEST_DELAY)
             try:
                 page = _get_page(client, slug, token)
             except httpx.HTTPStatusError as exc:
@@ -104,6 +139,7 @@ def fetch_workable_jobs(slug: str, company_name: str) -> list[RawJob]:
                     logger.warning("Workable slug '%s' not found. Skipping.", slug)
                     return []
                 logger.error("HTTP error fetching Workable slug '%s': %s", slug, exc)
+                _note_rate_limit(exc)
                 return []
             except httpx.TransportError as exc:
                 logger.error("Network error fetching Workable slug '%s' after retries: %s", slug, exc)
@@ -120,16 +156,21 @@ def fetch_workable_jobs(slug: str, company_name: str) -> list[RawJob]:
         fresh = [
             j for j in listings
             if (_parse_iso(j.get("published", "")) or datetime.now(tz=timezone.utc)) >= cutoff
+            and not _outside_us(j)
         ]
 
         jobs: list[RawJob] = []
         for listing in fresh:
             shortcode = listing.get("shortcode", "")
+            time.sleep(REQUEST_DELAY)
             try:
                 detail = _get_detail(client, slug, shortcode)
                 jobs.append(_parse_job(detail, slug, company_name, company_url))
             except Exception as exc:
                 logger.warning("Failed to fetch Workable job %s from %s: %s", shortcode, slug, exc)
+                _note_rate_limit(exc)
+                if _rate_limited:
+                    break
 
     logger.info(
         "Fetched %d recent jobs from %s (%d listed, %d within age window)",

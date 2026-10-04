@@ -112,6 +112,18 @@ greenhouse:
   - slug: riseamg
     company_name: Rise Association Management Group
     logo_url: https://graysontu.github.io/pmj-pipeline/logos/rise-association-management-group.png
+  # Added 2026-10-04 (CLAUDE.md, "Adding companies").
+  - slug: brighthavencommunities
+    company_name: Brighthaven
+    logo_url: https://graysontu.github.io/pmj-pipeline/logos/brighthaven.png
+  - slug: evergreenresidentialemployeeservicescorp
+    company_name: Evergreen Residential
+    logo_url: https://graysontu.github.io/pmj-pipeline/logos/evergreen-residential.png
+  # Every Bigos location is "Property (City, State)"; geo.py reads the place in
+  # the parentheses only because nothing outside them names a state.
+  - slug: bigosmanagement
+    company_name: Bigos Management
+    logo_url: https://graysontu.github.io/pmj-pipeline/logos/bigos-management.png
 
 # Verified slugs: https://api.lever.co/v0/postings/{slug}?mode=json
 lever:
@@ -181,6 +193,30 @@ workable:
   - slug: banyan-living-3
     company_name: Banyan Living
     logo_url: https://graysontu.github.io/pmj-pipeline/logos/banyan-living.jpg
+  # Added 2026-10-04 (CLAUDE.md, "Adding companies").
+  - slug: depaul-housing-management-corporation
+    company_name: DePaul Housing Management
+    logo_url: https://graysontu.github.io/pmj-pipeline/logos/depaul-housing-management.png
+  - slug: denton-floyd-real-estate-group-3
+    company_name: Denton Floyd Real Estate Group
+    logo_url: https://graysontu.github.io/pmj-pipeline/logos/denton-floyd-real-estate-group.png
+  - slug: lvcollective
+    company_name: LV Collective
+    logo_url: https://graysontu.github.io/pmj-pipeline/logos/lv-collective.png
+  - slug: taylor-management
+    company_name: Taylor Management Company
+    logo_url: https://graysontu.github.io/pmj-pipeline/logos/taylor-management-company.png
+  - slug: lynco-properties
+    company_name: Lynco Properties
+    logo_url: https://graysontu.github.io/pmj-pipeline/logos/lynco-properties.png
+  - slug: mountain-valley
+    company_name: Mountain Valley
+    logo_url: https://graysontu.github.io/pmj-pipeline/logos/mountain-valley.png
+  # Yugo's account also lists its UK and European jobs; the Workable fetcher drops
+  # every listing whose country is not the US.
+  - slug: yugo
+    company_name: Yugo
+    logo_url: https://graysontu.github.io/pmj-pipeline/logos/yugo.png
 
 # Verified slugs: https://{slug}.recruitee.com/api/offers/
 recruitee: []
@@ -205,3 +241,7 @@ smartrecruiters:
   - slug: StreamRealty
     company_name: Stream Realty Partners
     logo_url: https://graysontu.github.io/pmj-pipeline/logos/stream-realty-partners.jpg
+  # Added 2026-10-04. Canadian parent; this board lists its US apartment jobs.
+  - slug: Morguard
+    company_name: Morguard
+    logo_url: https://graysontu.github.io/pmj-pipeline/logos/morguard.png

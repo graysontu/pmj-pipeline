@@ -318,3 +318,76 @@ def test_a_rate_limited_board_is_unknown_not_empty():
         assert census.ok is False
         assert census.open_ids == frozenset()
         assert census.error == "HTTP 429"
+
+
+# --- long rate limits ----------------------------------------------------------
+# Workable locks out an IP, sometimes for hours (Retry-After: 57415 on
+# 2026-10-04). Retrying that cannot succeed and only adds requests.
+
+
+def _status_error_with_retry_after(code: int, retry_after: str) -> httpx.HTTPStatusError:
+    response = MagicMock()
+    response.status_code = code
+    response.headers = {"retry-after": retry_after}
+    return httpx.HTTPStatusError("boom", request=MagicMock(), response=response)
+
+
+def test_a_long_retry_after_is_not_retried():
+    from pipeline.census import _is_retryable
+
+    assert _is_retryable(_status_error_with_retry_after(429, "57415")) is False
+    assert _is_retryable(_status_error_with_retry_after(429, "20")) is True
+    # Without a usable header the old backoff rules apply.
+    assert _is_retryable(_status_error_with_retry_after(429, "soon")) is True
+
+
+def test_a_short_retry_after_is_honoured_exactly():
+    from pipeline.throttle import wait_for_retry
+
+    state = MagicMock()
+    state.outcome.exception.return_value = _status_error_with_retry_after(429, "7")
+    assert wait_for_retry(state) == 7.0
+
+
+def test_workable_rate_limit_skips_its_remaining_boards_only():
+    """Once Workable is still answering 429 after the retries, the rest of its
+    boards are not asked this run. They are unknown, so nothing is removed; other
+    ATSs carry on as normal."""
+    calls = []
+
+    def workable(client, slug):
+        calls.append(slug)
+        raise _status_error(429)
+
+    def greenhouse(client, slug):
+        return frozenset({"1"}), 1
+
+    sources = {
+        "workable": [{"slug": "a", "company_name": "A"}, {"slug": "b", "company_name": "B"},
+                     {"slug": "c", "company_name": "C"}],
+        "greenhouse": [{"slug": "g", "company_name": "G"}],
+    }
+    with patch.dict("pipeline.census.CENSUS_FNS", {"workable": workable, "greenhouse": greenhouse}):
+        results = run_census(sources)
+
+    assert calls == ["a"]
+    assert results[("workable", "a")].error == "HTTP 429"
+    for slug in ("b", "c"):
+        census = results[("workable", slug)]
+        assert census.ok is False and census.open_ids == frozenset()
+        assert "rate-limiting" in census.error
+    assert results[("greenhouse", "g")].ok
+
+
+def test_other_workable_errors_do_not_trip_the_skip():
+    calls = []
+
+    def workable(client, slug):
+        calls.append(slug)
+        raise _status_error(404)
+
+    sources = {"workable": [{"slug": "a", "company_name": "A"}, {"slug": "b", "company_name": "B"}]}
+    with patch.dict("pipeline.census.CENSUS_FNS", {"workable": workable}):
+        run_census(sources)
+
+    assert calls == ["a", "b"]
