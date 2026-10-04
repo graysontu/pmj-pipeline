@@ -4,6 +4,31 @@ Reference this when troubleshooting. These are things that aren't obvious from r
 
 ---
 
+## Start every session by syncing with GitHub
+
+GitHub's `main` branch is the master copy. The pipeline commits `state.json` and
+`feed.xml` to it every day, and work is done from both local and cloud sessions, so a
+local checkout falls behind within a day. Before reading, changing or running anything:
+
+1. `git status`. If there are uncommitted changes, tell Grayson what they are and ask
+   before stashing, committing or discarding anything.
+2. `git checkout main` and `git pull origin main`. If the pull reports a conflict,
+   stop and explain it in plain words; never resolve it by discarding the remote side.
+3. Make changes on a new branch, open a pull request and merge it into `main` (squash,
+   matching the history), rather than pushing to `main` directly - the daily run
+   pushes there too.
+
+Never commit `data/state.json` or `output/feed.xml` from a local session: only the
+runner writes them, and committing a stale copy reverts days of pipeline work. If a
+local run changed them, `git checkout -- data/state.json output/feed.xml` before
+committing. Files git does not track stay local and are not synced: `.env`, `.venv`,
+`data/classification_cache.json`, `data/rewrite_cache.json`.
+
+Grayson works in local sessions and is not a git user - do the syncing for him and
+explain anything that needs his decision without git jargon.
+
+---
+
 ## Greenhouse API
 
 **Use `first_published`, not `created_at` or `updated_at`**
