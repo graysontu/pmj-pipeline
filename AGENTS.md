@@ -118,7 +118,7 @@ on Excelsior (Saint Louis Park, Minnesota)". It is the last thing tried, and onl
 the text outside the parentheses names no US state (so "Concord, NC (Charlotte area)"
 keeps Concord, not the metro), is not a remote role, and the text inside is a complete
 city and state. Measured before adopting it, on 2,271 live postings across every board
-plus Bigos, Brighthaven, Evergreen and Morguard: 32 went from unresolved to resolved,
+plus Bigos, Brighthaven (since removed), Evergreen and Morguard: 32 went from unresolved to resolved,
 all Bigos, all correct; nothing that already resolved changed; and none of the 1,794
 locations ever recorded in `state.json` changed, so the published feed was untouched
 (`audit_locations`: 279 of 279 unchanged). "Olympus Grand Crossing (Katy, TX)" now
@@ -245,6 +245,10 @@ already in `sources.yaml`.
 - Measure every candidate the same way: PM-titled postings in the last 7 and 30 days,
   share of PM titles, how many locations `geo.resolve_location` resolves, and US share.
   The boards already in `sources.yaml` had a median of 8.5 PM postings per 30 days.
+- **Check that a candidate's postings aren't already on a board in `sources.yaml`**
+  (same title and location). An affiliate can run a mirror of a parent's board under
+  its own name - Brighthaven's is a full copy of Avanath's - and every one of its jobs
+  would publish twice. That check was missed for Brighthaven; see below.
 
 **Most large operators are on ATSs the pipeline cannot read.** Crawling the careers
 pages of ~150 multifamily, affordable, student, single-family, HOA, commercial and
@@ -260,17 +264,28 @@ and looking up one of their old postings says the identifier is now e.g.
 board is empty too; its careers page now points to Dayforce.
 
 **Added on 2026-10-04** (PM postings in the prior 30 days, at research time):
-Brighthaven (Greenhouse, 23), Yugo (Workable, 13 US only), Morguard (SmartRecruiters,
+Yugo (Workable, 13 US only), Morguard (SmartRecruiters,
 11), Evergreen Residential (Greenhouse, 9, single-family rentals), Bigos Management
 (Greenhouse, 7), DePaul Housing Management (Workable, 6, all in one week, so its
 usual pace is unknown), Denton Floyd Real Estate Group (Workable, 6, only 27% PM
 titles), LV Collective (Workable, 5, 41% PM titles, student housing), Taylor
 Management Company (Workable, 4, NJ condo/HOA), Lynco Properties (Workable, 3) and
 Mountain Valley (Workable, 3, Colorado HOA/resort). The last few were added for HOA
-and regional coverage, not volume. Brighthaven is an Avanath / BRIDGE Housing venture
-that shares Avanath's Greenhouse offices; it is a separate board, not a duplicate.
-Yugo's Workable account also lists UK and European jobs - see "No non-US job is ever
-published". Bigos depends on the parentheses rule above.
+and regional coverage, not volume. Yugo's Workable account also lists UK and European
+jobs - see "No non-US job is ever published". Bigos depends on the parentheses rule
+above.
+
+**Brighthaven was added on 2026-10-04 and removed on 2026-10-05: its board is a copy
+of Avanath's.** Brighthaven is an Avanath / BRIDGE Housing venture, and all 52 of its
+live postings were also on Avanath's board (`communitymanager`) with the same title,
+location and description, created a second apart under a different requisition ID.
+The first run published one of them twice ("Community Manager", Stockton, CA:
+Avanath `greenhouse_5256090007`, Brighthaven `greenhouse_5256110007`). The
+Brighthaven copy was closed by hand in `state.json` (`closed_at`, with the reason in
+`closure_reason`), from a fresh copy of `main` before that day's run started, so the
+next feed drops it and JobBoardly deletes the listing. It stays closed: with
+Brighthaven out of `sources.yaml` the census reports it `unknown`, which changes
+nothing. Re-adding Brighthaven would reopen it and duplicate everything again.
 
 **Looked at and rejected on 2026-10-04**, so nobody re-researches them:
 - Too few PM postings (1-2 a month): Allmark Property Management, Farbman Group,

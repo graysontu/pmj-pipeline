@@ -106,6 +106,8 @@ greenhouse:
     company_name: Jefferson Apartment Group
     logo_url: https://graysontu.github.io/pmj-pipeline/logos/jefferson-apartment-group.png
   # Avanath's Greenhouse board token really is "communitymanager".
+  # Don't add Brighthaven (brighthavencommunities): its board mirrors this one,
+  # so every posting would be a duplicate. Added 2026-10-04, removed 2026-10-05.
   - slug: communitymanager
     company_name: Avanath
     logo_url: https://graysontu.github.io/pmj-pipeline/logos/avanath.png
@@ -113,9 +115,6 @@ greenhouse:
     company_name: Rise Association Management Group
     logo_url: https://graysontu.github.io/pmj-pipeline/logos/rise-association-management-group.png
   # Added 2026-10-04 (CLAUDE.md, "Adding companies").
-  - slug: brighthavencommunities
-    company_name: Brighthaven
-    logo_url: https://graysontu.github.io/pmj-pipeline/logos/brighthaven.png
   - slug: evergreenresidentialemployeeservicescorp
     company_name: Evergreen Residential
     logo_url: https://graysontu.github.io/pmj-pipeline/logos/evergreen-residential.png
