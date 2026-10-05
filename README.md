@@ -6,6 +6,28 @@ Newest first.
 
 ---
 
+### General Manager at AIR Communities
+
+Scheduled Mon Oct 5, 2026 at 10:00 AM EDT · Alexandria, VA · $85K–$115K/yr · [job page](https://propertymanagementjobs.us/jobs/general-manager-foxchase-apartment-homes-e3566a15)  
+Buffer: Scheduled on property-management-jobs-us · colours: teal · opening line: claude  
+Why this job: 10 of 284 jobs in the feed qualified. Skipped: posted more than 4 days ago on the site 246, no salary 10, maintenance role 8, not live on the site 4, no city and state 3, pay at or below the LinkedIn floor 1, not a single English job posting 1, company posted recently 1.
+
+<img src="images/2026-10-05-smartrecruiters_744000153274400.png" width="420" alt="General Manager card">
+
+```text
+Foxchase Apartment Homes is looking for a General Manager to own site financials, leasing results and team development, working Tuesday through Saturday. A good fit for someone with two or more years leading on-site teams.
+
+📍 Alexandria, VA
+💰 $85K–$115K/yr
+🏢 AIR Communities
+
+See the full job and apply 👉 https://propertymanagementjobs.us/jobs/general-manager-foxchase-apartment-homes-e3566a15?utm_source=linkedin&utm_medium=social&utm_campaign=job_post
+
+#PropertyManagement #PropertyManager #NowHiring #AlexandriaJobs
+```
+
+---
+
 ### Community Manager at Redstone Residential
 
 Scheduled Fri Oct 2, 2026 at 10:00 AM EDT · Orem, UT · $60K–$65K/yr · [job page](https://propertymanagementjobs.us/jobs/community-manager-003fb9b2)  
