@@ -390,7 +390,16 @@ When rate limit errors appear during a run, jobs are skipped and logged. They wo
 
 **GitHub's cron scheduler is unreliable and can be delayed by minutes to hours.** The scheduled run at `0 16 * * *` does not always fire on time. If a run appears missing, check the Actions tab before assuming a bug — it may just be delayed. The GitHub Actions API also has a lag before new runs appear.
 
-**"The job was not acquired by Runner of type hosted" is a GitHub outage, not a bug.** GitHub failed to allocate a hosted runner; the job sits queued (~15 min) and is then cancelled. Diagnostic: `gh api repos/OWNER/REPO/actions/runs/RUN_ID/attempts/N/jobs --jq '[.jobs[].steps[]?] | length'` returns **0** — no step ever executed. Because no step ran, the `if: failure()` email step inside `run-pipeline.yml` never fires either, so the only notification is GitHub's own "Run failed" email. `pipeline-watchdog.yml` exists to cover this: it triggers on `workflow_run` completion, uses that zero-steps check to distinguish infra failures from real pipeline failures, retries infra failures (up to attempt 3), and emails. It deliberately ignores ordinary step failures, which `run-pipeline.yml` already emails about. Don't make the watchdog retry those — it would burn Anthropic credits re-running the same bug.
+**"The job was not acquired by Runner of type hosted" is a GitHub outage, not a bug.** GitHub failed to allocate a hosted runner; the job sits queued (~15 min) and is then cancelled. Diagnostic: `gh api repos/OWNER/REPO/actions/runs/RUN_ID/attempts/N/jobs --jq '[.jobs[].steps[]?] | length'` returns **0** — no step ever executed. Because no step ran, the `if: failure()` email step inside `run-pipeline.yml` never fires either, so the only notification is GitHub's own "Run failed" email. `pipeline-watchdog.yml` exists to cover this: it triggers on `workflow_run` completion, uses that zero-steps check to distinguish infra failures from real pipeline failures, and retries infra failures (up to attempt 3). It deliberately ignores ordinary step failures, which `run-pipeline.yml` already emails about. Don't make the watchdog retry those — it would burn Anthropic credits re-running the same bug.
+
+**GitHub's own "Run failed" emails are meant to be switched off; the watchdog covers everything they did** (Grayson, 2026-10-05: he wanted no email on days the system worked in the end). Since that date the watchdog watches Run Pipeline, LinkedIn Post and Deploy Pages, and its logic is in `.github/scripts/watchdog-decide.sh` (runnable locally against real runs - see its header):
+
+- **Run Pipeline, no runner:** retried silently; emailed only when 3 attempts are used up. (It used to email on every infra failure, including ones the retry then fixed.)
+- **LinkedIn Post, no runner:** retried silently - always safe, since a run for an already-handled posting day does nothing. When retries run out, emailed only if no LinkedIn run succeeded in the last 20 hours, because each posting day has three runs and one success covers the day.
+- **Deploy Pages, any failure:** it has no email step of its own and costs nothing to rerun, so every failure is retried; emailed after 3 attempts unless a deploy created later (say, after a merge) already succeeded.
+- **Real step failures** in the pipeline and LinkedIn jobs: left to their own emails.
+
+The chain Run Pipeline -> Deploy Pages -> Watchdog is three `workflow_run` levels, GitHub's documented maximum. Don't add a fourth workflow triggered by the watchdog. Verified on 2026-10-05 by running the decision script against nine real runs, including that day's LinkedIn no-runner failure (which correctly comes out as "retry", and as "nothing to do" once retries run out, because an earlier run had posted).
 
 **Ubuntu 26.04 was verified on 2026-10-05; the workflows deliberately stay on
 `ubuntu-latest`.** GitHub moves `ubuntu-latest` to Ubuntu 26.04 gradually between
@@ -838,7 +847,8 @@ plays no part in any of this (he asked): the runs are on GitHub, and Buffer publ
 **Failure modes.** A Buffer failure leaves the job unrecorded,
 and the next run picks afresh. If Buffer accepted a post but the final push of
 `history.json` failed, the next run could pick the same job again. The pipeline
-watchdog does not watch this workflow; a runner outage just means a missed post.
+watchdog retries LinkedIn runs that never got a runner (see "GitHub's own 'Run
+failed' emails"); real step failures email from the workflow itself.
 Buffer's documented schema can't tell a LinkedIn page from a personal profile
 (`service` is "linkedin" for both), so with more than one LinkedIn channel
 connected it refuses to guess - set the repo variable `BUFFER_CHANNEL_ID`.
