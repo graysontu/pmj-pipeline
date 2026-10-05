@@ -392,6 +392,19 @@ When rate limit errors appear during a run, jobs are skipped and logged. They wo
 
 **"The job was not acquired by Runner of type hosted" is a GitHub outage, not a bug.** GitHub failed to allocate a hosted runner; the job sits queued (~15 min) and is then cancelled. Diagnostic: `gh api repos/OWNER/REPO/actions/runs/RUN_ID/attempts/N/jobs --jq '[.jobs[].steps[]?] | length'` returns **0** — no step ever executed. Because no step ran, the `if: failure()` email step inside `run-pipeline.yml` never fires either, so the only notification is GitHub's own "Run failed" email. `pipeline-watchdog.yml` exists to cover this: it triggers on `workflow_run` completion, uses that zero-steps check to distinguish infra failures from real pipeline failures, retries infra failures (up to attempt 3), and emails. It deliberately ignores ordinary step failures, which `run-pipeline.yml` already emails about. Don't make the watchdog retry those — it would burn Anthropic credits re-running the same bug.
 
+**Ubuntu 26.04 was verified on 2026-10-05; the workflows deliberately stay on
+`ubuntu-latest`.** GitHub moves `ubuntu-latest` to Ubuntu 26.04 gradually between
+2026-10-19 and 2026-11-19 (actions/runner-images#14748). A throwaway workflow ran the
+same steps on 24.04 and 26.04 side by side: identical Python (3.11.16) and library
+versions, all 343 tests passing, a byte-identical feed built from that day's
+`state.json` (283 jobs), a pixel-identical LinkedIn card, and a working LinkedIn
+preview run (site fetch, page checks, Claude caption). Every action the workflows use
+runs on GitHub's bundled Node, independent of the OS. Pinning `ubuntu-26.04` early was
+considered and rejected: it gains nothing, and the first 26.04 attempt that day was
+cancelled for lack of a runner while 24.04 got one. If a run breaks after Oct 19,
+compare against this baseline; `runs-on: ubuntu-24.04` is the fallback while GitHub
+still offers it.
+
 **The GitHub runner never has a `.env` file** — it's gitignored. `JOB_MAX_AGE_DAYS` and other non-secret config must be set via `config.py` defaults (or added as GitHub env vars in the workflow). Changes to local `.env` do not affect automated runs.
 
 **`classification_cache.json` and `rewrite_cache.json` on the runner are NOT committed to the repo** — they're only persisted via GitHub Actions cache. The local copies reflect only what was cached during local runs, not what the runner has classified. If you're trying to debug why the runner rejected a specific job, you can't check the local cache for it.
