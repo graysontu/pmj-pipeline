@@ -236,5 +236,40 @@
     "buffer_post_id": "6ac3897c53279f4f19be67a0",
     "buffer": "Scheduled on property-management-jobs-us",
     "recorded_at": "2026-10-05T11:26:51.875820+00:00"
+  },
+  {
+    "source_id": "greenhouse_5258694007",
+    "mode": "live",
+    "created_at": "2026-10-07T11:03:33.359257+00:00",
+    "slot": "2026-10-07",
+    "moved_to_next_day": false,
+    "due_at": "2026-10-07T14:00:00+00:00",
+    "title": "Leasing Specialist",
+    "company": "Avanath",
+    "category": "Leasing Consultant Jobs",
+    "location": "Los Angeles, CA",
+    "state": "CA",
+    "pay": "$23–$25/hr",
+    "site_url": "https://propertymanagementjobs.us/jobs/leasing-specialist-6cdffb34",
+    "image": "images/2026-10-07-greenhouse_5258694007.png",
+    "theme": "plum",
+    "label": "NEW JOB",
+    "opening_line": "claude",
+    "text": "A leasing role in affordable housing, handling tours, applications and Yardi Voyager entry while supporting residents through renewals. LIHTC experience and bilingual English and Spanish skills are a strong plus.\n\n📍 Los Angeles, CA\n💰 $23–$25/hr\n🏢 Avanath\n\nSee the full job and apply 👉 https://propertymanagementjobs.us/jobs/leasing-specialist-6cdffb34?utm_source=linkedin&utm_medium=social&utm_campaign=job_post\n\n#PropertyManagement #LeasingJobs #NowHiring #LosAngelesJobs",
+    "selection": {
+      "considered": 292,
+      "qualified": 6,
+      "skipped": {
+        "posted more than 4 days ago on the site": 259,
+        "maintenance role": 12,
+        "no salary": 8,
+        "not live on the site": 5,
+        "company posted recently": 1,
+        "no city and state": 1
+      }
+    },
+    "buffer_post_id": "6ac627110ea81feae6a6accc",
+    "buffer": "Scheduled on property-management-jobs-us",
+    "recorded_at": "2026-10-07T11:03:45.207019+00:00"
   }
 ]

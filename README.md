@@ -6,6 +6,28 @@ Newest first.
 
 ---
 
+### Leasing Specialist at Avanath
+
+Scheduled Wed Oct 7, 2026 at 10:00 AM EDT · Los Angeles, CA · $23–$25/hr · [job page](https://propertymanagementjobs.us/jobs/leasing-specialist-6cdffb34)  
+Buffer: Scheduled on property-management-jobs-us · colours: plum · opening line: claude  
+Why this job: 6 of 292 jobs in the feed qualified. Skipped: posted more than 4 days ago on the site 259, maintenance role 12, no salary 8, not live on the site 5, company posted recently 1, no city and state 1.
+
+<img src="images/2026-10-07-greenhouse_5258694007.png" width="420" alt="Leasing Specialist card">
+
+```text
+A leasing role in affordable housing, handling tours, applications and Yardi Voyager entry while supporting residents through renewals. LIHTC experience and bilingual English and Spanish skills are a strong plus.
+
+📍 Los Angeles, CA
+💰 $23–$25/hr
+🏢 Avanath
+
+See the full job and apply 👉 https://propertymanagementjobs.us/jobs/leasing-specialist-6cdffb34?utm_source=linkedin&utm_medium=social&utm_campaign=job_post
+
+#PropertyManagement #LeasingJobs #NowHiring #LosAngelesJobs
+```
+
+---
+
 ### General Manager at AIR Communities
 
 Scheduled Mon Oct 5, 2026 at 10:00 AM EDT · Alexandria, VA · $85K–$115K/yr · [job page](https://propertymanagementjobs.us/jobs/general-manager-foxchase-apartment-homes-e3566a15)  
