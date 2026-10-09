@@ -6,6 +6,28 @@ Newest first.
 
 ---
 
+### Community Manager at Investment Property Group
+
+Scheduled Fri Oct 9, 2026 at 10:00 AM EDT · Loveland, CO · $26–$30/hr · [job page](https://propertymanagementjobs.us/jobs/community-manager-manufactured-housing-community-plus-housing-480224f5)  
+Buffer: Scheduled on property-management-jobs-us · colours: slate · opening line: claude  
+Why this job: 5 of 297 jobs in the feed qualified. Skipped: posted more than 4 days ago on the site 244, maintenance role 23, no salary 17, company posted recently 3, not live on the site 2, no city and state 1, already posted 1, pay at or below the LinkedIn floor 1.
+
+<img src="images/2026-10-09-workable_6178248.png" width="420" alt="Community Manager card">
+
+```text
+Alpine Vista Village, a 123-home manufactured housing community, needs a Community Manager for rent collection, lease enforcement, vendor coordination and a small on-site team. On-site residency is required, with a 2-bed, 2-bath home provided.
+
+📍 Loveland, CO
+💰 $26–$30/hr
+🏢 Investment Property Group
+
+See the full job and apply 👉 https://propertymanagementjobs.us/jobs/community-manager-manufactured-housing-community-plus-housing-480224f5?utm_source=linkedin&utm_medium=social&utm_campaign=job_post
+
+#PropertyManagement #CommunityManager #NowHiring #LovelandJobs
+```
+
+---
+
 ### Leasing Specialist at Avanath
 
 Scheduled Wed Oct 7, 2026 at 10:00 AM EDT · Los Angeles, CA · $23–$25/hr · [job page](https://propertymanagementjobs.us/jobs/leasing-specialist-6cdffb34)  

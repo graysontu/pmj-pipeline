@@ -271,5 +271,42 @@
     "buffer_post_id": "6ac627110ea81feae6a6accc",
     "buffer": "Scheduled on property-management-jobs-us",
     "recorded_at": "2026-10-07T11:03:45.207019+00:00"
+  },
+  {
+    "source_id": "workable_6178248",
+    "mode": "live",
+    "created_at": "2026-10-09T11:18:39.154311+00:00",
+    "slot": "2026-10-09",
+    "moved_to_next_day": false,
+    "due_at": "2026-10-09T14:00:00+00:00",
+    "title": "Community Manager",
+    "company": "Investment Property Group",
+    "category": "Community Manager Jobs",
+    "location": "Loveland, CO",
+    "state": "CO",
+    "pay": "$26–$30/hr",
+    "site_url": "https://propertymanagementjobs.us/jobs/community-manager-manufactured-housing-community-plus-housing-480224f5",
+    "image": "images/2026-10-09-workable_6178248.png",
+    "theme": "slate",
+    "label": "NOW HIRING",
+    "opening_line": "claude",
+    "text": "Alpine Vista Village, a 123-home manufactured housing community, needs a Community Manager for rent collection, lease enforcement, vendor coordination and a small on-site team. On-site residency is required, with a 2-bed, 2-bath home provided.\n\n📍 Loveland, CO\n💰 $26–$30/hr\n🏢 Investment Property Group\n\nSee the full job and apply 👉 https://propertymanagementjobs.us/jobs/community-manager-manufactured-housing-community-plus-housing-480224f5?utm_source=linkedin&utm_medium=social&utm_campaign=job_post\n\n#PropertyManagement #CommunityManager #NowHiring #LovelandJobs",
+    "selection": {
+      "considered": 297,
+      "qualified": 5,
+      "skipped": {
+        "posted more than 4 days ago on the site": 244,
+        "maintenance role": 23,
+        "no salary": 17,
+        "company posted recently": 3,
+        "not live on the site": 2,
+        "no city and state": 1,
+        "already posted": 1,
+        "pay at or below the LinkedIn floor": 1
+      }
+    },
+    "buffer_post_id": "6ac8cd97b9c4fe562db89a91",
+    "buffer": "Scheduled on property-management-jobs-us",
+    "recorded_at": "2026-10-09T11:18:47.083391+00:00"
   }
 ]
