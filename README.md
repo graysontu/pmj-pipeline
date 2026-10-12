@@ -6,6 +6,28 @@ Newest first.
 
 ---
 
+### Account Resolution Specialist at Roofstock
+
+Scheduled Mon Oct 12, 2026 at 10:00 AM EDT · Dallas, TX · $24–$26/hr · [job page](https://propertymanagementjobs.us/jobs/account-resolution-specialist-dda20532)  
+Buffer: Scheduled on property-management-jobs-us · colours: coral · opening line: claude  
+Why this job: 2 of 306 jobs in the feed qualified. Skipped: posted more than 4 days ago on the site 261, maintenance role 15, no salary 12, company posted recently 6, not live on the site 5, pay at or below the LinkedIn floor 5.
+
+<img src="images/2026-10-12-greenhouse_8882231002.png" width="420" alt="Account Resolution Specialist card">
+
+```text
+A delinquency-focused role for Mynd's single-family rental portfolio, negotiating payment plans, filing unlawful detainers and appearing in court. Suits someone with three years in property management who knows Texas landlord-tenant law.
+
+📍 Dallas, TX
+💰 $24–$26/hr
+🏢 Roofstock
+
+See the full job and apply 👉 https://propertymanagementjobs.us/jobs/account-resolution-specialist-dda20532?utm_source=linkedin&utm_medium=social&utm_campaign=job_post
+
+#PropertyManagement #RealEstateJobs #NowHiring #DallasJobs
+```
+
+---
+
 ### Community Manager at Investment Property Group
 
 Scheduled Fri Oct 9, 2026 at 10:00 AM EDT · Loveland, CO · $26–$30/hr · [job page](https://propertymanagementjobs.us/jobs/community-manager-manufactured-housing-community-plus-housing-480224f5)  
