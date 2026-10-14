@@ -6,6 +6,28 @@ Newest first.
 
 ---
 
+### Assistant Community Manager at Jefferson Apartment Group
+
+Scheduled Wed Oct 14, 2026 at 10:00 AM EDT · Ashburn, VA · $25–$27/hr · [job page](https://propertymanagementjobs.us/jobs/assistant-community-manager-jefferson-arbors-at-broadlands-146685e0)  
+Buffer: Scheduled on property-management-jobs-us · colours: cream · opening line: claude  
+Why this job: 3 of 313 jobs in the feed qualified. Skipped: posted more than 4 days ago on the site 282, not live on the site 16, maintenance role 5, no salary 4, company posted recently 3.
+
+<img src="images/2026-10-14-greenhouse_4443989009.png" width="420" alt="Assistant Community Manager card">
+
+```text
+An assistant community manager role at a 240-unit garden-style community, owning collections, delinquency follow-up and renewal outreach. Suited to someone with two years in property management and ideally RealPage/OneSite experience.
+
+📍 Ashburn, VA
+💰 $25–$27/hr
+🏢 Jefferson Apartment Group
+
+See the full job and apply 👉 https://propertymanagementjobs.us/jobs/assistant-community-manager-jefferson-arbors-at-broadlands-146685e0?utm_source=linkedin&utm_medium=social&utm_campaign=job_post
+
+#PropertyManagement #AssistantPropertyManager #NowHiring #AshburnJobs
+```
+
+---
+
 ### Account Resolution Specialist at Roofstock
 
 Scheduled Mon Oct 12, 2026 at 10:00 AM EDT · Dallas, TX · $24–$26/hr · [job page](https://propertymanagementjobs.us/jobs/account-resolution-specialist-dda20532)  
