@@ -6,6 +6,28 @@ Newest first.
 
 ---
 
+### Property Manager at Flats LLC
+
+Scheduled Fri Oct 16, 2026 at 10:00 AM EDT · Chicago, IL · $85K–$100K/yr · [job page](https://propertymanagementjobs.us/jobs/property-manager-84bbb60f)  
+Buffer: Scheduled on property-management-jobs-us · colours: teal · opening line: template  
+Why this job: 9 of 321 jobs in the feed qualified. Skipped: posted more than 4 days ago on the site 267, not live on the site 15, no salary 13, maintenance role 9, company posted recently 4, pay at or below the LinkedIn floor 2, already posted 1, no city and state 1.
+
+<img src="images/2026-10-16-workable_6120521.png" width="420" alt="Property Manager card">
+
+```text
+New opening: Property Manager at Flats LLC in Chicago.
+
+📍 Chicago, IL
+💰 $85K–$100K/yr
+🏢 Flats LLC
+
+See the full job and apply 👉 https://propertymanagementjobs.us/jobs/property-manager-84bbb60f?utm_source=linkedin&utm_medium=social&utm_campaign=job_post
+
+#PropertyManagement #PropertyManager #NowHiring #ChicagoJobs
+```
+
+---
+
 ### Assistant Community Manager at Jefferson Apartment Group
 
 Scheduled Wed Oct 14, 2026 at 10:00 AM EDT · Ashburn, VA · $25–$27/hr · [job page](https://propertymanagementjobs.us/jobs/assistant-community-manager-jefferson-arbors-at-broadlands-146685e0)  
