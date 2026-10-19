@@ -6,6 +6,28 @@ Newest first.
 
 ---
 
+### Leasing Consultant at MG Properties
+
+Scheduled Mon Oct 19, 2026 at 10:00 AM EDT · Denver, CO · $22–$23/hr · [job page](https://propertymanagementjobs.us/jobs/leasing-consultant-3300-tamarac-9674671e)  
+Buffer: Scheduled on property-management-jobs-us · colours: plum · opening line: claude  
+Why this job: 5 of 330 jobs in the feed qualified. Skipped: posted more than 4 days ago on the site 294, no salary 15, maintenance role 10, not live on the site 2, pay at or below the LinkedIn floor 2, city looks wrong 1, company posted recently 1.
+
+<img src="images/2026-10-19-greenhouse_5267536007.png" width="420" alt="Leasing Consultant card">
+
+```text
+Leasing Consultant opening at 3300 Tamarac Apartments, covering tours, applicant screening under fair housing rules, lease paperwork and move-in coordination with maintenance. A good fit if you have a year or so in a leasing office.
+
+📍 Denver, CO
+💰 $22–$23/hr
+🏢 MG Properties
+
+See the full job and apply 👉 https://propertymanagementjobs.us/jobs/leasing-consultant-3300-tamarac-9674671e?utm_source=linkedin&utm_medium=social&utm_campaign=job_post
+
+#PropertyManagement #LeasingJobs #NowHiring #DenverJobs
+```
+
+---
+
 ### Property Manager at Flats LLC
 
 Scheduled Fri Oct 16, 2026 at 10:00 AM EDT · Chicago, IL · $85K–$100K/yr · [job page](https://propertymanagementjobs.us/jobs/property-manager-84bbb60f)  
