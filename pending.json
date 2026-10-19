@@ -1,0 +1,33 @@
+{
+  "source_id": "greenhouse_5267536007",
+  "mode": "live",
+  "created_at": "2026-10-19T09:52:08.724879+00:00",
+  "slot": "2026-10-19",
+  "moved_to_next_day": false,
+  "due_at": "2026-10-19T14:00:00+00:00",
+  "title": "Leasing Consultant",
+  "company": "MG Properties",
+  "category": "Leasing Consultant Jobs",
+  "location": "Denver, CO",
+  "state": "CO",
+  "pay": "$22–$23/hr",
+  "site_url": "https://propertymanagementjobs.us/jobs/leasing-consultant-3300-tamarac-9674671e",
+  "image": "images/2026-10-19-greenhouse_5267536007.png",
+  "theme": "plum",
+  "label": "NOW HIRING",
+  "opening_line": "claude",
+  "text": "Leasing Consultant opening at 3300 Tamarac Apartments, covering tours, applicant screening under fair housing rules, lease paperwork and move-in coordination with maintenance. A good fit if you have a year or so in a leasing office.\n\n📍 Denver, CO\n💰 $22–$23/hr\n🏢 MG Properties\n\nSee the full job and apply 👉 https://propertymanagementjobs.us/jobs/leasing-consultant-3300-tamarac-9674671e?utm_source=linkedin&utm_medium=social&utm_campaign=job_post\n\n#PropertyManagement #LeasingJobs #NowHiring #DenverJobs",
+  "selection": {
+    "considered": 330,
+    "qualified": 5,
+    "skipped": {
+      "posted more than 4 days ago on the site": 294,
+      "no salary": 15,
+      "maintenance role": 10,
+      "not live on the site": 2,
+      "pay at or below the LinkedIn floor": 2,
+      "city looks wrong": 1,
+      "company posted recently": 1
+    }
+  }
+}
