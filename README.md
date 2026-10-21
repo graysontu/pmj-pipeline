@@ -6,6 +6,28 @@ Newest first.
 
 ---
 
+### Commercial Property Manager at Cirrus Asset Management
+
+Scheduled Wed Oct 21, 2026 at 10:00 AM EDT · Woodland Hills, CA · $85K–$95K/yr · [job page](https://propertymanagementjobs.us/jobs/commercial-property-manager-office-retail-mixed-use-5ce12300)  
+Buffer: Scheduled on property-management-jobs-us · colours: slate · opening line: claude  
+Why this job: 4 of 341 jobs in the feed qualified. Skipped: posted more than 4 days ago on the site 311, maintenance role 10, no salary 9, company posted recently 3, not live on the site 2, title too long 1, pay at or below the LinkedIn floor 1.
+
+<img src="images/2026-10-21-smartrecruiters_744000156386898.png" width="420" alt="Commercial Property Manager card">
+
+```text
+A commercial property manager role covering office, retail and mixed-use assets, owning monthly reporting, CAM reconciliations and rent collections. Suits someone with five plus years in commercial and an active California license.
+
+📍 Woodland Hills, CA
+💰 $85K–$95K/yr
+🏢 Cirrus Asset Management
+
+See the full job and apply 👉 https://propertymanagementjobs.us/jobs/commercial-property-manager-office-retail-mixed-use-5ce12300?utm_source=linkedin&utm_medium=social&utm_campaign=job_post
+
+#PropertyManagement #CommercialRealEstate #NowHiring #WoodlandHillsJobs
+```
+
+---
+
 ### Leasing Consultant at MG Properties
 
 Scheduled Mon Oct 19, 2026 at 10:00 AM EDT · Denver, CO · $22–$23/hr · [job page](https://propertymanagementjobs.us/jobs/leasing-consultant-3300-tamarac-9674671e)  
