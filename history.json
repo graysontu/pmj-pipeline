@@ -486,5 +486,42 @@
     "buffer_post_id": "6ad883f2d109f3f66b895dcf",
     "buffer": "Scheduled on property-management-jobs-us",
     "recorded_at": "2026-10-21T09:20:49.307598+00:00"
+  },
+  {
+    "source_id": "greenhouse_5271474007",
+    "mode": "live",
+    "created_at": "2026-10-23T09:19:56.203550+00:00",
+    "slot": "2026-10-23",
+    "moved_to_next_day": false,
+    "due_at": "2026-10-23T14:00:00+00:00",
+    "title": "Senior Property Manager",
+    "company": "Lincoln Property Company",
+    "category": "Commercial Property Manager Jobs",
+    "location": "Sacramento, CA",
+    "state": "CA",
+    "pay": "$130K–$150K/yr",
+    "site_url": "https://propertymanagementjobs.us/jobs/senior-property-manager-98cd0b13",
+    "image": "images/2026-10-23-greenhouse_5271474007.png",
+    "theme": "coral",
+    "label": "NOW HIRING",
+    "opening_line": "claude",
+    "text": "A senior role overseeing a commercial portfolio that may span office, industrial, and retail, acting as owner representative for institutional clients. Suits a manager with 5 to 8 years in commercial who also enjoys developing direct reports.\n\n📍 Sacramento, CA\n💰 $130K–$150K/yr\n🏢 Lincoln Property Company\n\nSee the full job and apply 👉 https://propertymanagementjobs.us/jobs/senior-property-manager-98cd0b13?utm_source=linkedin&utm_medium=social&utm_campaign=job_post\n\n#PropertyManagement #CommercialRealEstate #NowHiring #SacramentoJobs",
+    "selection": {
+      "considered": 339,
+      "qualified": 9,
+      "skipped": {
+        "posted more than 4 days ago on the site": 286,
+        "maintenance role": 19,
+        "no salary": 10,
+        "not live on the site": 5,
+        "pay at or below the LinkedIn floor": 4,
+        "company posted recently": 3,
+        "no city and state": 2,
+        "already posted": 1
+      }
+    },
+    "buffer_post_id": "6adb26c581bbc7cbcf5ce009",
+    "buffer": "Scheduled on property-management-jobs-us",
+    "recorded_at": "2026-10-23T09:20:04.680994+00:00"
   }
 ]

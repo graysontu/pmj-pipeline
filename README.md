@@ -6,6 +6,28 @@ Newest first.
 
 ---
 
+### Senior Property Manager at Lincoln Property Company
+
+Scheduled Fri Oct 23, 2026 at 10:00 AM EDT · Sacramento, CA · $130K–$150K/yr · [job page](https://propertymanagementjobs.us/jobs/senior-property-manager-98cd0b13)  
+Buffer: Scheduled on property-management-jobs-us · colours: coral · opening line: claude  
+Why this job: 9 of 339 jobs in the feed qualified. Skipped: posted more than 4 days ago on the site 286, maintenance role 19, no salary 10, not live on the site 5, pay at or below the LinkedIn floor 4, company posted recently 3, no city and state 2, already posted 1.
+
+<img src="images/2026-10-23-greenhouse_5271474007.png" width="420" alt="Senior Property Manager card">
+
+```text
+A senior role overseeing a commercial portfolio that may span office, industrial, and retail, acting as owner representative for institutional clients. Suits a manager with 5 to 8 years in commercial who also enjoys developing direct reports.
+
+📍 Sacramento, CA
+💰 $130K–$150K/yr
+🏢 Lincoln Property Company
+
+See the full job and apply 👉 https://propertymanagementjobs.us/jobs/senior-property-manager-98cd0b13?utm_source=linkedin&utm_medium=social&utm_campaign=job_post
+
+#PropertyManagement #CommercialRealEstate #NowHiring #SacramentoJobs
+```
+
+---
+
 ### Commercial Property Manager at Cirrus Asset Management
 
 Scheduled Wed Oct 21, 2026 at 10:00 AM EDT · Woodland Hills, CA · $85K–$95K/yr · [job page](https://propertymanagementjobs.us/jobs/commercial-property-manager-office-retail-mixed-use-5ce12300)  
