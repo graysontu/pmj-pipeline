@@ -6,6 +6,28 @@ Newest first.
 
 ---
 
+### Daytime Concierge at Bozzuto
+
+Scheduled Mon Oct 26, 2026 at 10:00 AM EDT · Silver Spring, MD · $23/hr · [job page](https://propertymanagementjobs.us/jobs/daytime-concierge-cd4efb76)  
+Buffer: Scheduled on property-management-jobs-us · colours: cream · opening line: claude  
+Why this job: 8 of 329 jobs in the feed qualified. Skipped: posted more than 4 days ago on the site 290, maintenance role 14, no salary 8, company posted recently 3, pay at or below the LinkedIn floor 3, not live on the site 2, no city and state 1.
+
+<img src="images/2026-10-26-greenhouse_5458331008.png" width="420" alt="Daytime Concierge card">
+
+```text
+A Monday to Friday concierge desk role, 10AM to 7PM, covering package management, resident questions, event planning and community social media. A good fit if you have a couple of years in hospitality, hotel or retail.
+
+📍 Silver Spring, MD
+💰 $23/hr
+🏢 Bozzuto
+
+See the full job and apply 👉 https://propertymanagementjobs.us/jobs/daytime-concierge-cd4efb76?utm_source=linkedin&utm_medium=social&utm_campaign=job_post
+
+#PropertyManagement #CommunityManager #NowHiring #SilverSpringJobs
+```
+
+---
+
 ### Senior Property Manager at Lincoln Property Company
 
 Scheduled Fri Oct 23, 2026 at 10:00 AM EDT · Sacramento, CA · $130K–$150K/yr · [job page](https://propertymanagementjobs.us/jobs/senior-property-manager-98cd0b13)  
