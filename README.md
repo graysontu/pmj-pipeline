@@ -6,6 +6,28 @@ Newest first.
 
 ---
 
+### Community Manager at Investment Property Group
+
+Scheduled Wed Oct 28, 2026 at 10:00 AM EDT · Loveland, CO · $26–$30/hr · [job page](https://propertymanagementjobs.us/jobs/community-manager-manufactured-housing-community-plus-housing-99a30347)  
+Buffer: Scheduled on property-management-jobs-us · colours: teal · opening line: claude  
+Why this job: 1 of 344 jobs in the feed qualified. Skipped: posted more than 4 days ago on the site 315, no salary 10, maintenance role 8, pay at or below the LinkedIn floor 5, not live on the site 3, no city and state 1, company posted recently 1.
+
+<img src="images/2026-10-28-workable_6228739.png" width="420" alt="Community Manager card">
+
+```text
+A 123-home manufactured housing community is looking for a manager to handle rent collection, lease enforcement, vendor coordination and on-site staff, Monday through Friday. On-site residency is required, with a 2-bed home provided.
+
+📍 Loveland, CO
+💰 $26–$30/hr
+🏢 Investment Property Group
+
+See the full job and apply 👉 https://propertymanagementjobs.us/jobs/community-manager-manufactured-housing-community-plus-housing-99a30347?utm_source=linkedin&utm_medium=social&utm_campaign=job_post
+
+#PropertyManagement #CommunityManager #NowHiring #LovelandJobs
+```
+
+---
+
 ### Daytime Concierge at Bozzuto
 
 Scheduled Mon Oct 26, 2026 at 10:00 AM EDT · Silver Spring, MD · $23/hr · [job page](https://propertymanagementjobs.us/jobs/daytime-concierge-cd4efb76)  
