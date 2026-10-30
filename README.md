@@ -6,6 +6,28 @@ Newest first.
 
 ---
 
+### Senior Revenue Manager at Morguard
+
+Scheduled Fri Oct 30, 2026 at 10:00 AM EDT · Chicago, IL · $115K–$140K/yr · [job page](https://propertymanagementjobs.us/jobs/senior-revenue-manager-8fbd6678)  
+Buffer: Scheduled on property-management-jobs-us · colours: plum · opening line: claude  
+Why this job: 6 of 347 jobs in the feed qualified. Skipped: posted more than 4 days ago on the site 291, no salary 17, maintenance role 16, pay at or below the LinkedIn floor 6, company posted recently 5, not live on the site 4, no city and state 1, already posted 1.
+
+<img src="images/2026-10-30-smartrecruiters_744000158035389.png" width="420" alt="Senior Revenue Manager card">
+
+```text
+This role owns pricing strategy across a U.S. multifamily portfolio, from new lease rates and renewals to concessions and lease expiration staggering, and serves as business owner for the Revenue Intelligence platform. Suited to someone with portfolio-level revenue management and RMS configuration experience.
+
+📍 Chicago, IL
+💰 $115K–$140K/yr
+🏢 Morguard
+
+See the full job and apply 👉 https://propertymanagementjobs.us/jobs/senior-revenue-manager-8fbd6678?utm_source=linkedin&utm_medium=social&utm_campaign=job_post
+
+#PropertyManagement #AssetManagement #NowHiring #ChicagoJobs
+```
+
+---
+
 ### Community Manager at Investment Property Group
 
 Scheduled Wed Oct 28, 2026 at 10:00 AM EDT · Loveland, CO · $26–$30/hr · [job page](https://propertymanagementjobs.us/jobs/community-manager-manufactured-housing-community-plus-housing-99a30347)  

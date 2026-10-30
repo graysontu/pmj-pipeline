@@ -595,5 +595,42 @@
     "buffer_post_id": "6ae1cf8b96dccc28f67819c4",
     "buffer": "Scheduled on property-management-jobs-us",
     "recorded_at": "2026-10-28T10:33:47.098620+00:00"
+  },
+  {
+    "source_id": "smartrecruiters_744000158035389",
+    "mode": "live",
+    "created_at": "2026-10-30T10:51:09.077792+00:00",
+    "slot": "2026-10-30",
+    "moved_to_next_day": false,
+    "due_at": "2026-10-30T14:00:00+00:00",
+    "title": "Senior Revenue Manager",
+    "company": "Morguard",
+    "category": "Asset Manager Jobs",
+    "location": "Chicago, IL",
+    "state": "IL",
+    "pay": "$115K–$140K/yr",
+    "site_url": "https://propertymanagementjobs.us/jobs/senior-revenue-manager-8fbd6678",
+    "image": "images/2026-10-30-smartrecruiters_744000158035389.png",
+    "theme": "plum",
+    "label": "NEW JOB",
+    "opening_line": "claude",
+    "text": "This role owns pricing strategy across a U.S. multifamily portfolio, from new lease rates and renewals to concessions and lease expiration staggering, and serves as business owner for the Revenue Intelligence platform. Suited to someone with portfolio-level revenue management and RMS configuration experience.\n\n📍 Chicago, IL\n💰 $115K–$140K/yr\n🏢 Morguard\n\nSee the full job and apply 👉 https://propertymanagementjobs.us/jobs/senior-revenue-manager-8fbd6678?utm_source=linkedin&utm_medium=social&utm_campaign=job_post\n\n#PropertyManagement #AssetManagement #NowHiring #ChicagoJobs",
+    "selection": {
+      "considered": 347,
+      "qualified": 6,
+      "skipped": {
+        "posted more than 4 days ago on the site": 291,
+        "no salary": 17,
+        "maintenance role": 16,
+        "pay at or below the LinkedIn floor": 6,
+        "company posted recently": 5,
+        "not live on the site": 4,
+        "no city and state": 1,
+        "already posted": 1
+      }
+    },
+    "buffer_post_id": "6ae476a6e97270550554d842",
+    "buffer": "Scheduled on property-management-jobs-us",
+    "recorded_at": "2026-10-30T10:51:17.640425+00:00"
   }
 ]
