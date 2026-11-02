@@ -6,6 +6,28 @@ Newest first.
 
 ---
 
+### Director of Service & Construction at AIR Communities
+
+Scheduled Mon Nov 2, 2026 at 10:00 AM EST · Houston, TX · $145K–$165K/yr · [job page](https://propertymanagementjobs.us/jobs/director-of-service-construction-houston-ee11b992)  
+Buffer: Scheduled on property-management-jobs-us · colours: slate · opening line: claude  
+Why this job: 4 of 349 jobs in the feed qualified. Skipped: posted more than 4 days ago on the site 309, maintenance role 15, no salary 7, not live on the site 6, pay at or below the LinkedIn floor 5, company posted recently 2, no city and state 1.
+
+<img src="images/2026-11-02-smartrecruiters_744000158853429.png" width="420" alt="Director of Service & Construction card">
+
+```text
+A Houston-market director role overseeing renovation programs, vendor management, and jurisdictional compliance work like REAC, MOR, and 40-year inspections. Suited to someone who runs multiple construction projects and reads a P&L.
+
+📍 Houston, TX
+💰 $145K–$165K/yr
+🏢 AIR Communities
+
+See the full job and apply 👉 https://propertymanagementjobs.us/jobs/director-of-service-construction-houston-ee11b992?utm_source=linkedin&utm_medium=social&utm_campaign=job_post
+
+#PropertyManagement #RegionalManager #NowHiring #HoustonJobs
+```
+
+---
+
 ### Senior Revenue Manager at Morguard
 
 Scheduled Fri Oct 30, 2026 at 10:00 AM EDT · Chicago, IL · $115K–$140K/yr · [job page](https://propertymanagementjobs.us/jobs/senior-revenue-manager-8fbd6678)  
