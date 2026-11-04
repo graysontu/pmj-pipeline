@@ -6,6 +6,28 @@ Newest first.
 
 ---
 
+### Administrative Assistant at Property Management Associates
+
+Scheduled Wed Nov 4, 2026 at 10:00 AM EST · Culver City, CA · $24–$26/hr · [job page](https://propertymanagementjobs.us/jobs/administrative-assistant-dcb0915c)  
+Buffer: Scheduled on property-management-jobs-us · colours: coral · opening line: claude  
+Why this job: 3 of 345 jobs in the feed qualified. Skipped: posted more than 4 days ago on the site 316, not live on the site 15, no salary 5, maintenance role 4, pay at or below the LinkedIn floor 2.
+
+<img src="images/2026-11-04-greenhouse_5281808007.png" width="420" alt="Administrative Assistant card">
+
+```text
+Supporting both the Residential Department and the COO, this admin role covers RentCafe listings, utility account audits and calendar management for a portfolio in the thousands of units. A good fit if Excel and follow-through are your strengths.
+
+📍 Culver City, CA
+💰 $24–$26/hr
+🏢 Property Management Associates
+
+See the full job and apply 👉 https://propertymanagementjobs.us/jobs/administrative-assistant-dcb0915c?utm_source=linkedin&utm_medium=social&utm_campaign=job_post
+
+#PropertyManagement #RealEstateJobs #NowHiring #CulverCityJobs
+```
+
+---
+
 ### Director of Service & Construction at AIR Communities
 
 Scheduled Mon Nov 2, 2026 at 10:00 AM EST · Houston, TX · $145K–$165K/yr · [job page](https://propertymanagementjobs.us/jobs/director-of-service-construction-houston-ee11b992)  
