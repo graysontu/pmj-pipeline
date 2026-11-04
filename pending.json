@@ -1,0 +1,31 @@
+{
+  "source_id": "greenhouse_5281808007",
+  "mode": "live",
+  "created_at": "2026-11-04T12:05:23.051193+00:00",
+  "slot": "2026-11-04",
+  "moved_to_next_day": false,
+  "due_at": "2026-11-04T15:00:00+00:00",
+  "title": "Administrative Assistant",
+  "company": "Property Management Associates",
+  "category": "Real Estate Admin & Coordinator Jobs",
+  "location": "Culver City, CA",
+  "state": "CA",
+  "pay": "$24–$26/hr",
+  "site_url": "https://propertymanagementjobs.us/jobs/administrative-assistant-dcb0915c",
+  "image": "images/2026-11-04-greenhouse_5281808007.png",
+  "theme": "coral",
+  "label": "NEW JOB",
+  "opening_line": "claude",
+  "text": "Supporting both the Residential Department and the COO, this admin role covers RentCafe listings, utility account audits and calendar management for a portfolio in the thousands of units. A good fit if Excel and follow-through are your strengths.\n\n📍 Culver City, CA\n💰 $24–$26/hr\n🏢 Property Management Associates\n\nSee the full job and apply 👉 https://propertymanagementjobs.us/jobs/administrative-assistant-dcb0915c?utm_source=linkedin&utm_medium=social&utm_campaign=job_post\n\n#PropertyManagement #RealEstateJobs #NowHiring #CulverCityJobs",
+  "selection": {
+    "considered": 345,
+    "qualified": 3,
+    "skipped": {
+      "posted more than 4 days ago on the site": 316,
+      "not live on the site": 15,
+      "no salary": 5,
+      "maintenance role": 4,
+      "pay at or below the LinkedIn floor": 2
+    }
+  }
+}
