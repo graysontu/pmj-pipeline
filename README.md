@@ -6,6 +6,28 @@ Newest first.
 
 ---
 
+### Property Manager at BAM Companies
+
+Scheduled Fri Nov 6, 2026 at 10:00 AM EST · Kansas City, MO · $65K–$75K/yr · [job page](https://propertymanagementjobs.us/jobs/property-manager-altitude-970-82af31f2)  
+Buffer: Scheduled on property-management-jobs-us · colours: cream · opening line: claude  
+Why this job: 6 of 343 jobs in the feed qualified. Skipped: posted more than 4 days ago on the site 292, maintenance role 14, not live on the site 13, no salary 9, no city and state 4, pay at or below the LinkedIn floor 3, already posted 1, company posted recently 1.
+
+<img src="images/2026-11-06-greenhouse_4479152009.png" width="420" alt="Property Manager card">
+
+```text
+Altitude 970 is looking for a Property Manager to run site operations end to end, from leasing and delinquency to budgets and reporting, while leading and mentoring the on-site leasing, maintenance, and admin team.
+
+📍 Kansas City, MO
+💰 $65K–$75K/yr
+🏢 BAM Companies
+
+See the full job and apply 👉 https://propertymanagementjobs.us/jobs/property-manager-altitude-970-82af31f2?utm_source=linkedin&utm_medium=social&utm_campaign=job_post
+
+#PropertyManagement #PropertyManager #NowHiring #KansasCityJobs
+```
+
+---
+
 ### Administrative Assistant at Property Management Associates
 
 Scheduled Wed Nov 4, 2026 at 10:00 AM EST · Culver City, CA · $24–$26/hr · [job page](https://propertymanagementjobs.us/jobs/administrative-assistant-dcb0915c)  
