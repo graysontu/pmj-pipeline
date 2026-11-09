@@ -6,6 +6,28 @@ Newest first.
 
 ---
 
+### Assistant Community Association Manager at Mountain Valley
+
+Scheduled Mon Nov 9, 2026 at 10:00 AM EST · Avon, CO · $60K–$75K/yr · [job page](https://propertymanagementjobs.us/jobs/assistant-community-association-manager-a2aa74dc)  
+Buffer: Scheduled on property-management-jobs-us · colours: teal · opening line: claude  
+Why this job: 6 of 343 jobs in the feed qualified. Skipped: posted more than 4 days ago on the site 300, not live on the site 12, no salary 11, maintenance role 10, pay at or below the LinkedIn floor 2, no city and state 1, company posted recently 1.
+
+<img src="images/2026-11-09-workable_6135452.png" width="420" alt="Assistant Community Association Manager card">
+
+```text
+Supporting experienced Community Association Managers across HOAs ranging from six units to 150-plus, with vendor coordination, site inspections and board meeting minutes. CAM exam fees and paid study time are covered.
+
+📍 Avon, CO
+💰 $60K–$75K/yr
+🏢 Mountain Valley
+
+See the full job and apply 👉 https://propertymanagementjobs.us/jobs/assistant-community-association-manager-a2aa74dc?utm_source=linkedin&utm_medium=social&utm_campaign=job_post
+
+#PropertyManagement #AssistantPropertyManager #NowHiring #AvonJobs
+```
+
+---
+
 ### Property Manager at BAM Companies
 
 Scheduled Fri Nov 6, 2026 at 10:00 AM EST · Kansas City, MO · $65K–$75K/yr · [job page](https://propertymanagementjobs.us/jobs/property-manager-altitude-970-82af31f2)  

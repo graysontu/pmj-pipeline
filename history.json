@@ -739,5 +739,41 @@
     "buffer_post_id": "6aedc24e1fcdcefa468a82ef",
     "buffer": "Scheduled on property-management-jobs-us",
     "recorded_at": "2026-11-06T12:04:29.581288+00:00"
+  },
+  {
+    "source_id": "workable_6135452",
+    "mode": "live",
+    "created_at": "2026-11-09T12:49:16.433624+00:00",
+    "slot": "2026-11-09",
+    "moved_to_next_day": false,
+    "due_at": "2026-11-09T15:00:00+00:00",
+    "title": "Assistant Community Association Manager",
+    "company": "Mountain Valley",
+    "category": "Assistant Property Manager Jobs",
+    "location": "Avon, CO",
+    "state": "CO",
+    "pay": "$60K–$75K/yr",
+    "site_url": "https://propertymanagementjobs.us/jobs/assistant-community-association-manager-a2aa74dc",
+    "image": "images/2026-11-09-workable_6135452.png",
+    "theme": "teal",
+    "label": "NEW JOB",
+    "opening_line": "claude",
+    "text": "Supporting experienced Community Association Managers across HOAs ranging from six units to 150-plus, with vendor coordination, site inspections and board meeting minutes. CAM exam fees and paid study time are covered.\n\n📍 Avon, CO\n💰 $60K–$75K/yr\n🏢 Mountain Valley\n\nSee the full job and apply 👉 https://propertymanagementjobs.us/jobs/assistant-community-association-manager-a2aa74dc?utm_source=linkedin&utm_medium=social&utm_campaign=job_post\n\n#PropertyManagement #AssistantPropertyManager #NowHiring #AvonJobs",
+    "selection": {
+      "considered": 343,
+      "qualified": 6,
+      "skipped": {
+        "posted more than 4 days ago on the site": 300,
+        "not live on the site": 12,
+        "no salary": 11,
+        "maintenance role": 10,
+        "pay at or below the LinkedIn floor": 2,
+        "no city and state": 1,
+        "company posted recently": 1
+      }
+    },
+    "buffer_post_id": "6af1c1564ed9d7a0d39406ba",
+    "buffer": "Scheduled on property-management-jobs-us",
+    "recorded_at": "2026-11-09T12:49:25.717388+00:00"
   }
 ]
