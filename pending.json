@@ -1,0 +1,32 @@
+{
+  "source_id": "greenhouse_8199631003",
+  "mode": "live",
+  "created_at": "2026-11-11T11:51:39.879235+00:00",
+  "slot": "2026-11-11",
+  "moved_to_next_day": false,
+  "due_at": "2026-11-11T15:00:00+00:00",
+  "title": "Leasing Consultant",
+  "company": "Prometheus Real Estate Group",
+  "category": "Leasing Consultant Jobs",
+  "location": "San Bruno, CA",
+  "state": "CA",
+  "pay": "$25–$26/hr",
+  "site_url": "https://propertymanagementjobs.us/jobs/leasing-consultant-crystal-springs-41379ced",
+  "image": "images/2026-11-11-greenhouse_8199631003.png",
+  "theme": "plum",
+  "label": "NOW HIRING",
+  "opening_line": "claude",
+  "text": "A full-cycle leasing role at Crystal Springs, covering tours, follow-up and closings alongside market surveys and occupancy reports. Weekend availability is required, with days off during the week, and they train people new to the industry.\n\n📍 San Bruno, CA\n💰 $25–$26/hr\n🏢 Prometheus Real Estate Group\n\nSee the full job and apply 👉 https://propertymanagementjobs.us/jobs/leasing-consultant-crystal-springs-41379ced?utm_source=linkedin&utm_medium=social&utm_campaign=job_post\n\n#PropertyManagement #LeasingJobs #NowHiring #SanBrunoJobs",
+  "selection": {
+    "considered": 355,
+    "qualified": 2,
+    "skipped": {
+      "posted more than 4 days ago on the site": 320,
+      "not live on the site": 19,
+      "no salary": 6,
+      "maintenance role": 6,
+      "company posted recently": 1,
+      "pay at or below the LinkedIn floor": 1
+    }
+  }
+}
