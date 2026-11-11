@@ -6,6 +6,28 @@ Newest first.
 
 ---
 
+### Leasing Consultant at Prometheus Real Estate Group
+
+Scheduled Wed Nov 11, 2026 at 10:00 AM EST · San Bruno, CA · $25–$26/hr · [job page](https://propertymanagementjobs.us/jobs/leasing-consultant-crystal-springs-41379ced)  
+Buffer: Scheduled on property-management-jobs-us · colours: plum · opening line: claude  
+Why this job: 2 of 355 jobs in the feed qualified. Skipped: posted more than 4 days ago on the site 320, not live on the site 19, no salary 6, maintenance role 6, company posted recently 1, pay at or below the LinkedIn floor 1.
+
+<img src="images/2026-11-11-greenhouse_8199631003.png" width="420" alt="Leasing Consultant card">
+
+```text
+A full-cycle leasing role at Crystal Springs, covering tours, follow-up and closings alongside market surveys and occupancy reports. Weekend availability is required, with days off during the week, and they train people new to the industry.
+
+📍 San Bruno, CA
+💰 $25–$26/hr
+🏢 Prometheus Real Estate Group
+
+See the full job and apply 👉 https://propertymanagementjobs.us/jobs/leasing-consultant-crystal-springs-41379ced?utm_source=linkedin&utm_medium=social&utm_campaign=job_post
+
+#PropertyManagement #LeasingJobs #NowHiring #SanBrunoJobs
+```
+
+---
+
 ### Assistant Community Association Manager at Mountain Valley
 
 Scheduled Mon Nov 9, 2026 at 10:00 AM EST · Avon, CO · $60K–$75K/yr · [job page](https://propertymanagementjobs.us/jobs/assistant-community-association-manager-a2aa74dc)  
