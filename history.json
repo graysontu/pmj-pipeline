@@ -810,5 +810,43 @@
     "buffer_post_id": "6af456d58bcfab418ea47dd6",
     "buffer": "Scheduled on property-management-jobs-us",
     "recorded_at": "2026-11-11T11:51:48.515859+00:00"
+  },
+  {
+    "source_id": "workable_6255282",
+    "mode": "live",
+    "created_at": "2026-11-13T12:10:25.183551+00:00",
+    "slot": "2026-11-13",
+    "moved_to_next_day": false,
+    "due_at": "2026-11-13T15:00:00+00:00",
+    "title": "Regional Director",
+    "company": "Worth Ross Management Company",
+    "category": "Regional Property Manager Jobs",
+    "location": "Denver, CO",
+    "state": "CO",
+    "pay": "$110K–$120K/yr",
+    "site_url": "https://propertymanagementjobs.us/jobs/regional-director-hoa-b0a2777a",
+    "image": "images/2026-11-13-workable_6255282.png",
+    "theme": "slate",
+    "label": "NEW JOB",
+    "opening_line": "claude",
+    "text": "A regional role overseeing General Managers across multiple HOA communities, with budget oversight, Board presentations and new community onboarding. Suits someone with multi-site HOA experience who leads through site managers.\n\n📍 Denver, CO\n💰 $110K–$120K/yr\n🏢 Worth Ross Management Company\n\nSee the full job and apply 👉 https://propertymanagementjobs.us/jobs/regional-director-hoa-b0a2777a?utm_source=linkedin&utm_medium=social&utm_campaign=job_post\n\n#PropertyManagement #RegionalManager #NowHiring #DenverJobs",
+    "selection": {
+      "considered": 352,
+      "qualified": 8,
+      "skipped": {
+        "posted more than 4 days ago on the site": 300,
+        "not live on the site": 15,
+        "no salary": 11,
+        "maintenance role": 10,
+        "pay at or below the LinkedIn floor": 4,
+        "already posted": 1,
+        "company posted recently": 1,
+        "city looks wrong": 1,
+        "no city and state": 1
+      }
+    },
+    "buffer_post_id": "6af6fe3ad414da1f7da34ab8",
+    "buffer": "Scheduled on property-management-jobs-us",
+    "recorded_at": "2026-11-13T12:10:33.633513+00:00"
   }
 ]

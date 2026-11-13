@@ -6,6 +6,28 @@ Newest first.
 
 ---
 
+### Regional Director at Worth Ross Management Company
+
+Scheduled Fri Nov 13, 2026 at 10:00 AM EST · Denver, CO · $110K–$120K/yr · [job page](https://propertymanagementjobs.us/jobs/regional-director-hoa-b0a2777a)  
+Buffer: Scheduled on property-management-jobs-us · colours: slate · opening line: claude  
+Why this job: 8 of 352 jobs in the feed qualified. Skipped: posted more than 4 days ago on the site 300, not live on the site 15, no salary 11, maintenance role 10, pay at or below the LinkedIn floor 4, already posted 1, company posted recently 1, city looks wrong 1, no city and state 1.
+
+<img src="images/2026-11-13-workable_6255282.png" width="420" alt="Regional Director card">
+
+```text
+A regional role overseeing General Managers across multiple HOA communities, with budget oversight, Board presentations and new community onboarding. Suits someone with multi-site HOA experience who leads through site managers.
+
+📍 Denver, CO
+💰 $110K–$120K/yr
+🏢 Worth Ross Management Company
+
+See the full job and apply 👉 https://propertymanagementjobs.us/jobs/regional-director-hoa-b0a2777a?utm_source=linkedin&utm_medium=social&utm_campaign=job_post
+
+#PropertyManagement #RegionalManager #NowHiring #DenverJobs
+```
+
+---
+
 ### Leasing Consultant at Prometheus Real Estate Group
 
 Scheduled Wed Nov 11, 2026 at 10:00 AM EST · San Bruno, CA · $25–$26/hr · [job page](https://propertymanagementjobs.us/jobs/leasing-consultant-crystal-springs-41379ced)  
