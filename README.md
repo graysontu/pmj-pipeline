@@ -6,6 +6,28 @@ Newest first.
 
 ---
 
+### Assistant Property Manager at Lincoln Property Company
+
+Scheduled Mon Nov 16, 2026 at 10:00 AM EST · Herndon, VA · $70K–$75K/yr · [job page](https://propertymanagementjobs.us/jobs/assistant-property-manager-71c27541)  
+Buffer: Scheduled on property-management-jobs-us · colours: coral · opening line: claude  
+Why this job: 7 of 357 jobs in the feed qualified. Skipped: posted more than 4 days ago on the site 308, not live on the site 14, no salary 14, maintenance role 11, no city and state 2, pay at or below the LinkedIn floor 1.
+
+<img src="images/2026-11-16-greenhouse_5295046007.png" width="420" alt="Assistant Property Manager card">
+
+```text
+An Assistant Property Manager role across an office, retail and industrial portfolio, splitting time between invoice review, monthly reporting and CAM reconciliations, and tenant move-ins and walk-throughs. Suits someone one to two years into commercial PM. Fully in-office.
+
+📍 Herndon, VA
+💰 $70K–$75K/yr
+🏢 Lincoln Property Company
+
+See the full job and apply 👉 https://propertymanagementjobs.us/jobs/assistant-property-manager-71c27541?utm_source=linkedin&utm_medium=social&utm_campaign=job_post
+
+#PropertyManagement #AssistantPropertyManager #NowHiring #HerndonJobs
+```
+
+---
+
 ### Regional Director at Worth Ross Management Company
 
 Scheduled Fri Nov 13, 2026 at 10:00 AM EST · Denver, CO · $110K–$120K/yr · [job page](https://propertymanagementjobs.us/jobs/regional-director-hoa-b0a2777a)  
