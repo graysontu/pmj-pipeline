@@ -397,6 +397,11 @@ When rate limit errors appear during a run, jobs are skipped and logged. They wo
 - **Run Pipeline, no runner:** retried silently; emailed only when 3 attempts are used up. (It used to email on every infra failure, including ones the retry then fixed.)
 - **LinkedIn Post, no runner:** retried silently - always safe, since a run for an already-handled posting day does nothing. When retries run out, emailed only if no LinkedIn run succeeded in the last 20 hours, because each posting day has three runs and one success covers the day.
 - **Deploy Pages, any failure:** it has no email step of its own and costs nothing to rerun, so every failure is retried; emailed after 3 attempts unless a deploy created later (say, after a merge) already succeeded.
+  Re-runs of a Deploy Pages run only work because each attempt uploads its own
+  artifact (`github-pages-<attempt>`). With the old fixed name, every retry failed
+  with "Multiple artifacts named github-pages" (2026-11-18: attempt 1 hit a GitHub
+  glitch, attempts 2 and 3 were doomed). Deploy Pages also has `workflow_dispatch`,
+  so `gh workflow run deploy-pages.yml` publishes the current `main` by hand.
 - **Real step failures** in the pipeline and LinkedIn jobs: left to their own emails.
 
 The chain Run Pipeline -> Deploy Pages -> Watchdog is three `workflow_run` levels, GitHub's documented maximum. Don't add a fourth workflow triggered by the watchdog. Verified on 2026-10-05 by running the decision script against nine real runs, including that day's LinkedIn no-runner failure (which correctly comes out as "retry", and as "nothing to do" once retries run out, because an earlier run had posted).
