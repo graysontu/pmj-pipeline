@@ -6,6 +6,28 @@ Newest first.
 
 ---
 
+### SSC Supervisor at AIR Communities
+
+Scheduled Wed Nov 18, 2026 at 10:00 AM EST · Denver, CO · $35–$40/hr · [job page](https://propertymanagementjobs.us/jobs/ssc-supervisor-3c1f5a02)  
+Buffer: Scheduled on property-management-jobs-us · colours: cream · opening line: claude  
+Why this job: 3 of 354 jobs in the feed qualified. Skipped: posted more than 4 days ago on the site 326, not live on the site 14, maintenance role 6, no salary 3, company posted recently 1, pay at or below the LinkedIn floor 1.
+
+<img src="images/2026-11-18-smartrecruiters_744000161928699.png" width="420" alt="SSC Supervisor card">
+
+```text
+This Shared Services Center supervisor leads a contact center team handling resident customer service and collections, tracking service levels, coaching through difficult calls, and stepping in on escalations. Five days a week onsite.
+
+📍 Denver, CO
+💰 $35–$40/hr
+🏢 AIR Communities
+
+See the full job and apply 👉 https://propertymanagementjobs.us/jobs/ssc-supervisor-3c1f5a02?utm_source=linkedin&utm_medium=social&utm_campaign=job_post
+
+#PropertyManagement #LeasingJobs #NowHiring #DenverJobs
+```
+
+---
+
 ### Assistant Property Manager at Lincoln Property Company
 
 Scheduled Mon Nov 16, 2026 at 10:00 AM EST · Herndon, VA · $70K–$75K/yr · [job page](https://propertymanagementjobs.us/jobs/assistant-property-manager-71c27541)  
