@@ -156,13 +156,17 @@ def test_closed_jobs_leave_the_feed_but_stay_in_state(tmp_path, monkeypatch):
     state_path = tmp_path / "state.json"
     monkeypatch.setattr(state_module, "STATE_PATH", state_path)
 
+    # get_active_jobs() measures age from the real clock, so these dates must be
+    # relative to today, not the fixed NOW (which aged past 60 days in Nov 2026).
+    today = datetime.now(timezone.utc)
+    recent = {"published_at": (today - timedelta(days=5)).isoformat()}
     state = state_module.State()
     state._data = {
-        "greenhouse_1": _job(1),
-        "greenhouse_2": {**_job(2), "closed_at": NOW.isoformat()},
+        "greenhouse_1": {**_job(1), **recent},
+        "greenhouse_2": {**_job(2), **recent, "closed_at": today.isoformat()},
         "greenhouse_3": {
             **_job(3),
-            "published_at": (NOW - timedelta(days=90)).isoformat(),
+            "published_at": (today - timedelta(days=90)).isoformat(),
         },
     }
 

@@ -725,3 +725,81 @@ def test_friday_with_no_run_before_6pm_is_missed_with_one_email(tmp_path, state_
     first = attempt(_utc(2026, 10, 2, 22, 30), "first")                             # Fri 6:30 PM EDT
     assert first.read_text(encoding="utf-8") == "LinkedIn: Friday's post was missed"
     assert not attempt(_utc(2026, 10, 2, 23, 30), "second").exists()
+
+
+# --- job pages that won't load ---------------------------------------------------
+
+def test_a_page_that_will_not_load_is_skipped_for_the_next_job(tmp_path, monkeypatch):
+    """2026-11-20: the site reset the connection on the first page check and the
+    whole run crashed. One bad page now moves on to the next candidate."""
+    monkeypatch.setattr(config, "LINKEDIN_POSTING_ENABLED", True)
+    other_apply = "https://job-boards.greenhouse.io/commonplace/jobs/1"
+    jobs = {
+        "workable_84C40F6B99": _job(),
+        "greenhouse_1": _job(source_id="greenhouse_1", company="CommonPlace", apply_url=other_apply,
+                             company_logo_url="https://x/logos/commonplace.png", title="Leasing Consultant",
+                             category="Leasing Consultant Jobs", location="Charlotte, NC"),
+    }
+    state_path = tmp_path / "state.json"
+    state_path.write_text(json.dumps(jobs), encoding="utf-8")
+    posted = NOW - timedelta(days=1)
+    lc_page = "https://propertymanagementjobs.us/jobs/lc"
+    site = {**_site(posted), other_apply: SiteJob(url=lc_page, sticky=False, published_at=posted)}
+
+    places = {PAGE: ("Davis", "California"), lc_page: ("Charlotte", "North Carolina")}
+    tried = []
+
+    def locate(url):  # the first page checked drops the connection
+        tried.append(url)
+        if len(tried) == 1:
+            raise httpx.ConnectError("[Errno 104] Connection reset by peer")
+        return places[url]
+
+    post_dir = tmp_path / "posts"
+    assert run.prepare(post_dir, state_path=state_path, site_jobs=site, page_locator=locate, use_ai=False, now=NOW) == 0
+    pending = json.loads((post_dir / "pending.json").read_text(encoding="utf-8"))
+    assert len(tried) == 2 and pending["site_url"] == tried[1]
+    assert pending["selection"]["skipped"]["site page could not be loaded"] == 1
+
+
+def test_an_unreachable_site_fails_without_writing_off_the_day(tmp_path, state_file, monkeypatch):
+    """If no page loads, the site is the problem, not the jobs: exit 1 (failure
+    email) and leave the day open so the next trigger tries again."""
+    monkeypatch.setattr(config, "LINKEDIN_POSTING_ENABLED", True)
+
+    def down(_url):
+        raise httpx.ConnectError("[Errno 104] Connection reset by peer")
+
+    post_dir, email_dir = tmp_path / "posts", tmp_path / "email"
+    assert run.prepare(post_dir, state_path=state_file, site_jobs=RECENT_SITE, page_locator=down,
+                       use_ai=False, now=NOW, email_dir=email_dir) == 1
+    assert not (post_dir / "pending.json").exists()
+    assert not (post_dir / "skipped_days.json").exists()
+
+    # Once the site is back, the same day posts normally.
+    assert run.prepare(post_dir, state_path=state_file, site_jobs=RECENT_SITE, page_locator=_davis,
+                       use_ai=False, now=NOW, email_dir=email_dir) == 0
+    assert (post_dir / "pending.json").exists()
+
+
+def test_fetch_page_location_retries_a_dropped_connection_once(monkeypatch):
+    monkeypatch.setattr(run, "PAGE_RETRY_PAUSE_S", 0)
+    page = ('<script type="application/ld+json">{"@type": "JobPosting", "jobLocation": '
+            '{"address": {"addressLocality": "Davis", "addressRegion": "California"}}}</script>')
+    calls = []
+
+    def handler(request):
+        calls.append(request)
+        if len(calls) == 1:
+            raise httpx.ConnectError("[Errno 104] Connection reset by peer")
+        return httpx.Response(200, text=page)
+
+    http = httpx.Client(transport=httpx.MockTransport(handler))
+    assert run.fetch_page_location("https://propertymanagementjobs.us/jobs/pm", http) == ("Davis", "California")
+    assert len(calls) == 2
+
+    calls.clear()
+    always_down = httpx.Client(transport=httpx.MockTransport(
+        lambda request: (_ for _ in ()).throw(httpx.ConnectError("reset"))))
+    with pytest.raises(httpx.ConnectError):
+        run.fetch_page_location("https://propertymanagementjobs.us/jobs/pm", always_down)
