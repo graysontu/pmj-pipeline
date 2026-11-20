@@ -918,5 +918,42 @@
     "buffer_post_id": "6afda16c4f494ff3a1e2eeae",
     "buffer": "Scheduled on property-management-jobs-us",
     "recorded_at": "2026-11-18T13:00:27.864432+00:00"
+  },
+  {
+    "source_id": "greenhouse_4513411009",
+    "mode": "live",
+    "created_at": "2026-11-20T16:22:58.854148+00:00",
+    "slot": "2026-11-20",
+    "moved_to_next_day": false,
+    "due_at": "2026-11-20T16:38:04.558602+00:00",
+    "title": "Resident Relations Coordinator",
+    "company": "John M. Corcoran & Company",
+    "category": "Real Estate Admin & Coordinator Jobs",
+    "location": "Framingham, MA",
+    "state": "MA",
+    "pay": "$23–$34/hr",
+    "site_url": "https://propertymanagementjobs.us/jobs/resident-relations-coordinator-d67f0d05",
+    "image": "images/2026-11-20-greenhouse_4513411009.png",
+    "theme": "teal",
+    "label": "NOW HIRING",
+    "opening_line": "claude",
+    "text": "A bilingual English/Spanish coordinator role at Pelham Apartments, handling lease inspections, violation tracking, and resident questions on a Monday to Friday, 8:30 to 5:00 schedule. Good fit if you keep thorough documentation.\n\n📍 Framingham, MA\n💰 $23–$34/hr\n🏢 John M. Corcoran & Company\n\nSee the full job and apply 👉 https://propertymanagementjobs.us/jobs/resident-relations-coordinator-d67f0d05?utm_source=linkedin&utm_medium=social&utm_campaign=job_post\n\n#PropertyManagement #RealEstateJobs #NowHiring #FraminghamJobs",
+    "selection": {
+      "considered": 354,
+      "qualified": 9,
+      "skipped": {
+        "posted more than 4 days ago on the site": 302,
+        "maintenance role": 17,
+        "no salary": 14,
+        "pay at or below the LinkedIn floor": 7,
+        "company posted recently": 2,
+        "not live on the site": 1,
+        "no city and state": 1,
+        "title too vague": 1
+      }
+    },
+    "buffer_post_id": "6b0073e96eabfb806ccd21c1",
+    "buffer": "Scheduled on property-management-jobs-us",
+    "recorded_at": "2026-11-20T16:23:04.558602+00:00"
   }
 ]

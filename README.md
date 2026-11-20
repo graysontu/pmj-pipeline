@@ -6,6 +6,28 @@ Newest first.
 
 ---
 
+### Resident Relations Coordinator at John M. Corcoran & Company
+
+Scheduled Fri Nov 20, 2026 at 11:38 AM EST · Framingham, MA · $23–$34/hr · [job page](https://propertymanagementjobs.us/jobs/resident-relations-coordinator-d67f0d05)  
+Buffer: Scheduled on property-management-jobs-us · colours: teal · opening line: claude  
+Why this job: 9 of 354 jobs in the feed qualified. Skipped: posted more than 4 days ago on the site 302, maintenance role 17, no salary 14, pay at or below the LinkedIn floor 7, company posted recently 2, not live on the site 1, no city and state 1, title too vague 1.
+
+<img src="images/2026-11-20-greenhouse_4513411009.png" width="420" alt="Resident Relations Coordinator card">
+
+```text
+A bilingual English/Spanish coordinator role at Pelham Apartments, handling lease inspections, violation tracking, and resident questions on a Monday to Friday, 8:30 to 5:00 schedule. Good fit if you keep thorough documentation.
+
+📍 Framingham, MA
+💰 $23–$34/hr
+🏢 John M. Corcoran & Company
+
+See the full job and apply 👉 https://propertymanagementjobs.us/jobs/resident-relations-coordinator-d67f0d05?utm_source=linkedin&utm_medium=social&utm_campaign=job_post
+
+#PropertyManagement #RealEstateJobs #NowHiring #FraminghamJobs
+```
+
+---
+
 ### SSC Supervisor at AIR Communities
 
 Scheduled Wed Nov 18, 2026 at 10:00 AM EST · Denver, CO · $35–$40/hr · [job page](https://propertymanagementjobs.us/jobs/ssc-supervisor-3c1f5a02)  
