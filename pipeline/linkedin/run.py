@@ -38,6 +38,11 @@ POST_BRANCH = "linkedin-posts"
 REPO = os.getenv("GITHUB_REPOSITORY", "graysontu/pmj-pipeline")
 MIN_SITE_JOBS = 20
 MAX_PAGE_CHECKS = 10
+# A job page that won't load (the site reset the connection on 2026-11-20 and the
+# whole run crashed) is tried once more after a pause, then skipped for the next
+# candidate. After this many unloadable pages the site is treated as down.
+PAGE_RETRY_PAUSE_S = 5
+MAX_PAGE_LOAD_FAILURES = 3
 MIN_LEAD = timedelta(minutes=15)
 # Runs this close to the post time are the day's last chance (the final trigger
 # fires about 7-8 AM Eastern for a 10 AM post).
@@ -97,10 +102,18 @@ def _parse_time(text: str | None) -> datetime | None:
 def fetch_page_location(url: str, http: httpx.Client | None = None) -> tuple[str | None, str | None]:
     """(city, state) as the job's page on the site shows them, read from the
     page's JobPosting structured data. jobs.xml can't be used for this: it
-    leaves location empty for every job imported from the feed."""
+    leaves location empty for every job imported from the feed.
+
+    A connection problem (reset, timeout) is retried once; if it persists the
+    httpx error is raised for prepare() to handle."""
     http = http or httpx.Client(timeout=30.0, follow_redirects=True,
                                 headers={"User-Agent": "pmj-pipeline linkedin"})
-    response = http.get(url)
+    try:
+        response = http.get(url)
+    except httpx.TransportError as exc:
+        logger.warning("Loading %s failed (%s); trying once more.", url, exc)
+        time.sleep(PAGE_RETRY_PAUSE_S)
+        response = http.get(url)
     if response.status_code != 200:
         return None, None
     for block in re.findall(r'<script[^>]*application/ld\+json[^>]*>(.*?)</script>', response.text, re.S):
@@ -264,14 +277,33 @@ def prepare(
 
     # The last check needs the live page, so it runs on the best few only.
     pick = None
+    load_failures = 0
     for candidate in rank(candidates, history)[:MAX_PAGE_CHECKS]:
-        confirmed, reason = confirm_page_location(candidate, *page_locator(candidate.site_url))
+        if load_failures >= MAX_PAGE_LOAD_FAILURES:
+            break
+        try:
+            located = page_locator(candidate.site_url)
+        except httpx.HTTPError as exc:
+            load_failures += 1
+            skipped["site page could not be loaded"] += 1
+            logger.warning("Skipping %s: the page could not be loaded (%s)", candidate.site_url, exc)
+            continue
+        confirmed, reason = confirm_page_location(candidate, *located)
         if confirmed:
             pick = confirmed
             break
         skipped[reason] += 1
         logger.info("Skipping %s: %s", candidate.site_url, reason)
     selection["skipped"] = dict(skipped.most_common())
+
+    if pick is None and load_failures:
+        # The site, not the jobs, is the problem, so the day is not written off:
+        # fail (which sends the failure email) and let the next trigger try again.
+        logger.error("Job pages on the site could not be loaded (%d failed); no post prepared.", load_failures)
+        _append_summary(f"## LinkedIn post\n\nJob pages on the site could not be loaded, so nothing was "
+                        f"posted for {post_day}. The next scheduled run will try again.\n\n"
+                        f"{_selection_line(selection)}\n")
+        return 1
 
     if pick is None:
         # Not a failure: with the pay floor some days simply have nothing worth
