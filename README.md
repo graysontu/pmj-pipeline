@@ -6,6 +6,28 @@ Newest first.
 
 ---
 
+### Property Manager at BAM Companies
+
+Scheduled Mon Nov 23, 2026 at 10:00 AM EST · West Lafayette, IN · $65K–$75K/yr · [job page](https://propertymanagementjobs.us/jobs/property-manager-the-ivy-9da31b4f)  
+Buffer: Scheduled on property-management-jobs-us · colours: plum · opening line: claude  
+Why this job: 7 of 355 jobs in the feed qualified. Skipped: posted more than 4 days ago on the site 317, no salary 14, maintenance role 10, not live on the site 3, company posted recently 2, no city and state 1, pay at or below the LinkedIn floor 1.
+
+<img src="images/2026-11-23-greenhouse_4517778009.png" width="420" alt="Property Manager card">
+
+```text
+A full-site Property Manager role at The Ivy, owning leasing, maintenance coordination, budgeting and the on-site team in a student market where turnover follows Purdue's academic calendar. Best for operators with five-plus years on site.
+
+📍 West Lafayette, IN
+💰 $65K–$75K/yr
+🏢 BAM Companies
+
+See the full job and apply 👉 https://propertymanagementjobs.us/jobs/property-manager-the-ivy-9da31b4f?utm_source=linkedin&utm_medium=social&utm_campaign=job_post
+
+#PropertyManagement #PropertyManager #NowHiring #WestLafayetteJobs
+```
+
+---
+
 ### Resident Relations Coordinator at John M. Corcoran & Company
 
 Scheduled Fri Nov 20, 2026 at 11:38 AM EST · Framingham, MA · $23–$34/hr · [job page](https://propertymanagementjobs.us/jobs/resident-relations-coordinator-d67f0d05)  
