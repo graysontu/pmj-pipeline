@@ -6,6 +6,28 @@ Newest first.
 
 ---
 
+### Community Manager at Redstone Residential
+
+Scheduled Wed Nov 25, 2026 at 10:00 AM EST · Godley, TX · $60K–$65K/yr · [job page](https://propertymanagementjobs.us/jobs/community-manager-44876ebd)  
+Buffer: Scheduled on property-management-jobs-us · colours: slate · opening line: claude  
+Why this job: 3 of 359 jobs in the feed qualified. Skipped: posted more than 4 days ago on the site 329, not live on the site 16, maintenance role 6, no salary 5, site page shows no city 1.
+
+<img src="images/2026-11-25-greenhouse_4518093009.png" width="420" alt="Community Manager card">
+
+```text
+A site leadership role reporting to the Regional Manager, owning budget, NOI, occupancy, delinquency and renewals. Suits a manager with two or more years in the seat and real P&L ownership. Entrata experience helps.
+
+📍 Godley, TX
+💰 $60K–$65K/yr
+🏢 Redstone Residential
+
+See the full job and apply 👉 https://propertymanagementjobs.us/jobs/community-manager-44876ebd?utm_source=linkedin&utm_medium=social&utm_campaign=job_post
+
+#PropertyManagement #CommunityManager #NowHiring #GodleyJobs
+```
+
+---
+
 ### Property Manager at BAM Companies
 
 Scheduled Mon Nov 23, 2026 at 10:00 AM EST · West Lafayette, IN · $65K–$75K/yr · [job page](https://propertymanagementjobs.us/jobs/property-manager-the-ivy-9da31b4f)  
