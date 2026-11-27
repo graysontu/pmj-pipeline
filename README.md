@@ -6,6 +6,28 @@ Newest first.
 
 ---
 
+### Regional Manager at Asset Living
+
+Scheduled Fri Nov 27, 2026 at 10:00 AM EST · Los Angeles, CA · $120K–$130K/yr · [job page](https://propertymanagementjobs.us/jobs/regional-manager-2ebbf27e)  
+Buffer: Scheduled on property-management-jobs-us · colours: coral · opening line: claude  
+Why this job: 5 of 367 jobs in the feed qualified. Skipped: posted more than 4 days ago on the site 315, maintenance role 16, not live on the site 13, no salary 9, company posted recently 4, pay at or below the LinkedIn floor 4, unsupported logo format .svg 1, site page shows no city 1.
+
+<img src="images/2026-11-27-greenhouse_6271366004.png" width="420" alt="Regional Manager card">
+
+```text
+A Regional Manager role with full P&L accountability across a multi-site LA portfolio, covering operating budgets, variance reporting and direct oversight of Community Managers. Familiarity with RSO-covered properties is a real plus.
+
+📍 Los Angeles, CA
+💰 $120K–$130K/yr
+🏢 Asset Living
+
+See the full job and apply 👉 https://propertymanagementjobs.us/jobs/regional-manager-2ebbf27e?utm_source=linkedin&utm_medium=social&utm_campaign=job_post
+
+#PropertyManagement #RegionalManager #NowHiring #LosAngelesJobs
+```
+
+---
+
 ### Community Manager at Redstone Residential
 
 Scheduled Wed Nov 25, 2026 at 10:00 AM EST · Godley, TX · $60K–$65K/yr · [job page](https://propertymanagementjobs.us/jobs/community-manager-44876ebd)  
